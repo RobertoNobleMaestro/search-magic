@@ -27,3 +27,6 @@ data/cardmarket/
 .DS_Store
 *.log
 coverage/
+
+# Vercel CLI (proyecto enlazado)
+.vercel
