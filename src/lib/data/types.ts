@@ -98,6 +98,8 @@ export interface Printing {
   collectorNumber: string;
   finishes: Finish[];
   imageUrl: string | null;
+  /** símbolo de la edición (SVG de Scryfall) */
+  setIconUrl: string | null;
   /** Cardmarket vía Scryfall (prices.eur) */
   priceEurCents: number | null;
   /** Cardmarket vía Scryfall (prices.eur_foil) */
@@ -142,8 +144,13 @@ export interface SealedSummary {
   category: string | null;
   subtype: string | null;
   releaseDate: string | null;
-  /** de momento siempre null: MTGJSON no trae imágenes */
+  /**
+   * Foto de la mejor oferta (MTGJSON no trae imágenes): primero tiendas físicas, luego con stock,
+   * luego la más reciente. null si ninguna tienda tiene foto.
+   */
   imageUrl: string | null;
+  /** símbolo de la edición (SVG de Scryfall), para cuando no hay foto */
+  setIconUrl: string | null;
   minPriceCents: number | null;
   offerCount: number;
 }
@@ -297,6 +304,8 @@ export interface NormalizedListing {
   setHint?: string;
   /** número de colección cuando la tienda lo da en un campo estructurado (SKU, variante, JSON-LD) */
   collectorNumber?: string;
+  /** foto del producto en la tienda (solo https) */
+  imageUrl?: string;
   /** pista del adaptador; ausente = lo decide el emparejador (por defecto "single") */
   kind?: ListingKind;
   /** idProduct de Cardmarket (CSV de stock): emparejado exacto, sin heurística */

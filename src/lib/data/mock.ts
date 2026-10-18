@@ -131,11 +131,17 @@ const CARDS: CatalogCard[] = cardFixture.cards.map((c) => {
       collectorNumber: p.collectorNumber,
       finishes: toFinishes(p.finishes),
       imageUrl: p.imageUrl,
+      setIconUrl: setIconUrl(p.setCode),
       priceEurCents: p.priceEurCents,
       priceEurFoilCents: p.priceEurFoilCents,
     })),
   };
 });
+
+/** Símbolo de la edición en Scryfall (la BD guarda el icon_svg_uri real de cada edición) */
+function setIconUrl(setCode: string): string {
+  return `https://svgs.scryfall.io/sets/${setCode.toLowerCase()}.svg`;
+}
 
 const CARD_BY_ID = new Map(CARDS.map((c) => [c.oracleId, c]));
 
@@ -735,7 +741,9 @@ function summarizeSealed(p: CatalogSealed): SealedSummary {
     category: p.category,
     subtype: p.subtype,
     releaseDate: p.releaseDate,
+    // las tiendas del mock son inventadas: sin fotos, solo el símbolo de la edición
     imageUrl: null,
+    setIconUrl: setIconUrl(p.setCode),
     minPriceCents: inStock.length ? Math.min(...inStock.map((l) => l.priceCents)) : null,
     offerCount: inStock.length,
   };
