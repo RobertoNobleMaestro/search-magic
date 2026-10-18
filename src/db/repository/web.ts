@@ -4,12 +4,18 @@ import {
   FINISHES,
   type CardSuggestion,
   type CardSummary,
-  type City,
   type Finish,
+  type ListingKind,
+  type ListingSource,
   type Offer,
   type OfferFilters,
+  type OfferStore,
+  type Platform,
   type Printing,
   type ScrapeRun,
+  type SealedOffer,
+  type SealedOfferFilters,
+  type SealedSummary,
   type Store,
   type StoreDetail,
   type UnmatchedListing,
@@ -17,39 +23,103 @@ import {
 import { normalizeName } from '../../lib/normalize';
 import type { Db } from '../client';
 import { textArray } from '../sql';
+import { sealedCategoryHints, sealedQueryTokens } from './sealed-query';
 
-const CITIES: readonly City[] = ['barcelona', 'hospitalet'];
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 const iso = (d: Date | string | null): string | null => (d == null ? null : new Date(d).toISOString());
 
-// ───────── Búsqueda ─────────
+function clamp(n: number, min: number, max: number): number {
+  return Math.min(Math.max(Math.floor(n), min), max);
+}
+
+/** Filtros comunes a cartas y sellado: ciudad, zona, stock e idioma. */
+function storeAndStockFilters(filters: SealedOfferFilters): SQL[] {
+  const where: SQL[] = [];
+  const cities = (filters.cities ?? []).filter(Boolean);
+  if (cities.length > 0) where.push(sql`lower(s.city) = any(${textArray(cities.map((c) => c.toLowerCase()))})`);
+  if (filters.localOnly) where.push(sql`s.is_local`);
+  if (filters.inStockOnly) where.push(sql`l.in_stock`);
+  const languages = (filters.languages ?? []).filter(Boolean);
+  if (languages.length > 0) where.push(sql`l.language = any(${textArray(languages)})`);
+  return where;
+}
+
+type OfferBaseColumns = {
+  id: number;
+  store_id: string;
+  store_name: string;
+  city: string;
+  is_local: boolean;
+  source: ListingSource;
+  url: string;
+  price_cents: number;
+  in_stock: boolean;
+  quantity: number | null;
+  language: string | null;
+  last_seen_at: Date;
+  match_confidence: number | null;
+};
+
+const offerBaseSelect = sql`
+  l.id, l.store_id, s.name as store_name, s.city, s.is_local, l.source, l.url, l.price_cents,
+  l.in_stock, l.quantity, l.language, l.last_seen_at, l.match_confidence`;
+
+function offerBase(r: OfferBaseColumns) {
+  const store: OfferStore = { id: r.store_id, name: r.store_name, city: r.city, local: r.is_local };
+  return {
+    listingId: String(r.id),
+    store,
+    source: r.source,
+    url: r.url,
+    priceCents: r.price_cents,
+    inStock: r.in_stock,
+    quantity: r.quantity,
+    language: r.language,
+    scrapedAt: iso(r.last_seen_at)!,
+    matchConfidence: r.match_confidence ?? 0,
+  };
+}
+
+/** Precio mínimo y número de ofertas con stock en tiendas activas, por carta o por sellado. */
+const stockStats = (target: SQL) => sql`
+  select min(l.price_cents)::int as min_price, count(*)::int as offer_count
+  from listings l join stores s on s.id = l.store_id
+  where ${target} and l.match_status = 'matched' and l.in_stock and s.enabled`;
 
 /**
- * Cartas cuyo nombre (inglés o español, completo o de una cara) casa con `q`, por orden:
- * 0 nombre exacto, 1 empieza por q, 2 todas las palabras como prefijo ("light bo"),
- * 3 parecido por trigramas (erratas). Dentro de cada grupo, las más reimpresas primero.
+ * Condiciones de búsqueda por nombre, con prioridad: 0 nombre exacto, 1 empieza por q,
+ * 2 todas las palabras como prefijo ("light bo"), 3 parecido por trigramas (erratas).
+ * normalizeName solo deja [a-z0-9 ], así que las palabras se pueden meter en LIKE y regex.
  */
+function nameRanking(column: SQL, qn: string) {
+  const allWordsPrefix = sql.join(
+    qn.split(' ').map((w) => sql`${column} ~ ${`(^| )${w}`}`),
+    sql` and `,
+  );
+  return {
+    rank: sql`case
+      when ${column} = ${qn} then 0
+      when ${column} like ${`${qn}%`} then 1
+      when ${allWordsPrefix} then 2
+      else 3 end`,
+    sim: sql`word_similarity(${qn}, ${column})`,
+    where: sql`(${column} like ${`%${qn}%`} or (${allWordsPrefix}) or ${qn} <% ${column})`,
+  };
+}
+
+// ───────── Cartas: búsqueda ─────────
+
+/** Dentro de cada grupo de nameRanking, las cartas más reimpresas primero. */
 async function rankedCandidates(db: Db, q: string, limit: number): Promise<CardSuggestion[]> {
   const qn = normalizeName(q);
   if (qn.length < 2) return [];
-  // normalizeName solo deja [a-z0-9 ], así que las palabras se pueden meter en LIKE y regex.
-  const allWordsPrefix = sql.join(
-    qn.split(' ').map((w) => sql`cn.name_norm ~ ${`(^| )${w}`}`),
-    sql` and `,
-  );
+  const { rank, sim, where } = nameRanking(sql`cn.name_norm`, qn);
   const rows = await db.execute<{ oracle_id: string; name_en: string; matched_name: string; lang: 'en' | 'es' }>(sql`
     with matches as (
-      select cn.oracle_id, cn.name, cn.lang, cn.is_face,
-        case
-          when cn.name_norm = ${qn} then 0
-          when cn.name_norm like ${`${qn}%`} then 1
-          when ${allWordsPrefix} then 2
-          else 3
-        end as rank,
-        word_similarity(${qn}, cn.name_norm) as sim
+      select cn.oracle_id, cn.name, cn.lang, cn.is_face, ${rank} as rank, ${sim} as sim
       from card_names cn
-      where cn.name_norm like ${`%${qn}%`} or (${allWordsPrefix}) or ${qn} <% cn.name_norm
+      where ${where}
     ),
     best as (
       select distinct on (oracle_id) oracle_id, name, lang, rank, sim
@@ -88,11 +158,7 @@ async function cardSummaries(db: Db, oracleIds: string[]): Promise<Map<string, C
   }>(sql`
     select c.oracle_id, c.name, c.name_es, c.image_uri, o.min_price, o.offer_count
     from cards c
-    cross join lateral (
-      select min(l.price_cents)::int as min_price, count(*)::int as offer_count
-      from listings l join stores s on s.id = l.store_id
-      where l.oracle_id = c.oracle_id and l.match_status = 'matched' and l.in_stock and s.enabled
-    ) o
+    cross join lateral (${stockStats(sql`l.oracle_id = c.oracle_id`)}) o
     where c.oracle_id = any(${textArray(oracleIds)}::uuid[])`);
   return new Map(
     rows.rows.map((r) => [
@@ -109,7 +175,7 @@ async function cardSummaries(db: Db, oracleIds: string[]): Promise<Map<string, C
   );
 }
 
-// ───────── Carta y ofertas ─────────
+// ───────── Cartas: ficha y ofertas ─────────
 
 type PrintingColumns = {
   scryfall_id: string;
@@ -122,6 +188,10 @@ type PrintingColumns = {
   price_eur_cents: number | null;
   price_eur_foil_cents: number | null;
 };
+
+const printingSelect = sql`
+  p.scryfall_id, p.oracle_id, p.set_code, st.name as set_name, p.collector_number,
+  p.finishes::text[] as finishes, p.image_uri, p.price_eur_cents, p.price_eur_foil_cents`;
 
 function toPrinting(r: PrintingColumns): Printing {
   return {
@@ -142,8 +212,7 @@ export async function getCard(db: Db, oracleId: string): Promise<{ card: CardSum
   const card = (await cardSummaries(db, [oracleId])).get(oracleId);
   if (!card) return null;
   const rows = await db.execute<PrintingColumns>(sql`
-    select p.scryfall_id, p.oracle_id, p.set_code, st.name as set_name, p.collector_number,
-           p.finishes::text[] as finishes, p.image_uri, p.price_eur_cents, p.price_eur_foil_cents
+    select ${printingSelect}
     from printings p join sets st on st.code = p.set_code
     where p.oracle_id = ${oracleId}
     order by p.released_at desc nulls last, p.set_code, p.collector_number`);
@@ -152,14 +221,13 @@ export async function getCard(db: Db, oracleId: string): Promise<{ card: CardSum
 
 export async function getOffers(db: Db, oracleId: string, filters: OfferFilters = {}): Promise<Offer[]> {
   if (!UUID.test(oracleId)) return [];
-  const where: SQL[] = [sql`l.oracle_id = ${oracleId}`, sql`l.match_status = 'matched'`];
-
-  const cities = (filters.cities ?? []).filter((c) => CITIES.includes(c));
-  if (cities.length > 0) where.push(sql`s.city = any(${textArray(cities)}::city[])`);
-  if (filters.inStockOnly) where.push(sql`l.in_stock`);
+  const where: SQL[] = [
+    sql`l.oracle_id = ${oracleId}`,
+    sql`l.kind = 'single'`,
+    sql`l.match_status = 'matched'`,
+    ...storeAndStockFilters(filters),
+  ];
   if (filters.finish && FINISHES.includes(filters.finish)) where.push(sql`l.finish = ${filters.finish}::finish`);
-  const languages = (filters.languages ?? []).filter(Boolean);
-  if (languages.length > 0) where.push(sql`l.language = any(${textArray(languages)})`);
   // El enum de la BD va de peor a mejor: ">=" es "este estado o mejor". Los null quedan fuera.
   if (filters.minCondition && CONDITIONS.includes(filters.minCondition)) {
     where.push(sql`l.condition >= ${filters.minCondition}::card_condition`);
@@ -167,26 +235,9 @@ export async function getOffers(db: Db, oracleId: string, filters: OfferFilters 
   if (filters.setCode) where.push(sql`p.set_code = ${filters.setCode}`);
 
   const rows = await db.execute<
-    Partial<PrintingColumns> & {
-      id: number;
-      store_id: string;
-      store_name: string;
-      city: City;
-      url: string;
-      price_cents: number;
-      in_stock: boolean;
-      quantity: number | null;
-      condition: Offer['condition'];
-      language: string | null;
-      finish: Finish;
-      last_seen_at: Date;
-      match_confidence: number | null;
-    }
+    OfferBaseColumns & Partial<PrintingColumns> & { condition: Offer['condition']; finish: Finish }
   >(sql`
-    select l.id, l.store_id, s.name as store_name, s.city, l.url, l.price_cents, l.in_stock, l.quantity,
-           l.condition, l.language, l.finish, l.last_seen_at, l.match_confidence,
-           p.scryfall_id, p.oracle_id, p.set_code, st.name as set_name, p.collector_number,
-           p.finishes::text[] as finishes, p.image_uri, p.price_eur_cents, p.price_eur_foil_cents
+    select ${offerBaseSelect}, l.condition, l.finish, ${printingSelect}
     from listings l
     join stores s on s.id = l.store_id and s.enabled
     left join printings p on p.scryfall_id = l.scryfall_id
@@ -197,18 +248,10 @@ export async function getOffers(db: Db, oracleId: string, filters: OfferFilters 
   return rows.rows.map((r) => {
     const printing = r.scryfall_id ? toPrinting(r as PrintingColumns) : null;
     return {
-      listingId: String(r.id),
-      store: { id: r.store_id, name: r.store_name, city: r.city },
+      ...offerBase(r),
       printing,
-      url: r.url,
-      priceCents: r.price_cents,
-      inStock: r.in_stock,
-      quantity: r.quantity,
       condition: r.condition,
-      language: r.language,
       finish: r.finish,
-      scrapedAt: iso(r.last_seen_at)!,
-      matchConfidence: r.match_confidence ?? 0,
       // Scryfall no da precio de Cardmarket fiable para etched.
       referencePriceCents:
         printing === null
@@ -222,21 +265,143 @@ export async function getOffers(db: Db, oracleId: string, filters: OfferFilters 
   });
 }
 
+// ───────── Sellado ─────────
+
+type SealedColumns = {
+  id: string;
+  name: string;
+  set_code: string;
+  set_name: string;
+  category: string | null;
+  subtype: string | null;
+  released_at: string | null;
+  min_price: number | null;
+  offer_count: number;
+};
+
+const sealedSummarySelect = sql`
+  sp.id, sp.name, sp.set_code, sp.set_name, sp.category, sp.subtype, sp.released_at::text as released_at,
+  o.min_price, o.offer_count`;
+
+function toSealedSummary(r: SealedColumns): SealedSummary {
+  return {
+    sealedProductId: r.id,
+    name: r.name,
+    setCode: r.set_code,
+    setName: r.set_name,
+    category: r.category,
+    subtype: r.subtype,
+    releaseDate: r.released_at,
+    imageUrl: null,
+    minPriceCents: r.min_price,
+    offerCount: r.offer_count,
+  };
+}
+
+/**
+ * Busca en español o en inglés ("caja bloomburrow", "sobres de coleccionista duskmourn",
+ * "Dominaria Unida"). Cada producto se busca en su nombre de MTGJSON, el nombre de la edición,
+ * su código y sus alias (nombre en español y de Cardmarket). Las palabras se traducen con
+ * sealedQueryTokens y todas deben casar como prefijo de alguna palabra. Si no casa nada,
+ * entran los nombres parecidos por trigramas (erratas en inglés).
+ * Orden: nombre exacto, todas las palabras, parecidos; dentro de cada grupo, la categoría que
+ * pide la búsqueda ("caja" → booster_box), lo que tiene ofertas, las cajas de distribuidor
+ * (case) al final y lo más reciente primero.
+ */
+export async function searchSealed(db: Db, q: string, limit = 24): Promise<SealedSummary[]> {
+  const qn = normalizeName(q);
+  const groups = sealedQueryTokens(q);
+  if (qn.length < 2 || groups.length === 0) return [];
+  const hints = sealedCategoryHints(groups);
+  // Sin categoría preferida no hay término: Postgres rechaza constantes en ORDER BY ("false desc").
+  const wantedCategory = hints.length > 0 ? sql`(sp.category = any(${textArray(hints)})) desc,` : sql``;
+  // sealedQueryTokens solo devuelve [a-z0-9]: se pueden meter en una regex.
+  const allTokens = sql.join(
+    groups.map((alts) => sql`(${sql.join(alts.map((a) => sql`d.doc ~ ${`(^| )${a}`}`), sql` or `)})`),
+    sql` and `,
+  );
+  const rows = await db.execute<SealedColumns>(sql`
+    with aliases as (
+      select set_code, string_agg(alias_norm, ' ') as names from set_aliases group by set_code
+    ),
+    docs as (
+      select sp.*, concat_ws(' ', sp.name_norm, st.name_norm, sp.set_code, a.names) as doc
+      from sealed_products sp
+      left join sets st on st.code = sp.set_code
+      left join aliases a on a.set_code = sp.set_code
+    ),
+    hits as (
+      select d.*,
+        case when d.name_norm = ${qn} then 0 when ${allTokens} then 1 else 2 end as rank,
+        word_similarity(${qn}, d.name_norm) as sim
+      from docs d
+      where ${allTokens} or ${qn} <% d.name_norm
+    )
+    select ${sealedSummarySelect}
+    from hits sp
+    cross join lateral (${stockStats(sql`l.sealed_product_id = sp.id`)}) o
+    order by sp.rank,
+      ${wantedCategory}
+      case when sp.rank = 2 then sp.sim end desc nulls last,
+      (o.offer_count > 0) desc,
+      (coalesce(sp.category, '') like '%case') asc,
+      sp.released_at desc nulls last,
+      sp.name
+    limit ${clamp(limit, 1, 100)}`);
+  return rows.rows.map(toSealedSummary);
+}
+
+export async function getSealedProduct(db: Db, sealedProductId: string): Promise<SealedSummary | null> {
+  if (!UUID.test(sealedProductId)) return null;
+  const rows = await db.execute<SealedColumns>(sql`
+    select ${sealedSummarySelect}
+    from sealed_products sp
+    cross join lateral (${stockStats(sql`l.sealed_product_id = sp.id`)}) o
+    where sp.id = ${sealedProductId}`);
+  return rows.rows[0] ? toSealedSummary(rows.rows[0]) : null;
+}
+
+export async function getSealedOffers(
+  db: Db,
+  sealedProductId: string,
+  filters: SealedOfferFilters = {},
+): Promise<SealedOffer[]> {
+  if (!UUID.test(sealedProductId)) return [];
+  const where: SQL[] = [
+    sql`l.sealed_product_id = ${sealedProductId}`,
+    sql`l.kind = 'sealed'`,
+    sql`l.match_status = 'matched'`,
+    ...storeAndStockFilters(filters),
+  ];
+  const rows = await db.execute<OfferBaseColumns>(sql`
+    select ${offerBaseSelect}
+    from listings l
+    join stores s on s.id = l.store_id and s.enabled
+    where ${sql.join(where, sql` and `)}
+    order by l.price_cents, l.id`);
+  return rows.rows.map(offerBase);
+}
+
 // ───────── Tiendas ─────────
 
 type StoreColumns = {
   id: string;
   name: string;
-  city: City;
-  address: string;
-  website_url: string;
-  platform: Store['platform'];
+  city: string;
+  province: string | null;
+  is_local: boolean;
+  address: string | null;
+  website_url: string | null;
+  platform: Platform | null;
+  cardmarket_user: string | null;
   last_success_at: Date | null;
   last_status: Store['lastStatus'];
 };
 
+/** lastScrapedAt = último ok de cualquier fuente; lastStatus = la ejecución terminada más reciente. */
 const storeSelect = sql`
-  select s.id, s.name, s.city, s.address, s.website_url, s.platform, s.last_success_at, r.status as last_status
+  select s.id, s.name, s.city, s.province, s.is_local, s.address, s.website_url, s.platform,
+         s.cardmarket_user, s.last_success_at, r.status as last_status
   from stores s
   left join lateral (
     select status from scrape_runs r
@@ -249,16 +414,20 @@ function toStore(r: StoreColumns): Store {
     id: r.id,
     name: r.name,
     city: r.city,
+    province: r.province,
+    local: r.is_local,
     address: r.address,
     website: r.website_url,
     platform: r.platform,
+    cardmarketUser: r.cardmarket_user,
     lastScrapedAt: iso(r.last_success_at),
     lastStatus: r.last_status,
   };
 }
 
+/** Locales primero; la web las separa por `local`. */
 export async function listStores(db: Db): Promise<Store[]> {
-  const rows = await db.execute<StoreColumns>(sql`${storeSelect} where s.enabled order by s.city, s.name`);
+  const rows = await db.execute<StoreColumns>(sql`${storeSelect} where s.enabled order by s.is_local desc, s.city, s.name`);
   return rows.rows.map(toStore);
 }
 
@@ -271,7 +440,13 @@ export async function getStore(db: Db, id: string): Promise<StoreDetail | null> 
       from listings l where l.store_id = st.id and l.match_status = 'matched'
     ) c`);
   const r = rows.rows[0];
-  return r ? { ...toStore(r), listingCount: r.listing_count, inStockCount: r.in_stock_count } : null;
+  if (!r) return null;
+  return {
+    ...toStore(r),
+    listingCount: r.listing_count,
+    inStockCount: r.in_stock_count,
+    latestRuns: await latestRuns(db, sql`where store_id = ${id}`),
+  };
 }
 
 // ───────── Panel interno ─────────
@@ -284,6 +459,8 @@ export async function listUnmatched(
     db.execute<{
       id: number;
       store_id: string;
+      kind: ListingKind;
+      source: ListingSource;
       raw_title: string;
       url: string;
       price_cents: number;
@@ -292,13 +469,13 @@ export async function listUnmatched(
       guess_name: string | null;
       guess_sim: number | null;
     }>(sql`
-      select u.id, u.store_id, u.raw_title, u.url, u.price_cents, u.last_seen_at,
+      select u.id, u.store_id, u.kind, u.source, u.raw_title, u.url, u.price_cents, u.last_seen_at,
              g.oracle_id as guess_oracle_id, g.name as guess_name, g.sim as guess_sim
       from unmatched_listings u
       left join lateral (
         select cn.oracle_id, c.name, similarity(cn.name_norm, u.title_norm)::float8 as sim
         from card_names cn join cards c on c.oracle_id = cn.oracle_id
-        where cn.name_norm % u.title_norm
+        where u.kind = 'single' and cn.name_norm % u.title_norm
         order by sim desc limit 1
       ) g on true
       order by u.last_seen_at desc, u.id desc
@@ -310,6 +487,8 @@ export async function listUnmatched(
     items: page.rows.map((r) => ({
       listingId: String(r.id),
       storeId: r.store_id,
+      kind: r.kind,
+      source: r.source,
       rawTitle: r.raw_title,
       url: r.url,
       priceCents: r.price_cents,
@@ -322,10 +501,12 @@ export async function listUnmatched(
   };
 }
 
-export async function listLatestRuns(db: Db): Promise<ScrapeRun[]> {
+/** Última ejecución de cada tienda y fuente. */
+async function latestRuns(db: Db, where: SQL = sql``): Promise<ScrapeRun[]> {
   const rows = await db.execute<{
     id: number;
     store_id: string;
+    source: ListingSource;
     started_at: Date;
     finished_at: Date | null;
     status: ScrapeRun['status'];
@@ -334,12 +515,15 @@ export async function listLatestRuns(db: Db): Promise<ScrapeRun[]> {
     unmatched: number;
     error: string | null;
   }>(sql`
-    select distinct on (store_id) id, store_id, started_at, finished_at, status, found, matched, unmatched, error
+    select distinct on (store_id, source)
+      id, store_id, source, started_at, finished_at, status, found, matched, unmatched, error
     from scrape_runs
-    order by store_id, started_at desc, id desc`);
+    ${where}
+    order by store_id, source, started_at desc, id desc`);
   return rows.rows.map((r) => ({
     id: String(r.id),
     storeId: r.store_id,
+    source: r.source,
     startedAt: iso(r.started_at)!,
     finishedAt: iso(r.finished_at),
     status: r.status,
@@ -350,6 +534,6 @@ export async function listLatestRuns(db: Db): Promise<ScrapeRun[]> {
   }));
 }
 
-function clamp(n: number, min: number, max: number): number {
-  return Math.min(Math.max(Math.floor(n), min), max);
+export function listLatestRuns(db: Db): Promise<ScrapeRun[]> {
+  return latestRuns(db);
 }
