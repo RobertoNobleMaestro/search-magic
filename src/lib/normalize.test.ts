@@ -15,6 +15,8 @@ describe("normalizeName", () => {
     ["Jötun Grunt", "jotun grunt"],
     ["Lim-Dûl's Vault", "lim duls vault"],
     ["Elfos de Llanowar", "elfos de llanowar"],
+    ["The Hobbit™", "the hobbit"],
+    ["Magic: The Gathering® | Star Trek™", "magic the gathering star trek"],
   ])("%s → %s", (input, expected) => {
     expect(normalizeName(input)).toBe(expected);
   });

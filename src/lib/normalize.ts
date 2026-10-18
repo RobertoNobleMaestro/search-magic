@@ -14,6 +14,8 @@ export function normalizeName(input: string): string {
     input
       // apóstrofos fuera antes de NFKD: "´" se descompone en espacio + tilde
       .replace(/['’‘`´ʼ′]/g, "")
+      // marcas de las tiendas ("The Hobbit™"): NFKD convertiría "™" en "TM" pegado a la palabra
+      .replace(/[™®©℠]/g, " ")
       .normalize("NFKD")
       .replace(/\p{M}/gu, "")
       .toLowerCase()
