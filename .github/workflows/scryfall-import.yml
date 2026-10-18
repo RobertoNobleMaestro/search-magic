@@ -37,3 +37,5 @@ jobs:
         run: npm run db:migrate
       - name: Importar default_cards y nombres en español
         run: npm run db:import:scryfall -- ${{ inputs.force && '--force' || '' }}
+      - name: Importar producto sellado y alias de edición (MTGJSON)
+        run: npm run db:import:mtgjson

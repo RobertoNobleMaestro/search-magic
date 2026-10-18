@@ -17,7 +17,9 @@
     "build": "next build",
     "start": "next start",
     "worker": "tsx src/worker/run.ts",
-    "test:db": "vitest run --mode db src/db"
+    "test:db": "vitest run --mode db src/db",
+    "db:import:mtgjson": "tsx src/db/import/mtgjson.ts",
+    "db:import": "npm run db:import:scryfall && npm run db:import:mtgjson"
   },
   "dependencies": {
     "@vercel/functions": "^3.10.1",
