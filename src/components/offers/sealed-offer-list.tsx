@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { SealedOffer } from "@/lib/data/types";
 import { stockLabel } from "@/lib/format";
+import { SEALED_EXACT_CONFIDENCE } from "@/lib/matching";
 import { BestBadge, CardmarketBadge, LanguageChip, StoreKindBadge } from "../badges";
 import { cx } from "../ui";
 import { UpdatedAgo } from "../updated-ago";
@@ -36,7 +37,8 @@ export function SealedOfferList({ offers, now, productName }: { offers: SealedOf
                 <StoreKindBadge store={offer.store} />
                 {offer.source === "cardmarket_csv" && <CardmarketBadge />}
                 <UpdatedAgo iso={offer.scrapedAt} now={now} />
-                {offer.matchConfidence < 1 && (
+                {/* en sellado, tipo + edición exactos dan SEALED_EXACT_CONFIDENCE: solo es dudoso por debajo */}
+                {offer.matchConfidence < SEALED_EXACT_CONFIDENCE && (
                   <span className="italic" title="No estamos del todo seguros de que sea este producto: revísalo en la tienda">
                     · producto probable
                   </span>
