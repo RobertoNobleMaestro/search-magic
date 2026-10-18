@@ -54,6 +54,7 @@ const htmlSchema = z.strictObject({
     condition: selector.optional(),
     language: selector.optional(),
     set: selector.optional(),
+    image: selector.optional(),
   }),
   nextPage: selector.optional(),
   encoding: encoding.optional(),

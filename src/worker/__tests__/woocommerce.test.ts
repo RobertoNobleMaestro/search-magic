@@ -57,6 +57,43 @@ describe("parseWooProducts", () => {
     expect(second.count).toBe(3);
   });
 
+  it("foto: images[0].src; una variación sin foto propia usa la de su producto", () => {
+    expect(page.listings.every((l) => !("imageUrl" in l))).toBe(true);
+
+    const [simple] = products;
+    const variable = products.find((p) => p.type === "variable")!;
+    const photo = (src: string) => [{ id: 1, src, thumbnail: src.replace(".jpg", "-300x300.jpg"), name: "", alt: "" }];
+    const first = parseWooProducts(
+      [
+        { ...simple, id: 200, images: photo("https://bazar-arcano.example.com/wp-content/uploads/blb-bundle.jpg") },
+        // protocolo relativo → https; http, no
+        { ...simple, id: 201, images: photo("//cdn.bazar-arcano.example.com/blb-box.jpg") },
+        { ...simple, id: 202, images: photo("http://bazar-arcano.example.com/wp-content/uploads/inseguro.jpg") },
+        // una lista de fotos rota no tira el producto
+        { ...simple, id: 203, images: [{ id: 3 }] },
+        { ...variable, images: photo("https://bazar-arcano.example.com/wp-content/uploads/counterspell.jpg") },
+      ],
+      opts,
+    );
+    expect(first.listings.map((l) => [l.externalId, l.imageUrl])).toEqual([
+      ["200", "https://bazar-arcano.example.com/wp-content/uploads/blb-bundle.jpg"],
+      ["201", "https://cdn.bazar-arcano.example.com/blb-box.jpg"],
+      ["202", undefined],
+      ["203", undefined],
+    ]);
+    expect(first.variableImages).toEqual(new Map([[103, "https://bazar-arcano.example.com/wp-content/uploads/counterspell.jpg"]]));
+
+    const [spanish, english] = variations;
+    const second = parseWooProducts(
+      [{ ...spanish, images: photo("https://bazar-arcano.example.com/wp-content/uploads/counterspell-es.jpg") }, english],
+      { ...opts, parents: new Set(first.variableIds), parentImages: first.variableImages },
+    );
+    expect(second.listings.map((l) => [l.externalId, l.imageUrl])).toEqual([
+      ["501", "https://bazar-arcano.example.com/wp-content/uploads/counterspell-es.jpg"],
+      ["502", "https://bazar-arcano.example.com/wp-content/uploads/counterspell.jpg"],
+    ]);
+  });
+
   it("descarta otras monedas y productos sin precio", () => {
     const [simple] = products;
     const usd = { ...simple, id: 900, prices: { ...simple!.prices, currency_code: "USD" } };

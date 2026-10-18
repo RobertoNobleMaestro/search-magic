@@ -1,7 +1,7 @@
 import type { NormalizedListing } from "@/lib/data/types";
 import { parseAttributes } from "../attributes";
 import { parsePrice } from "../price";
-import { absoluteUrl, documentBase, read, type HtmlParser } from "./html";
+import { absoluteUrl, documentBase, read, readImage, type HtmlParser } from "./html";
 import { cleanText } from "./clean";
 
 /**
@@ -10,8 +10,8 @@ import { cleanText } from "./clean";
  * variantes: bandera del idioma, estado ("Excelente", o "Foil" para las foil), precio y, en la columna
  * de al lado, el formulario de compra de cada una (sin formulario = sin stock).
  *
- * Selectores de stores.config.ts: `item` es la fila de cada carta y `title` su nombre en español;
- * `price`, `condition` y `language` se leen en cada fila de la subtabla de variantes.
+ * Selectores de stores.config.ts: `item` es la fila de cada carta, `title` su nombre en español e
+ * `image` su miniatura; `price`, `condition` y `language` se leen en cada fila de la subtabla de variantes.
  *
  * Limitación: la tabla pagina de 25 en 25 con la sesión PHP (cookie). Sin ella, ?idAmpl=<id>&pag=2
  * sale vacía, así que solo se leen las 25 primeras cartas de cada edición y el resto se anota como
@@ -23,6 +23,7 @@ const PAGE_SIZE = 25;
 /** Una página de Rebellion: índice (sin tabla, solo enlaces a ediciones) o tabla de una edición */
 export const parseRebellionPage: HtmlParser = ($, opts) => {
   const { selectors: sel, pageUrl } = opts;
+  const base = documentBase($, pageUrl);
   const listings: NormalizedListing[] = [];
   let skipped = 0;
   $(sel.item).each((_, element) => {
@@ -44,6 +45,7 @@ export const parseRebellionPage: HtmlParser = ($, opts) => {
     const setName = (row.find("img[title*=' - ']").first().attr("title") ?? "").split(" - ")[0]?.trim();
     const setHint = /^[A-Z0-9]{2,6}$/.test(setCode) ? setCode : setName;
     const collectorNumber = setHint === setCode && imageNumber ? imageNumber.replace(/^0+(?=\w)/, "") : undefined;
+    const imageUrl = sel.image ? readImage(row, sel.image, base) : undefined;
 
     // dos subtablas en celdas con rowspan: variantes y formularios de compra, fila a fila
     const [variantCell, formCell] = row.children("td[rowspan]").toArray();
@@ -73,6 +75,7 @@ export const parseRebellionPage: HtmlParser = ($, opts) => {
         ...attrs,
         ...(setHint ? { setHint } : {}),
         ...(collectorNumber ? { collectorNumber } : {}),
+        ...(imageUrl ? { imageUrl } : {}),
         kind: "single",
         scrapedAt: opts.scrapedAt,
       });
@@ -81,7 +84,7 @@ export const parseRebellionPage: HtmlParser = ($, opts) => {
 
   // "1 - 25 de 290 resultados": las páginas 2 y siguientes necesitan la sesión PHP
   const total = Number(/de\s+(\d+)\s+resultados/i.exec($(".elementosMostrados").first().text())?.[1] ?? 0);
-  const next = absoluteUrl($("a.pag_sig[href]").first().attr("href") ?? "", documentBase($, pageUrl));
+  const next = absoluteUrl($("a.pag_sig[href]").first().attr("href") ?? "", base);
   const unread =
     next && total > PAGE_SIZE
       ? [

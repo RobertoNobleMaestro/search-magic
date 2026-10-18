@@ -151,8 +151,11 @@ describe("HTML", () => {
       priceCents: 3499,
       currency: "EUR",
       inStock: true,
+      // carga diferida: la foto de data-src, no el marcador data:… de src
+      imageUrl: "https://www.magicbarcelona.net/wp-content/uploads/2026/09/MTGTRK_EN_Scn_Pack-300x300.png",
       scrapedAt: SCRAPED_AT,
     });
+    expect(page.listings.every((l) => l.imageUrl?.startsWith("https://www.magicbarcelona.net/wp-content/uploads/"))).toBe(true);
     expect(page.listings[1]).toMatchObject({ rawTitle: "Commander: Magic: The Gathering – Star Trek™ – Deck (Collector’s Edition)", priceCents: 13999 });
     expect(page.next).toEqual(["https://www.magicbarcelona.net/tienda/page/2/?swoof=1&product_cat=producto-sellado"]);
   });
@@ -183,6 +186,8 @@ describe("HTML", () => {
       ["Aetherdrift Commander Deck: Living Energy", 4045],
     ]);
     expect(page.listings[1]!.url).toBe("https://www.ingeniobcn.com/magic-the-gathering/sobres/aether-revolt-caja-de-sobres/");
+    expect(page.listings[1]!.imageUrl).toBe("https://www.ingeniobcn.com/wp-content/uploads/2020/07/producto-aether-revolt-caja-sobres-en-400x400.png");
+    expect(page.listings.every((l) => l.imageUrl)).toBe(true);
     expect(page.next).toEqual(["https://www.ingeniobcn.com/magic-the-gathering/page/2/"]);
   });
 
@@ -194,7 +199,10 @@ describe("HTML", () => {
       priceCents: 8395,
       inStock: false,
       quantity: 0,
+      // la miniatura, no el icono de cerrar de la vista rápida
+      imageUrl: "https://dungeonmarvels.com/213499-home_default/magic-marvel-destino-del-darkhold-mazo-de-commander-senores-de-hel-castellano.jpg",
     });
+    expect(page.listings.every((l) => l.imageUrl?.includes("-home_default/"))).toBe(true);
     expect(page.next).toEqual([]);
   });
 
@@ -218,6 +226,8 @@ describe("HTML", () => {
       priceCents: 15,
       currency: "EUR",
       inStock: true,
+      // ruta relativa a la raíz: la resuelve el <base href>
+      imageUrl: "https://www.elrincondemagic.com/WebRoot/StoreLES/Shops/64576138/6962/265F/86FC/3D8D/E776/0A0C/6D0D/716B/en_548f87969b_m.webp",
       scrapedAt: SCRAPED_AT,
     });
     expect(page.listings[11]).toMatchObject({ rawTitle: "COLOSA CURIOSA / CURIOUS COLOSSUS (LORWYN ECLIPSADO)", priceCents: 175 });
@@ -261,6 +271,7 @@ describe("Rebellion (lector propio, ISO-8859-1)", () => {
       condition: "EX",
       setHint: "FRA",
       collectorNumber: "48",
+      imageUrl: "https://www.rebellion.es/img/magic/card/small/realidadfracturada/0048.jpg",
       kind: "single",
       scrapedAt: SCRAPED_AT,
     });

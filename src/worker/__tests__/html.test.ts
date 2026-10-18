@@ -58,6 +58,55 @@ describe("parseHtmlListings (tema classic de PrestaShop)", () => {
   it("encuentra la página siguiente", () => {
     expect(nextPageUrls(load(html), PAGE_URL, ".pagination a[rel=next]")).toEqual(["https://tierras-basicas.example.com/12-cartas-sueltas?page=2"]);
   });
+
+  it("sin selector de foto no hay imageUrl; con él, la de la miniatura", () => {
+    expect(listings.every((l) => !("imageUrl" in l))).toBe(true);
+    const withImage = parse({ ...prestashop, image: ".product-thumbnail img" }).listings;
+    expect(withImage.map((l) => l.imageUrl)).toEqual([
+      "https://tierras-basicas.example.com/5678-home_default/lightning-bolt-m11.jpg",
+      "https://tierras-basicas.example.com/5690-home_default/sheoldred.jpg",
+      "https://tierras-basicas.example.com/5701-home_default/the-one-ring.jpg",
+    ]);
+  });
+});
+
+describe("parseHtmlListings (foto del producto)", () => {
+  const item = (img: string, n: number) =>
+    `<div class="p"><a href="/p/${n}">Producto ${n}</a><span class="price">1,00 €</span>${img}</div>`;
+  const page = [
+    // carga diferida: en src un marcador data:…, la foto en data-src
+    `<img src="data:image/svg+xml,%3Csvg%2F%3E" data-src="/wp-content/uploads/caja-300x300.png">`,
+    // solo srcset (la primera URL), con protocolo relativo
+    `<img data-srcset="//cdn.example.com/bundle-300.jpg 300w, //cdn.example.com/bundle-600.jpg 600w">`,
+    // http o javascript: no valen
+    `<img src="http://tierras-basicas.example.com/inseguro.jpg">`,
+    `<img src="javascript:alert(1)">`,
+    // sin imagen
+    "",
+    // una ruta relativa a la página
+    `<img src="fotos/sobre.jpg#zoom" data-full="https://tierras-basicas.example.com/fotos/sobre-grande.jpg">`,
+  ]
+    .map(item)
+    .join("");
+  const selectors: HtmlSelectors = { item: ".p", title: "a", price: ".price", image: "img" };
+
+  it("prueba data-src, src y srcset; resuelve rutas relativas y solo deja https", () => {
+    const { listings } = parse(selectors, page);
+    expect(listings.map((l) => l.imageUrl)).toEqual([
+      "https://tierras-basicas.example.com/wp-content/uploads/caja-300x300.png",
+      "https://cdn.example.com/bundle-300.jpg",
+      undefined,
+      undefined,
+      undefined,
+      "https://tierras-basicas.example.com/fotos/sobre.jpg",
+    ]);
+    expect(listings[2]).not.toHaveProperty("imageUrl");
+  });
+
+  it("con img@atributo lee solo ese atributo", () => {
+    const { listings } = parse({ ...selectors, image: "img@data-full" }, page);
+    expect(listings.map((l) => l.imageUrl ?? null)).toEqual([null, null, null, null, null, "https://tierras-basicas.example.com/fotos/sobre-grande.jpg"]);
+  });
 });
 
 describe("parseHtmlListings (web a medida)", () => {

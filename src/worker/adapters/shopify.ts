@@ -4,12 +4,13 @@ import { parseAttributes } from "../attributes";
 import { baseUrl, crawlJsonPages } from "../crawl";
 import { decimalToCents } from "../price";
 import type { StoreAdapter, WebStoreConfig } from "../types";
-import { cleanText } from "./clean";
+import { cleanText, httpsImageUrl } from "./clean";
 
 /**
  * Shopify: API pública de cualquier tienda, /products.json (o /collections/<handle>/products.json),
  * hasta 250 productos por página con ?page=N. Un listado por variante: las variantes suelen ser
  * estado, idioma y acabado ("NM / Español / Foil"). No da cantidades ni moneda: se asume EUR.
+ * La foto es la de la variante (featured_image) o, si no tiene, la primera del producto.
  *
  * Probado con El Nucli, El Duelista y Universe TCG (fixtures shopify-*.json). En estas dos últimas la
  * opción "Edition" no es la edición sino el acabado ("Normal" o "Foil Normal").
@@ -29,6 +30,9 @@ function optionEntry(name: string | undefined, value: string | null | undefined)
   return { name: "finish", value: finish };
 }
 
+/** Foto ({ src: "https://cdn.shopify.com/…" }); si viene rota se ignora, sin perder el producto */
+const imageSchema = z.object({ src: z.string() }).nullish().catch(null);
+
 const variantSchema = z.object({
   id: z.union([z.number(), z.string()]),
   title: z.string().nullish(),
@@ -37,6 +41,8 @@ const variantSchema = z.object({
   option3: z.string().nullish(),
   price: z.union([z.string(), z.number()]),
   available: z.boolean().nullish(),
+  /** la foto de la variante, si la tiene (p. ej. una por idioma) */
+  featured_image: imageSchema,
 });
 
 const productSchema = z.object({
@@ -46,6 +52,7 @@ const productSchema = z.object({
   product_type: z.string().nullish(),
   options: z.array(z.object({ name: z.string() })).nullish(),
   variants: z.array(variantSchema),
+  images: z.array(imageSchema).nullish().catch(null),
 });
 
 export interface ShopifyPage {
@@ -72,6 +79,7 @@ export function parseShopifyProducts(
 
     const title = cleanText(product.title);
     const optionNames = (product.options ?? []).map((o) => o.name);
+    const productImage = httpsImageUrl(product.images?.[0]?.src);
     for (const variant of product.variants) {
       const priceCents = decimalToCents(variant.price);
       if (!priceCents) continue;
@@ -79,6 +87,8 @@ export function parseShopifyProducts(
       const { attrs, unrecognized } = parseAttributes(values.map((value, i) => optionEntry(optionNames[i], value)));
       // Si la variante lleva algo más que estado/idioma/acabado (una edición, "Borderless"…), al título.
       const variantTitle = cleanText(variant.title ?? "");
+      // la foto de la variante o, si no tiene, la primera del producto
+      const imageUrl = httpsImageUrl(variant.featured_image?.src) ?? productImage;
       listings.push({
         storeId: opts.storeId,
         externalId: String(variant.id),
@@ -88,6 +98,7 @@ export function parseShopifyProducts(
         currency: "EUR",
         inStock: variant.available === true,
         ...attrs,
+        ...(imageUrl ? { imageUrl } : {}),
         scrapedAt: opts.scrapedAt,
       });
     }

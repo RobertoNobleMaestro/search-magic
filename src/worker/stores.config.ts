@@ -69,6 +69,8 @@ export const STORES: StoreConfig[] = [
         price: WOO_PRICE,
         url: ".entry-title a",
         outOfStock: ".outofstock",
+        // carga diferida: la foto va en data-src (src es un marcador data:…)
+        image: "img.attachment-woocommerce_thumbnail",
       },
       // el <link rel=next> de la cabecera pierde el filtro; este enlace lo conserva
       nextPage: "a.nav-next",
@@ -101,6 +103,7 @@ export const STORES: StoreConfig[] = [
         title: ".woocommerce-loop-product__title",
         price: WOO_PRICE,
         url: "a.woocommerce-LoopProduct-link",
+        image: "a.woocommerce-LoopProduct-link img",
       },
       nextPage: "link[rel=next]",
     },
@@ -167,6 +170,7 @@ export const STORES: StoreConfig[] = [
         price: ".product-price-and-shipping .price",
         url: ".product-title a",
         stock: ".stock-tag",
+        image: ".product-thumbnail img",
       },
     },
   },
@@ -314,6 +318,8 @@ export const STORES: StoreConfig[] = [
         price: "td[onmouseout] font",
         condition: "td[width='35px']",
         language: "img[src*='/flag/']@title",
+        // miniatura recortada (45 × 30) de la ilustración
+        image: "img[src*='/card/']",
       },
       // menú "MAGIC cartas sueltas": una página por edición (verampliacion.php?idAmpl=<id>)
       nextPage: "#cat1 a.linklateral[href*='verampliacion.php?idAmpl=']",
@@ -380,6 +386,7 @@ export const STORES: StoreConfig[] = [
         title: "h3 a",
         price: "[itemprop=price]@content",
         url: "h3 a",
+        image: "img.ProductSmallImage",
       },
       // las ediciones (subcategorías) y, dentro de cada una, la página siguiente
       nextPage: ".ListItemCategory h3 a, a[rel=next][title=Siguiente]",

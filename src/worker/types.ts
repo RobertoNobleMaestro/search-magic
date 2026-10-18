@@ -55,6 +55,12 @@ export interface HtmlSelectors {
   condition?: string;
   language?: string;
   set?: string;
+  /**
+   * Foto del producto. Con "img" se usa el primero que tenga una URL de data-src, data-lazy-src,
+   * data-original, src, data-srcset y srcset (las webs con carga diferida ponen en src un marcador
+   * data:…); con "img@atributo", solo ese. Se resuelve con la URL de la página y solo vale https.
+   */
+  image?: string;
 }
 
 /** Tiendas sin API (PrestaShop o webs a medida): se lee el HTML de las páginas de categoría */

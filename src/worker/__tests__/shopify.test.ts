@@ -26,9 +26,53 @@ describe("parseShopifyProducts", () => {
       inStock: true,
       condition: "NM",
       language: "en",
+      imageUrl: "https://cdn.shopify.com/s/files/1/0000/0001/products/lightning-bolt-m11.jpg?v=1725177494",
       scrapedAt: SCRAPED_AT,
     });
     expect(byId.get("44123456789002")).toMatchObject({ priceCents: 125, condition: "NM", language: "es", inStock: true });
+  });
+
+  it("foto: la de la variante o la primera del producto; sin fotos, nada", () => {
+    // las variantes sin featured_image usan la primera foto del producto
+    expect(["44123456789002", "44123456789003"].map((id) => byId.get(id)?.imageUrl)).toEqual([
+      "https://cdn.shopify.com/s/files/1/0000/0001/products/lightning-bolt-m11.jpg?v=1725177494",
+      "https://cdn.shopify.com/s/files/1/0000/0001/products/lightning-bolt-m11.jpg?v=1725177494",
+    ]);
+    expect(byId.get("44123456789011")).not.toHaveProperty("imageUrl");
+
+    const product = {
+      id: 1,
+      title: "Bloomburrow Play Booster Box",
+      handle: "bloomburrow-play-booster-box",
+      options: [{ name: "Idioma" }],
+      images: [{ id: 10, src: "//cdn.shopify.com/s/files/1/0000/0001/products/blb-box-en.jpg?v=1" }],
+      variants: [
+        { id: 2, option1: "Inglés", price: "149.95", available: true, featured_image: null },
+        {
+          id: 3,
+          option1: "Español",
+          price: "159.95",
+          available: true,
+          featured_image: { id: 11, src: "https://cdn.shopify.com/s/files/1/0000/0001/products/blb-box-es.jpg?v=1" },
+        },
+        // http, roto o sin src: se ignora la de la variante, no el listado
+        { id: 4, option1: "Francés", price: "149.95", available: false, featured_image: { src: "http://example.com/blb-box-fr.jpg" } },
+        { id: 5, option1: "Alemán", price: "149.95", available: false, featured_image: { id: 12 } },
+      ],
+    };
+    const listings = parseShopifyProducts({ products: [product] }, base).listings;
+    expect(listings.map((l) => [l.externalId, l.imageUrl])).toEqual([
+      // "//cdn…" pasa a https
+      ["2", "https://cdn.shopify.com/s/files/1/0000/0001/products/blb-box-en.jpg?v=1"],
+      ["3", "https://cdn.shopify.com/s/files/1/0000/0001/products/blb-box-es.jpg?v=1"],
+      ["4", "https://cdn.shopify.com/s/files/1/0000/0001/products/blb-box-en.jpg?v=1"],
+      ["5", "https://cdn.shopify.com/s/files/1/0000/0001/products/blb-box-en.jpg?v=1"],
+    ]);
+
+    // una foto de producto que no es https (o una lista rota) no se usa
+    const noPhoto = parseShopifyProducts({ products: [{ ...product, images: "nada", variants: [product.variants[0]] }] }, base);
+    expect(noPhoto.listings).toHaveLength(1);
+    expect(noPhoto.listings[0]).not.toHaveProperty("imageUrl");
   });
 
   it("las variantes agotadas salen sin stock", () => {

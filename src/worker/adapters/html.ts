@@ -5,12 +5,13 @@ import { parseAttributes, parseStock } from "../attributes";
 import { baseCrawlerOptions, Channel, checkStatus, drain, httpCrawlerOptions, memoryConfig, shareRobots } from "../crawl";
 import { parsePrice } from "../price";
 import type { HtmlSelectors, PageFailure, ScrapeContext, StoreAdapter, WebStoreConfig } from "../types";
-import { cleanText } from "./clean";
+import { cleanText, httpsImageUrl } from "./clean";
 
 /**
  * Tiendas sin API (PrestaShop o webs a medida): se leen las páginas de categoría con los selectores
  * de stores.config.ts. Un listado por producto del listado, con el precio que se ve (en PrestaShop, el
- * de la combinación por defecto; en WooCommerce, el rebajado o el mínimo de un producto variable).
+ * de la combinación por defecto; en WooCommerce, el rebajado o el mínimo de un producto variable) y,
+ * con el selector `image`, la foto de la miniatura.
  *
  * `nextPage` sigue todos los enlaces del selector que sean de la misma tienda (Crawlee no repite
  * URLs): la página siguiente y, si se quiere, las subcategorías ("una categoría por edición").
@@ -28,6 +29,30 @@ export function read(scope: Cheerio<AnyNode>, spec: string, attr?: string): stri
   const target = selector ? scope.find(selector).first() : scope;
   const name = match?.[2] ?? attr;
   return (name ? target.attr(name) : target.text()) ?? "";
+}
+
+/** Dónde puede estar la foto de una <img>: los atributos de carga diferida van antes que src (un marcador data:…) */
+const IMAGE_ATTRIBUTES = ["data-src", "data-lazy-src", "data-original", "src", "data-srcset", "data-lazy-srcset", "srcset"];
+
+/** Primera URL de un srcset: "a-300.jpg 300w, a-150.jpg 150w" → "a-300.jpg" */
+function firstSrcsetUrl(srcset: string): string {
+  return srcset.trim().split(/\s+/)[0]!.replace(/,$/, "");
+}
+
+/**
+ * Foto del producto con el selector `image`: "img" prueba los atributos de IMAGE_ATTRIBUTES por orden;
+ * "img@atributo", solo ese. URL absoluta (con `base`) y https; undefined si no hay ninguna que valga.
+ */
+export function readImage(scope: Cheerio<AnyNode>, spec: string, base: string): string | undefined {
+  const match = /^(.*?)@([\w:-]+)$/.exec(spec.trim());
+  const selector = (match ? match[1]! : spec).trim();
+  const target = selector ? scope.find(selector).first() : scope;
+  for (const name of match ? [match[2]!] : IMAGE_ATTRIBUTES) {
+    const value = target.attr(name);
+    const url = value && httpsImageUrl(/srcset$/i.test(name) ? firstSrcsetUrl(value) : value, base);
+    if (url) return url;
+  }
+  return undefined;
 }
 
 /** URL absoluta sin #fragmento; null si no es http(s) */
@@ -90,6 +115,7 @@ export const parseHtmlListings: HtmlParser = ($, opts) => {
       { name: "language", value: sel.language && read(item, sel.language) },
       { name: "set", value: sel.set && cleanText(read(item, sel.set)) },
     ]);
+    const imageUrl = sel.image ? readImage(item, sel.image, base) : undefined;
     listings.push({
       storeId: opts.storeId,
       externalId: url,
@@ -99,6 +125,7 @@ export const parseHtmlListings: HtmlParser = ($, opts) => {
       currency: "EUR",
       ...stock,
       ...attrs,
+      ...(imageUrl ? { imageUrl } : {}),
       scrapedAt: opts.scrapedAt,
     });
   });

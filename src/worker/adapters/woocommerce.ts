@@ -7,6 +7,7 @@ import { baseUrl, crawlJsonPages } from "../crawl";
 import { minorUnitsToCents } from "../price";
 import { htmlToText } from "../text";
 import type { StoreAdapter, WebStoreConfig } from "../types";
+import { httpsImageUrl } from "./clean";
 
 /**
  * WooCommerce: Store API pública, /wp-json/wc/store/v1/products, 100 productos por página.
@@ -23,6 +24,8 @@ import type { StoreAdapter, WebStoreConfig } from "../types";
  * De los atributos solo se leen los que describen el listado (idioma, estado, acabado, edición);
  * "Conjunto" (el código de la edición, en MTG Canarias) gana a "Colección", y el "Tratamiento"
  * (Borderless, Showcase…) se añade al título para que el emparejador elija la impresión.
+ *
+ * La foto es images[0].src; una variación sin foto propia se queda con la de su producto.
  */
 
 const PER_PAGE = 100;
@@ -55,6 +58,11 @@ const productSchema = z.object({
   is_in_stock: z.boolean(),
   /** solo cuando quedan pocas unidades */
   low_stock_remaining: z.number().nullish(),
+  /** fotos ({ src, thumbnail… }); si vienen rotas se ignoran, sin perder el producto */
+  images: z
+    .array(z.object({ src: z.string() }).nullish().catch(null))
+    .nullish()
+    .catch(null),
   attributes: z.array(attributeSchema).nullish(),
   /** en los productos variables: los atributos de cada variación (valores en slug: "near-mint") */
   variations: z
@@ -80,9 +88,14 @@ export interface WooPage {
   listings: NormalizedListing[];
   /** productos variables pendientes de la segunda pasada */
   variableIds: number[];
+  /** foto de los productos variables pendientes, para las variaciones que no tengan la suya */
+  variableImages: Map<number, string>;
   /** productos en la página, para saber si hay más */
   count: number;
 }
+
+/** Primera foto del producto (images[0].src), solo https */
+const imageOf = (product: WooProduct) => httpsImageUrl(product.images?.[0]?.src);
 
 /** "near-mint" → "near mint" */
 const unslug = (value: string) => value.replace(/[-_]+/g, " ").trim();
@@ -138,6 +151,8 @@ export function parseWooProducts(
     scrapedAt: string;
     /** en la segunda pasada: solo las variaciones de estos productos */
     parents?: ReadonlySet<number>;
+    /** en la segunda pasada: la foto de cada producto variable (variableImages de la primera) */
+    parentImages?: ReadonlyMap<number, string>;
     /** variations: false: los productos variables salen como un listado con su precio mínimo */
     variableAsListing?: boolean;
   },
@@ -145,12 +160,15 @@ export function parseWooProducts(
   const items = z.array(z.unknown()).parse(data);
   const listings: NormalizedListing[] = [];
   const variableIds: number[] = [];
+  const variableImages = new Map<number, string>();
   for (const raw of items) {
     const parsed = productSchema.safeParse(raw);
     if (!parsed.success) continue;
     const product = parsed.data;
     if (product.type === "variable" && !opts.variableAsListing) {
       variableIds.push(product.id);
+      const image = imageOf(product);
+      if (image) variableImages.set(product.id, image);
       continue;
     }
     if (product.type !== "simple" && product.type !== "variation" && product.type !== "variable") continue;
@@ -159,6 +177,8 @@ export function parseWooProducts(
     const price = product.type === "variable" ? (product.prices.price_range?.min_amount ?? product.prices.price) : product.prices.price;
     const priceCents = minorUnitsToCents(price, product.prices.currency_minor_unit);
     if (!priceCents) continue;
+    // una variación sin foto propia usa la de su producto
+    const imageUrl = imageOf(product) ?? (product.type === "variation" ? opts.parentImages?.get(product.parent ?? -1) : undefined);
     listings.push({
       storeId: opts.storeId,
       externalId: String(product.id),
@@ -169,10 +189,11 @@ export function parseWooProducts(
       inStock: product.is_in_stock,
       ...(product.low_stock_remaining != null ? { quantity: product.low_stock_remaining } : {}),
       ...parseAttributes(attributeEntries(product)).attrs,
+      ...(imageUrl ? { imageUrl } : {}),
       scrapedAt: opts.scrapedAt,
     });
   }
-  return { listings, variableIds, count: items.length };
+  return { listings, variableIds, variableImages, count: items.length };
 }
 
 function withPage(url: string, page: number): string {
@@ -202,9 +223,11 @@ export const wooCommerceAdapter: StoreAdapter = {
   async *scrape(store, ctx) {
     const variableAsListing = store.woocommerce?.variations === false;
     const parents = new Set<number>();
+    const parentImages = new Map<number, string>();
     yield* crawlJsonPages(ctx, startUrls(store), ({ url, headers, data }) => {
       const page = parseWooProducts(data, { storeId: store.id, scrapedAt: new Date().toISOString(), variableAsListing });
       for (const id of page.variableIds) parents.add(id);
+      for (const [id, image] of page.variableImages) parentImages.set(id, image);
       return { listings: page.listings, next: nextPage(url, headers, page.count) };
     });
     if (parents.size === 0) return;
@@ -213,7 +236,7 @@ export const wooCommerceAdapter: StoreAdapter = {
     // (ctx.throttle mantiene la separación con la última petición de la primera)
     const first = withPage(`${baseUrl(store.website)}${API_PATH}?type=variation`, 1);
     yield* crawlJsonPages(ctx, [first], ({ url, headers, data }) => {
-      const page = parseWooProducts(data, { storeId: store.id, scrapedAt: new Date().toISOString(), parents });
+      const page = parseWooProducts(data, { storeId: store.id, scrapedAt: new Date().toISOString(), parents, parentImages });
       return { listings: page.listings, next: nextPage(url, headers, page.count) };
     });
   },

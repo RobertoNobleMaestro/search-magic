@@ -262,10 +262,11 @@ function printSample(sample: MatchedListing[]): void {
     l.finish ?? "—",
     cut(l.setHint ?? "—", 16),
     l.cardmarketId !== undefined ? String(l.cardmarketId) : "—",
+    l.imageUrl ? "sí" : "—",
     l.match ? `${l.match.kind === "sealed" ? "sellado " : ""}${l.match.method} ${l.match.confidence.toFixed(2)}` : "sin emparejar",
   ]);
   console.log(
-    table([["título", "precio", "stock", "estado", "idioma", "acabado", "edición", "idProduct", "emparejado"], ...rows], [1]),
+    table([["título", "precio", "stock", "estado", "idioma", "acabado", "edición", "idProduct", "foto", "emparejado"], ...rows], [1]),
   );
 }
 
