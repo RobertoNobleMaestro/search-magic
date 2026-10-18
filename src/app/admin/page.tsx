@@ -250,7 +250,7 @@ const theadClass = "bg-surface-2 text-left text-xs text-ink-3";
 
 function TableBox({ children, minWidth }: { children: ReactNode; minWidth: string }) {
   return (
-    <div className={`${panelClass} mt-4 overflow-x-auto`}>
+    <div className={`${panelClass} relative mt-4 overflow-x-auto`}>
       <table className={cx("w-full text-left text-sm", minWidth)}>{children}</table>
     </div>
   );

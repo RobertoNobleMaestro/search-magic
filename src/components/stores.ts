@@ -39,10 +39,36 @@ export interface StoreHealth {
   note: string;
 }
 
-/** Resumen del estado de los datos de una tienda (storeStatus de la maqueta) */
-export function storeHealth(store: Pick<Store, "lastStatus" | "lastScrapedAt">, now: Date): StoreHealth {
+type RunState = Pick<ScrapeRun, "source" | "status" | "finishedAt">;
+
+const SHORT_SOURCE: Record<ListingSource, string> = { web: "Web", cardmarket_csv: "Cardmarket" };
+
+/** Cómo va una fuente, en pocas palabras: "falló la última revisión", "al día"… */
+function runState(run: RunState, now: Date): string {
+  if (run.status === "error") return "falló la última revisión";
+  if (run.status === "partial") return "revisión parcial";
+  if (run.status === "running") return "revisando";
+  if (run.status === "skipped") return "sin revisar";
+  return run.finishedAt && !isStale(run.finishedAt, now) ? "al día" : "hace más de un día";
+}
+
+/**
+ * Resumen del estado de los datos de una tienda (storeStatus de la maqueta). Con `runs` (la última
+ * ejecución de cada fuente), si una fuente falla pero otra está al día no se pinta toda la tienda
+ * como rota: aviso, con el estado de cada fuente ("Web: falló la última revisión · Cardmarket: al día").
+ */
+export function storeHealth(store: Pick<Store, "lastStatus" | "lastScrapedAt">, now: Date, runs: RunState[] = []): StoreHealth {
   const age = store.lastScrapedAt ? timeAgo(store.lastScrapedAt, now) : null;
   if (!age) return { tone: "warn", label: "Sin datos todavía", note: "Aún no hemos completado ninguna revisión" };
+  const latest = [...new Map(runs.map((r) => [r.source, r] as const).reverse()).values()].reverse();
+  if (latest.length > 1) {
+    const failing = latest.some((r) => r.status === "error" || r.status === "partial");
+    const healthy = latest.some((r) => r.status === "ok" && r.finishedAt && !isStale(r.finishedAt, now));
+    if (failing && healthy) {
+      const note = latest.map((r) => `${SHORT_SOURCE[r.source]}: ${runState(r, now)}`).join(" · ");
+      return { tone: "warn", label: `Datos de ${age}`, note };
+    }
+  }
   if (store.lastStatus === "error") return { tone: "bad", label: `Datos de ${age}`, note: "La última revisión falló" };
   if (store.lastStatus === "partial") return { tone: "warn", label: `Parcial · ${age}`, note: "Algunas páginas no respondieron" };
   if (isStale(store.lastScrapedAt, now)) return { tone: "warn", label: `Datos de ${age}`, note: "Hace más de un día que no se revisa" };

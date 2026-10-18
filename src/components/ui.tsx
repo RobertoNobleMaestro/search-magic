@@ -55,7 +55,8 @@ export function ExternalLink({
   label?: string;
 }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer nofollow" className={className}>
+    // relative: el sr-only (absolute) queda dentro del enlace y no se escapa de una caja con scroll
+    <a href={href} target="_blank" rel="noopener noreferrer nofollow" className={cx("relative", className)}>
       {children}
       <ArrowUpRight aria-hidden="true" className="size-3.5 shrink-0" />
       <span className="sr-only">{label ? ` ${label}` : ""} (se abre en una pestaña nueva)</span>

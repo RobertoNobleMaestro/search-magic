@@ -5,6 +5,7 @@ import Form from "next/form";
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useState, type KeyboardEvent } from "react";
 import type { CardSuggestion } from "@/lib/data/types";
+import { plural } from "@/lib/format";
 import { buttonClass, cx } from "./ui";
 
 /** Por debajo de 3 caracteres no se pide autocompletado: en la base de datos es lento */
@@ -192,12 +193,12 @@ export function SearchBox({ initialQuery = "", size = "large" }: Props) {
         </ul>
         {noMatches && (
           <p className="rounded-2xl border border-line bg-surface px-4 py-3 text-sm text-ink-3 shadow-pop">
-            No hay cartas que empiecen así. Pulsa Intro para buscar «{term}» también en producto sellado.
+            Ninguna carta coincide. Pulsa Intro para buscar «{term}» también en producto sellado.
           </p>
         )}
       </div>
       <p aria-live="polite" className="sr-only">
-        {expanded ? (items.length ? `${items.length} sugerencias, usa las flechas para elegir` : "Sin sugerencias") : ""}
+        {expanded ? (items.length ? `${plural(items.length, "sugerencia", "sugerencias")}, usa las flechas para elegir` : "Sin sugerencias") : ""}
       </p>
     </Form>
   );

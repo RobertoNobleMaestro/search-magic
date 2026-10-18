@@ -12,6 +12,9 @@ const DAY = 24 * HOUR;
 /** A partir de estas horas los datos de una tienda se consideran viejos */
 export const STALE_HOURS = 24;
 
+/** Cada cuántas horas se revisan las webs de las tiendas (cron de .github/workflows/scrape.yml) */
+export const WEB_REFRESH_HOURS = 8;
+
 // ---------------------------------------------------------------------------
 // Precios
 // ---------------------------------------------------------------------------

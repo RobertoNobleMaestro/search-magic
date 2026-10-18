@@ -35,7 +35,7 @@ export default async function StorePage({ params }: Props) {
   const store = await loadStore((await params).slug);
   if (!store) notFound();
   const now = new Date();
-  const health = storeHealth(store, now);
+  const health = storeHealth(store, now, store.latestRuns);
   const offerings = storeOfferings(store, store.latestRuns);
   const mapsUrl = store.address
     ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${store.name}, ${store.address}`)}`

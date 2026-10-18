@@ -16,12 +16,12 @@ import {
 } from "@/components/offers/filters";
 import { OfferFiltersForm } from "@/components/offers/filters-form";
 import { SealedOfferList } from "@/components/offers/sealed-offer-list";
-import { SealedIcon } from "@/components/sealed";
+import { SealedIcon, SealedProductGrid } from "@/components/sealed";
 import type { SearchParams } from "@/components/search-params";
 import { EmptyState, cx, eyebrowClass, linkClass, pageClass, secondaryButtonClass } from "@/components/ui";
 import { UpdatedAgo } from "@/components/updated-ago";
 import { getRepository, type SealedOffer, type SealedSummary } from "@/lib/data";
-import { formatDate, formatEuros, languageLabel, plural, sealedTypeLabel } from "@/lib/format";
+import { WEB_REFRESH_HOURS, formatDate, formatEuros, languageLabel, plural, sealedTypeLabel } from "@/lib/format";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -77,7 +77,9 @@ export default async function SealedPage({ params, searchParams }: Props) {
   return (
     <div className={pageClass}>
       <nav aria-label="Migas de pan" className="text-sm text-ink-3">
-        <span>Sellado</span>
+        <Link href="/sellado" className="hover:text-ink-2">
+          Sellado
+        </Link>
         <span aria-hidden="true" className="mx-1.5">
           /
         </span>
@@ -177,30 +179,7 @@ export default async function SealedPage({ params, searchParams }: Props) {
           <h2 id="relacionados" className="font-display text-xl font-semibold">
             Más producto de {product.setName}
           </h2>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((p) => (
-              <li key={p.sealedProductId}>
-                <Link
-                  href={`/sellado/${p.sealedProductId}`}
-                  className="flex h-full items-center gap-3 rounded-2xl border border-line bg-surface p-3 transition hover:border-line-strong hover:shadow-card"
-                >
-                  <SealedIcon category={p.category} />
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-medium">{sealedTypeLabel(p.category, p.subtype)}</span>
-                    <span lang="en" className="block truncate text-xs text-ink-3">
-                      {p.name}
-                    </span>
-                  </span>
-                  <span className="shrink-0 text-right">
-                    <span className="block text-sm font-semibold tabular-nums">
-                      {p.minPriceCents != null ? formatEuros(p.minPriceCents) : "—"}
-                    </span>
-                    <span className="block text-[11px] text-ink-3">{plural(p.offerCount, "oferta", "ofertas")}</span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <SealedProductGrid products={related} />
         </section>
       )}
     </div>
@@ -243,7 +222,7 @@ function NoOffers({ all, filters, pathname }: { all: SealedOffer[]; filters: Fil
   if (all.length === 0) {
     return (
       <EmptyState icon={<Inbox />} title="Ninguna tienda tiene este producto ahora mismo">
-        Revisamos las tiendas cada 6–12 horas; vuelve a mirar más adelante.
+        Revisamos la web de las tiendas cada {WEB_REFRESH_HOURS} horas; vuelve a mirar más adelante.
       </EmptyState>
     );
   }

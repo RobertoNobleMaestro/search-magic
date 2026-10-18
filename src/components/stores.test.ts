@@ -42,6 +42,23 @@ describe("storeHealth", () => {
     expect(storeHealth({ lastStatus: "ok", lastScrapedAt: hoursAgo(26) }, now)).toMatchObject({ tone: "warn" });
     expect(storeHealth({ lastStatus: null, lastScrapedAt: null }, now)).toMatchObject({ tone: "warn", label: "Sin datos todavía" });
   });
+
+  it("si falla una fuente pero la otra está al día, aviso con el estado de cada una (no error)", () => {
+    const runs = [
+      { source: "web" as const, status: "error" as const, finishedAt: hoursAgo(1) },
+      { source: "cardmarket_csv" as const, status: "ok" as const, finishedAt: hoursAgo(4) },
+    ];
+    expect(storeHealth({ lastStatus: "error", lastScrapedAt: hoursAgo(4) }, now, runs)).toEqual({
+      tone: "warn",
+      label: "Datos de hace 4 h",
+      note: "Web: falló la última revisión · Cardmarket: al día",
+    });
+    // si fallan todas, sigue siendo un error
+    const allFailed = runs.map((r) => ({ ...r, status: "error" as const }));
+    expect(storeHealth({ lastStatus: "error", lastScrapedAt: hoursAgo(30) }, now, allFailed)).toMatchObject({ tone: "bad" });
+    // con una sola fuente, como siempre
+    expect(storeHealth({ lastStatus: "error", lastScrapedAt: hoursAgo(4) }, now, runs.slice(0, 1))).toMatchObject({ tone: "bad" });
+  });
 });
 
 describe("compareStores", () => {

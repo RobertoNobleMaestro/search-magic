@@ -9,7 +9,7 @@ import { SearchBox } from "@/components/search-box";
 import { TONE_CLASS, compareStores, storeHealth } from "@/components/stores";
 import { containerClass, cx, eyebrowClass, linkClass } from "@/components/ui";
 import { getRepository, type CardSummary, type Repository } from "@/lib/data";
-import { formatEuros, plural, timeAgo } from "@/lib/format";
+import { WEB_REFRESH_HOURS, formatEuros, plural, timeAgo } from "@/lib/format";
 
 const STEPS = [
   {
@@ -40,7 +40,8 @@ export default async function HomePage() {
   // los datos cambian con cada scraping: nada de prerenderizar en el build
   await connection();
   const repo = await getRepository();
-  const [stores, fan] = await Promise.all([repo.listStores(), loadFan(repo)]);
+  const [stores, runs, fan] = await Promise.all([repo.listStores(), repo.listLatestRuns(), loadFan(repo)]);
+  const runsByStore = Map.groupBy(runs, (r) => r.storeId);
   const now = new Date();
 
   const local = stores.filter((s) => s.local);
@@ -155,9 +156,10 @@ export default async function HomePage() {
           </DataSource>
         </div>
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-ink-3">
-          Revisamos cada tienda cada 6–12 horas, respetando su robots.txt y sin pasar de una petición por segundo. Nunca
-          consultamos en directo: lo que ves es la última revisión. Si vas a ir a por algo concreto, confírmalo antes con la
-          tienda.
+          Revisamos la web de cada tienda cada {WEB_REFRESH_HOURS} horas (alguna muy grande, una vez por semana), respetando su
+          robots.txt y sin pasar de una petición por segundo; el stock de Cardmarket, cada vez que la tienda nos comparte uno
+          nuevo. Nunca consultamos en directo: lo que ves es la última revisión. Si vas a ir a por algo concreto, confírmalo
+          antes con la tienda.
         </p>
       </section>
 
@@ -175,12 +177,12 @@ export default async function HomePage() {
               <ArrowRight aria-hidden="true" className="size-4" />
             </Link>
           </div>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-6 grid grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[...stores].sort(compareStores).map((store) => {
-              const health = storeHealth(store, now);
+              const health = storeHealth(store, now, runsByStore.get(store.id));
               const tone = TONE_CLASS[health.tone];
               return (
-                <li key={store.id}>
+                <li key={store.id} className="min-w-0">
                   <Link
                     href={`/tiendas/${store.id}`}
                     className="flex items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-3.5 transition hover:border-line-strong"

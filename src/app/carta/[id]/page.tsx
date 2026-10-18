@@ -20,7 +20,7 @@ import type { SearchParams } from "@/components/search-params";
 import { EmptyState, cx, eyebrowClass, linkClass, pageClass, secondaryButtonClass } from "@/components/ui";
 import { UpdatedAgo } from "@/components/updated-ago";
 import { getRepository, type Offer, type Printing } from "@/lib/data";
-import { formatEuros, languageLabel, plural } from "@/lib/format";
+import { WEB_REFRESH_HOURS, formatEuros, languageLabel, plural } from "@/lib/format";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -235,7 +235,8 @@ function NoOffers({ all, filters, pathname, name }: { all: Offer[]; filters: Fil
   if (all.length === 0) {
     return (
       <EmptyState icon={<Inbox />} title={`Ninguna tienda tiene ${name} ahora mismo`}>
-        Revisamos las tiendas cada 6–12 horas; vuelve a mirar más adelante.
+        Revisamos la web de las tiendas cada {WEB_REFRESH_HOURS} horas y su stock de Cardmarket cuando nos comparten uno nuevo;
+        vuelve a mirar más adelante.
       </EmptyState>
     );
   }

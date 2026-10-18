@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const LINKS = [
-  { href: "/", label: "Buscar", section: ["/", "/buscar", "/carta", "/sellado"] },
+  { href: "/", label: "Buscar", section: ["/", "/buscar", "/carta"] },
+  { href: "/sellado", label: "Sellado", section: ["/sellado"] },
   { href: "/tiendas", label: "Tiendas", section: ["/tiendas"] },
 ];
 
@@ -26,7 +27,7 @@ export function NavLinks() {
                 href={link.href}
                 aria-current={pathname === link.href ? "page" : undefined}
                 data-current={current || undefined}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-ink-2 transition hover:bg-surface-2 hover:text-ink data-current:bg-surface-2 data-current:text-ink"
+                className="rounded-lg px-2 py-2 text-sm font-medium text-ink-2 transition sm:px-3 hover:bg-surface-2 hover:text-ink data-current:bg-surface-2 data-current:text-ink"
               >
                 {link.label}
               </Link>

@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 import { OFFERING_LABELS, TONE_CLASS, compareStores, storeHealth, storeOfferings, type HealthTone } from "@/components/stores";
 import { ExternalLink, cx, eyebrowClass, linkClass, pageClass } from "@/components/ui";
 import { getRepository, type ScrapeRun, type Store } from "@/lib/data";
-import { platformLabel, plural } from "@/lib/format";
+import { WEB_REFRESH_HOURS, platformLabel, plural } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Tiendas",
@@ -25,7 +25,7 @@ export default async function StoresPage() {
   const runsByStore = Map.groupBy(runs, (r) => r.storeId);
 
   const counts: Record<HealthTone, number> = { good: 0, warn: 0, bad: 0 };
-  for (const s of stores) counts[storeHealth(s, now).tone]++;
+  for (const s of stores) counts[storeHealth(s, now, runsByStore.get(s.id)).tone]++;
 
   return (
     <div className={pageClass}>
@@ -34,8 +34,9 @@ export default async function StoresPage() {
       <p className="mt-3 max-w-3xl leading-relaxed text-pretty text-ink-2">
         Las tiendas físicas de Barcelona y L&apos;Hospitalet venden el producto sellado en su web y las cartas sueltas por
         Cardmarket, con el stock que nos comparten. Las tiendas online del resto de España venden ambas cosas en su web.
-        Revisamos cada tienda cada 6–12 horas, respetando su robots.txt; si una revisión falla, seguimos enseñando los
-        últimos datos buenos y avisamos de su antigüedad.
+        Revisamos la web de cada tienda cada {WEB_REFRESH_HOURS} horas (alguna muy grande, una vez por semana), respetando su
+        robots.txt, y actualizamos su stock de Cardmarket cada vez que nos comparte uno nuevo. Si una revisión falla,
+        seguimos enseñando los últimos datos buenos y avisamos de su antigüedad.
       </p>
 
       {stores.length > 0 && (
@@ -74,14 +75,43 @@ export default async function StoresPage() {
         ))}
       </Group>
 
-      <aside className="mt-12 rounded-2xl border border-line bg-brand-soft/60 p-6">
-        <h2 className="font-display text-lg font-semibold">¿Tienes una tienda?</h2>
-        <p className="mt-1 max-w-2xl text-sm text-ink-2">
-          Si quieres aparecer, compartir tu stock de Cardmarket para que salgan tus cartas sueltas o que dejemos de revisar tu
-          web, escríbenos.
-        </p>
-      </aside>
+      <StoreOwnerNote contact={contactHref(process.env.SEARCH_MAGIC_CONTACT)} />
     </div>
+  );
+}
+
+/** El mismo contacto que va en el User-Agent del worker (SEARCH_MAGIC_CONTACT): correo o URL */
+function contactHref(contact: string | undefined): { href: string; text: string } | null {
+  const value = contact?.trim();
+  if (!value) return null;
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return { href: `mailto:${value}`, text: value };
+  if (/^https?:\/\//i.test(value) && URL.canParse(value)) return { href: value, text: new URL(value).host };
+  return null;
+}
+
+function StoreOwnerNote({ contact }: { contact: { href: string; text: string } | null }) {
+  return (
+    <aside className="mt-12 rounded-2xl border border-line bg-brand-soft/60 p-6">
+      <h2 className="font-display text-lg font-semibold">¿Tienes una tienda?</h2>
+      <p className="mt-1 max-w-2xl text-sm text-ink-2">
+        {contact ? (
+          <>
+            Si quieres aparecer, compartir tu stock de Cardmarket para que salgan tus cartas sueltas o que dejemos de revisar
+            tu web, escríbenos a{" "}
+            <a href={contact.href} className={linkClass}>
+              {contact.text}
+            </a>
+            .
+          </>
+        ) : (
+          <>
+            Nuestro robot se identifica en cada visita a tu web con un User-Agent que dice cómo contactarnos: por ahí puedes
+            pedirnos aparecer, compartir tu stock de Cardmarket para que salgan tus cartas sueltas o que dejemos de revisar tu
+            web.
+          </>
+        )}
+      </p>
+    </aside>
   );
 }
 
@@ -100,7 +130,7 @@ function Group({ id, icon, title, stores, children }: { id: string; icon: ReactN
 }
 
 function StoreCard({ store, runs, now }: { store: Store; runs: ScrapeRun[]; now: Date }) {
-  const health = storeHealth(store, now);
+  const health = storeHealth(store, now, runs);
   const tone = TONE_CLASS[health.tone];
   const offerings = storeOfferings(store, runs);
   return (
