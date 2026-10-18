@@ -1,0 +1,3089 @@
+{
+  "source": "Scryfall API (https://scryfall.com) — muestra para datos de ejemplo y tests",
+  "generatedAt": "2026-10-18T13:09:44.454Z",
+  "sets": [
+    {
+      "code": "sds",
+      "name": "Stardates",
+      "releasedAt": "2026-11-13"
+    },
+    {
+      "code": "frc",
+      "name": "Reality Fracture Commander",
+      "releasedAt": "2026-10-02"
+    },
+    {
+      "code": "fdc",
+      "name": "Foundations Commander",
+      "releasedAt": "2026-10-02"
+    },
+    {
+      "code": "hoc",
+      "name": "The Hobbit Eternal",
+      "releasedAt": "2026-08-14"
+    },
+    {
+      "code": "pf26",
+      "name": "MagicFest 2026",
+      "releasedAt": "2026-07-13"
+    },
+    {
+      "code": "msh",
+      "name": "Marvel Super Heroes",
+      "releasedAt": "2026-06-26"
+    },
+    {
+      "code": "mar",
+      "name": "Marvel Universe",
+      "releasedAt": "2026-06-26"
+    },
+    {
+      "code": "msc",
+      "name": "Marvel Super Heroes Commander",
+      "releasedAt": "2026-06-26"
+    },
+    {
+      "code": "soa",
+      "name": "Secrets of Strixhaven Mystical Archive",
+      "releasedAt": "2026-04-24"
+    },
+    {
+      "code": "sos",
+      "name": "Secrets of Strixhaven",
+      "releasedAt": "2026-04-24"
+    },
+    {
+      "code": "psos",
+      "name": "Secrets of Strixhaven Promos",
+      "releasedAt": "2026-04-24"
+    },
+    {
+      "code": "pza",
+      "name": "Teenage Mutant Ninja Turtles Source Material",
+      "releasedAt": "2026-03-06"
+    },
+    {
+      "code": "tmc",
+      "name": "Teenage Mutant Ninja Turtles Eternal",
+      "releasedAt": "2026-03-06"
+    },
+    {
+      "code": "fic",
+      "name": "Final Fantasy Commander",
+      "releasedAt": "2025-12-05"
+    },
+    {
+      "code": "sld",
+      "name": "Secret Lair Drop",
+      "releasedAt": "2025-12-01"
+    },
+    {
+      "code": "tle",
+      "name": "Avatar: The Last Airbender Eternal",
+      "releasedAt": "2025-11-21"
+    },
+    {
+      "code": "slc",
+      "name": "Secret Lair Countdown",
+      "releasedAt": "2025-11-03"
+    },
+    {
+      "code": "pmei",
+      "name": "Media and Collaboration Promos",
+      "releasedAt": "2025-08-25"
+    },
+    {
+      "code": "sch",
+      "name": "Store Championships",
+      "releasedAt": "2025-07-29"
+    },
+    {
+      "code": "fca",
+      "name": "Final Fantasy: Through the Ages",
+      "releasedAt": "2025-06-13"
+    },
+    {
+      "code": "fdn",
+      "name": "Foundations",
+      "releasedAt": "2024-11-15"
+    },
+    {
+      "code": "j25",
+      "name": "Foundations Jumpstart",
+      "releasedAt": "2024-11-15"
+    },
+    {
+      "code": "blc",
+      "name": "Bloomburrow Commander",
+      "releasedAt": "2024-08-02"
+    },
+    {
+      "code": "blb",
+      "name": "Bloomburrow",
+      "releasedAt": "2024-08-02"
+    },
+    {
+      "code": "h2r",
+      "name": "Modern Horizons 2 Timeshifts",
+      "releasedAt": "2024-06-14"
+    },
+    {
+      "code": "otp",
+      "name": "Breaking News",
+      "releasedAt": "2024-04-19"
+    },
+    {
+      "code": "rvr",
+      "name": "Ravnica Remastered",
+      "releasedAt": "2024-01-12"
+    },
+    {
+      "code": "pw24",
+      "name": "Wizards Play Network 2024",
+      "releasedAt": "2023-10-01"
+    },
+    {
+      "code": "pltr",
+      "name": "Tales of Middle-earth Promos",
+      "releasedAt": "2023-06-23"
+    },
+    {
+      "code": "ltr",
+      "name": "The Lord of the Rings: Tales of Middle-earth",
+      "releasedAt": "2023-06-23"
+    },
+    {
+      "code": "mul",
+      "name": "Multiverse Legends",
+      "releasedAt": "2023-04-21"
+    },
+    {
+      "code": "p30h",
+      "name": "30th Anniversary History Promos",
+      "releasedAt": "2023-03-21"
+    },
+    {
+      "code": "slp",
+      "name": "Secret Lair Promo",
+      "releasedAt": "2023-02-19"
+    },
+    {
+      "code": "dmr",
+      "name": "Dominaria Remastered",
+      "releasedAt": "2023-01-13"
+    },
+    {
+      "code": "bro",
+      "name": "The Brothers' War",
+      "releasedAt": "2022-11-18"
+    },
+    {
+      "code": "pdmu",
+      "name": "Dominaria United Promos",
+      "releasedAt": "2022-09-09"
+    },
+    {
+      "code": "dmu",
+      "name": "Dominaria United",
+      "releasedAt": "2022-09-09"
+    },
+    {
+      "code": "neo",
+      "name": "Kamigawa: Neon Dynasty",
+      "releasedAt": "2022-02-18"
+    },
+    {
+      "code": "pneo",
+      "name": "Kamigawa: Neon Dynasty Promos",
+      "releasedAt": "2022-02-18"
+    },
+    {
+      "code": "mh2",
+      "name": "Modern Horizons 2",
+      "releasedAt": "2021-06-18"
+    },
+    {
+      "code": "tsr",
+      "name": "Time Spiral Remastered",
+      "releasedAt": "2021-03-19"
+    },
+    {
+      "code": "2xm",
+      "name": "Double Masters",
+      "releasedAt": "2020-08-07"
+    },
+    {
+      "code": "plst",
+      "name": "The List",
+      "releasedAt": "2019-11-07"
+    },
+    {
+      "code": "uma",
+      "name": "Ultimate Masters",
+      "releasedAt": "2018-12-07"
+    },
+    {
+      "code": "ima",
+      "name": "Iconic Masters",
+      "releasedAt": "2017-11-17"
+    },
+    {
+      "code": "mp2",
+      "name": "Amonkhet Invocations",
+      "releasedAt": "2017-04-28"
+    },
+    {
+      "code": "ddj",
+      "name": "Duel Decks: Izzet vs. Golgari",
+      "releasedAt": "2012-09-07"
+    },
+    {
+      "code": "cmd",
+      "name": "Commander 2011",
+      "releasedAt": "2011-06-17"
+    },
+    {
+      "code": "f06",
+      "name": "Friday Night Magic 2006",
+      "releasedAt": "2006-01-01"
+    },
+    {
+      "code": "apc",
+      "name": "Apocalypse",
+      "releasedAt": "2001-06-04"
+    }
+  ],
+  "cards": [
+    {
+      "oracleId": "4457ed35-7c10-48c8-9776-456485fdf070",
+      "nameEn": "Lightning Bolt",
+      "nameEs": "Relámpago",
+      "namesEs": [
+        "Relámpago"
+      ],
+      "printings": [
+        {
+          "scryfallId": "0852f9f3-d7ef-4d31-93e3-93bc7c5a4ec9",
+          "setCode": "fdc",
+          "setName": "Foundations Commander",
+          "collectorNumber": "163",
+          "releasedAt": "2026-10-02",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/0/8/0852f9f3-d7ef-4d31-93e3-93bc7c5a4ec9.jpg?1789753088",
+          "priceEurCents": 165,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "a050f085-dc6a-4715-8cd3-33daf3e27bfc",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2579",
+          "releasedAt": "2026-08-31",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/a/0/a050f085-dc6a-4715-8cd3-33daf3e27bfc.jpg?1788258622",
+          "priceEurCents": 984,
+          "priceEurFoilCents": 1024,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "7673784e-db4b-43a1-8d55-1bb9fc1e284f",
+          "setCode": "msc",
+          "setName": "Marvel Super Heroes Commander",
+          "collectorNumber": "806",
+          "releasedAt": "2026-06-26",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/7/6/7673784e-db4b-43a1-8d55-1bb9fc1e284f.jpg?1783903008",
+          "priceEurCents": 192,
+          "priceEurFoilCents": 247,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "699c0207-901e-4fe9-b22d-1f6cb994a1f2",
+          "setCode": "psos",
+          "setName": "Secrets of Strixhaven Promos",
+          "collectorNumber": "113p",
+          "releasedAt": "2026-04-24",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/6/9/699c0207-901e-4fe9-b22d-1f6cb994a1f2.jpg?1783903545",
+          "priceEurCents": 166,
+          "priceEurFoilCents": 266,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "promopack",
+            "stamped"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "f11b8d24-375d-40dc-8497-c1ee779e156a",
+          "setCode": "sos",
+          "setName": "Secrets of Strixhaven",
+          "collectorNumber": "332",
+          "releasedAt": "2026-04-24",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/1/f11b8d24-375d-40dc-8497-c1ee779e156a.jpg?1783903593",
+          "priceEurCents": 284,
+          "priceEurFoilCents": 323,
+          "borderColor": "black",
+          "frameEffects": [
+            "extendedart"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "f58dba4f-1abb-47a3-a684-29c32bab95c0",
+          "setCode": "sos",
+          "setName": "Secrets of Strixhaven",
+          "collectorNumber": "113",
+          "releasedAt": "2026-04-24",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/5/f58dba4f-1abb-47a3-a684-29c32bab95c0.jpg?1783903670",
+          "priceEurCents": 183,
+          "priceEurFoilCents": 235,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "bde26955-6de3-4212-9e1a-5e11f73ebf44",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "IFIYW-7",
+          "releasedAt": "2026-04-01",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/b/d/bde26955-6de3-4212-9e1a-5e11f73ebf44.jpg?1783903996",
+          "priceEurCents": null,
+          "priceEurFoilCents": 590,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "dazzlefoil",
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "dc12105d-7536-429b-9510-4f56bfc0c497",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "IFIYW-2",
+          "releasedAt": "2026-04-01",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/d/c/dc12105d-7536-429b-9510-4f56bfc0c497.jpg?1783904004",
+          "priceEurCents": 399,
+          "priceEurFoilCents": 449,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "cc187110-1148-4090-bbb8-e205694a39f5",
+      "nameEn": "Counterspell",
+      "nameEs": "Contrahechizo",
+      "namesEs": [
+        "Contrahechizo"
+      ],
+      "printings": [
+        {
+          "scryfallId": "83390164-f00b-4be1-9cec-5de088c9debc",
+          "setCode": "fdc",
+          "setName": "Foundations Commander",
+          "collectorNumber": "61",
+          "releasedAt": "2026-10-02",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/8/3/83390164-f00b-4be1-9cec-5de088c9debc.jpg?1789752902",
+          "priceEurCents": 289,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "77d16cf5-d85a-44cf-aaac-c4134837cbe4",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "7123",
+          "releasedAt": "2026-07-17",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/7/7/77d16cf5-d85a-44cf-aaac-c4134837cbe4.jpg?1786455954",
+          "priceEurCents": 1623,
+          "priceEurFoilCents": null,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "sldbonus",
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "e28be8b0-b4ae-4f05-8481-a666496c595f",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "7120",
+          "releasedAt": "2026-07-17",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/e/2/e28be8b0-b4ae-4f05-8481-a666496c595f.jpg?1786455943",
+          "priceEurCents": 13000,
+          "priceEurFoilCents": null,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "sldbonus",
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "d6a1907c-59c4-4c72-b0f0-9e2402c05719",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "7117",
+          "releasedAt": "2026-07-17",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/d/6/d6a1907c-59c4-4c72-b0f0-9e2402c05719.jpg?1786455948",
+          "priceEurCents": 56900,
+          "priceEurFoilCents": null,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "sldbonus",
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "379f4020-a58c-484d-9b44-72b200884079",
+          "setCode": "mar",
+          "setName": "Marvel Universe",
+          "collectorNumber": "52",
+          "releasedAt": "2026-06-26",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/3/7/379f4020-a58c-484d-9b44-72b200884079.jpg?1783903320",
+          "priceEurCents": 629,
+          "priceEurFoilCents": 1550,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "sourcematerial",
+            "universesbeyond"
+          ],
+          "fullArt": true,
+          "promo": false
+        },
+        {
+          "scryfallId": "6522cc61-397d-4754-9a7f-9f9d50f85922",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2664",
+          "releasedAt": "2026-06-15",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/6/5/6522cc61-397d-4754-9a7f-9f9d50f85922.jpg?1783903400",
+          "priceEurCents": 1729,
+          "priceEurFoilCents": 1730,
+          "borderColor": "borderless",
+          "frameEffects": [],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "9cb2478c-1672-44eb-a9a1-a103fcdf3701",
+          "setCode": "pf26",
+          "setName": "MagicFest 2026",
+          "collectorNumber": "5",
+          "releasedAt": "2026-04-13",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/9/c/9cb2478c-1672-44eb-a9a1-a103fcdf3701.jpg?1783903995",
+          "priceEurCents": null,
+          "priceEurFoilCents": 587,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "87284999-8b35-4142-a711-0c9e1bdc8e1a",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2497",
+          "releasedAt": "2026-02-09",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/8/7/87284999-8b35-4142-a711-0c9e1bdc8e1a.jpg?1783904242",
+          "priceEurCents": 906,
+          "priceEurFoilCents": 1078,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+      "nameEn": "Llanowar Elves",
+      "nameEs": "Elfos de Llanowar",
+      "namesEs": [
+        "Elfos de Llanowar"
+      ],
+      "printings": [
+        {
+          "scryfallId": "5368ce20-0970-4630-8c46-439db2231a39",
+          "setCode": "fdc",
+          "setName": "Foundations Commander",
+          "collectorNumber": "213",
+          "releasedAt": "2026-10-02",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/5/3/5368ce20-0970-4630-8c46-439db2231a39.jpg?1789753284",
+          "priceEurCents": 39,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "ee1a40dc-30dc-4dda-9001-aa7fb0b43bb3",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "7167",
+          "releasedAt": "2026-07-13",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/e/e/ee1a40dc-30dc-4dda-9001-aa7fb0b43bb3.jpg?1791470712",
+          "priceEurCents": null,
+          "priceEurFoilCents": 765,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "sldbonus"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "cb49d52e-85ce-4f79-bfc3-0e312e6e161f",
+          "setCode": "pf26",
+          "setName": "MagicFest 2026",
+          "collectorNumber": "8",
+          "releasedAt": "2026-07-13",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/c/b/cb49d52e-85ce-4f79-bfc3-0e312e6e161f.jpg?1783902794",
+          "priceEurCents": null,
+          "priceEurFoilCents": 364,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "de7e17bc-9d4e-40c8-b8eb-a28882143d67",
+          "setCode": "slc",
+          "setName": "Secret Lair Countdown",
+          "collectorNumber": "39",
+          "releasedAt": "2025-11-03",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/d/e/de7e17bc-9d4e-40c8-b8eb-a28882143d67.jpg?1783905104",
+          "priceEurCents": null,
+          "priceEurFoilCents": 6941,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "halofoil"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "eea9251b-ca83-420f-ac5f-4fc3ea8dc190",
+          "setCode": "slc",
+          "setName": "Secret Lair Countdown",
+          "collectorNumber": "12",
+          "releasedAt": "2025-11-03",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/e/e/eea9251b-ca83-420f-ac5f-4fc3ea8dc190.jpg?1783905113",
+          "priceEurCents": 1178,
+          "priceEurFoilCents": 1804,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "0312d980-b1d0-41ec-8f5b-d21fbb742b9b",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "1553",
+          "releasedAt": "2025-02-10",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/0/3/0312d980-b1d0-41ec-8f5b-d21fbb742b9b.jpg?1783907934",
+          "priceEurCents": 333,
+          "priceEurFoilCents": 338,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "d1114b99-62fb-478a-a648-16b8c0b4c032",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "800",
+          "releasedAt": "2025-02-10",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/d/1/d1114b99-62fb-478a-a648-16b8c0b4c032.jpg?1783907939",
+          "priceEurCents": 261,
+          "priceEurFoilCents": 321,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "sldbonus"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "d9c02310-6a14-45c2-ae8c-b0fff7245673",
+          "setCode": "j25",
+          "setName": "Foundations Jumpstart",
+          "collectorNumber": "149",
+          "releasedAt": "2024-11-15",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/d/9/d9c02310-6a14-45c2-ae8c-b0fff7245673.jpg?1783908822",
+          "priceEurCents": 52,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "6ad8011d-3471-4369-9d68-b264cc027487",
+      "nameEn": "Sol Ring",
+      "nameEs": "Anillo solar",
+      "namesEs": [
+        "Anillo solar"
+      ],
+      "printings": [
+        {
+          "scryfallId": "8ee443cc-e17a-493b-9c93-1f9e141a30e4",
+          "setCode": "frc",
+          "setName": "Reality Fracture Commander",
+          "collectorNumber": "21",
+          "releasedAt": "2026-10-02",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/8/e/8ee443cc-e17a-493b-9c93-1f9e141a30e4.jpg?1789644446",
+          "priceEurCents": 111,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "4f152dd9-2b35-45b2-90fe-8c71d0634226",
+          "setCode": "fdc",
+          "setName": "Foundations Commander",
+          "collectorNumber": "286",
+          "releasedAt": "2026-10-02",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/4/f/4f152dd9-2b35-45b2-90fe-8c71d0634226.jpg?1789753351",
+          "priceEurCents": 123,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "bf6b187e-5ad0-4731-9c39-638451ac1e30",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2132",
+          "releasedAt": "2026-09-28",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/b/f/bf6b187e-5ad0-4731-9c39-638451ac1e30.jpg?1790743517",
+          "priceEurCents": null,
+          "priceEurFoilCents": 1830,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "8670dac4-d369-4907-ae3a-d58ff204f1a6",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2783",
+          "releasedAt": "2026-09-14",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/8/6/8670dac4-d369-4907-ae3a-d58ff204f1a6.jpg?1787577602",
+          "priceEurCents": 6995,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": true,
+          "promo": false
+        },
+        {
+          "scryfallId": "24afe08b-6b88-42b3-a996-33f138431a87",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2560",
+          "releasedAt": "2026-08-17",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/2/4/24afe08b-6b88-42b3-a996-33f138431a87.jpg?1785502093",
+          "priceEurCents": 2350,
+          "priceEurFoilCents": 2678,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "3d5c99e9-7c3e-4149-82a6-3c7d5d302488",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2807",
+          "releasedAt": "2026-07-27",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/3/d/3d5c99e9-7c3e-4149-82a6-3c7d5d302488.jpg?1784278121",
+          "priceEurCents": 580,
+          "priceEurFoilCents": 645,
+          "borderColor": "borderless",
+          "frameEffects": [],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "cadcddad-2f37-4a5c-81e4-242a20573952",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2683",
+          "releasedAt": "2026-07-20",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/c/a/cadcddad-2f37-4a5c-81e4-242a20573952.jpg?1791470696",
+          "priceEurCents": 1050,
+          "priceEurFoilCents": 1432,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "a739dd30-1fce-49db-99fb-15e346f4f2db",
+          "setCode": "msc",
+          "setName": "Marvel Super Heroes Commander",
+          "collectorNumber": "214",
+          "releasedAt": "2026-06-26",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/a/7/a739dd30-1fce-49db-99fb-15e346f4f2db.jpg?1783903212",
+          "priceEurCents": 167,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "surgefoil",
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "53f7c868-b03e-4fc2-8dcf-a75bbfa3272b",
+      "nameEn": "Dark Ritual",
+      "nameEs": "Ritual siniestro",
+      "namesEs": [
+        "Ritual siniestro"
+      ],
+      "printings": [
+        {
+          "scryfallId": "227f249f-a1da-4db0-a1a5-34378375fa8e",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2678",
+          "releasedAt": "2026-07-20",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/2/2/227f249f-a1da-4db0-a1a5-34378375fa8e.jpg?1784715354",
+          "priceEurCents": 1329,
+          "priceEurFoilCents": 1650,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "11e12a84-e7be-4afc-a230-c2e644743fa8",
+          "setCode": "msc",
+          "setName": "Marvel Super Heroes Commander",
+          "collectorNumber": "793",
+          "releasedAt": "2026-06-26",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/1/1/11e12a84-e7be-4afc-a230-c2e644743fa8.jpg?1783903013",
+          "priceEurCents": 901,
+          "priceEurFoilCents": 944,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "7ecf65b4-11f7-4a18-833e-0f017ea98f94",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2665",
+          "releasedAt": "2026-06-15",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/7/e/7ecf65b4-11f7-4a18-833e-0f017ea98f94.jpg?1783903400",
+          "priceEurCents": 1576,
+          "priceEurFoilCents": 1507,
+          "borderColor": "borderless",
+          "frameEffects": [],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "ef9d3e48-85c2-4347-810f-a6a0725b288d",
+          "setCode": "tmc",
+          "setName": "Teenage Mutant Ninja Turtles Eternal",
+          "collectorNumber": "131",
+          "releasedAt": "2026-03-06",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/e/f/ef9d3e48-85c2-4347-810f-a6a0725b288d.jpg?1783904131",
+          "priceEurCents": null,
+          "priceEurFoilCents": 852,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "387b1238-7158-4d67-b98b-a3e224a9ed2b",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2020",
+          "releasedAt": "2025-09-22",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/3/8/387b1238-7158-4d67-b98b-a3e224a9ed2b.jpg?1783905568",
+          "priceEurCents": 1235,
+          "priceEurFoilCents": 1374,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "eed6c473-bf79-46d0-adf1-a357ca98a9d6",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2001",
+          "releasedAt": "2025-09-22",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/e/e/eed6c473-bf79-46d0-adf1-a357ca98a9d6.jpg?1783905568",
+          "priceEurCents": 1412,
+          "priceEurFoilCents": 1863,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "f9183acb-edb7-4a59-9890-ae0455d8e024",
+          "setCode": "pmei",
+          "setName": "Media and Collaboration Promos",
+          "collectorNumber": "2025-8",
+          "releasedAt": "2025-08-25",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/9/f9183acb-edb7-4a59-9890-ae0455d8e024.jpg?1787806862",
+          "priceEurCents": null,
+          "priceEurFoilCents": 1030,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "mediainsert"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "7cc0cfe1-7f13-4b1b-9a37-33ef457d3c62",
+          "setCode": "fca",
+          "setName": "Final Fantasy: Through the Ages",
+          "collectorNumber": "8",
+          "releasedAt": "2025-06-13",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/7/c/7cc0cfe1-7f13-4b1b-9a37-33ef457d3c62.jpg?1783906393",
+          "priceEurCents": 903,
+          "priceEurFoilCents": 3808,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "sourcematerial",
+            "universesbeyond",
+            "ffix",
+            "boosterfun"
+          ],
+          "fullArt": true,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "4b7ac066-e5c7-43e6-9e7e-2739b24a905d",
+      "nameEn": "Serra Angel",
+      "nameEs": "Ángel de Serra",
+      "namesEs": [
+        "Ángel de Serra"
+      ],
+      "printings": [
+        {
+          "scryfallId": "b8c5e74c-96e7-4a1f-93b7-14d776fe4b2d",
+          "setCode": "fdn",
+          "setName": "Foundations",
+          "collectorNumber": "740",
+          "releasedAt": "2026-04-24",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/b/8/b8c5e74c-96e7-4a1f-93b7-14d776fe4b2d.jpg?1787563091",
+          "priceEurCents": 59,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "setextension"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "da497cf0-942e-48a5-943e-16183a4567fd",
+          "setCode": "plst",
+          "setName": "The List",
+          "collectorNumber": "DMR-271",
+          "releasedAt": "2025-04-11",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/d/a/da497cf0-942e-48a5-943e-16183a4567fd.jpg?1786005961",
+          "priceEurCents": 132,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "533368eb-9005-45a7-94c1-ef4fa7d5debc",
+          "setCode": "j25",
+          "setName": "Foundations Jumpstart",
+          "collectorNumber": "251",
+          "releasedAt": "2024-11-15",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/5/3/533368eb-9005-45a7-94c1-ef4fa7d5debc.jpg?1783908790",
+          "priceEurCents": 17,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "3cee9303-9d65-45a2-93d4-ef4aba59141b",
+          "setCode": "fdn",
+          "setName": "Foundations",
+          "collectorNumber": "147",
+          "releasedAt": "2024-11-15",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/3/c/3cee9303-9d65-45a2-93d4-ef4aba59141b.jpg?1783909083",
+          "priceEurCents": 10,
+          "priceEurFoilCents": 7,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "cad4c850-097e-4909-87ec-a33ef8f2ba34",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "1161",
+          "releasedAt": "2023-10-02",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/c/a/cad4c850-097e-4909-87ec-a33ef8f2ba34.jpg?1783914759",
+          "priceEurCents": 98,
+          "priceEurFoilCents": 92,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "8ea9612c-db1a-4858-816a-0f88d3080b4c",
+          "setCode": "pw24",
+          "setName": "Wizards Play Network 2024",
+          "collectorNumber": "1",
+          "releasedAt": "2023-10-01",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/8/e/8ea9612c-db1a-4858-816a-0f88d3080b4c.jpg?1783914761",
+          "priceEurCents": null,
+          "priceEurFoilCents": 344,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "wizardsplaynetwork"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "6996abea-6914-4c0c-863e-43f6d8a8daef",
+          "setCode": "p30h",
+          "setName": "30th Anniversary History Promos",
+          "collectorNumber": "1★",
+          "releasedAt": "2023-03-21",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/6/9/6996abea-6914-4c0c-863e-43f6d8a8daef.jpg?1787728108",
+          "priceEurCents": null,
+          "priceEurFoilCents": 5425,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "fc22536c-09b4-4dc3-9371-842d91c5251e",
+          "setCode": "p30h",
+          "setName": "30th Anniversary History Promos",
+          "collectorNumber": "1",
+          "releasedAt": "2023-03-21",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/c/fc22536c-09b4-4dc3-9371-842d91c5251e.jpg?1783917729",
+          "priceEurCents": null,
+          "priceEurFoilCents": 3310,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": true
+        }
+      ]
+    },
+    {
+      "oracleId": "5748ebf1-24e3-499d-ab7c-c2cebd462a24",
+      "nameEn": "Giant Growth",
+      "nameEs": "Crecimiento gigante",
+      "namesEs": [
+        "Crecimiento gigante"
+      ],
+      "printings": [
+        {
+          "scryfallId": "fd1f95bf-48ea-455a-8a6c-0249b11c8900",
+          "setCode": "msh",
+          "setName": "Marvel Super Heroes",
+          "collectorNumber": "167",
+          "releasedAt": "2026-06-26",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/d/fd1f95bf-48ea-455a-8a6c-0249b11c8900.jpg?1783902918",
+          "priceEurCents": 7,
+          "priceEurFoilCents": 13,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "62652aa9-57e7-42a7-8f2f-62e9a6aefb16",
+          "setCode": "soa",
+          "setName": "Secrets of Strixhaven Mystical Archive",
+          "collectorNumber": "52",
+          "releasedAt": "2026-04-24",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/6/2/62652aa9-57e7-42a7-8f2f-62e9a6aefb16.jpg?1783903918",
+          "priceEurCents": 9,
+          "priceEurFoilCents": 37,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted",
+            "showcase"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "fb7d7036-fffe-4b55-a8ba-494f4513ba1c",
+          "setCode": "j25",
+          "setName": "Foundations Jumpstart",
+          "collectorNumber": "662",
+          "releasedAt": "2024-11-15",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/b/fb7d7036-fffe-4b55-a8ba-494f4513ba1c.jpg?1783908644",
+          "priceEurCents": 17,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "bd0bf74e-14c1-4428-88d8-2181a080b5d0",
+          "setCode": "fdn",
+          "setName": "Foundations",
+          "collectorNumber": "223",
+          "releasedAt": "2024-11-15",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/b/d/bd0bf74e-14c1-4428-88d8-2181a080b5d0.jpg?1783909057",
+          "priceEurCents": 8,
+          "priceEurFoilCents": 21,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "beginnerbox",
+            "startercollection"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "e70722d6-b4d5-45c2-9488-9a5eb0bdb9bd",
+          "setCode": "blb",
+          "setName": "Bloomburrow",
+          "collectorNumber": "393",
+          "releasedAt": "2024-08-02",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/e/7/e70722d6-b4d5-45c2-9488-9a5eb0bdb9bd.jpg?1783910739",
+          "priceEurCents": 9,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "starterdeck"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "65a168b8-285b-4725-a982-671557d4f0bc",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "717",
+          "releasedAt": "2023-05-05",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/6/5/65a168b8-285b-4725-a982-671557d4f0bc.jpg?1783916616",
+          "priceEurCents": 33952,
+          "priceEurFoilCents": null,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "serialized",
+            "sldbonus"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "aeece336-e5e8-4455-a297-c3739198d011",
+          "setCode": "bro",
+          "setName": "The Brothers' War",
+          "collectorNumber": "183",
+          "releasedAt": "2022-11-18",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/a/e/aeece336-e5e8-4455-a297-c3739198d011.jpg?1783920046",
+          "priceEurCents": 8,
+          "priceEurFoilCents": 18,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "f349c459-6d80-4919-bb49-f1613f9b8d1f",
+          "setCode": "plst",
+          "setName": "The List",
+          "collectorNumber": "BBD-200",
+          "releasedAt": "2019-11-07",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/3/f349c459-6d80-4919-bb49-f1613f9b8d1f.jpg?1783931966",
+          "priceEurCents": 11,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "b1544f21-7e98-461b-aed5-e748b0168c52",
+      "nameEn": "Swords to Plowshares",
+      "nameEs": "Espadas en guadañas",
+      "namesEs": [
+        "Espadas en guadañas"
+      ],
+      "printings": [
+        {
+          "scryfallId": "f7e12477-d59f-442b-a678-1be746d0b7be",
+          "setCode": "frc",
+          "setName": "Reality Fracture Commander",
+          "collectorNumber": "37",
+          "releasedAt": "2026-10-02",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/7/f7e12477-d59f-442b-a678-1be746d0b7be.jpg?1789599810",
+          "priceEurCents": 118,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "36959f2b-75b5-4d68-b193-ada980822fd9",
+          "setCode": "fdc",
+          "setName": "Foundations Commander",
+          "collectorNumber": "53",
+          "releasedAt": "2026-10-02",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/3/6/36959f2b-75b5-4d68-b193-ada980822fd9.jpg?1789752896",
+          "priceEurCents": 178,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "84a4a532-538e-428c-bd62-d0b997895c31",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2125",
+          "releasedAt": "2026-09-28",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/8/4/84a4a532-538e-428c-bd62-d0b997895c31.jpg?1790743598",
+          "priceEurCents": null,
+          "priceEurFoilCents": 803,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "bb37a8f3-c730-4cf1-84b3-9f7efc28dd7f",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2804",
+          "releasedAt": "2026-07-27",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/b/b/bb37a8f3-c730-4cf1-84b3-9f7efc28dd7f.jpg?1784278018",
+          "priceEurCents": 419,
+          "priceEurFoilCents": 519,
+          "borderColor": "borderless",
+          "frameEffects": [],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "b4e9c870-23c0-413a-ae39-265f09da16d1",
+          "setCode": "msc",
+          "setName": "Marvel Super Heroes Commander",
+          "collectorNumber": "143",
+          "releasedAt": "2026-06-26",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/b/4/b4e9c870-23c0-413a-ae39-265f09da16d1.jpg?1783903243",
+          "priceEurCents": 220,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "surgefoil",
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "5a8b56db-47cb-4c62-9b54-2a48576947d1",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2663",
+          "releasedAt": "2026-06-15",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/5/a/5a8b56db-47cb-4c62-9b54-2a48576947d1.jpg?1783903401",
+          "priceEurCents": 1090,
+          "priceEurFoilCents": 1207,
+          "borderColor": "borderless",
+          "frameEffects": [],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "589a4f39-fdd7-43f1-9521-608ec27bd926",
+          "setCode": "psos",
+          "setName": "Secrets of Strixhaven Promos",
+          "collectorNumber": "13p",
+          "releasedAt": "2026-04-24",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/5/8/589a4f39-fdd7-43f1-9521-608ec27bd926.jpg?1783903558",
+          "priceEurCents": 153,
+          "priceEurFoilCents": 168,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "promopack",
+            "stamped"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "bfd607c0-7ed7-4a4e-abdd-508080f40ef2",
+          "setCode": "sos",
+          "setName": "Secrets of Strixhaven",
+          "collectorNumber": "309",
+          "releasedAt": "2026-04-24",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/b/f/bfd607c0-7ed7-4a4e-abdd-508080f40ef2.jpg?1783903600",
+          "priceEurCents": 269,
+          "priceEurFoilCents": 340,
+          "borderColor": "black",
+          "frameEffects": [
+            "extendedart"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "edd8d1e8-be43-4c38-bb3a-83081fbaf0b5",
+      "nameEn": "Thoughtseize",
+      "nameEs": "Confiscar pensamientos",
+      "namesEs": [
+        "Confiscar pensamientos"
+      ],
+      "printings": [
+        {
+          "scryfallId": "1d1aebf2-dd21-48b4-868f-f8fb164dcaae",
+          "setCode": "otp",
+          "setName": "Breaking News",
+          "collectorNumber": "70",
+          "releasedAt": "2024-04-19",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/1/d/1d1aebf2-dd21-48b4-868f-f8fb164dcaae.jpg?1783911706",
+          "priceEurCents": null,
+          "priceEurFoilCents": 6297,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "textured",
+            "boosterfun"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "5e85d5db-ced3-406d-90d2-e506a9332468",
+          "setCode": "otp",
+          "setName": "Breaking News",
+          "collectorNumber": "20",
+          "releasedAt": "2024-04-19",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/5/e/5e85d5db-ced3-406d-90d2-e506a9332468.jpg?1783911723",
+          "priceEurCents": 728,
+          "priceEurFoilCents": 1293,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "showcase"
+          ],
+          "promoTypes": [
+            "boosterfun"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "1ecc64b6-6f2c-4b20-aa80-54cc47382606",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "1117",
+          "releasedAt": "2022-11-28",
+          "finishes": [
+            "nonfoil",
+            "etched"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/1/e/1ecc64b6-6f2c-4b20-aa80-54cc47382606.jpg?1783919209",
+          "priceEurCents": 2991,
+          "priceEurFoilCents": null,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "e6e76c6b-9d60-4bc8-b88d-6c9c7fade9a6",
+          "setCode": "tsr",
+          "setName": "Time Spiral Remastered",
+          "collectorNumber": "334",
+          "releasedAt": "2021-03-19",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/e/6/e6e76c6b-9d60-4bc8-b88d-6c9c7fade9a6.jpg?1787742062",
+          "priceEurCents": 1822,
+          "priceEurFoilCents": 47709,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "95702503-8f2d-46c8-abdb-6edd6c431d19",
+          "setCode": "2xm",
+          "setName": "Double Masters",
+          "collectorNumber": "344",
+          "releasedAt": "2020-08-07",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/9/5/95702503-8f2d-46c8-abdb-6edd6c431d19.jpg?1783930073",
+          "priceEurCents": 2069,
+          "priceEurFoilCents": 2850,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "boxtopper",
+            "boosterfun"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "b281a308-ab6b-47b6-bec7-632c9aaecede",
+          "setCode": "2xm",
+          "setName": "Double Masters",
+          "collectorNumber": "109",
+          "releasedAt": "2020-08-07",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/b/2/b281a308-ab6b-47b6-bec7-632c9aaecede.jpg?1783930173",
+          "priceEurCents": 818,
+          "priceEurFoilCents": 2107,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "310a1c46-8331-4a09-9fcb-d942f8102364",
+          "setCode": "ima",
+          "setName": "Iconic Masters",
+          "collectorNumber": "110",
+          "releasedAt": "2017-11-17",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/3/1/310a1c46-8331-4a09-9fcb-d942f8102364.jpg?1783935534",
+          "priceEurCents": 862,
+          "priceEurFoilCents": 2615,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "ea5ec419-8392-4f1b-9557-5404ba632bf1",
+          "setCode": "mp2",
+          "setName": "Amonkhet Invocations",
+          "collectorNumber": "45",
+          "releasedAt": "2017-04-28",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/e/a/ea5ec419-8392-4f1b-9557-5404ba632bf1.jpg?1783936422",
+          "priceEurCents": null,
+          "priceEurFoilCents": 8616,
+          "borderColor": "borderless",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+      "nameEn": "Birds of Paradise",
+      "nameEs": "Aves del paraíso",
+      "namesEs": [
+        "Aves del paraíso"
+      ],
+      "printings": [
+        {
+          "scryfallId": "6672f025-525d-41ca-bd81-d4029e04f5f2",
+          "setCode": "fdc",
+          "setName": "Foundations Commander",
+          "collectorNumber": "191",
+          "releasedAt": "2026-10-02",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/6/6/6672f025-525d-41ca-bd81-d4029e04f5f2.jpg?1789753424",
+          "priceEurCents": 772,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "8b1af0df-e1fa-46f0-9da9-c1ac3a7d0245",
+          "setCode": "msc",
+          "setName": "Marvel Super Heroes Commander",
+          "collectorNumber": "377",
+          "releasedAt": "2026-06-26",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/8/b/8b1af0df-e1fa-46f0-9da9-c1ac3a7d0245.jpg?1783903154",
+          "priceEurCents": 1053,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [
+            "extendedart"
+          ],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+          "setCode": "msc",
+          "setName": "Marvel Super Heroes Commander",
+          "collectorNumber": "170",
+          "releasedAt": "2026-06-26",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/4/9/492c2f9a-51e7-4e0f-9899-23bf43ea988b.jpg?1783903230",
+          "priceEurCents": 821,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "surgefoil",
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "9f8b95bd-c709-4259-b3fe-92119b92acae",
+          "setCode": "fic",
+          "setName": "Final Fantasy Commander",
+          "collectorNumber": "483",
+          "releasedAt": "2025-12-05",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/9/f/9f8b95bd-c709-4259-b3fe-92119b92acae.jpg?1783904642",
+          "priceEurCents": null,
+          "priceEurFoilCents": 1287,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "ffxiv",
+            "universesbeyond",
+            "bundle"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "4c72e177-d95d-41df-91b3-4e489175b6aa",
+          "setCode": "blc",
+          "setName": "Bloomburrow Commander",
+          "collectorNumber": "81",
+          "releasedAt": "2024-08-02",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/4/c/4c72e177-d95d-41df-91b3-4e489175b6aa.jpg?1783910712",
+          "priceEurCents": 1901,
+          "priceEurFoilCents": 2720,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "boosterfun",
+            "imagine"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "dae8751c-4c72-4034-a192-a1e166f20246",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "1675",
+          "releasedAt": "2024-07-29",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/d/a/dae8751c-4c72-4034-a192-a1e166f20246.jpg?1783910874",
+          "priceEurCents": 5451,
+          "priceEurFoilCents": 6601,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "9ca8c7a0-d7c5-414f-8ca9-80e3daf49a5e",
+          "setCode": "rvr",
+          "setName": "Ravnica Remastered",
+          "collectorNumber": "432",
+          "releasedAt": "2024-01-12",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/9/c/9ca8c7a0-d7c5-414f-8ca9-80e3daf49a5e.jpg?1783913169",
+          "priceEurCents": 1664,
+          "priceEurFoilCents": 2634,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "boosterfun"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "d816162c-bb87-4d45-ae14-1433b19f50c5",
+          "setCode": "rvr",
+          "setName": "Ravnica Remastered",
+          "collectorNumber": "344z",
+          "releasedAt": "2024-01-12",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/d/8/d816162c-bb87-4d45-ae14-1433b19f50c5.jpg?1783913224",
+          "priceEurCents": null,
+          "priceEurFoilCents": 162804,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "serialized",
+            "doublerainbow",
+            "boosterfun"
+          ],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "36cd2364-d113-47d1-b2c4-b088d9eb88dd",
+      "nameEn": "Brainstorm",
+      "nameEs": "Inspiración súbita",
+      "namesEs": [
+        "Inspiración súbita"
+      ],
+      "printings": [
+        {
+          "scryfallId": "ec7d6864-7b6b-4f74-8474-9b9ec96b1d33",
+          "setCode": "frc",
+          "setName": "Reality Fracture Commander",
+          "collectorNumber": "39",
+          "releasedAt": "2026-10-02",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/e/c/ec7d6864-7b6b-4f74-8474-9b9ec96b1d33.jpg?1789599806",
+          "priceEurCents": 122,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "7bf58206-b7b6-45e7-b99a-9de1c58c5c96",
+          "setCode": "psos",
+          "setName": "Secrets of Strixhaven Promos",
+          "collectorNumber": "52p",
+          "releasedAt": "2026-04-24",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/7/b/7bf58206-b7b6-45e7-b99a-9de1c58c5c96.jpg?1783903554",
+          "priceEurCents": 47,
+          "priceEurFoilCents": 114,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "promopack",
+            "stamped"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "c8f1baae-dd81-4e10-841e-15531ea1ffaa",
+          "setCode": "sos",
+          "setName": "Secrets of Strixhaven",
+          "collectorNumber": "317",
+          "releasedAt": "2026-04-24",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/c/8/c8f1baae-dd81-4e10-841e-15531ea1ffaa.jpg?1783903598",
+          "priceEurCents": 87,
+          "priceEurFoilCents": 137,
+          "borderColor": "black",
+          "frameEffects": [
+            "extendedart"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "617208ff-dd9b-44fd-a740-d3188081e5cc",
+          "setCode": "sos",
+          "setName": "Secrets of Strixhaven",
+          "collectorNumber": "52",
+          "releasedAt": "2026-04-24",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/6/1/617208ff-dd9b-44fd-a740-d3188081e5cc.jpg?1783903691",
+          "priceEurCents": 48,
+          "priceEurFoilCents": 62,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "8bb0a0cf-5b04-4d68-bf7a-7131ae50d06b",
+          "setCode": "pza",
+          "setName": "Teenage Mutant Ninja Turtles Source Material",
+          "collectorNumber": "4",
+          "releasedAt": "2026-03-06",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/8/b/8bb0a0cf-5b04-4d68-bf7a-7131ae50d06b.jpg?1783904181",
+          "priceEurCents": 293,
+          "priceEurFoilCents": 753,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [
+            "sourcematerial",
+            "universesbeyond"
+          ],
+          "fullArt": true,
+          "promo": false
+        },
+        {
+          "scryfallId": "6b8f867d-eff5-493f-a881-bcbc4ae06b33",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2491",
+          "releasedAt": "2026-02-09",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/6/b/6b8f867d-eff5-493f-a881-bcbc4ae06b33.jpg?1783904247",
+          "priceEurCents": 644,
+          "priceEurFoilCents": 979,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "caf333b7-3e70-4745-9304-99b21244196c",
+          "setCode": "sld",
+          "setName": "Secret Lair Drop",
+          "collectorNumber": "2148",
+          "releasedAt": "2025-12-01",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/c/a/caf333b7-3e70-4745-9304-99b21244196c.jpg?1783904684",
+          "priceEurCents": 384,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "b5545882-6963-4729-b2c6-fb4bdc75ffcc",
+          "setCode": "tle",
+          "setName": "Avatar: The Last Airbender Eternal",
+          "collectorNumber": "155",
+          "releasedAt": "2025-11-21",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/b/5/b5545882-6963-4729-b2c6-fb4bdc75ffcc.jpg?1783904806",
+          "priceEurCents": 352,
+          "priceEurFoilCents": 233,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "34f34409-326d-4994-a0ea-1a69aa278f03",
+      "nameEn": "Sheoldred, the Apocalypse",
+      "nameEs": "Sheoldred, el Apocalipsis",
+      "namesEs": [
+        "Sheoldred, el Apocalipsis"
+      ],
+      "printings": [
+        {
+          "scryfallId": "5ee7c1b3-36c3-4f81-a45d-f34331db5b18",
+          "setCode": "dmu",
+          "setName": "Dominaria United",
+          "collectorNumber": "436",
+          "releasedAt": "2023-02-03",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/5/e/5ee7c1b3-36c3-4f81-a45d-f34331db5b18.jpg?1783918186",
+          "priceEurCents": null,
+          "priceEurFoilCents": 31279,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "legendary",
+            "inverted"
+          ],
+          "promoTypes": [
+            "boosterfun",
+            "setextension",
+            "stepandcompleat",
+            "concept"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "8df6603a-38c1-4d18-8b84-6211e9a7cc09",
+          "setCode": "dmu",
+          "setName": "Dominaria United",
+          "collectorNumber": "435",
+          "releasedAt": "2023-02-03",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/8/d/8df6603a-38c1-4d18-8b84-6211e9a7cc09.jpg?1783918186",
+          "priceEurCents": 11216,
+          "priceEurFoilCents": 17377,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "legendary",
+            "inverted"
+          ],
+          "promoTypes": [
+            "concept",
+            "boosterfun",
+            "setextension"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "f389b4ae-c109-4989-b7a6-92f07ed88183",
+          "setCode": "pdmu",
+          "setName": "Dominaria United Promos",
+          "collectorNumber": "107s",
+          "releasedAt": "2022-09-09",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/3/f389b4ae-c109-4989-b7a6-92f07ed88183.jpg?1783921088",
+          "priceEurCents": null,
+          "priceEurFoilCents": 9250,
+          "borderColor": "black",
+          "frameEffects": [
+            "legendary"
+          ],
+          "promoTypes": [
+            "prerelease",
+            "datestamped"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "11a1cfc1-0bfc-40e8-b57f-f267bf9b6542",
+          "setCode": "pdmu",
+          "setName": "Dominaria United Promos",
+          "collectorNumber": "107p",
+          "releasedAt": "2022-09-09",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/1/1/11a1cfc1-0bfc-40e8-b57f-f267bf9b6542.jpg?1783921090",
+          "priceEurCents": 7690,
+          "priceEurFoilCents": 7924,
+          "borderColor": "black",
+          "frameEffects": [
+            "legendary"
+          ],
+          "promoTypes": [
+            "promopack",
+            "stamped"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "a9494e5f-bfd2-45b0-b324-fd1407d9b644",
+          "setCode": "dmu",
+          "setName": "Dominaria United",
+          "collectorNumber": "331",
+          "releasedAt": "2022-09-09",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/a/9/a9494e5f-bfd2-45b0-b324-fd1407d9b644.jpg?1783921221",
+          "priceEurCents": null,
+          "priceEurFoilCents": 11892,
+          "borderColor": "black",
+          "frameEffects": [
+            "showcase",
+            "legendary",
+            "inverted"
+          ],
+          "promoTypes": [
+            "textured",
+            "boosterfun"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "fc5be7df-16e0-494c-b960-19fd64d57b35",
+          "setCode": "dmu",
+          "setName": "Dominaria United",
+          "collectorNumber": "290",
+          "releasedAt": "2022-09-09",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/c/fc5be7df-16e0-494c-b960-19fd64d57b35.jpg?1783921241",
+          "priceEurCents": 8911,
+          "priceEurFoilCents": 9164,
+          "borderColor": "black",
+          "frameEffects": [
+            "showcase",
+            "legendary",
+            "inverted"
+          ],
+          "promoTypes": [
+            "boosterfun"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "d67be074-cdd4-41d9-ac89-0a0456c4e4b2",
+          "setCode": "dmu",
+          "setName": "Dominaria United",
+          "collectorNumber": "107",
+          "releasedAt": "2022-09-09",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/d/6/d67be074-cdd4-41d9-ac89-0a0456c4e4b2.jpg?1783921327",
+          "priceEurCents": 8335,
+          "priceEurFoilCents": 9577,
+          "borderColor": "black",
+          "frameEffects": [
+            "legendary"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "c68629ff-72b3-40a2-b578-cddb6ddb4ccf",
+          "setCode": "sds",
+          "setName": "Stardates",
+          "collectorNumber": "11",
+          "releasedAt": "2026-11-13",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/c/6/c68629ff-72b3-40a2-b578-cddb6ddb4ccf.jpg?1787156429",
+          "priceEurCents": null,
+          "priceEurFoilCents": null,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "inverted",
+            "legendary"
+          ],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "3aa83ed2-f48b-4ce6-a614-2c54ddf50538",
+      "nameEn": "The One Ring",
+      "nameEs": "El Anillo Único",
+      "namesEs": [
+        "El Anillo Único"
+      ],
+      "printings": [
+        {
+          "scryfallId": "c2fed990-78fd-4688-8cac-9f57774297f6",
+          "setCode": "hoc",
+          "setName": "The Hobbit Eternal",
+          "collectorNumber": "84",
+          "releasedAt": "2026-08-14",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/c/2/c2fed990-78fd-4688-8cac-9f57774297f6.jpg?1786128320",
+          "priceEurCents": null,
+          "priceEurFoilCents": 57725,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "legendary",
+            "inverted"
+          ],
+          "promoTypes": [
+            "surgefoil",
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "bdd2c783-1483-490a-ae93-c4664a0a9564",
+          "setCode": "hoc",
+          "setName": "The Hobbit Eternal",
+          "collectorNumber": "44",
+          "releasedAt": "2026-08-14",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/b/d/bdd2c783-1483-490a-ae93-c4664a0a9564.jpg?1786128363",
+          "priceEurCents": 11646,
+          "priceEurFoilCents": 15081,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "legendary",
+            "inverted"
+          ],
+          "promoTypes": [
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "6e817a37-235f-46fd-b857-9003b2264d10",
+          "setCode": "ltr",
+          "setName": "The Lord of the Rings: Tales of Middle-earth",
+          "collectorNumber": "791",
+          "releasedAt": "2023-11-03",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/6/e/6e817a37-235f-46fd-b857-9003b2264d10.jpg?1783913974",
+          "priceEurCents": null,
+          "priceEurFoilCents": 25548,
+          "borderColor": "black",
+          "frameEffects": [
+            "legendary",
+            "extendedart"
+          ],
+          "promoTypes": [
+            "boosterfun",
+            "surgefoil",
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "4e6fee52-33a8-4085-b632-bf95dfd2b16d",
+          "setCode": "ltr",
+          "setName": "The Lord of the Rings: Tales of Middle-earth",
+          "collectorNumber": "748z",
+          "releasedAt": "2023-11-03",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/4/e/4e6fee52-33a8-4085-b632-bf95dfd2b16d.jpg?1783913992",
+          "priceEurCents": null,
+          "priceEurFoilCents": 486356,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "legendary"
+          ],
+          "promoTypes": [
+            "boosterfun",
+            "serialized",
+            "poster",
+            "doublerainbow",
+            "universesbeyond"
+          ],
+          "fullArt": true,
+          "promo": false
+        },
+        {
+          "scryfallId": "10a4e202-b564-4ac8-8bdf-a2a563662563",
+          "setCode": "ltr",
+          "setName": "The Lord of the Rings: Tales of Middle-earth",
+          "collectorNumber": "748",
+          "releasedAt": "2023-11-03",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/1/0/10a4e202-b564-4ac8-8bdf-a2a563662563.jpg?1783913993",
+          "priceEurCents": 108023,
+          "priceEurFoilCents": 188355,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "legendary"
+          ],
+          "promoTypes": [
+            "boosterfun",
+            "poster",
+            "universesbeyond"
+          ],
+          "fullArt": true,
+          "promo": false
+        },
+        {
+          "scryfallId": "3b3f2e18-0cc3-42bf-af33-60b95c5e2e40",
+          "setCode": "ltr",
+          "setName": "The Lord of the Rings: Tales of Middle-earth",
+          "collectorNumber": "697",
+          "releasedAt": "2023-11-03",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/3/b/3b3f2e18-0cc3-42bf-af33-60b95c5e2e40.jpg?1783914028",
+          "priceEurCents": null,
+          "priceEurFoilCents": 79831,
+          "borderColor": "black",
+          "frameEffects": [
+            "showcase",
+            "legendary"
+          ],
+          "promoTypes": [
+            "boosterfun",
+            "silverfoil",
+            "scroll",
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "a163a525-1091-42cf-ad94-1c60c1b2c738",
+          "setCode": "pltr",
+          "setName": "Tales of Middle-earth Promos",
+          "collectorNumber": "246s",
+          "releasedAt": "2023-06-23",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/a/1/a163a525-1091-42cf-ad94-1c60c1b2c738.jpg?1783916068",
+          "priceEurCents": null,
+          "priceEurFoilCents": 22527,
+          "borderColor": "black",
+          "frameEffects": [
+            "legendary"
+          ],
+          "promoTypes": [
+            "prerelease",
+            "datestamped",
+            "universesbeyond"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "126ea71a-9a64-4d1e-a8ca-1efce3b8346f",
+          "setCode": "ltr",
+          "setName": "The Lord of the Rings: Tales of Middle-earth",
+          "collectorNumber": "451",
+          "releasedAt": "2023-06-23",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/1/2/126ea71a-9a64-4d1e-a8ca-1efce3b8346f.jpg?1783916146",
+          "priceEurCents": 10073,
+          "priceEurFoilCents": 9659,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "legendary",
+            "inverted"
+          ],
+          "promoTypes": [
+            "universesbeyond",
+            "boosterfun",
+            "bundle"
+          ],
+          "fullArt": false,
+          "promo": true
+        }
+      ]
+    },
+    {
+      "oracleId": "37108cd4-bbab-4ce3-9ed6-f60e8422e703",
+      "nameEn": "Ragavan, Nimble Pilferer",
+      "nameEs": "Ragavan, ratero hábil",
+      "namesEs": [
+        "Ragavan, ratero hábil"
+      ],
+      "printings": [
+        {
+          "scryfallId": "a71d1ec3-2d7a-4749-8936-8bf7a8b83d84",
+          "setCode": "fca",
+          "setName": "Final Fantasy: Through the Ages",
+          "collectorNumber": "43",
+          "releasedAt": "2025-06-13",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/a/7/a71d1ec3-2d7a-4749-8936-8bf7a8b83d84.jpg?1783906379",
+          "priceEurCents": 3404,
+          "priceEurFoilCents": 17674,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "legendary",
+            "inverted"
+          ],
+          "promoTypes": [
+            "sourcematerial",
+            "universesbeyond",
+            "ffix",
+            "boosterfun"
+          ],
+          "fullArt": true,
+          "promo": false
+        },
+        {
+          "scryfallId": "8d27e717-8bda-44dc-90b9-a6f7029c7b93",
+          "setCode": "h2r",
+          "setName": "Modern Horizons 2 Timeshifts",
+          "collectorNumber": "11",
+          "releasedAt": "2024-06-14",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/8/d/8d27e717-8bda-44dc-90b9-a6f7029c7b93.jpg?1783911469",
+          "priceEurCents": 4643,
+          "priceEurFoilCents": 8731,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "boosterfun"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "fae3bf4a-a732-48aa-a1a4-7e5fd007774c",
+          "setCode": "mul",
+          "setName": "Multiverse Legends",
+          "collectorNumber": "151z",
+          "releasedAt": "2023-04-21",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/a/fae3bf4a-a732-48aa-a1a4-7e5fd007774c.jpg?1783916811",
+          "priceEurCents": null,
+          "priceEurFoilCents": 75671,
+          "borderColor": "black",
+          "frameEffects": [
+            "legendary",
+            "showcase"
+          ],
+          "promoTypes": [
+            "serialized",
+            "doublerainbow"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "3a29b9b5-8c15-4058-a7d2-db7297635364",
+          "setCode": "mul",
+          "setName": "Multiverse Legends",
+          "collectorNumber": "151",
+          "releasedAt": "2023-04-21",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/3/a/3a29b9b5-8c15-4058-a7d2-db7297635364.jpg?1783916810",
+          "priceEurCents": null,
+          "priceEurFoilCents": 9737,
+          "borderColor": "black",
+          "frameEffects": [
+            "legendary",
+            "showcase"
+          ],
+          "promoTypes": [
+            "halofoil"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "fc898fec-4cc6-4587-b556-c5a8d38ccbd0",
+          "setCode": "mul",
+          "setName": "Multiverse Legends",
+          "collectorNumber": "21",
+          "releasedAt": "2023-04-21",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/c/fc898fec-4cc6-4587-b556-c5a8d38ccbd0.jpg?1783916872",
+          "priceEurCents": 3613,
+          "priceEurFoilCents": 4443,
+          "borderColor": "black",
+          "frameEffects": [
+            "legendary",
+            "showcase"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "10cde602-f47c-4dac-bf1b-e300c82e5fd5",
+          "setCode": "slp",
+          "setName": "Secret Lair Promo",
+          "collectorNumber": "2",
+          "releasedAt": "2023-02-19",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/1/0/10cde602-f47c-4dac-bf1b-e300c82e5fd5.jpg?1783917754",
+          "priceEurCents": null,
+          "priceEurFoilCents": 160064,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "legendary",
+            "inverted"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "b3e685f9-cc0f-4dc6-98dc-4727944de445",
+          "setCode": "mh2",
+          "setName": "Modern Horizons 2",
+          "collectorNumber": "315",
+          "releasedAt": "2021-06-18",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/b/3/b3e685f9-cc0f-4dc6-98dc-4727944de445.jpg?1783926769",
+          "priceEurCents": 4165,
+          "priceEurFoilCents": 7863,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "legendary",
+            "inverted"
+          ],
+          "promoTypes": [
+            "boosterfun"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "a9738cda-adb1-47fb-9f4c-ecd930228c4d",
+          "setCode": "mh2",
+          "setName": "Modern Horizons 2",
+          "collectorNumber": "138",
+          "releasedAt": "2021-06-18",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/a/9/a9738cda-adb1-47fb-9f4c-ecd930228c4d.jpg?1791803835",
+          "priceEurCents": 3330,
+          "priceEurFoilCents": 5195,
+          "borderColor": "black",
+          "frameEffects": [
+            "legendary"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "c0957e5e-c71b-439c-931c-9f55d2f76ace",
+      "nameEn": "Fable of the Mirror-Breaker // Reflection of Kiki-Jiki",
+      "nameEs": "Fábula del rompe espejos // Reflejo de Kiki-Jiki",
+      "namesEs": [
+        "Fábula del rompe espejos // Reflejo de Kiki-Jiki"
+      ],
+      "printings": [
+        {
+          "scryfallId": "3d4b9d4e-ab16-4d81-ac15-e84b351ef2dd",
+          "setCode": "sch",
+          "setName": "Store Championships",
+          "collectorNumber": "44",
+          "releasedAt": "2025-07-29",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/3/d/3d4b9d4e-ab16-4d81-ac15-e84b351ef2dd.jpg?1783906072",
+          "priceEurCents": 3794,
+          "priceEurFoilCents": 3333,
+          "borderColor": "borderless",
+          "frameEffects": [
+            "enchantment",
+            "inverted"
+          ],
+          "promoTypes": [
+            "storechampionship"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "eca77d44-2e1c-4b97-a4c4-e7ac3b576440",
+          "setCode": "pneo",
+          "setName": "Kamigawa: Neon Dynasty Promos",
+          "collectorNumber": "141s",
+          "releasedAt": "2022-02-18",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/e/c/eca77d44-2e1c-4b97-a4c4-e7ac3b576440.jpg?1783923676",
+          "priceEurCents": null,
+          "priceEurFoilCents": 1436,
+          "borderColor": "black",
+          "frameEffects": [
+            "fandfc",
+            "enchantment"
+          ],
+          "promoTypes": [
+            "prerelease",
+            "datestamped"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "6dee0388-a78d-4b3c-a0c5-25655e14115e",
+          "setCode": "neo",
+          "setName": "Kamigawa: Neon Dynasty",
+          "collectorNumber": "465",
+          "releasedAt": "2022-02-18",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/6/d/6dee0388-a78d-4b3c-a0c5-25655e14115e.jpg?1783923746",
+          "priceEurCents": 991,
+          "priceEurFoilCents": 1314,
+          "borderColor": "black",
+          "frameEffects": [
+            "extendedart",
+            "fandfc",
+            "enchantment"
+          ],
+          "promoTypes": [
+            "boosterfun"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "0b696cd1-0d72-4df5-bacc-dc77e62f9a13",
+          "setCode": "neo",
+          "setName": "Kamigawa: Neon Dynasty",
+          "collectorNumber": "357",
+          "releasedAt": "2022-02-18",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/0/b/0b696cd1-0d72-4df5-bacc-dc77e62f9a13.jpg?1783923787",
+          "priceEurCents": 980,
+          "priceEurFoilCents": 1260,
+          "borderColor": "black",
+          "frameEffects": [
+            "showcase",
+            "fandfc",
+            "inverted"
+          ],
+          "promoTypes": [
+            "boosterfun"
+          ],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "24c0d87b-0049-4beb-b9cb-6f813b7aa7dc",
+          "setCode": "neo",
+          "setName": "Kamigawa: Neon Dynasty",
+          "collectorNumber": "141",
+          "releasedAt": "2022-02-18",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/2/4/24c0d87b-0049-4beb-b9cb-6f813b7aa7dc.jpg?1783923875",
+          "priceEurCents": 884,
+          "priceEurFoilCents": 878,
+          "borderColor": "black",
+          "frameEffects": [
+            "fandfc",
+            "enchantment"
+          ],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    },
+    {
+      "oracleId": "ae92942b-919c-4ea9-b693-85fcef765d5a",
+      "nameEn": "Fire // Ice",
+      "nameEs": "Fuego // Hielo",
+      "namesEs": [
+        "Fuego // Hielo"
+      ],
+      "printings": [
+        {
+          "scryfallId": "18303862-4726-4136-814f-157aa7006579",
+          "setCode": "dmr",
+          "setName": "Dominaria Remastered",
+          "collectorNumber": "215",
+          "releasedAt": "2023-01-13",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/1/8/18303862-4726-4136-814f-157aa7006579.jpg?1783918420",
+          "priceEurCents": 22,
+          "priceEurFoilCents": 50,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "0e09b054-4d33-4a12-bf2a-9b0009f33044",
+          "setCode": "mh2",
+          "setName": "Modern Horizons 2",
+          "collectorNumber": "290",
+          "releasedAt": "2021-06-18",
+          "finishes": [
+            "nonfoil",
+            "foil",
+            "etched"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/0/e/0e09b054-4d33-4a12-bf2a-9b0009f33044.jpg?1783926779",
+          "priceEurCents": 19,
+          "priceEurFoilCents": 135,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "610135d6-d32f-4ee9-b053-dc32da14c333",
+          "setCode": "plst",
+          "setName": "The List",
+          "collectorNumber": "UMA-225",
+          "releasedAt": "2019-11-07",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/6/1/610135d6-d32f-4ee9-b053-dc32da14c333.jpg?1783931942",
+          "priceEurCents": 20,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "3f822331-315e-4297-bb69-f1069032c6c5",
+          "setCode": "uma",
+          "setName": "Ultimate Masters",
+          "collectorNumber": "225",
+          "releasedAt": "2018-12-07",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/3/f/3f822331-315e-4297-bb69-f1069032c6c5.jpg?1783933766",
+          "priceEurCents": 22,
+          "priceEurFoilCents": 52,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "ab8292ae-9a52-43e7-92f7-0f45f4bb71ec",
+          "setCode": "ddj",
+          "setName": "Duel Decks: Izzet vs. Golgari",
+          "collectorNumber": "32",
+          "releasedAt": "2012-09-07",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/a/b/ab8292ae-9a52-43e7-92f7-0f45f4bb71ec.jpg?1783940411",
+          "priceEurCents": 25,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "230e65b2-a908-4418-8ef9-ecc475ff0b27",
+          "setCode": "cmd",
+          "setName": "Commander 2011",
+          "collectorNumber": "198",
+          "releasedAt": "2011-06-17",
+          "finishes": [
+            "nonfoil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/2/3/230e65b2-a908-4418-8ef9-ecc475ff0b27.jpg?1783941179",
+          "priceEurCents": 62,
+          "priceEurFoilCents": null,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        },
+        {
+          "scryfallId": "04cb4e4e-8275-4132-8f1a-84b486725400",
+          "setCode": "f06",
+          "setName": "Friday Night Magic 2006",
+          "collectorNumber": "12a",
+          "releasedAt": "2006-01-01",
+          "finishes": [
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/0/4/04cb4e4e-8275-4132-8f1a-84b486725400.jpg?1783943569",
+          "priceEurCents": null,
+          "priceEurFoilCents": 455,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [
+            "tourney",
+            "fnm"
+          ],
+          "fullArt": false,
+          "promo": true
+        },
+        {
+          "scryfallId": "f98f4538-5b5b-475d-b98f-49d01dae6f04",
+          "setCode": "apc",
+          "setName": "Apocalypse",
+          "collectorNumber": "128",
+          "releasedAt": "2001-06-04",
+          "finishes": [
+            "nonfoil",
+            "foil"
+          ],
+          "imageUrl": "https://cards.scryfall.io/normal/front/f/9/f98f4538-5b5b-475d-b98f-49d01dae6f04.jpg?1783945328",
+          "priceEurCents": 201,
+          "priceEurFoilCents": 5231,
+          "borderColor": "black",
+          "frameEffects": [],
+          "promoTypes": [],
+          "fullArt": false,
+          "promo": false
+        }
+      ]
+    }
+  ]
+}
