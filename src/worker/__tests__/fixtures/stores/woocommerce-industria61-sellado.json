@@ -1,0 +1,237 @@
+[
+ {
+  "id": 176864,
+  "name": "MTG &#8211; Fallout Commander Deck &#8211; Scrappy Survivors &#8211; ING",
+  "parent": 0,
+  "type": "simple",
+  "variation": "",
+  "permalink": "https://industria61.com/tienda/juego-de-cartas-coleccionables/magic-the-gathering/material-sellado1/mazos/mtg-fallout-commander-deck-scrappy-survivors-ing-2/",
+  "prices": {
+   "price": "5695",
+   "regular_price": "5695",
+   "sale_price": "5695",
+   "price_range": null,
+   "currency_code": "EUR",
+   "currency_symbol": "€",
+   "currency_minor_unit": 2,
+   "currency_decimal_separator": ",",
+   "currency_thousand_separator": ".",
+   "currency_prefix": "",
+   "currency_suffix": "€"
+  },
+  "categories": [
+   {
+    "id": 330,
+    "name": "Mazos",
+    "slug": "mazos",
+    "link": "https://industria61.com/categoria-producto/juego-de-cartas-coleccionables/magic-the-gathering/material-sellado1/mazos/"
+   }
+  ],
+  "attributes": [
+   {
+    "id": 7,
+    "name": "Brand",
+    "taxonomy": "pa_brand",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 15251,
+      "name": "wizards of the coast",
+      "slug": "wizards-of-the-coast"
+     }
+    ]
+   }
+  ],
+  "variations": [],
+  "is_in_stock": true,
+  "low_stock_remaining": 1
+ },
+ {
+  "id": 176848,
+  "name": "MTG &#8211; FALLOUT COMMANDER DECK &#8211; Hail, Caesar &#8211; ING",
+  "parent": 0,
+  "type": "simple",
+  "variation": "",
+  "permalink": "https://industria61.com/tienda/juego-de-cartas-coleccionables/magic-the-gathering/material-sellado1/mazos/mtg-fallout-commander-deck-hail-caesar-ing/",
+  "prices": {
+   "price": "5695",
+   "regular_price": "5695",
+   "sale_price": "5695",
+   "price_range": null,
+   "currency_code": "EUR",
+   "currency_symbol": "€",
+   "currency_minor_unit": 2,
+   "currency_decimal_separator": ",",
+   "currency_thousand_separator": ".",
+   "currency_prefix": "",
+   "currency_suffix": "€"
+  },
+  "categories": [
+   {
+    "id": 330,
+    "name": "Mazos",
+    "slug": "mazos",
+    "link": "https://industria61.com/categoria-producto/juego-de-cartas-coleccionables/magic-the-gathering/material-sellado1/mazos/"
+   }
+  ],
+  "attributes": [
+   {
+    "id": 7,
+    "name": "Brand",
+    "taxonomy": "pa_brand",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 15157,
+      "name": "Sin marca",
+      "slug": "sin-marca"
+     }
+    ]
+   }
+  ],
+  "variations": [],
+  "is_in_stock": false,
+  "low_stock_remaining": 0
+ },
+ {
+  "id": 176123,
+  "name": "MTG Reality Fracture Collector Booster- EN",
+  "parent": 0,
+  "type": "simple",
+  "variation": "",
+  "permalink": "https://industria61.com/tienda/juego-de-cartas-coleccionables/magic-the-gathering/material-sellado1/sobres-material-sellado1/mtg-reality-fracture-collector-booster-en/",
+  "prices": {
+   "price": "3000",
+   "regular_price": "3000",
+   "sale_price": "3000",
+   "price_range": null,
+   "currency_code": "EUR",
+   "currency_symbol": "€",
+   "currency_minor_unit": 2,
+   "currency_decimal_separator": ",",
+   "currency_thousand_separator": ".",
+   "currency_prefix": "",
+   "currency_suffix": "€"
+  },
+  "categories": [
+   {
+    "id": 15084,
+    "name": "Sobres",
+    "slug": "sobres-material-sellado1",
+    "link": "https://industria61.com/categoria-producto/juego-de-cartas-coleccionables/magic-the-gathering/material-sellado1/sobres-material-sellado1/"
+   }
+  ],
+  "attributes": [
+   {
+    "id": 7,
+    "name": "Brand",
+    "taxonomy": "pa_brand",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 15251,
+      "name": "wizards of the coast",
+      "slug": "wizards-of-the-coast"
+     }
+    ]
+   }
+  ],
+  "variations": [],
+  "is_in_stock": false,
+  "low_stock_remaining": 0
+ },
+ {
+  "id": 175511,
+  "name": "MTG Sobre de Juego Realidad Facturada &#8211; Castellano",
+  "parent": 0,
+  "type": "simple",
+  "variation": "",
+  "permalink": "https://industria61.com/tienda/juego-de-cartas-coleccionables/magic-the-gathering/material-sellado1/sobres-material-sellado1/mtg-sobre-de-juego-realidad-facturada-castellano/",
+  "prices": {
+   "price": "500",
+   "regular_price": "500",
+   "sale_price": "500",
+   "price_range": null,
+   "currency_code": "EUR",
+   "currency_symbol": "€",
+   "currency_minor_unit": 2,
+   "currency_decimal_separator": ",",
+   "currency_thousand_separator": ".",
+   "currency_prefix": "",
+   "currency_suffix": "€"
+  },
+  "categories": [
+   {
+    "id": 15084,
+    "name": "Sobres",
+    "slug": "sobres-material-sellado1",
+    "link": "https://industria61.com/categoria-producto/juego-de-cartas-coleccionables/magic-the-gathering/material-sellado1/sobres-material-sellado1/"
+   }
+  ],
+  "attributes": [
+   {
+    "id": 7,
+    "name": "Brand",
+    "taxonomy": "pa_brand",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 15251,
+      "name": "wizards of the coast",
+      "slug": "wizards-of-the-coast"
+     }
+    ]
+   }
+  ],
+  "variations": [],
+  "is_in_stock": true,
+  "low_stock_remaining": null
+ },
+ {
+  "id": 175090,
+  "name": "MTG &#8211; Play Booster EL HOBBIT &#8211; Cast",
+  "parent": 0,
+  "type": "simple",
+  "variation": "",
+  "permalink": "https://industria61.com/tienda/juego-de-cartas-coleccionables/magic-the-gathering/material-sellado1/sobres-material-sellado1/mtg-play-booster-el-hobbit-cast/",
+  "prices": {
+   "price": "650",
+   "regular_price": "650",
+   "sale_price": "650",
+   "price_range": null,
+   "currency_code": "EUR",
+   "currency_symbol": "€",
+   "currency_minor_unit": 2,
+   "currency_decimal_separator": ",",
+   "currency_thousand_separator": ".",
+   "currency_prefix": "",
+   "currency_suffix": "€"
+  },
+  "categories": [
+   {
+    "id": 15084,
+    "name": "Sobres",
+    "slug": "sobres-material-sellado1",
+    "link": "https://industria61.com/categoria-producto/juego-de-cartas-coleccionables/magic-the-gathering/material-sellado1/sobres-material-sellado1/"
+   }
+  ],
+  "attributes": [
+   {
+    "id": 7,
+    "name": "Brand",
+    "taxonomy": "pa_brand",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 15251,
+      "name": "wizards of the coast",
+      "slug": "wizards-of-the-coast"
+     }
+    ]
+   }
+  ],
+  "variations": [],
+  "is_in_stock": true,
+  "low_stock_remaining": null
+ }
+]

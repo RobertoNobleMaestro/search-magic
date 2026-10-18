@@ -1,0 +1,351 @@
+{
+ "products": [
+  {
+   "id": 15443088048451,
+   "title": "Magic: The Gathering® | Star Trek™ | Caja de Sobres de Juego",
+   "handle": "magic-the-gathering®-star-trek™-caja-de-sobres-de-juego",
+   "published_at": "2026-10-18T07:59:46+02:00",
+   "created_at": "2026-10-16T10:25:14+02:00",
+   "updated_at": "2026-10-18T17:00:35+02:00",
+   "vendor": "Wizards of the Coast",
+   "product_type": "Magic Sellado",
+   "tags": [
+    "mtg-cajas",
+    "mtg-cajas-juego",
+    "mtg-sellado",
+    "Star Treck",
+    "TRK"
+   ],
+   "variants": [
+    {
+     "id": 54915950870851,
+     "title": "Español",
+     "option1": "Español",
+     "option2": null,
+     "option3": null,
+     "sku": "D59161050",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "175.00",
+     "grams": 0,
+     "compare_at_price": "185.00",
+     "position": 1,
+     "product_id": 15443088048451,
+     "created_at": "2026-10-16T10:25:15+02:00",
+     "updated_at": "2026-10-18T17:00:35+02:00"
+    },
+    {
+     "id": 54915950903619,
+     "title": "Inglés",
+     "option1": "Inglés",
+     "option2": null,
+     "option3": null,
+     "sku": "D59160000",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "175.00",
+     "grams": 0,
+     "compare_at_price": "185.00",
+     "position": 2,
+     "product_id": 15443088048451,
+     "created_at": "2026-10-16T10:25:15+02:00",
+     "updated_at": "2026-10-18T17:00:35+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Idioma",
+     "position": 1,
+     "values": [
+      "Español",
+      "Inglés"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 15443080347971,
+   "title": "Magic: The Gathering® | Star Trek™ | Caja de Sobres de Coleccionista",
+   "handle": "magic-the-gathering®-star-trek™-caja-de-sobres-de-coleccionista",
+   "published_at": "2026-10-18T07:59:46+02:00",
+   "created_at": "2026-10-16T10:21:32+02:00",
+   "updated_at": "2026-10-18T17:00:35+02:00",
+   "vendor": "Wizards of the Coast",
+   "product_type": "Magic Sellado",
+   "tags": [
+    "mtg-cajas",
+    "mtg-cajas-coleccionista",
+    "mtg-sellado",
+    "Star Treck",
+    "TRK"
+   ],
+   "variants": [
+    {
+     "id": 54915941925187,
+     "title": "Default Title",
+     "option1": "Default Title",
+     "option2": null,
+     "option3": null,
+     "sku": "D59170000",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "450.00",
+     "grams": 360,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 15443080347971,
+     "created_at": "2026-10-16T10:21:32+02:00",
+     "updated_at": "2026-10-18T17:00:35+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "position": 1,
+     "values": [
+      "Default Title"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 15443066224963,
+   "title": "Magic: The Gathering® | Star Trek™ | Scene Box",
+   "handle": "magic-the-gathering®-star-trek™-scene-box",
+   "published_at": "2026-10-18T07:59:44+02:00",
+   "created_at": "2026-10-16T10:11:06+02:00",
+   "updated_at": "2026-10-18T17:00:35+02:00",
+   "vendor": "Wizards of the Coast",
+   "product_type": "Magic Sellado",
+   "tags": [
+    "mtg-scene-boxes",
+    "mtg-sellado",
+    "Star Treck",
+    "TRK"
+   ],
+   "variants": [
+    {
+     "id": 54915925279043,
+     "title": "Enterprise-Q",
+     "option1": "Enterprise-Q",
+     "option2": null,
+     "option3": null,
+     "sku": "D590400001",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "40.00",
+     "grams": 318,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 15443066224963,
+     "created_at": "2026-10-16T10:13:11+02:00",
+     "updated_at": "2026-10-18T17:00:35+02:00"
+    },
+    {
+     "id": 54915925311811,
+     "title": "Divergent Timelines",
+     "option1": "Divergent Timelines",
+     "option2": null,
+     "option3": null,
+     "sku": "D590400002",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "40.00",
+     "grams": 318,
+     "compare_at_price": null,
+     "position": 2,
+     "product_id": 15443066224963,
+     "created_at": "2026-10-16T10:13:11+02:00",
+     "updated_at": "2026-10-18T17:00:35+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Versión",
+     "position": 1,
+     "values": [
+      "Enterprise-Q",
+      "Divergent Timelines"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 15426702639427,
+   "title": "Secret Lair | Stardew Valley: Welcome to Stardew Valley",
+   "handle": "secret-lair-stardew-valley-welcome-to-stardew-valley",
+   "published_at": "2026-10-02T09:13:23+02:00",
+   "created_at": "2026-10-02T09:13:23+02:00",
+   "updated_at": "2026-10-18T17:00:35+02:00",
+   "vendor": "Wizards of the Coast",
+   "product_type": "REBU",
+   "tags": [
+    "mtg-secret-lair",
+    "mtg-sellado"
+   ],
+   "variants": [
+    {
+     "id": 54859062870339,
+     "title": "Default Title",
+     "option1": "Default Title",
+     "option2": null,
+     "option3": null,
+     "sku": "D71270000",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "55.00",
+     "grams": 0,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 15426702639427,
+     "created_at": "2026-10-02T09:13:23+02:00",
+     "updated_at": "2026-10-18T17:00:35+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "position": 1,
+     "values": [
+      "Default Title"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 15394522923331,
+   "title": "Reality Fracture | Mazo de Commander",
+   "handle": "reality-fracture-mazo-de-commander",
+   "published_at": "2026-10-01T11:06:25+02:00",
+   "created_at": "2026-08-14T11:25:12+02:00",
+   "updated_at": "2026-10-18T17:00:35+02:00",
+   "vendor": "Wizards of the Coast",
+   "product_type": "Magic Sellado",
+   "tags": [
+    "FRA",
+    "mtg-mazos-commander",
+    "mtg-mazos-preconstruidos",
+    "mtg-sellado",
+    "Reality Fracture"
+   ],
+   "variants": [
+    {
+     "id": 54728138064195,
+     "title": "Español",
+     "option1": "Español",
+     "option2": null,
+     "option3": null,
+     "sku": "D59251050",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "48.00",
+     "grams": 400,
+     "compare_at_price": null,
+     "position": 2,
+     "product_id": 15394522923331,
+     "created_at": "2026-08-14T11:25:13+02:00",
+     "updated_at": "2026-10-18T17:00:35+02:00"
+    },
+    {
+     "id": 54728138096963,
+     "title": "Inglés",
+     "option1": "Inglés",
+     "option2": null,
+     "option3": null,
+     "sku": "D59250000",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": false,
+     "price": "48.00",
+     "grams": 400,
+     "compare_at_price": null,
+     "position": 3,
+     "product_id": 15394522923331,
+     "created_at": "2026-08-14T11:25:13+02:00",
+     "updated_at": "2026-10-18T17:00:35+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Idioma",
+     "position": 1,
+     "values": [
+      "Español",
+      "Inglés"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 15394504802627,
+   "title": "Reality Fracture | Pack de presentación (no incluye entrada a torneo)",
+   "handle": "reality-fracture-pack-de-presentacion-no-incluye-entrada-a-torneo",
+   "published_at": "2026-09-27T18:15:49+02:00",
+   "created_at": "2026-08-14T10:36:12+02:00",
+   "updated_at": "2026-10-18T17:00:35+02:00",
+   "vendor": "Wizards of the Coast",
+   "product_type": "Magic Sellado",
+   "tags": [
+    "FRA",
+    "mtg-sellado",
+    "prerelease packs",
+    "Reality Fracture"
+   ],
+   "variants": [
+    {
+     "id": 54728071446851,
+     "title": "Español",
+     "option1": "Español",
+     "option2": null,
+     "option3": null,
+     "sku": "D59270001",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": false,
+     "price": "33.00",
+     "grams": 220,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 15394504802627,
+     "created_at": "2026-08-14T10:36:13+02:00",
+     "updated_at": "2026-10-18T17:00:35+02:00"
+    },
+    {
+     "id": 54728071479619,
+     "title": "English",
+     "option1": "English",
+     "option2": null,
+     "option3": null,
+     "sku": "D59270000",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "33.00",
+     "grams": 220,
+     "compare_at_price": null,
+     "position": 2,
+     "product_id": 15394504802627,
+     "created_at": "2026-08-14T10:36:13+02:00",
+     "updated_at": "2026-10-18T17:00:35+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Idioma",
+     "position": 1,
+     "values": [
+      "Español",
+      "English"
+     ]
+    }
+   ]
+  }
+ ]
+}

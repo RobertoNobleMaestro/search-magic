@@ -1,0 +1,355 @@
+{
+ "products": [
+  {
+   "id": 10369106903371,
+   "title": "Eldrazi Ravager⁣ - Modern Horizons 3⁣ (Uncommon)⁣ [5]",
+   "handle": "eldrazi-ravager-modern-horizons-3-uncommon-5",
+   "published_at": "2024-12-16T20:48:01+01:00",
+   "created_at": "2024-12-16T20:48:00+01:00",
+   "updated_at": "2026-10-18T16:58:17+02:00",
+   "vendor": "El Duelista",
+   "product_type": "Magic Single",
+   "tags": [
+    "English",
+    "Magic",
+    "Magic Single",
+    "Modern Horizons 3",
+    "Near Mint",
+    "Normal",
+    "Uncommon"
+   ],
+   "variants": [
+    {
+     "id": 50983124238667,
+     "title": "English / Near Mint / Normal",
+     "option1": "English",
+     "option2": "Near Mint",
+     "option3": "Normal",
+     "sku": "MH35-115634",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "0.20",
+     "grams": 3,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 10369106903371,
+     "created_at": "2024-12-16T20:48:00+01:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Language",
+     "position": 1,
+     "values": [
+      "English"
+     ]
+    },
+    {
+     "name": "Condition",
+     "position": 2,
+     "values": [
+      "Near Mint"
+     ]
+    },
+    {
+     "name": "Edition",
+     "position": 3,
+     "values": [
+      "Normal"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10463790367051,
+   "title": "Avishkar Raceway⁣ - Aetherdrift: Promos⁣ (Common)⁣ [425]",
+   "handle": "avishkar-raceway-aetherdrift-promos-common-425-807377",
+   "published_at": "2025-02-16T16:12:45+01:00",
+   "created_at": "2025-02-16T16:12:44+01:00",
+   "updated_at": "2026-10-18T16:58:17+02:00",
+   "vendor": "El Duelista",
+   "product_type": "Magic Single",
+   "tags": [
+    "Aetherdrift: Promos",
+    "Common",
+    "English",
+    "Foil",
+    "Magic",
+    "Magic Single",
+    "Near Mint",
+    "Normal"
+   ],
+   "variants": [
+    {
+     "id": 51278110687563,
+     "title": "English / Near Mint / Foil Normal",
+     "option1": "English",
+     "option2": "Near Mint",
+     "option3": "Foil Normal",
+     "sku": "DFTP425-1940611",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "0.25",
+     "grams": 3,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 10463790367051,
+     "created_at": "2025-02-16T16:12:44+01:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Language",
+     "position": 1,
+     "values": [
+      "English"
+     ]
+    },
+    {
+     "name": "Condition",
+     "position": 2,
+     "values": [
+      "Near Mint"
+     ]
+    },
+    {
+     "name": "Edition",
+     "position": 3,
+     "values": [
+      "Foil Normal"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10472078770507,
+   "title": "Kozilek's Return⁣ - Commander: Modern Horizons 3⁣ (Mythic)⁣ [214]",
+   "handle": "kozilek-s-return-commander-modern-horizons-3-mythic-214",
+   "published_at": "2025-07-19T04:33:14+02:00",
+   "created_at": "2025-02-20T12:24:20+01:00",
+   "updated_at": "2026-10-18T16:58:17+02:00",
+   "vendor": "El Duelista",
+   "product_type": "Magic Single",
+   "tags": [
+    "Commander: Modern Horizons 3",
+    "English",
+    "Magic",
+    "Magic Single",
+    "Mythic",
+    "Near Mint",
+    "Normal"
+   ],
+   "variants": [
+    {
+     "id": 51300417044811,
+     "title": "English / Near Mint / Normal",
+     "option1": "English",
+     "option2": "Near Mint",
+     "option3": "Normal",
+     "sku": "M3C214-149300",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "1.00",
+     "grams": 3,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 10472078770507,
+     "created_at": "2025-02-20T12:24:20+01:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Language",
+     "position": 1,
+     "values": [
+      "English"
+     ]
+    },
+    {
+     "name": "Condition",
+     "position": 2,
+     "values": [
+      "Near Mint"
+     ]
+    },
+    {
+     "name": "Edition",
+     "position": 3,
+     "values": [
+      "Normal"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10470886375755,
+   "title": "Dockside Extortionist⁣ - Commander 2019⁣ (Rare)⁣ [24]",
+   "handle": "dockside-extortionist-commander-2019-rare-24-391677",
+   "published_at": "2025-02-19T16:22:14+01:00",
+   "created_at": "2025-02-19T16:22:12+01:00",
+   "updated_at": "2026-10-18T16:58:17+02:00",
+   "vendor": "El Duelista",
+   "product_type": "Magic Single",
+   "tags": [
+    "Commander 2019",
+    "English",
+    "Magic",
+    "Magic Single",
+    "Near Mint",
+    "Normal",
+    "Rare",
+    "Spanish"
+   ],
+   "variants": [
+    {
+     "id": 51296844939595,
+     "title": "Spanish / Near Mint / Normal",
+     "option1": "Spanish",
+     "option2": "Near Mint",
+     "option3": "Normal",
+     "sku": "C1924-2021312",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": false,
+     "price": "24.99",
+     "grams": 3,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 10470886375755,
+     "created_at": "2025-02-19T16:22:12+01:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    },
+    {
+     "id": 51296845005131,
+     "title": "English / Near Mint / Normal",
+     "option1": "English",
+     "option2": "Near Mint",
+     "option3": "Normal",
+     "sku": "C1924-449834",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "12.94",
+     "grams": 3,
+     "compare_at_price": null,
+     "position": 2,
+     "product_id": 10470886375755,
+     "created_at": "2025-02-19T16:22:16+01:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Language",
+     "position": 1,
+     "values": [
+      "Spanish",
+      "English"
+     ]
+    },
+    {
+     "name": "Condition",
+     "position": 2,
+     "values": [
+      "Near Mint"
+     ]
+    },
+    {
+     "name": "Edition",
+     "position": 3,
+     "values": [
+      "Normal"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10463075533131,
+   "title": "Swamp (V.3)⁣ - Aetherdrift⁣ (Land)⁣ [285]",
+   "handle": "swamp-v-3-aetherdrift-land-285-806120",
+   "published_at": "2025-02-16T00:59:09+01:00",
+   "created_at": "2025-02-16T00:59:08+01:00",
+   "updated_at": "2026-10-18T16:58:17+02:00",
+   "vendor": "El Duelista",
+   "product_type": "Magic Single",
+   "tags": [
+    "Aetherdrift",
+    "English",
+    "Foil",
+    "Land",
+    "Magic",
+    "Magic Single",
+    "Near Mint",
+    "Normal"
+   ],
+   "variants": [
+    {
+     "id": 51276334072139,
+     "title": "English / Near Mint / Normal",
+     "option1": "English",
+     "option2": "Near Mint",
+     "option3": "Normal",
+     "sku": "DFT285-1935113",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": false,
+     "price": "0.05",
+     "grams": 3,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 10463075533131,
+     "created_at": "2025-02-16T00:59:08+01:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    },
+    {
+     "id": 51278727872843,
+     "title": "English / Near Mint / Foil Normal",
+     "option1": "English",
+     "option2": "Near Mint",
+     "option3": "Foil Normal",
+     "sku": "DFT285-1940633",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "0.15",
+     "grams": 3,
+     "compare_at_price": null,
+     "position": 2,
+     "product_id": 10463075533131,
+     "created_at": "2025-02-16T17:45:35+01:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Language",
+     "position": 1,
+     "values": [
+      "English"
+     ]
+    },
+    {
+     "name": "Condition",
+     "position": 2,
+     "values": [
+      "Near Mint"
+     ]
+    },
+    {
+     "name": "Edition",
+     "position": 3,
+     "values": [
+      "Normal",
+      "Foil Normal"
+     ]
+    }
+   ]
+  }
+ ]
+}

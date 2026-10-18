@@ -1,0 +1,79 @@
+# Bloquear o permitir acceso a contenido adjunto. (Si la instalación está en /public_html).
+
+User-agent: *
+Disallow: /cgi-bin
+Disallow: /wp-content/plugins/   
+Disallow: /wp-content/themes/   
+Disallow: /wp-includes/   
+Disallow: /wp-admin/
+
+#Impedir el acceso a los diferentes feed que genere la página
+
+Allow: /feed/$
+Disallow: /feed   
+Disallow: /comments/feed   
+Disallow: /*/feed/$   
+Disallow: /*/feed/rss/$   
+Disallow: /*/trackback/$   
+Disallow: /*/*/feed/$   
+Disallow: /*/*/feed/rss/$   
+Disallow: /*/*/trackback/$   
+Disallow: /*/*/*/feed/$   
+Disallow: /*/*/*/feed/rss/$   
+
+# Impedir URLs terminadas en /trackback/ que sirven como Trackback URL.   
+
+Disallow: /*/*/*/trackback/$
+
+# Evita bloqueos de CSS y JS.
+
+Allow: /*.js$
+Allow: /*.css$
+
+#Bloquear todos los pdfs
+
+Disallow: /*.pdf$
+
+#Bloquear parámetros
+
+Disallow: / *?
+
+# Lista de bots que deberías permitir.
+
+User-agent: Googlebot-Image
+Allow: /wp-content/uploads/
+
+User-agent: Adsbot-Google
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+
+ # Lista de bots bloqueados
+User-agent: MSIECrawler
+Disallow: /
+User-agent: WebCopier
+Disallow: /
+User-agent: HTTrack
+Disallow: /
+User-agent: Microsoft.URL.Control
+Disallow: /
+User-agent: libwww
+Disallow: /
+User-agent: Baiduspider
+Disallow: /
+User-agent: GurujiBot
+Disallow: /
+User-agent: hl_ftien_spider
+Disallow: /
+User-agent: sogou spider
+Disallow: /
+User-agent: Yeti
+Disallow: /
+User-agent: YodaoBot
+Disallow: /
+
+
+# Añadimos una indicación de la localización del sitemap
+Sitemap: https://www.ingeniobcn.com/sitemap_index.xml

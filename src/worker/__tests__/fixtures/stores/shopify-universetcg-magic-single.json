@@ -1,0 +1,376 @@
+{
+ "products": [
+  {
+   "id": 11267504701781,
+   "title": "Prismari, the Inspiration - Secrets of Strixhaven: Extras (Mythic) [XSOS-285]",
+   "handle": "prismari-the-inspiration-secrets-of-strixhaven-extras-mythic-285-880648",
+   "published_at": "2026-04-25T00:35:24+02:00",
+   "created_at": "2026-04-25T00:35:23+02:00",
+   "updated_at": "2026-10-18T16:58:17+02:00",
+   "vendor": "Universe TCG",
+   "product_type": "Magic Single",
+   "tags": [
+    "Magic",
+    "Magic Single",
+    "Mythic",
+    "Near Mint",
+    "Normal",
+    "Secrets of Strixhaven: Extras",
+    "Spanish"
+   ],
+   "variants": [
+    {
+     "id": 53765530091861,
+     "title": "Spanish / Near Mint / Normal",
+     "option1": "Spanish",
+     "option2": "Near Mint",
+     "option3": "Normal",
+     "sku": "XSOS285-64384250",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": true,
+     "price": "18.85",
+     "grams": 0,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 11267504701781,
+     "created_at": "2026-04-25T00:35:23+02:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Language",
+     "position": 1,
+     "values": [
+      "Spanish"
+     ]
+    },
+    {
+     "name": "Condition",
+     "position": 2,
+     "values": [
+      "Near Mint"
+     ]
+    },
+    {
+     "name": "Edition",
+     "position": 3,
+     "values": [
+      "Normal"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 11268382982485,
+   "title": "Super Shredder - Teenage Mutant Ninja Turtles (Mythic) [TMT-83]",
+   "handle": "super-shredder-teenage-mutant-ninja-turtles-mythic-83-868305",
+   "published_at": "2026-04-26T08:39:56+02:00",
+   "created_at": "2026-04-26T08:39:55+02:00",
+   "updated_at": "2026-10-18T16:58:17+02:00",
+   "vendor": "Universe TCG",
+   "product_type": "Magic Single",
+   "tags": [
+    "Magic",
+    "Magic Single",
+    "Mythic",
+    "Near Mint",
+    "Normal",
+    "Spanish",
+    "Teenage Mutant Ninja Turtles"
+   ],
+   "variants": [
+    {
+     "id": 53770810425685,
+     "title": "Spanish / Near Mint / Normal",
+     "option1": "Spanish",
+     "option2": "Near Mint",
+     "option3": "Normal",
+     "sku": "TMT83-49921242",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": false,
+     "price": "17.05",
+     "grams": 0,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 11268382982485,
+     "created_at": "2026-04-26T08:39:55+02:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Language",
+     "position": 1,
+     "values": [
+      "Spanish"
+     ]
+    },
+    {
+     "name": "Condition",
+     "position": 2,
+     "values": [
+      "Near Mint"
+     ]
+    },
+    {
+     "name": "Edition",
+     "position": 3,
+     "values": [
+      "Normal"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 11268383539541,
+   "title": "Krang, Utrom Warlord - Teenage Mutant Ninja Turtles (Mythic) [TMT-175]",
+   "handle": "krang-utrom-warlord-teenage-mutant-ninja-turtles-mythic-175-868420",
+   "published_at": "2026-04-26T08:41:05+02:00",
+   "created_at": "2026-04-26T08:41:04+02:00",
+   "updated_at": "2026-10-18T16:58:17+02:00",
+   "vendor": "Universe TCG",
+   "product_type": "Magic Single",
+   "tags": [
+    "Magic",
+    "Magic Single",
+    "Mythic",
+    "Near Mint",
+    "Normal",
+    "Spanish",
+    "Teenage Mutant Ninja Turtles"
+   ],
+   "variants": [
+    {
+     "id": 53770812129621,
+     "title": "Spanish / Near Mint / Normal",
+     "option1": "Spanish",
+     "option2": "Near Mint",
+     "option3": "Normal",
+     "sku": "TMT175-48120149",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": false,
+     "price": "12.05",
+     "grams": 0,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 11268383539541,
+     "created_at": "2026-04-26T08:41:04+02:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Language",
+     "position": 1,
+     "values": [
+      "Spanish"
+     ]
+    },
+    {
+     "name": "Condition",
+     "position": 2,
+     "values": [
+      "Near Mint"
+     ]
+    },
+    {
+     "name": "Edition",
+     "position": 3,
+     "values": [
+      "Normal"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 11268373184853,
+   "title": "Multiversal Passage - Marvel's Spider-Man (Rare) [SPM-180]",
+   "handle": "multiversal-passage-magic-the-gathering-marvel-s-spider-man-rare-180-839584",
+   "published_at": "2026-04-26T08:22:35+02:00",
+   "created_at": "2026-04-26T08:22:34+02:00",
+   "updated_at": "2026-10-18T16:58:17+02:00",
+   "vendor": "Universe TCG",
+   "product_type": "Magic Single",
+   "tags": [
+    "English",
+    "Magic",
+    "Magic Single",
+    "Marvel's Spider-Man",
+    "Near Mint",
+    "Normal",
+    "Rare"
+   ],
+   "variants": [
+    {
+     "id": 53770787553621,
+     "title": "English / Near Mint / Normal",
+     "option1": "English",
+     "option2": "Near Mint",
+     "option3": "Normal",
+     "sku": "SPM180-8048476",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": false,
+     "price": "10.05",
+     "grams": 0,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 11268373184853,
+     "created_at": "2026-04-26T08:22:34+02:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Language",
+     "position": 1,
+     "values": [
+      "English"
+     ]
+    },
+    {
+     "name": "Condition",
+     "position": 2,
+     "values": [
+      "Near Mint"
+     ]
+    },
+    {
+     "name": "Edition",
+     "position": 3,
+     "values": [
+      "Normal"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 11268441243989,
+   "title": "Awaken the Woods (V.1) - Secrets of Strixhaven: Mystical Archive (Mythic) [SOA-49]",
+   "handle": "awaken-the-woods-v-1-secrets-of-strixhaven-mystical-archive-mythic-49-882714",
+   "published_at": "2026-04-26T09:25:18+02:00",
+   "created_at": "2026-04-26T09:25:17+02:00",
+   "updated_at": "2026-10-18T16:58:17+02:00",
+   "vendor": "Universe TCG",
+   "product_type": "Magic Single",
+   "tags": [
+    "Magic",
+    "Magic Single",
+    "Mythic",
+    "Near Mint",
+    "Normal",
+    "Secrets of Strixhaven: Mystical Archive",
+    "Spanish"
+   ],
+   "variants": [
+    {
+     "id": 53770945626453,
+     "title": "Spanish / Near Mint / Normal",
+     "option1": "Spanish",
+     "option2": "Near Mint",
+     "option3": "Normal",
+     "sku": "SOA49-64698472",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": false,
+     "price": "8.25",
+     "grams": 2,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 11268441243989,
+     "created_at": "2026-04-26T09:25:17+02:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Language",
+     "position": 1,
+     "values": [
+      "Spanish"
+     ]
+    },
+    {
+     "name": "Condition",
+     "position": 2,
+     "values": [
+      "Near Mint"
+     ]
+    },
+    {
+     "name": "Edition",
+     "position": 3,
+     "values": [
+      "Normal"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 11270245744981,
+   "title": "Lorehold, the Historian - Secrets of Strixhaven (Mythic) [SOS-201]",
+   "handle": "lorehold-the-historian-secrets-of-strixhaven-mythic-201-880343",
+   "published_at": "2026-04-28T02:13:18+02:00",
+   "created_at": "2026-04-28T02:13:17+02:00",
+   "updated_at": "2026-10-18T16:58:17+02:00",
+   "vendor": "Universe TCG",
+   "product_type": "Magic Single",
+   "tags": [
+    "Magic",
+    "Magic Single",
+    "Mythic",
+    "Near Mint",
+    "Normal",
+    "Secrets of Strixhaven",
+    "Spanish"
+   ],
+   "variants": [
+    {
+     "id": 53779436110165,
+     "title": "Spanish / Near Mint / Normal",
+     "option1": "Spanish",
+     "option2": "Near Mint",
+     "option3": "Normal",
+     "sku": "SOS201-63712447",
+     "requires_shipping": true,
+     "taxable": true,
+     "available": false,
+     "price": "7.80",
+     "grams": 0,
+     "compare_at_price": null,
+     "position": 1,
+     "product_id": 11270245744981,
+     "created_at": "2026-04-28T02:13:17+02:00",
+     "updated_at": "2026-10-18T16:58:17+02:00"
+    }
+   ],
+   "options": [
+    {
+     "name": "Language",
+     "position": 1,
+     "values": [
+      "Spanish"
+     ]
+    },
+    {
+     "name": "Condition",
+     "position": 2,
+     "values": [
+      "Near Mint"
+     ]
+    },
+    {
+     "name": "Edition",
+     "position": 3,
+     "values": [
+      "Normal"
+     ]
+    }
+   ]
+  }
+ ]
+}

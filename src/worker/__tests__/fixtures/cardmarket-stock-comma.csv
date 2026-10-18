@@ -1,0 +1,6 @@
+idArticle,idProduct,Name,Expansion,idExpansion,Collector Number,Language,Condition,isFoil,isSigned,isPlayset,isAltered,Price,Quantity,Comments
+1600000001,882058,Lightning Bolt,Secrets of Strixhaven,6123,113,Spanish,NM,false,false,false,false,0.39,4,
+1600000002,566480,"Ragavan, Nimble Pilferer",Modern Horizons 2,4269,138,English,NM,true,false,false,false,52.00,1,"Foil, pack fresh"
+1600000003,738037,The One Ring,The Lord of the Rings: Tales of Middle-earth,5092,791,Japanese,EX,true,false,false,false,"1,250.00",1,
+1600000004,883465,Lightning Bolt,Secret Lair Drop,3201,IFIYW-7,T-Chinese,Near Mint,1,0,0,0,9.95,2,
+1600000005,,Mystery Booster Playtest Card,Mystery Booster,,,English,MT,false,false,false,false,,1,sin precio

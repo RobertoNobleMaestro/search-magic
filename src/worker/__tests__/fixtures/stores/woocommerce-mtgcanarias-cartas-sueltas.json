@@ -1,0 +1,3106 @@
+[
+ {
+  "id": 329426,
+  "name": "Enfrentamiento decisivo",
+  "parent": 0,
+  "type": "variable",
+  "variation": "",
+  "permalink": "https://mtgcanarias.com/tienda/cartas-sueltas/media-and-collaboration-promos/enfrentamiento-decisivo-3/",
+  "prices": {
+   "price": "195",
+   "regular_price": "195",
+   "sale_price": "195",
+   "price_range": null,
+   "currency_code": "EUR",
+   "currency_symbol": "€",
+   "currency_minor_unit": 2,
+   "currency_decimal_separator": ",",
+   "currency_thousand_separator": ".",
+   "currency_prefix": "",
+   "currency_suffix": " €"
+  },
+  "categories": [
+   {
+    "id": 7210,
+    "name": "Media and Collaboration Promos",
+    "slug": "media-and-collaboration-promos",
+    "link": "https://mtgcanarias.com/categoria-producto/cartas-sueltas/media-and-collaboration-promos/"
+   }
+  ],
+  "attributes": [
+   {
+    "id": 32,
+    "name": "Estado",
+    "taxonomy": "pa_estado",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3381,
+      "name": "Excellent",
+      "slug": "excellent",
+      "default": false
+     },
+     {
+      "id": 3382,
+      "name": "Good",
+      "slug": "good",
+      "default": false
+     },
+     {
+      "id": 4060,
+      "name": "Light Played",
+      "slug": "light-played",
+      "default": false
+     },
+     {
+      "id": 3949,
+      "name": "Mint",
+      "slug": "mint",
+      "default": false
+     },
+     {
+      "id": 3378,
+      "name": "Near Mint",
+      "slug": "near-mint",
+      "default": true
+     },
+     {
+      "id": 3384,
+      "name": "Played",
+      "slug": "played",
+      "default": false
+     },
+     {
+      "id": 3383,
+      "name": "Poor",
+      "slug": "poor",
+      "default": false
+     }
+    ]
+   },
+   {
+    "id": 51,
+    "name": "Foil",
+    "taxonomy": "pa_foil",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3856,
+      "name": "Foil tradicional",
+      "slug": "foil-tradicional",
+      "default": false
+     },
+     {
+      "id": 3857,
+      "name": "No foil",
+      "slug": "no-foil",
+      "default": true
+     }
+    ]
+   },
+   {
+    "id": 31,
+    "name": "Idioma",
+    "taxonomy": "pa_idioma",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3376,
+      "name": "Inglés",
+      "slug": "ingles",
+      "default": true
+     }
+    ]
+   },
+   {
+    "id": 10,
+    "name": "Colección",
+    "taxonomy": "pa_coleccion",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7211,
+      "name": "Media and Collaboration Promos",
+      "slug": "media-and-collaboration-promos"
+     }
+    ]
+   },
+   {
+    "id": 49,
+    "name": "Conjunto",
+    "taxonomy": "pa_conjunto",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7212,
+      "name": "PMEI",
+      "slug": "pmei"
+     }
+    ]
+   },
+   {
+    "id": 12,
+    "name": "Rareza",
+    "taxonomy": "pa_rareza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4356,
+      "name": "Mítica",
+      "slug": "mitica"
+     }
+    ]
+   },
+   {
+    "id": 1,
+    "name": "Maná",
+    "taxonomy": "pa_mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 363,
+      "name": "Blanco",
+      "slug": "blanco"
+     }
+    ]
+   },
+   {
+    "id": 21,
+    "name": "Coste de maná",
+    "taxonomy": "pa_coste-de-mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4348,
+      "name": "{W}",
+      "slug": "w"
+     }
+    ]
+   },
+   {
+    "id": 59,
+    "name": "Coste de maná convertido",
+    "taxonomy": "pa_coste-de-mana-convertido",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4349,
+      "name": "1",
+      "slug": "1"
+     }
+    ]
+   },
+   {
+    "id": 48,
+    "name": "Color",
+    "taxonomy": "pa_color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3807,
+      "name": "Blanco",
+      "slug": "blanco"
+     }
+    ]
+   },
+   {
+    "id": 19,
+    "name": "Identidad de color",
+    "taxonomy": "pa_identidad-de-color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 2521,
+      "name": "Blanco",
+      "slug": "blanco"
+     }
+    ]
+   },
+   {
+    "id": 11,
+    "name": "Tipo de carta básica",
+    "taxonomy": "pa_tipo-de-carta-basica",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 584,
+      "name": "Instantáneo",
+      "slug": "instantaneo"
+     }
+    ]
+   },
+   {
+    "id": 22,
+    "name": "Palabra clave",
+    "taxonomy": "pa_palabra-clave",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4659,
+      "name": "Spree",
+      "slug": "spree"
+     }
+    ]
+   },
+   {
+    "id": 18,
+    "name": "Artista",
+    "taxonomy": "pa_artista",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 5016,
+      "name": "Tetsuya Nomura",
+      "slug": "tetsuya-nomura"
+     }
+    ]
+   },
+   {
+    "id": 28,
+    "name": "Tratamiento",
+    "taxonomy": "pa_tratamiento",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4562,
+      "name": "Borderless",
+      "slug": "borderless"
+     }
+    ]
+   },
+   {
+    "id": 35,
+    "name": "Formatos legales",
+    "taxonomy": "pa_formatos-legales",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3800,
+      "name": "Brawl",
+      "slug": "brawl"
+     },
+     {
+      "id": 3516,
+      "name": "Commander",
+      "slug": "commander"
+     },
+     {
+      "id": 4335,
+      "name": "Competitivebrawl",
+      "slug": "competitivebrawl"
+     },
+     {
+      "id": 4336,
+      "name": "Duel",
+      "slug": "duel"
+     },
+     {
+      "id": 4345,
+      "name": "Future",
+      "slug": "future"
+     },
+     {
+      "id": 4333,
+      "name": "Gladiator",
+      "slug": "gladiator"
+     },
+     {
+      "id": 3797,
+      "name": "Historic",
+      "slug": "historic"
+     },
+     {
+      "id": 3540,
+      "name": "Legacy",
+      "slug": "legacy"
+     },
+     {
+      "id": 3557,
+      "name": "Modern",
+      "slug": "modern"
+     },
+     {
+      "id": 4334,
+      "name": "Oathbreaker",
+      "slug": "oathbreaker"
+     },
+     {
+      "id": 3547,
+      "name": "Pioneer",
+      "slug": "pioneer"
+     },
+     {
+      "id": 3525,
+      "name": "Standard",
+      "slug": "standard"
+     },
+     {
+      "id": 4347,
+      "name": "Standardbrawl",
+      "slug": "standardbrawl"
+     },
+     {
+      "id": 3798,
+      "name": "Timeless",
+      "slug": "timeless"
+     },
+     {
+      "id": 4337,
+      "name": "Tlr",
+      "slug": "tlr"
+     },
+     {
+      "id": 3541,
+      "name": "Vintage",
+      "slug": "vintage"
+     }
+    ]
+   },
+   {
+    "id": 41,
+    "name": "Multiverso",
+    "taxonomy": "pa_multiverso",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3698,
+      "name": "Más allá del Multiverso",
+      "slug": "mas-alla-del-multiverso"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Frame",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "2015",
+      "slug": "2015"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Borde",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "Sin borde",
+      "slug": "Sin borde"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Promo",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "Promo",
+      "slug": "Promo"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Fecha de lanzamiento",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "08/04/2027",
+      "slug": "08/04/2027"
+     }
+    ]
+   }
+  ],
+  "variations": [
+   {
+    "id": 329429,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "foil-tradicional"
+     },
+     {
+      "name": "Idioma",
+      "value": "ingles"
+     }
+    ]
+   }
+  ],
+  "is_in_stock": false,
+  "low_stock_remaining": null
+ },
+ {
+  "id": 335348,
+  "name": "Captain Kathryn Janeway",
+  "parent": 0,
+  "type": "variable",
+  "variation": "",
+  "permalink": "https://mtgcanarias.com/tienda/cartas-sueltas/star-trek/captain-kathryn-janeway-5/",
+  "prices": {
+   "price": "195",
+   "regular_price": "195",
+   "sale_price": "195",
+   "price_range": null,
+   "currency_code": "EUR",
+   "currency_symbol": "€",
+   "currency_minor_unit": 2,
+   "currency_decimal_separator": ",",
+   "currency_thousand_separator": ".",
+   "currency_prefix": "",
+   "currency_suffix": " €"
+  },
+  "categories": [
+   {
+    "id": 7246,
+    "name": "Star Trek",
+    "slug": "star-trek",
+    "link": "https://mtgcanarias.com/categoria-producto/cartas-sueltas/star-trek/"
+   }
+  ],
+  "attributes": [
+   {
+    "id": 32,
+    "name": "Estado",
+    "taxonomy": "pa_estado",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3381,
+      "name": "Excellent",
+      "slug": "excellent",
+      "default": false
+     },
+     {
+      "id": 3382,
+      "name": "Good",
+      "slug": "good",
+      "default": false
+     },
+     {
+      "id": 4060,
+      "name": "Light Played",
+      "slug": "light-played",
+      "default": false
+     },
+     {
+      "id": 3949,
+      "name": "Mint",
+      "slug": "mint",
+      "default": false
+     },
+     {
+      "id": 3378,
+      "name": "Near Mint",
+      "slug": "near-mint",
+      "default": true
+     },
+     {
+      "id": 3384,
+      "name": "Played",
+      "slug": "played",
+      "default": false
+     },
+     {
+      "id": 3383,
+      "name": "Poor",
+      "slug": "poor",
+      "default": false
+     }
+    ]
+   },
+   {
+    "id": 51,
+    "name": "Foil",
+    "taxonomy": "pa_foil",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3856,
+      "name": "Foil tradicional",
+      "slug": "foil-tradicional",
+      "default": false
+     },
+     {
+      "id": 3857,
+      "name": "No foil",
+      "slug": "no-foil",
+      "default": true
+     }
+    ]
+   },
+   {
+    "id": 31,
+    "name": "Idioma",
+    "taxonomy": "pa_idioma",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3376,
+      "name": "Inglés",
+      "slug": "ingles",
+      "default": true
+     }
+    ]
+   },
+   {
+    "id": 10,
+    "name": "Colección",
+    "taxonomy": "pa_coleccion",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7238,
+      "name": "Star Trek",
+      "slug": "star-trek"
+     }
+    ]
+   },
+   {
+    "id": 49,
+    "name": "Conjunto",
+    "taxonomy": "pa_conjunto",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7247,
+      "name": "TRK",
+      "slug": "trk"
+     }
+    ]
+   },
+   {
+    "id": 12,
+    "name": "Rareza",
+    "taxonomy": "pa_rareza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4356,
+      "name": "Mítica",
+      "slug": "mitica"
+     }
+    ]
+   },
+   {
+    "id": 1,
+    "name": "Maná",
+    "taxonomy": "pa_mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 300,
+      "name": "Verde",
+      "slug": "verde"
+     }
+    ]
+   },
+   {
+    "id": 21,
+    "name": "Coste de maná",
+    "taxonomy": "pa_coste-de-mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4489,
+      "name": "{3}{G}",
+      "slug": "3g"
+     }
+    ]
+   },
+   {
+    "id": 59,
+    "name": "Coste de maná convertido",
+    "taxonomy": "pa_coste-de-mana-convertido",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4387,
+      "name": "4",
+      "slug": "4"
+     }
+    ]
+   },
+   {
+    "id": 48,
+    "name": "Color",
+    "taxonomy": "pa_color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3811,
+      "name": "Verde",
+      "slug": "verde"
+     }
+    ]
+   },
+   {
+    "id": 19,
+    "name": "Identidad de color",
+    "taxonomy": "pa_identidad-de-color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 2516,
+      "name": "Verde",
+      "slug": "verde"
+     }
+    ]
+   },
+   {
+    "id": 11,
+    "name": "Tipo de carta básica",
+    "taxonomy": "pa_tipo-de-carta-basica",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 581,
+      "name": "Criatura",
+      "slug": "criatura"
+     }
+    ]
+   },
+   {
+    "id": 17,
+    "name": "Supertipo de carta básica",
+    "taxonomy": "pa_supertipo-de-carta-basica",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 821,
+      "name": "Legendaria",
+      "slug": "legendaria"
+     }
+    ]
+   },
+   {
+    "id": 14,
+    "name": "Raza",
+    "taxonomy": "pa_raza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 711,
+      "name": "Humano",
+      "slug": "humano"
+     },
+     {
+      "id": 7223,
+      "name": "Oficial",
+      "slug": "oficial"
+     }
+    ]
+   },
+   {
+    "id": 22,
+    "name": "Palabra clave",
+    "taxonomy": "pa_palabra-clave",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 2928,
+      "name": "Explorar",
+      "slug": "explorar"
+     }
+    ]
+   },
+   {
+    "id": 18,
+    "name": "Artista",
+    "taxonomy": "pa_artista",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 871,
+      "name": "Lie Setiawan",
+      "slug": "lie-setiawan"
+     }
+    ]
+   },
+   {
+    "id": 28,
+    "name": "Tratamiento",
+    "taxonomy": "pa_tratamiento",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4562,
+      "name": "Borderless",
+      "slug": "borderless"
+     }
+    ]
+   },
+   {
+    "id": 41,
+    "name": "Multiverso",
+    "taxonomy": "pa_multiverso",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3698,
+      "name": "Más allá del Multiverso",
+      "slug": "mas-alla-del-multiverso"
+     }
+    ]
+   },
+   {
+    "id": 55,
+    "name": "Fuerza",
+    "taxonomy": "pa_fuerza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4275,
+      "name": "2",
+      "slug": "2"
+     }
+    ]
+   },
+   {
+    "id": 56,
+    "name": "Resistencia",
+    "taxonomy": "pa_resistencia",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4282,
+      "name": "3",
+      "slug": "3"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Frame",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "2015",
+      "slug": "2015"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Borde",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "Sin borde",
+      "slug": "Sin borde"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Fecha de lanzamiento",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "13/11/2026",
+      "slug": "13/11/2026"
+     }
+    ]
+   }
+  ],
+  "variations": [
+   {
+    "id": 335351,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "no-foil"
+     },
+     {
+      "name": "Idioma",
+      "value": "ingles"
+     }
+    ]
+   },
+   {
+    "id": 335352,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "foil-tradicional"
+     },
+     {
+      "name": "Idioma",
+      "value": "ingles"
+     }
+    ]
+   }
+  ],
+  "is_in_stock": false,
+  "low_stock_remaining": null
+ },
+ {
+  "id": 313704,
+  "name": "Omnipresencia",
+  "parent": 0,
+  "type": "variable",
+  "variation": "",
+  "permalink": "https://mtgcanarias.com/tienda/cartas-sueltas/realidad-fracturada/omnipresence-2/",
+  "prices": {
+   "price": "195",
+   "regular_price": "195",
+   "sale_price": "195",
+   "price_range": {
+    "min_amount": "195",
+    "max_amount": "2495"
+   },
+   "currency_code": "EUR",
+   "currency_symbol": "€",
+   "currency_minor_unit": 2,
+   "currency_decimal_separator": ",",
+   "currency_thousand_separator": ".",
+   "currency_prefix": "",
+   "currency_suffix": " €"
+  },
+  "categories": [
+   {
+    "id": 7011,
+    "name": "Realidad fracturada",
+    "slug": "realidad-fracturada",
+    "link": "https://mtgcanarias.com/categoria-producto/cartas-sueltas/realidad-fracturada/"
+   }
+  ],
+  "attributes": [
+   {
+    "id": 32,
+    "name": "Estado",
+    "taxonomy": "pa_estado",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3381,
+      "name": "Excellent",
+      "slug": "excellent",
+      "default": false
+     },
+     {
+      "id": 3382,
+      "name": "Good",
+      "slug": "good",
+      "default": false
+     },
+     {
+      "id": 4060,
+      "name": "Light Played",
+      "slug": "light-played",
+      "default": false
+     },
+     {
+      "id": 3949,
+      "name": "Mint",
+      "slug": "mint",
+      "default": false
+     },
+     {
+      "id": 3378,
+      "name": "Near Mint",
+      "slug": "near-mint",
+      "default": true
+     },
+     {
+      "id": 3384,
+      "name": "Played",
+      "slug": "played",
+      "default": false
+     },
+     {
+      "id": 3383,
+      "name": "Poor",
+      "slug": "poor",
+      "default": false
+     }
+    ]
+   },
+   {
+    "id": 51,
+    "name": "Foil",
+    "taxonomy": "pa_foil",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3856,
+      "name": "Foil tradicional",
+      "slug": "foil-tradicional",
+      "default": false
+     },
+     {
+      "id": 3857,
+      "name": "No foil",
+      "slug": "no-foil",
+      "default": true
+     }
+    ]
+   },
+   {
+    "id": 31,
+    "name": "Idioma",
+    "taxonomy": "pa_idioma",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3386,
+      "name": "Alemán",
+      "slug": "aleman",
+      "default": false
+     },
+     {
+      "id": 3385,
+      "name": "Español",
+      "slug": "espanol",
+      "default": false
+     },
+     {
+      "id": 3387,
+      "name": "Francés",
+      "slug": "frances",
+      "default": false
+     },
+     {
+      "id": 3376,
+      "name": "Inglés",
+      "slug": "ingles",
+      "default": true
+     },
+     {
+      "id": 3388,
+      "name": "Italiano",
+      "slug": "italiano",
+      "default": false
+     },
+     {
+      "id": 3398,
+      "name": "Japonés",
+      "slug": "japones",
+      "default": false
+     }
+    ]
+   },
+   {
+    "id": 10,
+    "name": "Colección",
+    "taxonomy": "pa_coleccion",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7012,
+      "name": "Realidad fracturada",
+      "slug": "realidad-fracturada"
+     }
+    ]
+   },
+   {
+    "id": 49,
+    "name": "Conjunto",
+    "taxonomy": "pa_conjunto",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7013,
+      "name": "FRA",
+      "slug": "fra"
+     }
+    ]
+   },
+   {
+    "id": 12,
+    "name": "Rareza",
+    "taxonomy": "pa_rareza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4356,
+      "name": "Mítica",
+      "slug": "mitica"
+     }
+    ]
+   },
+   {
+    "id": 1,
+    "name": "Maná",
+    "taxonomy": "pa_mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 300,
+      "name": "Verde",
+      "slug": "verde"
+     }
+    ]
+   },
+   {
+    "id": 21,
+    "name": "Coste de maná",
+    "taxonomy": "pa_coste-de-mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4947,
+      "name": "{5}{G}{G}{G}",
+      "slug": "5ggg"
+     }
+    ]
+   },
+   {
+    "id": 59,
+    "name": "Coste de maná convertido",
+    "taxonomy": "pa_coste-de-mana-convertido",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4550,
+      "name": "8",
+      "slug": "8"
+     }
+    ]
+   },
+   {
+    "id": 48,
+    "name": "Color",
+    "taxonomy": "pa_color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3811,
+      "name": "Verde",
+      "slug": "verde"
+     }
+    ]
+   },
+   {
+    "id": 19,
+    "name": "Identidad de color",
+    "taxonomy": "pa_identidad-de-color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 2516,
+      "name": "Verde",
+      "slug": "verde"
+     }
+    ]
+   },
+   {
+    "id": 11,
+    "name": "Tipo de carta básica",
+    "taxonomy": "pa_tipo-de-carta-basica",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 582,
+      "name": "Encantamiento",
+      "slug": "encantamiento"
+     }
+    ]
+   },
+   {
+    "id": 18,
+    "name": "Artista",
+    "taxonomy": "pa_artista",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 1072,
+      "name": "Chase Stone",
+      "slug": "chase-stone"
+     }
+    ]
+   },
+   {
+    "id": 28,
+    "name": "Tratamiento",
+    "taxonomy": "pa_tratamiento",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4562,
+      "name": "Borderless",
+      "slug": "borderless"
+     }
+    ]
+   },
+   {
+    "id": 35,
+    "name": "Formatos legales",
+    "taxonomy": "pa_formatos-legales",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3800,
+      "name": "Brawl",
+      "slug": "brawl"
+     },
+     {
+      "id": 3516,
+      "name": "Commander",
+      "slug": "commander"
+     },
+     {
+      "id": 4335,
+      "name": "Competitivebrawl",
+      "slug": "competitivebrawl"
+     },
+     {
+      "id": 4336,
+      "name": "Duel",
+      "slug": "duel"
+     },
+     {
+      "id": 4345,
+      "name": "Future",
+      "slug": "future"
+     },
+     {
+      "id": 4333,
+      "name": "Gladiator",
+      "slug": "gladiator"
+     },
+     {
+      "id": 3797,
+      "name": "Historic",
+      "slug": "historic"
+     },
+     {
+      "id": 3540,
+      "name": "Legacy",
+      "slug": "legacy"
+     },
+     {
+      "id": 3557,
+      "name": "Modern",
+      "slug": "modern"
+     },
+     {
+      "id": 4334,
+      "name": "Oathbreaker",
+      "slug": "oathbreaker"
+     },
+     {
+      "id": 3547,
+      "name": "Pioneer",
+      "slug": "pioneer"
+     },
+     {
+      "id": 3525,
+      "name": "Standard",
+      "slug": "standard"
+     },
+     {
+      "id": 4347,
+      "name": "Standardbrawl",
+      "slug": "standardbrawl"
+     },
+     {
+      "id": 3798,
+      "name": "Timeless",
+      "slug": "timeless"
+     },
+     {
+      "id": 3541,
+      "name": "Vintage",
+      "slug": "vintage"
+     }
+    ]
+   },
+   {
+    "id": 41,
+    "name": "Multiverso",
+    "taxonomy": "pa_multiverso",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3697,
+      "name": "Magic: The Gathering",
+      "slug": "magic-the-gathering"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Frame",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "2015",
+      "slug": "2015"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Borde",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "Sin borde",
+      "slug": "Sin borde"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Fecha de lanzamiento",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "02/10/2026",
+      "slug": "02/10/2026"
+     }
+    ]
+   }
+  ],
+  "variations": [
+   {
+    "id": 313707,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "no-foil"
+     },
+     {
+      "name": "Idioma",
+      "value": "ingles"
+     }
+    ]
+   },
+   {
+    "id": 331518,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "no-foil"
+     },
+     {
+      "name": "Idioma",
+      "value": "espanol"
+     }
+    ]
+   },
+   {
+    "id": 331519,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "foil-tradicional"
+     },
+     {
+      "name": "Idioma",
+      "value": "espanol"
+     }
+    ]
+   }
+  ],
+  "is_in_stock": true,
+  "low_stock_remaining": null
+ },
+ {
+  "id": 313659,
+  "name": "Karn, defensor argénteo",
+  "parent": 0,
+  "type": "variable",
+  "variation": "",
+  "permalink": "https://mtgcanarias.com/tienda/cartas-sueltas/realidad-fracturada/karn-argent-defender-2/",
+  "prices": {
+   "price": "95",
+   "regular_price": "95",
+   "sale_price": "95",
+   "price_range": {
+    "min_amount": "95",
+    "max_amount": "995"
+   },
+   "currency_code": "EUR",
+   "currency_symbol": "€",
+   "currency_minor_unit": 2,
+   "currency_decimal_separator": ",",
+   "currency_thousand_separator": ".",
+   "currency_prefix": "",
+   "currency_suffix": " €"
+  },
+  "categories": [
+   {
+    "id": 7011,
+    "name": "Realidad fracturada",
+    "slug": "realidad-fracturada",
+    "link": "https://mtgcanarias.com/categoria-producto/cartas-sueltas/realidad-fracturada/"
+   }
+  ],
+  "attributes": [
+   {
+    "id": 32,
+    "name": "Estado",
+    "taxonomy": "pa_estado",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3381,
+      "name": "Excellent",
+      "slug": "excellent",
+      "default": false
+     },
+     {
+      "id": 3382,
+      "name": "Good",
+      "slug": "good",
+      "default": false
+     },
+     {
+      "id": 4060,
+      "name": "Light Played",
+      "slug": "light-played",
+      "default": false
+     },
+     {
+      "id": 3949,
+      "name": "Mint",
+      "slug": "mint",
+      "default": false
+     },
+     {
+      "id": 3378,
+      "name": "Near Mint",
+      "slug": "near-mint",
+      "default": true
+     },
+     {
+      "id": 3384,
+      "name": "Played",
+      "slug": "played",
+      "default": false
+     },
+     {
+      "id": 3383,
+      "name": "Poor",
+      "slug": "poor",
+      "default": false
+     }
+    ]
+   },
+   {
+    "id": 51,
+    "name": "Foil",
+    "taxonomy": "pa_foil",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3856,
+      "name": "Foil tradicional",
+      "slug": "foil-tradicional",
+      "default": false
+     },
+     {
+      "id": 3857,
+      "name": "No foil",
+      "slug": "no-foil",
+      "default": true
+     }
+    ]
+   },
+   {
+    "id": 31,
+    "name": "Idioma",
+    "taxonomy": "pa_idioma",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3386,
+      "name": "Alemán",
+      "slug": "aleman",
+      "default": false
+     },
+     {
+      "id": 3385,
+      "name": "Español",
+      "slug": "espanol",
+      "default": false
+     },
+     {
+      "id": 3387,
+      "name": "Francés",
+      "slug": "frances",
+      "default": false
+     },
+     {
+      "id": 3376,
+      "name": "Inglés",
+      "slug": "ingles",
+      "default": true
+     },
+     {
+      "id": 3388,
+      "name": "Italiano",
+      "slug": "italiano",
+      "default": false
+     },
+     {
+      "id": 3398,
+      "name": "Japonés",
+      "slug": "japones",
+      "default": false
+     }
+    ]
+   },
+   {
+    "id": 10,
+    "name": "Colección",
+    "taxonomy": "pa_coleccion",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7012,
+      "name": "Realidad fracturada",
+      "slug": "realidad-fracturada"
+     }
+    ]
+   },
+   {
+    "id": 49,
+    "name": "Conjunto",
+    "taxonomy": "pa_conjunto",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7013,
+      "name": "FRA",
+      "slug": "fra"
+     }
+    ]
+   },
+   {
+    "id": 12,
+    "name": "Rareza",
+    "taxonomy": "pa_rareza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 591,
+      "name": "Rara",
+      "slug": "rara"
+     }
+    ]
+   },
+   {
+    "id": 1,
+    "name": "Maná",
+    "taxonomy": "pa_mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 2373,
+      "name": "Incoloro",
+      "slug": "incoloro"
+     }
+    ]
+   },
+   {
+    "id": 21,
+    "name": "Coste de maná",
+    "taxonomy": "pa_coste-de-mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4543,
+      "name": "{2}",
+      "slug": "2-3"
+     }
+    ]
+   },
+   {
+    "id": 59,
+    "name": "Coste de maná convertido",
+    "taxonomy": "pa_coste-de-mana-convertido",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4351,
+      "name": "2",
+      "slug": "2"
+     }
+    ]
+   },
+   {
+    "id": 48,
+    "name": "Color",
+    "taxonomy": "pa_color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4009,
+      "name": "Incoloro",
+      "slug": "incoloro"
+     }
+    ]
+   },
+   {
+    "id": 19,
+    "name": "Identidad de color",
+    "taxonomy": "pa_identidad-de-color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3218,
+      "name": "Incoloro",
+      "slug": "incoloro"
+     }
+    ]
+   },
+   {
+    "id": 11,
+    "name": "Tipo de carta básica",
+    "taxonomy": "pa_tipo-de-carta-basica",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 583,
+      "name": "Artefacto",
+      "slug": "artefacto"
+     },
+     {
+      "id": 581,
+      "name": "Criatura",
+      "slug": "criatura"
+     }
+    ]
+   },
+   {
+    "id": 14,
+    "name": "Raza",
+    "taxonomy": "pa_raza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 755,
+      "name": "Gólem",
+      "slug": "golem"
+     }
+    ]
+   },
+   {
+    "id": 18,
+    "name": "Artista",
+    "taxonomy": "pa_artista",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 1344,
+      "name": "Billy Christian",
+      "slug": "billy-christian"
+     }
+    ]
+   },
+   {
+    "id": 28,
+    "name": "Tratamiento",
+    "taxonomy": "pa_tratamiento",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4562,
+      "name": "Borderless",
+      "slug": "borderless"
+     }
+    ]
+   },
+   {
+    "id": 35,
+    "name": "Formatos legales",
+    "taxonomy": "pa_formatos-legales",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3800,
+      "name": "Brawl",
+      "slug": "brawl"
+     },
+     {
+      "id": 3516,
+      "name": "Commander",
+      "slug": "commander"
+     },
+     {
+      "id": 4335,
+      "name": "Competitivebrawl",
+      "slug": "competitivebrawl"
+     },
+     {
+      "id": 4336,
+      "name": "Duel",
+      "slug": "duel"
+     },
+     {
+      "id": 4345,
+      "name": "Future",
+      "slug": "future"
+     },
+     {
+      "id": 4333,
+      "name": "Gladiator",
+      "slug": "gladiator"
+     },
+     {
+      "id": 3797,
+      "name": "Historic",
+      "slug": "historic"
+     },
+     {
+      "id": 3540,
+      "name": "Legacy",
+      "slug": "legacy"
+     },
+     {
+      "id": 3557,
+      "name": "Modern",
+      "slug": "modern"
+     },
+     {
+      "id": 4334,
+      "name": "Oathbreaker",
+      "slug": "oathbreaker"
+     },
+     {
+      "id": 3547,
+      "name": "Pioneer",
+      "slug": "pioneer"
+     },
+     {
+      "id": 3525,
+      "name": "Standard",
+      "slug": "standard"
+     },
+     {
+      "id": 4347,
+      "name": "Standardbrawl",
+      "slug": "standardbrawl"
+     },
+     {
+      "id": 3798,
+      "name": "Timeless",
+      "slug": "timeless"
+     },
+     {
+      "id": 4337,
+      "name": "Tlr",
+      "slug": "tlr"
+     },
+     {
+      "id": 3541,
+      "name": "Vintage",
+      "slug": "vintage"
+     }
+    ]
+   },
+   {
+    "id": 41,
+    "name": "Multiverso",
+    "taxonomy": "pa_multiverso",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3697,
+      "name": "Magic: The Gathering",
+      "slug": "magic-the-gathering"
+     }
+    ]
+   },
+   {
+    "id": 55,
+    "name": "Fuerza",
+    "taxonomy": "pa_fuerza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4319,
+      "name": "1",
+      "slug": "1"
+     }
+    ]
+   },
+   {
+    "id": 56,
+    "name": "Resistencia",
+    "taxonomy": "pa_resistencia",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4282,
+      "name": "3",
+      "slug": "3"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Flavor text",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "A life without rest, a soul heavy with regret.",
+      "slug": "A life without rest, a soul heavy with regret."
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Frame",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "2015",
+      "slug": "2015"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Borde",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "Sin borde",
+      "slug": "Sin borde"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Fecha de lanzamiento",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "02/10/2026",
+      "slug": "02/10/2026"
+     }
+    ]
+   },
+   {
+    "id": 17,
+    "name": "Supertipo de carta básica",
+    "taxonomy": "pa_supertipo-de-carta-basica",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 821,
+      "name": "Legendaria",
+      "slug": "legendaria"
+     }
+    ]
+   }
+  ],
+  "variations": [
+   {
+    "id": 313662,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "no-foil"
+     },
+     {
+      "name": "Idioma",
+      "value": "ingles"
+     }
+    ]
+   },
+   {
+    "id": 313663,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "foil-tradicional"
+     },
+     {
+      "name": "Idioma",
+      "value": "ingles"
+     }
+    ]
+   },
+   {
+    "id": 331496,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "no-foil"
+     },
+     {
+      "name": "Idioma",
+      "value": "espanol"
+     }
+    ]
+   },
+   {
+    "id": 331497,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "foil-tradicional"
+     },
+     {
+      "name": "Idioma",
+      "value": "espanol"
+     }
+    ]
+   }
+  ],
+  "is_in_stock": true,
+  "low_stock_remaining": null
+ },
+ {
+  "id": 313644,
+  "name": "Tam, la Posibilidad",
+  "parent": 0,
+  "type": "variable",
+  "variation": "",
+  "permalink": "https://mtgcanarias.com/tienda/cartas-sueltas/realidad-fracturada/tam-the-possibility-2/",
+  "prices": {
+   "price": "695",
+   "regular_price": "95",
+   "sale_price": "95",
+   "price_range": {
+    "min_amount": "95",
+    "max_amount": "695"
+   },
+   "currency_code": "EUR",
+   "currency_symbol": "€",
+   "currency_minor_unit": 2,
+   "currency_decimal_separator": ",",
+   "currency_thousand_separator": ".",
+   "currency_prefix": "",
+   "currency_suffix": " €"
+  },
+  "categories": [
+   {
+    "id": 7011,
+    "name": "Realidad fracturada",
+    "slug": "realidad-fracturada",
+    "link": "https://mtgcanarias.com/categoria-producto/cartas-sueltas/realidad-fracturada/"
+   }
+  ],
+  "attributes": [
+   {
+    "id": 32,
+    "name": "Estado",
+    "taxonomy": "pa_estado",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3381,
+      "name": "Excellent",
+      "slug": "excellent",
+      "default": false
+     },
+     {
+      "id": 3382,
+      "name": "Good",
+      "slug": "good",
+      "default": false
+     },
+     {
+      "id": 4060,
+      "name": "Light Played",
+      "slug": "light-played",
+      "default": false
+     },
+     {
+      "id": 3949,
+      "name": "Mint",
+      "slug": "mint",
+      "default": false
+     },
+     {
+      "id": 3378,
+      "name": "Near Mint",
+      "slug": "near-mint",
+      "default": true
+     },
+     {
+      "id": 3384,
+      "name": "Played",
+      "slug": "played",
+      "default": false
+     },
+     {
+      "id": 3383,
+      "name": "Poor",
+      "slug": "poor",
+      "default": false
+     }
+    ]
+   },
+   {
+    "id": 51,
+    "name": "Foil",
+    "taxonomy": "pa_foil",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3856,
+      "name": "Foil tradicional",
+      "slug": "foil-tradicional",
+      "default": false
+     },
+     {
+      "id": 3857,
+      "name": "No foil",
+      "slug": "no-foil",
+      "default": true
+     }
+    ]
+   },
+   {
+    "id": 31,
+    "name": "Idioma",
+    "taxonomy": "pa_idioma",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3386,
+      "name": "Alemán",
+      "slug": "aleman",
+      "default": false
+     },
+     {
+      "id": 3385,
+      "name": "Español",
+      "slug": "espanol",
+      "default": false
+     },
+     {
+      "id": 3387,
+      "name": "Francés",
+      "slug": "frances",
+      "default": false
+     },
+     {
+      "id": 3376,
+      "name": "Inglés",
+      "slug": "ingles",
+      "default": true
+     },
+     {
+      "id": 3388,
+      "name": "Italiano",
+      "slug": "italiano",
+      "default": false
+     },
+     {
+      "id": 3398,
+      "name": "Japonés",
+      "slug": "japones",
+      "default": false
+     }
+    ]
+   },
+   {
+    "id": 10,
+    "name": "Colección",
+    "taxonomy": "pa_coleccion",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7012,
+      "name": "Realidad fracturada",
+      "slug": "realidad-fracturada"
+     }
+    ]
+   },
+   {
+    "id": 49,
+    "name": "Conjunto",
+    "taxonomy": "pa_conjunto",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7013,
+      "name": "FRA",
+      "slug": "fra"
+     }
+    ]
+   },
+   {
+    "id": 12,
+    "name": "Rareza",
+    "taxonomy": "pa_rareza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 591,
+      "name": "Rara",
+      "slug": "rara"
+     }
+    ]
+   },
+   {
+    "id": 1,
+    "name": "Maná",
+    "taxonomy": "pa_mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 340,
+      "name": "Azul",
+      "slug": "azul"
+     },
+     {
+      "id": 300,
+      "name": "Verde",
+      "slug": "verde"
+     }
+    ]
+   },
+   {
+    "id": 21,
+    "name": "Coste de maná",
+    "taxonomy": "pa_coste-de-mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4503,
+      "name": "{1}{G}{U}",
+      "slug": "1gu"
+     }
+    ]
+   },
+   {
+    "id": 59,
+    "name": "Coste de maná convertido",
+    "taxonomy": "pa_coste-de-mana-convertido",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4339,
+      "name": "3",
+      "slug": "3"
+     }
+    ]
+   },
+   {
+    "id": 48,
+    "name": "Color",
+    "taxonomy": "pa_color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3812,
+      "name": "Multicolor",
+      "slug": "multicolor"
+     }
+    ]
+   },
+   {
+    "id": 19,
+    "name": "Identidad de color",
+    "taxonomy": "pa_identidad-de-color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 2522,
+      "name": "Azul",
+      "slug": "azul"
+     },
+     {
+      "id": 2521,
+      "name": "Blanco",
+      "slug": "blanco"
+     },
+     {
+      "id": 2082,
+      "name": "Negro",
+      "slug": "negro"
+     },
+     {
+      "id": 2518,
+      "name": "Rojo",
+      "slug": "rojo"
+     },
+     {
+      "id": 2516,
+      "name": "Verde",
+      "slug": "verde"
+     }
+    ]
+   },
+   {
+    "id": 11,
+    "name": "Tipo de carta básica",
+    "taxonomy": "pa_tipo-de-carta-basica",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 581,
+      "name": "Criatura",
+      "slug": "criatura"
+     }
+    ]
+   },
+   {
+    "id": 14,
+    "name": "Raza",
+    "taxonomy": "pa_raza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 2046,
+      "name": "Medusa",
+      "slug": "medusa"
+     }
+    ]
+   },
+   {
+    "id": 15,
+    "name": "Clase",
+    "taxonomy": "pa_clase",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 794,
+      "name": "Hechicero",
+      "slug": "hechicero"
+     }
+    ]
+   },
+   {
+    "id": 22,
+    "name": "Palabra clave",
+    "taxonomy": "pa_palabra-clave",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 2764,
+      "name": "Proliferar",
+      "slug": "proliferar"
+     }
+    ]
+   },
+   {
+    "id": 18,
+    "name": "Artista",
+    "taxonomy": "pa_artista",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 1064,
+      "name": "Aleksi Briclot",
+      "slug": "aleksi-briclot"
+     }
+    ]
+   },
+   {
+    "id": 28,
+    "name": "Tratamiento",
+    "taxonomy": "pa_tratamiento",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4562,
+      "name": "Borderless",
+      "slug": "borderless"
+     }
+    ]
+   },
+   {
+    "id": 35,
+    "name": "Formatos legales",
+    "taxonomy": "pa_formatos-legales",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3800,
+      "name": "Brawl",
+      "slug": "brawl"
+     },
+     {
+      "id": 3516,
+      "name": "Commander",
+      "slug": "commander"
+     },
+     {
+      "id": 4335,
+      "name": "Competitivebrawl",
+      "slug": "competitivebrawl"
+     },
+     {
+      "id": 4336,
+      "name": "Duel",
+      "slug": "duel"
+     },
+     {
+      "id": 4345,
+      "name": "Future",
+      "slug": "future"
+     },
+     {
+      "id": 4333,
+      "name": "Gladiator",
+      "slug": "gladiator"
+     },
+     {
+      "id": 3797,
+      "name": "Historic",
+      "slug": "historic"
+     },
+     {
+      "id": 3540,
+      "name": "Legacy",
+      "slug": "legacy"
+     },
+     {
+      "id": 3557,
+      "name": "Modern",
+      "slug": "modern"
+     },
+     {
+      "id": 4334,
+      "name": "Oathbreaker",
+      "slug": "oathbreaker"
+     },
+     {
+      "id": 3547,
+      "name": "Pioneer",
+      "slug": "pioneer"
+     },
+     {
+      "id": 3525,
+      "name": "Standard",
+      "slug": "standard"
+     },
+     {
+      "id": 4347,
+      "name": "Standardbrawl",
+      "slug": "standardbrawl"
+     },
+     {
+      "id": 3798,
+      "name": "Timeless",
+      "slug": "timeless"
+     },
+     {
+      "id": 4337,
+      "name": "Tlr",
+      "slug": "tlr"
+     },
+     {
+      "id": 3541,
+      "name": "Vintage",
+      "slug": "vintage"
+     }
+    ]
+   },
+   {
+    "id": 41,
+    "name": "Multiverso",
+    "taxonomy": "pa_multiverso",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3697,
+      "name": "Magic: The Gathering",
+      "slug": "magic-the-gathering"
+     }
+    ]
+   },
+   {
+    "id": 55,
+    "name": "Fuerza",
+    "taxonomy": "pa_fuerza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4275,
+      "name": "2",
+      "slug": "2"
+     }
+    ]
+   },
+   {
+    "id": 56,
+    "name": "Resistencia",
+    "taxonomy": "pa_resistencia",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4270,
+      "name": "4",
+      "slug": "4"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Frame",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "2015",
+      "slug": "2015"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Borde",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "Sin borde",
+      "slug": "Sin borde"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Fecha de lanzamiento",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "02/10/2026",
+      "slug": "02/10/2026"
+     }
+    ]
+   },
+   {
+    "id": 17,
+    "name": "Supertipo de carta básica",
+    "taxonomy": "pa_supertipo-de-carta-basica",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 821,
+      "name": "Legendaria",
+      "slug": "legendaria"
+     }
+    ]
+   }
+  ],
+  "variations": [
+   {
+    "id": 313647,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "no-foil"
+     },
+     {
+      "name": "Idioma",
+      "value": "ingles"
+     }
+    ]
+   },
+   {
+    "id": 313648,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "foil-tradicional"
+     },
+     {
+      "name": "Idioma",
+      "value": "ingles"
+     }
+    ]
+   },
+   {
+    "id": 331490,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "no-foil"
+     },
+     {
+      "name": "Idioma",
+      "value": "espanol"
+     }
+    ]
+   },
+   {
+    "id": 331491,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "foil-tradicional"
+     },
+     {
+      "name": "Idioma",
+      "value": "espanol"
+     }
+    ]
+   }
+  ],
+  "is_in_stock": true,
+  "low_stock_remaining": null
+ },
+ {
+  "id": 313624,
+  "name": "Fblthp, se sabe el camino",
+  "parent": 0,
+  "type": "variable",
+  "variation": "",
+  "permalink": "https://mtgcanarias.com/tienda/cartas-sueltas/realidad-fracturada/fblthp-knows-the-way-2/",
+  "prices": {
+   "price": "35",
+   "regular_price": "35",
+   "sale_price": "35",
+   "price_range": {
+    "min_amount": "35",
+    "max_amount": "295"
+   },
+   "currency_code": "EUR",
+   "currency_symbol": "€",
+   "currency_minor_unit": 2,
+   "currency_decimal_separator": ",",
+   "currency_thousand_separator": ".",
+   "currency_prefix": "",
+   "currency_suffix": " €"
+  },
+  "categories": [
+   {
+    "id": 7011,
+    "name": "Realidad fracturada",
+    "slug": "realidad-fracturada",
+    "link": "https://mtgcanarias.com/categoria-producto/cartas-sueltas/realidad-fracturada/"
+   }
+  ],
+  "attributes": [
+   {
+    "id": 32,
+    "name": "Estado",
+    "taxonomy": "pa_estado",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3381,
+      "name": "Excellent",
+      "slug": "excellent",
+      "default": false
+     },
+     {
+      "id": 3382,
+      "name": "Good",
+      "slug": "good",
+      "default": false
+     },
+     {
+      "id": 4060,
+      "name": "Light Played",
+      "slug": "light-played",
+      "default": false
+     },
+     {
+      "id": 3949,
+      "name": "Mint",
+      "slug": "mint",
+      "default": false
+     },
+     {
+      "id": 3378,
+      "name": "Near Mint",
+      "slug": "near-mint",
+      "default": true
+     },
+     {
+      "id": 3384,
+      "name": "Played",
+      "slug": "played",
+      "default": false
+     },
+     {
+      "id": 3383,
+      "name": "Poor",
+      "slug": "poor",
+      "default": false
+     }
+    ]
+   },
+   {
+    "id": 51,
+    "name": "Foil",
+    "taxonomy": "pa_foil",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3856,
+      "name": "Foil tradicional",
+      "slug": "foil-tradicional",
+      "default": false
+     },
+     {
+      "id": 3857,
+      "name": "No foil",
+      "slug": "no-foil",
+      "default": true
+     }
+    ]
+   },
+   {
+    "id": 31,
+    "name": "Idioma",
+    "taxonomy": "pa_idioma",
+    "has_variations": true,
+    "terms": [
+     {
+      "id": 3386,
+      "name": "Alemán",
+      "slug": "aleman",
+      "default": false
+     },
+     {
+      "id": 3385,
+      "name": "Español",
+      "slug": "espanol",
+      "default": false
+     },
+     {
+      "id": 3387,
+      "name": "Francés",
+      "slug": "frances",
+      "default": false
+     },
+     {
+      "id": 3376,
+      "name": "Inglés",
+      "slug": "ingles",
+      "default": true
+     },
+     {
+      "id": 3388,
+      "name": "Italiano",
+      "slug": "italiano",
+      "default": false
+     },
+     {
+      "id": 3398,
+      "name": "Japonés",
+      "slug": "japones",
+      "default": false
+     }
+    ]
+   },
+   {
+    "id": 10,
+    "name": "Colección",
+    "taxonomy": "pa_coleccion",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7012,
+      "name": "Realidad fracturada",
+      "slug": "realidad-fracturada"
+     }
+    ]
+   },
+   {
+    "id": 49,
+    "name": "Conjunto",
+    "taxonomy": "pa_conjunto",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 7013,
+      "name": "FRA",
+      "slug": "fra"
+     }
+    ]
+   },
+   {
+    "id": 12,
+    "name": "Rareza",
+    "taxonomy": "pa_rareza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 590,
+      "name": "Poco común",
+      "slug": "poco-comun"
+     }
+    ]
+   },
+   {
+    "id": 1,
+    "name": "Maná",
+    "taxonomy": "pa_mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 300,
+      "name": "Verde",
+      "slug": "verde"
+     }
+    ]
+   },
+   {
+    "id": 21,
+    "name": "Coste de maná",
+    "taxonomy": "pa_coste-de-mana",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 5080,
+      "name": "{X}{G}{G}",
+      "slug": "xgg"
+     }
+    ]
+   },
+   {
+    "id": 59,
+    "name": "Coste de maná convertido",
+    "taxonomy": "pa_coste-de-mana-convertido",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4351,
+      "name": "2",
+      "slug": "2"
+     }
+    ]
+   },
+   {
+    "id": 48,
+    "name": "Color",
+    "taxonomy": "pa_color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3811,
+      "name": "Verde",
+      "slug": "verde"
+     }
+    ]
+   },
+   {
+    "id": 19,
+    "name": "Identidad de color",
+    "taxonomy": "pa_identidad-de-color",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 2516,
+      "name": "Verde",
+      "slug": "verde"
+     }
+    ]
+   },
+   {
+    "id": 11,
+    "name": "Tipo de carta básica",
+    "taxonomy": "pa_tipo-de-carta-basica",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 581,
+      "name": "Criatura",
+      "slug": "criatura"
+     }
+    ]
+   },
+   {
+    "id": 14,
+    "name": "Raza",
+    "taxonomy": "pa_raza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3870,
+      "name": "Homúnculo",
+      "slug": "homunculo"
+     }
+    ]
+   },
+   {
+    "id": 15,
+    "name": "Clase",
+    "taxonomy": "pa_clase",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 896,
+      "name": "Explorador",
+      "slug": "explorador"
+     }
+    ]
+   },
+   {
+    "id": 22,
+    "name": "Palabra clave",
+    "taxonomy": "pa_palabra-clave",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4603,
+      "name": "Domain",
+      "slug": "domain"
+     }
+    ]
+   },
+   {
+    "id": 18,
+    "name": "Artista",
+    "taxonomy": "pa_artista",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 5944,
+      "name": "Tomek Larek",
+      "slug": "tomek-larek"
+     }
+    ]
+   },
+   {
+    "id": 28,
+    "name": "Tratamiento",
+    "taxonomy": "pa_tratamiento",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4562,
+      "name": "Borderless",
+      "slug": "borderless"
+     }
+    ]
+   },
+   {
+    "id": 35,
+    "name": "Formatos legales",
+    "taxonomy": "pa_formatos-legales",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3800,
+      "name": "Brawl",
+      "slug": "brawl"
+     },
+     {
+      "id": 3516,
+      "name": "Commander",
+      "slug": "commander"
+     },
+     {
+      "id": 4335,
+      "name": "Competitivebrawl",
+      "slug": "competitivebrawl"
+     },
+     {
+      "id": 4336,
+      "name": "Duel",
+      "slug": "duel"
+     },
+     {
+      "id": 4345,
+      "name": "Future",
+      "slug": "future"
+     },
+     {
+      "id": 4333,
+      "name": "Gladiator",
+      "slug": "gladiator"
+     },
+     {
+      "id": 3797,
+      "name": "Historic",
+      "slug": "historic"
+     },
+     {
+      "id": 3540,
+      "name": "Legacy",
+      "slug": "legacy"
+     },
+     {
+      "id": 3557,
+      "name": "Modern",
+      "slug": "modern"
+     },
+     {
+      "id": 4334,
+      "name": "Oathbreaker",
+      "slug": "oathbreaker"
+     },
+     {
+      "id": 3547,
+      "name": "Pioneer",
+      "slug": "pioneer"
+     },
+     {
+      "id": 3525,
+      "name": "Standard",
+      "slug": "standard"
+     },
+     {
+      "id": 4347,
+      "name": "Standardbrawl",
+      "slug": "standardbrawl"
+     },
+     {
+      "id": 3798,
+      "name": "Timeless",
+      "slug": "timeless"
+     },
+     {
+      "id": 4337,
+      "name": "Tlr",
+      "slug": "tlr"
+     },
+     {
+      "id": 3541,
+      "name": "Vintage",
+      "slug": "vintage"
+     }
+    ]
+   },
+   {
+    "id": 41,
+    "name": "Multiverso",
+    "taxonomy": "pa_multiverso",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 3697,
+      "name": "Magic: The Gathering",
+      "slug": "magic-the-gathering"
+     }
+    ]
+   },
+   {
+    "id": 55,
+    "name": "Fuerza",
+    "taxonomy": "pa_fuerza",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4426,
+      "name": "*",
+      "slug": "4426"
+     }
+    ]
+   },
+   {
+    "id": 56,
+    "name": "Resistencia",
+    "taxonomy": "pa_resistencia",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 4276,
+      "name": "2",
+      "slug": "2"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Frame",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "2015",
+      "slug": "2015"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Borde",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "Sin borde",
+      "slug": "Sin borde"
+     }
+    ]
+   },
+   {
+    "id": 0,
+    "name": "Fecha de lanzamiento",
+    "taxonomy": null,
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 0,
+      "name": "02/10/2026",
+      "slug": "02/10/2026"
+     }
+    ]
+   },
+   {
+    "id": 17,
+    "name": "Supertipo de carta básica",
+    "taxonomy": "pa_supertipo-de-carta-basica",
+    "has_variations": false,
+    "terms": [
+     {
+      "id": 821,
+      "name": "Legendaria",
+      "slug": "legendaria"
+     }
+    ]
+   }
+  ],
+  "variations": [
+   {
+    "id": 313627,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "no-foil"
+     },
+     {
+      "name": "Idioma",
+      "value": "ingles"
+     }
+    ]
+   },
+   {
+    "id": 313628,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "foil-tradicional"
+     },
+     {
+      "name": "Idioma",
+      "value": "ingles"
+     }
+    ]
+   },
+   {
+    "id": 331482,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "no-foil"
+     },
+     {
+      "name": "Idioma",
+      "value": "espanol"
+     }
+    ]
+   },
+   {
+    "id": 331483,
+    "attributes": [
+     {
+      "name": "Estado",
+      "value": "near-mint"
+     },
+     {
+      "name": "Foil",
+      "value": "foil-tradicional"
+     },
+     {
+      "name": "Idioma",
+      "value": "espanol"
+     }
+    ]
+   }
+  ],
+  "is_in_stock": true,
+  "low_stock_remaining": null
+ }
+]
