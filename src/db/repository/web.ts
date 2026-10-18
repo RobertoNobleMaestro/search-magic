@@ -27,6 +27,12 @@ import { sealedCategoryHints, sealedQueryTokens } from './sealed-query';
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
+/**
+ * Red de seguridad: algunas tiendas ponen precios de relleno (999.999 €) en lo agotado.
+ * El worker ya descarta ≤ 0 y ≥ 100.000 €; aquí no se muestran aunque se cuelen.
+ */
+const sanePrice = sql`l.price_cents > 0 and l.price_cents < 10000000`;
+
 const iso = (d: Date | string | null): string | null => (d == null ? null : new Date(d).toISOString());
 
 function clamp(n: number, min: number, max: number): number {
@@ -85,7 +91,7 @@ function offerBase(r: OfferBaseColumns) {
 const stockStats = (target: SQL) => sql`
   select min(l.price_cents)::int as min_price, count(*)::int as offer_count
   from listings l join stores s on s.id = l.store_id
-  where ${target} and l.match_status = 'matched' and l.in_stock and s.enabled`;
+  where ${target} and l.match_status = 'matched' and l.in_stock and s.enabled and ${sanePrice}`;
 
 /**
  * Condiciones de búsqueda por nombre, con prioridad: 0 nombre exacto, 1 empieza por q,
@@ -225,6 +231,7 @@ export async function getOffers(db: Db, oracleId: string, filters: OfferFilters 
     sql`l.oracle_id = ${oracleId}`,
     sql`l.kind = 'single'`,
     sql`l.match_status = 'matched'`,
+    sanePrice,
     ...storeAndStockFilters(filters),
   ];
   if (filters.finish && FINISHES.includes(filters.finish)) where.push(sql`l.finish = ${filters.finish}::finish`);
@@ -371,6 +378,7 @@ export async function getSealedOffers(
     sql`l.sealed_product_id = ${sealedProductId}`,
     sql`l.kind = 'sealed'`,
     sql`l.match_status = 'matched'`,
+    sanePrice,
     ...storeAndStockFilters(filters),
   ];
   const rows = await db.execute<OfferBaseColumns>(sql`
@@ -398,10 +406,20 @@ type StoreColumns = {
   last_status: Store['lastStatus'];
 };
 
-/** lastScrapedAt = último ok de cualquier fuente; lastStatus = la ejecución terminada más reciente. */
+/**
+ * lastScrapedAt = lo más reciente entre la última pasada ok de la web y la fecha del último
+ * stock de Cardmarket (la del propio CSV, que el worker guarda como scrapedAt de sus listados,
+ * no la hora a la que se importó). lastStatus = la ejecución terminada más reciente.
+ */
 const storeSelect = sql`
   select s.id, s.name, s.city, s.province, s.is_local, s.address, s.website_url, s.platform,
-         s.cardmarket_user, s.last_success_at, r.status as last_status
+         s.cardmarket_user, r.status as last_status,
+         greatest(
+           (select max(w.finished_at) from scrape_runs w
+             where w.store_id = s.id and w.source = 'web' and w.status = 'ok'),
+           (select max(c.last_seen_at) from listings c
+             where c.store_id = s.id and c.source = 'cardmarket_csv')
+         ) as last_success_at
   from stores s
   left join lateral (
     select status from scrape_runs r

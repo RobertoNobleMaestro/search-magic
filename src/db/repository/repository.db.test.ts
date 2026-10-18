@@ -3,12 +3,13 @@
  *   npm run test:db
  * Todo corre dentro de una transacción que se deshace al final: no deja datos.
  */
+import { inArray, sql } from 'drizzle-orm';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import type { MatchedListing, Repository, StoreInfo } from '../../lib/data/types';
 import { normalizeName } from '../../lib/normalize';
 import { createDb, type Db } from '../client';
 import { directDatabaseUrl, loadLocalEnv } from '../env';
-import { matchOverrides } from '../schema';
+import { matchOverrides, scrapeRuns } from '../schema';
 import { createDbRepository } from './index';
 
 // normalizeTitle es del emparejador; aquí basta con normalizar el título entero.
@@ -308,6 +309,49 @@ describe.runIf(enabled)('DbRepository (integración)', () => {
       await repo.saveListings(run, [listing('nm-es', { condition: 'NM' })]);
       await repo.finishRun(run, { status: 'partial', stats: { found: 1, matched: 1, unmatched: 0 } });
       expect((await repo.getOffers(BOLT, { inStockOnly: true })).filter((o) => o.store.id === LOCAL)).toHaveLength(before);
+    });
+
+    it('no muestra precios de relleno aunque se cuelen', async () => {
+      const run = await repo.startRun(ONLINE);
+      await repo.saveListings(run, [
+        listing('relleno', { storeId: ONLINE, priceCents: 99_999_900, url: 'https://online.example/relleno' }),
+        listing('gratis', { storeId: ONLINE, priceCents: 0, url: 'https://online.example/gratis' }),
+      ]);
+      await repo.finishRun(run, { status: 'partial', stats: { found: 2, matched: 2, unmatched: 0 } });
+      const urls = (await repo.getOffers(BOLT)).map((o) => o.url);
+      expect(urls).not.toContain('https://online.example/relleno');
+      expect(urls).not.toContain('https://online.example/gratis');
+      expect((await repo.searchCards('lightning bolt', 1))[0]!.minPriceCents).toBeGreaterThan(0);
+    });
+
+    it('cierra como error las ejecuciones que se quedaron en curso más de 6 h', async () => {
+      const [stale] = await tx
+        .insert(scrapeRuns)
+        .values({ storeId: ONLINE, source: 'web', startedAt: sql`now() - interval '7 hours'` })
+        .returning({ id: scrapeRuns.id });
+      const [recent] = await tx
+        .insert(scrapeRuns)
+        .values({ storeId: ONLINE, source: 'web', startedAt: sql`now() - interval '1 hour'` })
+        .returning({ id: scrapeRuns.id });
+      await repo.startRun(ONLINE);
+      const rows = await tx
+        .select({ id: scrapeRuns.id, status: scrapeRuns.status, error: scrapeRuns.error })
+        .from(scrapeRuns)
+        .where(inArray(scrapeRuns.id, [stale!.id, recent!.id]));
+      expect(rows.find((r) => r.id === stale!.id)).toMatchObject({ status: 'error', error: expect.stringMatching(/Interrumpida/) });
+      expect(rows.find((r) => r.id === recent!.id)?.status).toBe('running');
+    });
+
+    it('una tienda solo con CSV toma como fecha de actualización la del propio stock', async () => {
+      const CSV_ONLY = 'test-csv-only-store';
+      await repo.upsertStores([
+        ...stores,
+        { ...stores[0]!, id: CSV_ONLY, name: 'Solo CSV', website: null, platform: null, cardmarketUser: 'SoloCsv' },
+      ]);
+      const run = await repo.startRun(CSV_ONLY, 'cardmarket_csv');
+      await repo.saveListings(run, [listing('cm-1', { storeId: CSV_ONLY, scrapedAt: '2026-10-10T08:00:00.000Z' })]);
+      await repo.finishRun(run, { status: 'ok', stats: { found: 1, matched: 1, unmatched: 0 } });
+      expect((await repo.getStore(CSV_ONLY))?.lastScrapedAt).toBe('2026-10-10T08:00:00.000Z');
     });
 
     it('rechaza listados de otra tienda en una ejecución', async () => {

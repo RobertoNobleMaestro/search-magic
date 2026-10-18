@@ -66,7 +66,21 @@ export async function upsertStores(db: Db, configs: StoreInfo[]): Promise<void> 
   });
 }
 
+/** Una pasada que sigue en 'running' tras este tiempo murió sin cerrarse (SIGKILL, timeout de CI…). */
+const STALE_RUN = '6 hours';
+
 export async function startRun(db: Db, storeId: string, source: ListingSource = 'web'): Promise<string> {
+  await db
+    .update(scrapeRuns)
+    .set({ status: 'error', finishedAt: new Date(), error: `Interrumpida: seguía en curso tras ${STALE_RUN}` })
+    .where(
+      and(
+        eq(scrapeRuns.storeId, storeId),
+        eq(scrapeRuns.source, source),
+        eq(scrapeRuns.status, 'running'),
+        sql`${scrapeRuns.startedAt} < now() - ${STALE_RUN}::interval`,
+      ),
+    );
   const [run] = await db.insert(scrapeRuns).values({ storeId, source }).returning({ id: scrapeRuns.id });
   return String(run!.id);
 }
