@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cache, type ReactNode } from "react";
-import { SetChip } from "@/components/badges";
+import { SetChip, SetIcon } from "@/components/badges";
 import { CardImage } from "@/components/card-image";
 import {
   cityOptions,
@@ -138,7 +138,7 @@ export default async function CardPage({ params, searchParams }: Props) {
             <div className="mt-6">
               <p className={eyebrowClass}>Ediciones</p>
               <ul className="-mx-4 mt-2 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0">
-                {[{ code: null, name: "Todas" }, ...sets].map(({ code, name }) => {
+                {[{ code: null, name: "Todas", iconUrl: null }, ...sets].map(({ code, name, iconUrl }) => {
                   const count = allOffers.filter((o) => o.inStock && (!code || o.printing?.setCode === code)).length;
                   const active = filters.setCode === code;
                   return (
@@ -157,6 +157,7 @@ export default async function CardPage({ params, searchParams }: Props) {
                             : "border-line bg-surface text-ink-2 hover:border-line-strong",
                         )}
                       >
+                        {code && <SetIcon src={iconUrl} />}
                         {code && <SetChip code={code} />}
                         <span className="max-w-[14rem] truncate font-medium">{name}</span>
                         <span className="rounded-full bg-surface-2 px-1.5 text-[11px] font-semibold text-ink-3 tabular-nums">
@@ -276,11 +277,15 @@ function NoOffers({ all, filters, pathname, name }: { all: Offer[]; filters: Fil
   );
 }
 
-/** Ediciones distintas de la carta, en el orden de las impresiones */
-function uniqueSets(printings: Printing[]): Array<{ code: string; name: string }> {
-  const sets = new Map<string, string>();
-  for (const p of printings) if (!sets.has(p.setCode)) sets.set(p.setCode, p.setName);
-  return [...sets].map(([code, name]) => ({ code, name }));
+/** Ediciones distintas de la carta, en el orden de las impresiones, con su símbolo */
+function uniqueSets(printings: Printing[]): Array<{ code: string; name: string; iconUrl: string | null }> {
+  const sets = new Map<string, { code: string; name: string; iconUrl: string | null }>();
+  for (const p of printings) {
+    const set = sets.get(p.setCode);
+    if (!set) sets.set(p.setCode, { code: p.setCode, name: p.setName, iconUrl: p.setIconUrl });
+    else set.iconUrl ??= p.setIconUrl;
+  }
+  return [...sets.values()];
 }
 
 /** Precio de Cardmarket más bajo de la edición y el acabado elegidos (o de todas) */

@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Offer, Printing } from "@/lib/data/types";
 import { formatConfidence, formatEuros, formatPercentDiff, priceDiffPercent, stockLabel } from "@/lib/format";
-import { BestBadge, CardmarketBadge, ConditionBadge, FinishChip, LanguageChip, SetChip, StoreKindBadge } from "../badges";
+import { BestBadge, CardmarketBadge, ConditionBadge, FinishChip, LanguageChip, SetChip, SetIcon, StoreKindBadge } from "../badges";
 import { ExternalLink, cx, smallButtonClass } from "../ui";
 import { UpdatedAgo } from "../updated-ago";
 
@@ -109,9 +109,12 @@ function OfferCard({ offer, best, now }: { offer: Offer; best: boolean; now: Dat
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-1">
         <CopyChips offer={offer} />
-        <span className="ml-1 font-mono text-[11px] text-ink-3">
+        <span className="ml-1 inline-flex items-center gap-1 font-mono text-[11px] text-ink-3">
           {offer.printing ? (
-            `${offer.printing.setCode.toUpperCase()} #${offer.printing.collectorNumber}`
+            <>
+              <SetIcon src={offer.printing.setIconUrl} className="size-3.5" />
+              {`${offer.printing.setCode.toUpperCase()} #${offer.printing.collectorNumber}`}
+            </>
           ) : (
             <i className="font-sans" title="La tienda no indica la edición o no la hemos reconocido">
               Edición ?
@@ -180,6 +183,7 @@ function PrintingInfo({ printing, confidence }: { printing: Printing | null; con
   }
   return (
     <div className="flex min-w-0 items-center gap-2">
+      <SetIcon src={printing.setIconUrl} />
       <SetChip code={printing.setCode} />
       <div className="min-w-0">
         <p className="max-w-[15rem] truncate text-sm text-ink-2" title={printing.setName}>

@@ -16,7 +16,8 @@ import {
 } from "@/components/offers/filters";
 import { OfferFiltersForm } from "@/components/offers/filters-form";
 import { SealedOfferList } from "@/components/offers/sealed-offer-list";
-import { SealedIcon, SealedProductGrid } from "@/components/sealed";
+import { SealedProductGrid } from "@/components/sealed";
+import { SealedImage } from "@/components/sealed-image";
 import type { SearchParams } from "@/components/search-params";
 import { EmptyState, cx, eyebrowClass, linkClass, pageClass, secondaryButtonClass } from "@/components/ui";
 import { UpdatedAgo } from "@/components/updated-ago";
@@ -93,7 +94,14 @@ export default async function SealedPage({ params, searchParams }: Props) {
       </nav>
 
       <header className="mt-4 flex items-start gap-4 sm:items-center sm:gap-6">
-        <SealedIcon category={product.category} size="lg" />
+        <SealedImage
+          name={product.name}
+          category={product.category}
+          imageUrl={product.imageUrl}
+          setIconUrl={product.setIconUrl}
+          size="lg"
+          eager
+        />
         <div className="min-w-0">
           <p className={eyebrowClass}>Producto sellado · {typeLabel}</p>
           <h1 lang="en" className="mt-1 font-display text-[1.9rem] leading-[1.08] font-semibold tracking-tight text-balance sm:text-5xl">

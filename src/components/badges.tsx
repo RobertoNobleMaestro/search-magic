@@ -94,6 +94,25 @@ export function SetChip({ code, title }: { code: string; title?: string }) {
   );
 }
 
+/**
+ * Símbolo de la edición (SVG de Scryfall, en negro), decorativo: va junto al código. Caja fija de
+ * 16 px para que no salte nada al cargar; en modo oscuro se invierte para que se vea.
+ */
+export function SetIcon({ src, className }: { src: string | null | undefined; className?: string }) {
+  if (!src) return null;
+  return (
+    <img
+      src={src}
+      alt=""
+      width={16}
+      height={16}
+      loading="lazy"
+      decoding="async"
+      className={cx("size-4 shrink-0 object-contain opacity-80 dark:invert", className)}
+    />
+  );
+}
+
 /** "Mejor precio": lo único dorado de la página, solo para la oferta más barata con stock */
 export function BestBadge() {
   return (

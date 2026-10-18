@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 import { SetChip } from "@/components/badges";
 import { CardImage } from "@/components/card-image";
 import { ExampleSearches } from "@/components/example-searches";
-import { SealedIcon } from "@/components/sealed";
+import { SealedImage } from "@/components/sealed-image";
 import { firstParam, type SearchParams } from "@/components/search-params";
 import { EmptyState, eyebrowClass, pageClass, titleClass } from "@/components/ui";
 import { getRepository, type CardSummary, type SealedSummary } from "@/lib/data";
@@ -160,7 +160,13 @@ function SealedResult({ product }: { product: SealedSummary }) {
       href={`/sellado/${product.sealedProductId}`}
       className="group flex h-full gap-3 rounded-2xl border border-line bg-surface p-3 pr-4 transition hover:border-line-strong hover:shadow-card"
     >
-      <SealedIcon category={product.category} />
+      <SealedImage
+        name={product.name}
+        category={product.category}
+        imageUrl={product.imageUrl}
+        setIconUrl={product.setIconUrl}
+        size="md"
+      />
       <div className="flex min-w-0 flex-1 flex-col">
         <h3 className="font-medium leading-snug text-balance transition group-hover:text-brand-strong">
           {sealedTypeLabel(product.category, product.subtype)}
