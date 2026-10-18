@@ -269,6 +269,10 @@ describe.runIf(enabled)('DbRepository (integración)', () => {
         ['web', 240],
       ]);
       expect((await repo.getSealedOffers(box.sealedProductId, { inStockOnly: true })).filter((o) => o.store.id === LOCAL)).toHaveLength(0);
+      // La caja y la foil ya no aparecen en la web: cuentan como agotadas, no como "ninguna tienda".
+      expect((await repo.getSealedProduct(box.sealedProductId))!.soldOutCount).toBeGreaterThanOrEqual(1);
+      expect((await repo.searchCards('lightning bolt', 1))[0]!.soldOutCount).toBeGreaterThanOrEqual(1);
+      expect((await repo.searchCards('bolt bend', 1))[0]).toMatchObject({ offerCount: 0, soldOutCount: 0 });
 
       const detail = await repo.getStore(LOCAL);
       expect(detail).toMatchObject({ local: true, city: "L'Hospitalet de Llobregat", cardmarketUser: 'TiendaPrueba', lastStatus: 'ok' });

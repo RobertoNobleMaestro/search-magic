@@ -87,11 +87,16 @@ function offerBase(r: OfferBaseColumns) {
   };
 }
 
-/** Precio mínimo y número de ofertas con stock en tiendas activas, por carta o por sellado. */
+/**
+ * Por carta o por sellado, en tiendas activas: precio mínimo y número de ofertas con stock, y
+ * cuántas hay agotadas, para distinguir "agotada ahora mismo" de "ninguna tienda la tiene".
+ */
 const stockStats = (target: SQL) => sql`
-  select min(l.price_cents)::int as min_price, count(*)::int as offer_count
+  select (min(l.price_cents) filter (where l.in_stock))::int as min_price,
+         (count(*) filter (where l.in_stock))::int as offer_count,
+         (count(*) filter (where not l.in_stock))::int as sold_out_count
   from listings l join stores s on s.id = l.store_id
-  where ${target} and l.match_status = 'matched' and l.in_stock and s.enabled and ${sanePrice}`;
+  where ${target} and l.match_status = 'matched' and s.enabled and ${sanePrice}`;
 
 /**
  * Condiciones de búsqueda por nombre, con prioridad: 0 nombre exacto, 1 empieza por q,
@@ -172,8 +177,9 @@ async function cardSummaries(db: Db, oracleIds: string[]): Promise<Map<string, C
     image_uri: string | null;
     min_price: number | null;
     offer_count: number;
+    sold_out_count: number;
   }>(sql`
-    select c.oracle_id, c.name, c.name_es, c.image_uri, o.min_price, o.offer_count
+    select c.oracle_id, c.name, c.name_es, c.image_uri, o.min_price, o.offer_count, o.sold_out_count
     from cards c
     cross join lateral (${stockStats(sql`l.oracle_id = c.oracle_id`)}) o
     where c.oracle_id = any(${textArray(oracleIds)}::uuid[])`);
@@ -187,6 +193,7 @@ async function cardSummaries(db: Db, oracleIds: string[]): Promise<Map<string, C
         imageUrl: r.image_uri,
         minPriceCents: r.min_price,
         offerCount: r.offer_count,
+        soldOutCount: r.sold_out_count,
       },
     ]),
   );
@@ -298,6 +305,7 @@ type SealedColumns = {
   released_at: string | null;
   min_price: number | null;
   offer_count: number;
+  sold_out_count: number;
   image_url: string | null;
   set_icon_url: string | null;
 };
@@ -305,7 +313,7 @@ type SealedColumns = {
 /** Necesita `sp` (sealed_products), `o` (stockStats), `sti` y `img` (sealedExtras) en el FROM. */
 const sealedSummarySelect = sql`
   sp.id, sp.name, sp.set_code, sp.set_name, sp.category, sp.subtype, sp.released_at::text as released_at,
-  o.min_price, o.offer_count, img.image_url, sti.icon_svg_uri as set_icon_url`;
+  o.min_price, o.offer_count, o.sold_out_count, img.image_url, sti.icon_svg_uri as set_icon_url`;
 
 /**
  * Símbolo de la edición y foto de la mejor oferta: primero tiendas locales, luego con stock,
@@ -335,6 +343,7 @@ function toSealedSummary(r: SealedColumns): SealedSummary {
     setIconUrl: r.set_icon_url,
     minPriceCents: r.min_price,
     offerCount: r.offer_count,
+    soldOutCount: r.sold_out_count,
   };
 }
 
