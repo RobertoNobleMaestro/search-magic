@@ -1,0 +1,1701 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>search-magic · Diseño visual v2</title>
+<meta name="description" content="Maqueta v2 de search-magic: tiendas físicas y online, fuentes de datos (web y CSV de Cardmarket) y producto sellado.">
+<!-- v2: misma base que index.html, adaptada al contrato v2 (source en la oferta, tiendas físicas/online,
+     city como texto, /sellado/[id]). Sirve de referencia para la revisión visual final. -->
+
+<script>
+  // Tema antes de pintar: ?theme= (iframes del modo móvil) > preferencia guardada > sistema
+  (function () {
+    var param = new URLSearchParams(location.search).get("theme");
+    var saved = null;
+    try { saved = localStorage.getItem("sm-design-theme"); } catch (e) {}
+    var pref = param || saved || "system";
+    var dark = pref === "dark" || (pref === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.dataset.theme = dark ? "dark" : "light";
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+<style type="text/tailwindcss">
+  /* Mismos tokens que design/theme.css. Aquí el modo oscuro va por [data-theme] para poder
+     alternarlo desde la maqueta; en la web va por prefers-color-scheme (ver theme.css). */
+  @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+  @theme inline {
+    --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Fraunces", ui-serif, Georgia, serif;
+    --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+
+    --color-canvas: var(--canvas);
+    --color-surface: var(--surface);
+    --color-surface-2: var(--surface-2);
+    --color-surface-3: var(--surface-3);
+    --color-line: var(--line);
+    --color-line-strong: var(--line-strong);
+    --color-ink: var(--ink);
+    --color-ink-2: var(--ink-2);
+    --color-ink-3: var(--ink-3);
+    --color-brand: var(--brand);
+    --color-brand-strong: var(--brand-strong);
+    --color-brand-soft: var(--brand-soft);
+    --color-on-brand: var(--on-brand);
+    --color-gold: var(--gold);
+    --color-gold-soft: var(--gold-soft);
+    --color-gold-ink: var(--gold-ink);
+    --color-good: var(--good);
+    --color-good-soft: var(--good-soft);
+    --color-warn: var(--warn);
+    --color-warn-soft: var(--warn-soft);
+    --color-bad: var(--bad);
+    --color-bad-soft: var(--bad-soft);
+    --color-cond-mt: var(--cond-mt);
+    --color-cond-nm: var(--cond-nm);
+    --color-cond-ex: var(--cond-ex);
+    --color-cond-gd: var(--cond-gd);
+    --color-cond-lp: var(--cond-lp);
+    --color-cond-pl: var(--cond-pl);
+    --color-cond-po: var(--cond-po);
+
+    --shadow-card: 0 1px 2px var(--shadow-a), 0 12px 32px -16px var(--shadow-b);
+    --shadow-pop: 0 2px 6px var(--shadow-a), 0 24px 48px -20px var(--shadow-b);
+  }
+
+  :root {
+    --canvas: oklch(0.984 0.005 85);
+    --surface: oklch(1 0 0);
+    --surface-2: oklch(0.964 0.007 85);
+    --surface-3: oklch(0.935 0.009 85);
+    --line: oklch(0.912 0.009 85);
+    --line-strong: oklch(0.84 0.012 85);
+    --ink: oklch(0.22 0.022 285);
+    --ink-2: oklch(0.42 0.02 285);
+    --ink-3: oklch(0.53 0.016 285);
+    --brand: oklch(0.5 0.2 285);
+    --brand-strong: oklch(0.44 0.19 285);
+    --brand-soft: oklch(0.95 0.03 285);
+    --on-brand: oklch(0.99 0.005 285);
+    --gold: oklch(0.78 0.14 78);
+    --gold-soft: oklch(0.965 0.04 88);
+    --gold-ink: oklch(0.47 0.1 65);
+    --good: oklch(0.5 0.13 155);
+    --good-soft: oklch(0.95 0.04 155);
+    --warn: oklch(0.52 0.12 60);
+    --warn-soft: oklch(0.96 0.05 85);
+    --bad: oklch(0.52 0.19 27);
+    --bad-soft: oklch(0.955 0.03 25);
+    --cond-mt: oklch(0.62 0.12 235);
+    --cond-nm: oklch(0.63 0.15 150);
+    --cond-ex: oklch(0.72 0.16 125);
+    --cond-gd: oklch(0.8 0.15 95);
+    --cond-lp: oklch(0.73 0.16 65);
+    --cond-pl: oklch(0.65 0.18 42);
+    --cond-po: oklch(0.57 0.2 25);
+    --shadow-a: oklch(0.25 0.03 285 / 0.06);
+    --shadow-b: oklch(0.25 0.05 285 / 0.18);
+  }
+
+  [data-theme="dark"] {
+    --canvas: oklch(0.16 0.014 285);
+    --surface: oklch(0.198 0.016 285);
+    --surface-2: oklch(0.232 0.018 285);
+    --surface-3: oklch(0.27 0.02 285);
+    --line: oklch(0.285 0.018 285);
+    --line-strong: oklch(0.37 0.02 285);
+    --ink: oklch(0.95 0.008 85);
+    --ink-2: oklch(0.79 0.012 285);
+    --ink-3: oklch(0.65 0.014 285);
+    --brand: oklch(0.72 0.15 285);
+    --brand-strong: oklch(0.8 0.12 285);
+    --brand-soft: oklch(0.3 0.07 285);
+    --on-brand: oklch(0.17 0.03 285);
+    --gold: oklch(0.8 0.13 80);
+    --gold-soft: oklch(0.29 0.045 75);
+    --gold-ink: oklch(0.87 0.11 85);
+    --good: oklch(0.76 0.14 155);
+    --good-soft: oklch(0.29 0.05 155);
+    --warn: oklch(0.82 0.12 75);
+    --warn-soft: oklch(0.3 0.05 70);
+    --bad: oklch(0.73 0.15 25);
+    --bad-soft: oklch(0.3 0.06 25);
+    --shadow-a: oklch(0 0 0 / 0.3);
+    --shadow-b: oklch(0 0 0 / 0.55);
+  }
+
+  /* Esquinas de carta de Magic (63 × 88 mm, radio ~3 mm) */
+  @utility rounded-card {
+    border-radius: 4.75% / 3.4%;
+  }
+  /* Etiqueta de acabado: tornasol para foil, metal para etched. Mismo aspecto en claro y oscuro. */
+  @utility finish-foil {
+    background-image: linear-gradient(115deg, oklch(0.9 0.08 340), oklch(0.92 0.07 250) 35%, oklch(0.93 0.09 160) 65%, oklch(0.93 0.1 85));
+    color: oklch(0.25 0.03 285);
+  }
+  @utility finish-etched {
+    background-image: linear-gradient(115deg, oklch(0.84 0.014 250), oklch(0.97 0.004 250) 45%, oklch(0.8 0.016 250));
+    color: oklch(0.25 0.02 285);
+  }
+  /* Resplandor de la portada */
+  @utility hero-glow {
+    background:
+      radial-gradient(55% 60% at 78% 28%, color-mix(in oklab, var(--brand) 16%, transparent), transparent 70%),
+      radial-gradient(35% 40% at 92% 88%, color-mix(in oklab, var(--gold) 18%, transparent), transparent 70%),
+      radial-gradient(40% 50% at 5% 0%, color-mix(in oklab, var(--brand) 7%, transparent), transparent 70%);
+  }
+
+  @layer base {
+    html { color-scheme: light; }
+    html[data-theme="dark"] { color-scheme: dark; }
+    body {
+      background: var(--canvas);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    :focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+    ::selection {
+      background: color-mix(in oklab, var(--brand) 28%, transparent);
+    }
+  }
+</style>
+</head>
+<body class="font-sans">
+<div id="root"></div>
+
+<script>
+"use strict";
+
+// ===========================================================================
+// Formato (igual que src/lib/format.ts)
+// ===========================================================================
+
+const EUR = new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR" });
+const NUM = new Intl.NumberFormat("es-ES");
+const DATE_TIME = new Intl.DateTimeFormat("es-ES", { dateStyle: "short", timeStyle: "short", timeZone: "Europe/Madrid" });
+const HOUR = 3_600_000;
+const NOW = Date.now();
+
+const fmtEur = (cents) => EUR.format(cents / 100);
+const fmtNum = (n) => NUM.format(n);
+const diffPct = (price, ref) => (ref == null || ref <= 0 ? null : Math.round(((price - ref) / ref) * 100) + 0);
+const fmtDiff = (d) => `${d < 0 ? "−" : d > 0 ? "+" : ""}${Math.abs(d)} %`;
+const plural = (n, one, many) => `${fmtNum(n)} ${n === 1 ? one : many}`;
+const isStale = (h) => h > 24;
+
+function timeAgo(hours) {
+  if (hours < 1 / 60) return "hace un momento";
+  if (hours < 1) return `hace ${Math.floor(hours * 60)} min`;
+  if (hours < 24) return `hace ${Math.floor(hours)} h`;
+  const days = Math.floor(hours / 24);
+  return `hace ${days} ${days === 1 ? "día" : "días"}`;
+}
+
+function fmtDuration(seconds) {
+  if (seconds < 60) return `${seconds} s`;
+  const m = Math.floor(seconds / 60), s = seconds % 60;
+  return s ? `${m} min ${s} s` : `${m} min`;
+}
+
+function stockLabel(o) {
+  if (!o.inStock) return "Agotado";
+  if (o.qty == null) return "En stock";
+  return plural(o.qty, "ud.", "uds.");
+}
+
+const CONDITIONS = ["MT", "NM", "EX", "GD", "LP", "PL", "PO"];
+const CONDITION_LABELS = { MT: "Mint", NM: "Near Mint", EX: "Excelente", GD: "Buena", LP: "Ligeramente jugada", PL: "Jugada", PO: "Pobre" };
+const FINISH_LABELS = { nonfoil: "Normal", foil: "Foil", etched: "Etched" };
+const CITY_LABELS = { barcelona: "Barcelona", hospitalet: "L'Hospitalet" };
+const LANGUAGE_LABELS = { es: "Español", en: "Inglés", fr: "Francés", de: "Alemán", it: "Italiano", pt: "Portugués", ja: "Japonés", ko: "Coreano", ru: "Ruso" };
+const PLATFORM_LABELS = { shopify: "Shopify", woocommerce: "WooCommerce", prestashop: "PrestaShop", html: "Web propia" };
+const STATUS_LABELS = { ok: "OK", partial: "Parcial", error: "Error", skipped: "Omitida", running: "En curso" };
+
+const norm = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+// ===========================================================================
+// Datos de ejemplo
+// Cartas, ediciones e imágenes: reales (src/lib/data/fixtures/scryfall-sample.json).
+// Tiendas, direcciones y ofertas: INVENTADAS, las mismas que src/lib/data/mock.ts.
+// ===========================================================================
+
+const SET_NAMES = {
+  fdc: "Foundations Commander", sos: "Secrets of Strixhaven", psos: "Secrets of Strixhaven Promos",
+  msc: "Marvel Super Heroes Commander", sld: "Secret Lair Drop", dmu: "Dominaria United",
+  pdmu: "Dominaria United Promos", ltr: "The Lord of the Rings: Tales of Middle-earth", hoc: "The Hobbit Eternal",
+  mar: "Marvel Universe", frc: "Reality Fracture Commander", mh2: "Modern Horizons 2",
+  mul: "Multiverse Legends", h2r: "Modern Horizons 2 Timeshifts",
+};
+const P = (code, number, ref, refFoil, id) => ({ code, name: SET_NAMES[code], number, ref, refFoil, id });
+const imgUrl = (id, size = "normal") => `https://cards.scryfall.io/${size}/front/${id[0]}/${id[1]}/${id}.jpg`;
+
+const CARDS = {
+  bolt: { id: "bolt", slug: "lightning-bolt", es: "Relámpago", en: "Lightning Bolt", printings: [
+    P("fdc", "163", 165, null, "0852f9f3-d7ef-4d31-93e3-93bc7c5a4ec9"),
+    P("sos", "113", 183, 235, "f58dba4f-1abb-47a3-a684-29c32bab95c0"),
+    P("psos", "113p", 166, 266, "699c0207-901e-4fe9-b22d-1f6cb994a1f2"),
+    P("msc", "806", 192, 247, "7673784e-db4b-43a1-8d55-1bb9fc1e284f"),
+    P("sld", "2579", 984, 1024, "a050f085-dc6a-4715-8cd3-33daf3e27bfc"),
+  ] },
+  solring: { id: "solring", slug: "sol-ring", es: "Anillo solar", en: "Sol Ring", printings: [
+    P("frc", "21", 111, null, "8ee443cc-e17a-493b-9c93-1f9e141a30e4"),
+    P("fdc", "286", 123, null, "4f152dd9-2b35-45b2-90fe-8c71d0634226"),
+    P("msc", "214", 167, null, "a739dd30-1fce-49db-99fb-15e346f4f2db"),
+    P("sld", "2807", 580, 645, "3d5c99e9-7c3e-4149-82a6-3c7d5d302488"),
+  ] },
+  counterspell: { id: "counterspell", slug: "counterspell", es: "Contrahechizo", en: "Counterspell", printings: [
+    P("fdc", "61", 289, null, "83390164-f00b-4be1-9cec-5de088c9debc"),
+    P("mar", "52", 629, 1550, "379f4020-a58c-484d-9b44-72b200884079"),
+    P("sld", "2497", 906, 1078, "87284999-8b35-4142-a711-0c9e1bdc8e1a"),
+  ] },
+  sheoldred: { id: "sheoldred", slug: "sheoldred-the-apocalypse", es: "Sheoldred, el Apocalipsis", en: "Sheoldred, the Apocalypse", printings: [
+    P("dmu", "107", 8335, 9577, "d67be074-cdd4-41d9-ac89-0a0456c4e4b2"),
+    P("pdmu", "107p", 7690, 7924, "11a1cfc1-0bfc-40e8-b57f-f267bf9b6542"),
+    P("dmu", "290", 8911, 9164, "fc5be7df-16e0-494c-b960-19fd64d57b35"),
+  ] },
+  ragavan: { id: "ragavan", slug: "ragavan-nimble-pilferer", es: "Ragavan, ratero hábil", en: "Ragavan, Nimble Pilferer", printings: [
+    P("mh2", "138", 3330, 5195, "a9738cda-adb1-47fb-9f4c-ecd930228c4d"),
+    P("mul", "21", 3613, 4443, "fc898fec-4cc6-4587-b556-c5a8d38ccbd0"),
+    P("h2r", "11", 4643, 8731, "8d27e717-8bda-44dc-90b9-a6f7029c7b93"),
+  ] },
+  onering: { id: "onering", slug: "the-one-ring", es: "El Anillo Único", en: "The One Ring", printings: [
+    P("ltr", "451", 10073, 9659, "126ea71a-9a64-4d1e-a8ca-1efce3b8346f"),
+    P("hoc", "44", 11646, 15081, "bdd2c783-1483-490a-ae93-c4664a0a9564"),
+  ] },
+};
+
+// v2: local = tienda física de la zona (stores.is_local); city es texto libre; website y platform
+// pueden faltar (tiendas que solo comparten su stock de Cardmarket). Cada fuente tiene su ejecución.
+const STORES = [
+  { id: "cofre", name: "El Cofre del Maná", local: true, city: "Barcelona", address: "Carrer de Verdi, 42, 08012 Barcelona", website: "cofre-mana.example.com", platform: "shopify", cmUser: null,
+    status: "ok", runH: 2, okH: 2, listings: 1284, inStock: 1102,
+    runs: [{ source: "web", status: "ok", runH: 2, dur: 372, found: 1286, matched: 1284, unmatched: 2 }] },
+  { id: "bazar", name: "Bazar Arcano", local: true, city: "Barcelona", address: "Carrer del Consell de Cent, 215, 08011 Barcelona", website: "bazar-arcano.example.com", platform: "woocommerce", cmUser: "BazarArcano",
+    status: "ok", runH: 5, okH: 5, listings: 2410, inStock: 2035,
+    runs: [{ source: "web", status: "ok", runH: 5, dur: 845, found: 611, matched: 610, unmatched: 1 },
+      { source: "cardmarket_csv", status: "ok", runH: 20, dur: 38, found: 1800, matched: 1800, unmatched: 0 }] },
+  { id: "tierras", name: "Tierras Básicas", local: true, city: "Barcelona", address: "Carrer de Sants, 118, 08028 Barcelona", website: "tierras-basicas.example.com", platform: "prestashop", cmUser: null,
+    status: "partial", runH: 3, okH: 15, listings: 862, inStock: 701,
+    runs: [{ source: "web", status: "partial", runH: 3, dur: 1290, found: 864, matched: 862, unmatched: 2, error: "3 páginas de 42 devolvieron 503" }] },
+  { id: "mesa", name: "La Mesa del Duelo", local: true, city: "Barcelona", address: "Rambla del Poblenou, 77, 08005 Barcelona", website: "mesa-duelo.example.com", platform: "html", cmUser: null,
+    status: "ok", runH: 8, okH: 8, listings: 415, inStock: 388,
+    runs: [{ source: "web", status: "ok", runH: 8, dur: 141, found: 417, matched: 415, unmatched: 2 }] },
+  { id: "cripta", name: "Cripta TCG", local: true, city: "Barcelona", address: "Carrer del Torrent de l'Olla, 98, 08012 Barcelona", website: null, platform: null, cmUser: "CriptaTCG",
+    status: "ok", runH: 6, okH: 6, listings: 3120, inStock: 3120,
+    runs: [{ source: "cardmarket_csv", status: "ok", runH: 6, dur: 52, found: 3121, matched: 3120, unmatched: 1 }] },
+  { id: "dados", name: "Dados y Dragones", local: true, city: "L'Hospitalet", address: "Rambla de la Marina, 150, 08907 L'Hospitalet de Llobregat", website: "dados-dragones.example.com", platform: "shopify", cmUser: null,
+    status: "error", runH: 1, okH: 31, listings: 1020, inStock: 874,
+    runs: [{ source: "web", status: "error", runH: 1, dur: 94, found: 0, matched: 0, unmatched: 0, error: "Timeout al descargar /products.json (3 reintentos)" }] },
+  { id: "rincon", name: "Rincón del Draft", local: true, city: "L'Hospitalet", address: "Carrer de Collblanc, 63, 08904 L'Hospitalet de Llobregat", website: "rincon-draft.example.com", platform: "woocommerce", cmUser: null,
+    status: "ok", runH: 4, okH: 4, listings: 1733, inStock: 1519,
+    runs: [{ source: "web", status: "ok", runH: 4, dur: 610, found: 1734, matched: 1733, unmatched: 1 }] },
+  { id: "cartas", name: "Cartas Rápidas", local: false, city: "Madrid", address: null, website: "cartas-rapidas.example.com", platform: "shopify", cmUser: null,
+    status: "ok", runH: 3, okH: 3, listings: 18450, inStock: 15210,
+    runs: [{ source: "web", status: "ok", runH: 3, dur: 2410, found: 18466, matched: 18450, unmatched: 16 }] },
+  { id: "taberna", name: "La Taberna del Planeswalker", local: false, city: "Valencia", address: null, website: "taberna-pw.example.com", platform: "woocommerce", cmUser: null,
+    status: "ok", runH: 7, okH: 7, listings: 9870, inStock: 8120,
+    runs: [{ source: "web", status: "ok", runH: 7, dur: 1525, found: 9874, matched: 9870, unmatched: 4 }] },
+  { id: "mox", name: "Mox Express", local: false, city: "Zaragoza", address: null, website: "mox-express.example.com", platform: "prestashop", cmUser: null,
+    status: "ok", runH: 9, okH: 9, listings: 6400, inStock: 5310,
+    runs: [{ source: "web", status: "ok", runH: 9, dur: 1102, found: 6403, matched: 6400, unmatched: 3 }] },
+];
+STORES.forEach((s) => (s.sources = s.runs.map((r) => r.source)));
+const STORE = Object.fromEntries(STORES.map((s) => [s.id, s]));
+const LOCAL_CITIES = [...new Set(STORES.filter((s) => s.local).map((s) => s.city))];
+const SOURCE_LABELS = { web: "Web de la tienda", cardmarket_csv: "Stock de Cardmarket" };
+
+/** Antigüedad de los datos de una oferta: la del CSV si viene de Cardmarket, si no la última revisión buena de la web */
+function ageOf(store, source) {
+  if (source === "cardmarket_csv") return store.runs.find((r) => r.source === source).runH;
+  return store.okH;
+}
+
+const O = (store, p, cond, lang, finish, price, qty, extra = {}) => {
+  const source = extra.source || STORE[store].sources[0];
+  return { store: STORE[store], p, cond, lang, finish, price, qty, inStock: qty !== 0, conf: 1, source, h: ageOf(STORE[store], source), ...extra };
+};
+
+// Relámpago: ofertas escritas a mano para enseñar todos los estados
+const B = CARDS.bolt.printings;
+const R = CARDS.onering.printings;
+const CURATED = {
+  // La más barata es online (Cartas Rápidas) y la más barata en tienda física, Rincón del Draft
+  bolt: [
+    O("cartas", B[0], "NM", "en", "nonfoil", 125, 12),
+    O("rincon", B[0], "NM", "es", "nonfoil", 140, 4),
+    O("cofre", B[0], "EX", "en", "nonfoil", 145, 2),
+    O("cripta", B[0], "NM", "es", "nonfoil", 150, 6),
+    O("taberna", B[1], "NM", "es", "nonfoil", 170, 3),
+    O("bazar", B[1], "NM", "es", "nonfoil", 175, 1, { conf: 0.92 }),
+    O("tierras", B[3], "NM", "en", "nonfoil", 195, 3),
+    O("mesa", null, null, "es", "nonfoil", 200, null, { conf: 0.85 }),
+    O("dados", B[0], "LP", "es", "nonfoil", 210, 1),
+    O("cofre", B[1], "NM", "en", "foil", 260, 1),
+    O("bazar", B[2], "NM", "ja", "foil", 320, 1, { source: "cardmarket_csv" }),
+    O("mox", B[4], "MT", "en", "foil", 1090, 2),
+    O("rincon", B[4], "MT", "en", "foil", 1150, 1),
+    O("tierras", B[0], "GD", "es", "nonfoil", 110, 0),
+  ],
+  // El Anillo Único: solo hay stock online; con «Solo tiendas físicas» sale el vacío
+  onering: [
+    O("mox", R[0], "NM", "en", "nonfoil", 10450, 1),
+    O("bazar", R[0], "NM", "en", "nonfoil", 9500, 0),
+    O("cofre", R[1], "NM", "es", "nonfoil", 11990, 0),
+  ],
+};
+
+// El resto de cartas: ofertas deterministas, como en mock.ts
+function seeded(seed) {
+  let h = 2166136261;
+  for (let i = 0; i < seed.length; i++) { h ^= seed.charCodeAt(i); h = Math.imul(h, 16777619); }
+  let a = h >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function weighted(rand, options) {
+  const total = options.reduce((s, [, w]) => s + w, 0);
+  let x = rand() * total;
+  for (const [v, w] of options) { x -= w; if (x <= 0) return v; }
+  return options[options.length - 1][0];
+}
+const COND_W = [["MT", 3], ["NM", 45], ["EX", 22], ["GD", 12], ["LP", 8], ["PL", 4], ["PO", 1], [null, 5]];
+const COND_F = { MT: 1.1, NM: 1, EX: 0.92, GD: 0.85, LP: 0.75, PL: 0.6, PO: 0.4 };
+const LANG_W = [["es", 44], ["en", 42], ["it", 3], ["fr", 3], ["de", 2], ["ja", 2]];
+
+const OFFERS = {};
+function offersFor(card) {
+  if (OFFERS[card.id]) return OFFERS[card.id];
+  let list = CURATED[card.id];
+  if (!list) {
+    list = [];
+    for (const s of STORES) {
+      const rand = seeded(s.id + ":" + card.id);
+      if (rand() > 0.62) continue;
+      const copies = 1 + Math.floor(rand() * 2);
+      for (let i = 0; i < copies; i++) {
+        const p = card.printings[Math.floor(rand() * card.printings.length)];
+        const foil = p.refFoil != null && (p.ref == null || rand() < 0.28);
+        const cond = weighted(rand, COND_W);
+        const base = (foil ? p.refFoil : p.ref) * (0.84 + rand() * 0.4) * (cond ? COND_F[cond] : 0.9);
+        const step = base > 2000 ? 50 : 5;
+        const qty = rand() > 0.12 ? 1 + Math.floor(rand() * 4) : 0;
+        list.push(O(s.id, p, cond, weighted(rand, LANG_W), foil ? "foil" : "nonfoil", Math.max(10, Math.round(base / step) * step), qty));
+      }
+    }
+  }
+  OFFERS[card.id] = list.slice().sort((a, b) => a.price - b.price || b.inStock - a.inStock);
+  return OFFERS[card.id];
+}
+const inStockOf = (card) => offersFor(card).filter((o) => o.inStock);
+const minPrice = (card) => { const l = inStockOf(card); return l.length ? Math.min(...l.map((o) => o.price)) : null; };
+const refOf = (o) => (!o.p ? null : o.finish === "foil" ? o.p.refFoil : o.finish === "nonfoil" ? o.p.ref : null);
+
+function searchCards(q) {
+  const query = norm(q);
+  if (query.length < 2) return [];
+  const scored = [];
+  for (const card of Object.values(CARDS)) {
+    let best = null;
+    for (const [name, lang] of [[card.es, "es"], [card.en, "en"]]) {
+      const n = norm(name);
+      const score = n.startsWith(query) ? 1 : n.split(/[\s,]+/).some((w) => w.startsWith(query)) ? 2 : n.includes(query) ? 3 : null;
+      if (score != null && (!best || score < best.score)) best = { card, name, lang, score };
+    }
+    if (best) scored.push(best);
+  }
+  return scored.sort((a, b) => a.score - b.score || a.name.length - b.name.length);
+}
+
+// Producto sellado (PROPUESTA: el catálogo de MTGJSON aún se está montando)
+const SEALED = {
+  code: "BLB", name: "Bloomburrow", released: "agosto de 2024",
+  products: [
+    { id: "play-box", name: "Caja de sobres de juego", detail: "36 sobres de juego", kind: "caja",
+      offers: [["tierras", "es", 13495, 3], ["cofre", "es", 13990, 2], ["bazar", "en", 14200, 5], ["rincon", "es", 14995, 1], ["dados", "es", 15490, 2], ["mesa", "en", 15900, 0]] },
+    { id: "collector-box", name: "Caja de sobres de coleccionista", detail: "12 sobres de coleccionista", kind: "caja",
+      offers: [["bazar", "en", 27900, 1], ["cofre", "en", 28950, 2]] },
+    { id: "bundle", name: "Bundle", detail: "9 sobres de juego, carta promocional y tierras básicas", kind: "bundle",
+      offers: [["rincon", "es", 4495, 4], ["cofre", "es", 4590, 6], ["mesa", "es", 4750, 2], ["tierras", "en", 4800, 3]] },
+    { id: "play-booster", name: "Sobre de juego", detail: "14 cartas", kind: "sobre",
+      offers: [["mesa", "es", 450, 40], ["tierras", "es", 475, null], ["cofre", "es", 490, 24], ["rincon", "en", 495, 12], ["bazar", "es", 500, 30]] },
+    { id: "cmd-animated", name: "Mazo de Commander «Animated Army»", detail: "100 cartas", kind: "mazo",
+      offers: [["bazar", "en", 3995, 2], ["cofre", "es", 4250, 1], ["dados", "es", 4400, 1]] },
+    { id: "cmd-family", name: "Mazo de Commander «Family Matters»", detail: "100 cartas", kind: "mazo",
+      offers: [["cofre", "es", 4150, 3], ["rincon", "es", 4290, 1]] },
+  ],
+};
+const sealedOffers = (prod) => prod.offers.map(([store, lang, price, qty]) => ({ store: STORE[store], lang, price, qty, inStock: qty !== 0 }));
+
+const UNMATCHED = [
+  ["tierras", "Ragavan Ratero Habil (MH2) Foil Etched - JAP", 1890, "Ragavan, Nimble Pilferer", 0.62],
+  ["cofre", "Sheoldred Apocalypse Prerelease Promo FOIL", 7450, "Sheoldred, the Apocalypse", 0.58],
+  ["mesa", "Fire/Ice (Apocalypse) LP", 95, "Fire // Ice", 0.55],
+  ["bazar", "Aves del Paraiso 4ª Edicion", 650, "Birds of Paradise", 0.64],
+  ["rincon", "Anillo Unico - El Señor de los Anillos (borderless)", 6200, "The One Ring", 0.6],
+  ["mesa", "Contrahechiso - Tempest Remastered", 120, "Counterspell", 0.66],
+  ["dados", "Lote 20 tierras básicas surtidas", 300, null, 0],
+  ["cofre", "Booster de Draft Bloomburrow (ES)", 550, null, 0],
+  ["tierras", "Carpeta 9 bolsillos Ultra Pro negra", 1495, null, 0],
+];
+
+// ===========================================================================
+// Estado
+// ===========================================================================
+
+const QS = new URLSearchParams(location.search);
+const EMBED = QS.get("embed") === "1";
+const DEFAULT_FILTERS = () => ({ cities: [], inStockOnly: true, finish: null, langs: [], minCond: null, set: null });
+
+const VIEWS = [
+  { id: "inicio", label: "Inicio", title: "Inicio", desc: "Portada con el buscador. Lo primero que ve quien llega desde Google o un enlace." },
+  { id: "resultados", label: "Resultados", title: "Resultados de búsqueda", desc: "Lista de cartas que coinciden con la búsqueda, con el precio más bajo y el número de ofertas." },
+  { id: "carta", label: "Carta", title: "Página de carta", desc: "El corazón de la web: todas las copias de una carta en las tiendas, de la más barata a la más cara, con filtros." },
+  { id: "sellado", label: "Sellado", title: "Producto sellado (propuesta)", desc: "Cajas, bundles, sobres y mazos por edición. Depende del catálogo de MTGJSON que se está montando." },
+  { id: "tiendas", label: "Tiendas", title: "Tiendas", desc: "De dónde salen los precios y cuándo se revisó cada tienda por última vez." },
+  { id: "panel", label: "Panel interno", title: "Panel interno", desc: "Estado del scraping y anuncios sin emparejar. Solo para quien mantiene la web." },
+  { id: "sistema", label: "Sistema", title: "Sistema de diseño", desc: "Tokens, tipografía y componentes. Todo lo de las pantallas sale de aquí." },
+];
+
+let savedPrefs = {};
+try { savedPrefs = JSON.parse(localStorage.getItem("sm-design-prefs") || "{}"); } catch (e) {}
+
+const state = {
+  view: EMBED ? QS.get("view") || "inicio" : (location.hash.slice(1) || "inicio"),
+  device: QS.get("device") || savedPrefs.device || "desktop",
+  theme: QS.get("theme") || (() => { try { return localStorage.getItem("sm-design-theme"); } catch (e) { return null; } })() || "system",
+  query: "anillo",
+  cardId: "bolt",
+  productId: "play-box",
+  filters: DEFAULT_FILTERS(),
+  mobileFiltersOpen: false,
+};
+if (!VIEWS.some((v) => v.id === state.view)) state.view = "inicio";
+
+// ===========================================================================
+// Iconos (Lucide) y marca
+// ===========================================================================
+
+const ICONS = {
+  search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+  "search-x": '<path d="m13.5 8.5-5 5"/><path d="m8.5 8.5 5 5"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+  out: '<path d="M7 7h10v10"/><path d="M7 17 17 7"/>',
+  alert: '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+  pin: '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+  sliders: '<path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4"/>',
+  x: '<path d="M18 6 6 18M6 6l12 12"/>',
+  chevron: '<path d="m6 9 6 6 6-6"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
+  moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+  monitor: '<rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/>',
+  phone: '<rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/>',
+  package: '<path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="m7.5 4.27 9 5.15"/>',
+  layers: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
+  scale: '<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
+  arrow: '<path d="M5 12h14M12 5l7 7-7 7"/>',
+  lock: '<rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+  info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
+  help: '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
+  inbox: '<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>',
+  store: '<path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/>',
+  refresh: '<path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>',
+};
+
+function icon(name, cls = "size-4") {
+  if (name === "spark") {
+    return `<svg class="${cls} shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.6 5.5 4.5 9.4 10 10-5.5.6-9.4 4.5-10 10-.6-5.5-4.5-9.4-10-10 5.5-.6 9.4-4.5 10-10Z"/></svg>`;
+  }
+  return `<svg class="${cls} shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name]}</svg>`;
+}
+
+function logoMark(cls = "size-8") {
+  return `<svg class="${cls} shrink-0" viewBox="0 0 32 32" aria-hidden="true">
+    <rect width="32" height="32" rx="9" fill="var(--brand)"/>
+    <circle cx="14" cy="14" r="7.2" fill="none" stroke="var(--on-brand)" stroke-width="2.6"/>
+    <path d="m19.4 19.4 5.4 5.4" stroke="var(--on-brand)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M14 9.4c.3 2.5 2.1 4.3 4.6 4.6-2.5.3-4.3 2.1-4.6 4.6-.3-2.5-2.1-4.3-4.6-4.6 2.5-.3 4.3-2.1 4.6-4.6Z" fill="var(--gold)"/>
+  </svg>`;
+}
+
+const wordmark = (size = "text-[17px]") =>
+  `<span class="${size} font-semibold tracking-tight text-ink">search<span class="font-display font-semibold italic text-brand-strong">magic</span></span>`;
+
+// ===========================================================================
+// Clases compartidas (sustituyen a las constantes de src/components/ui.tsx)
+// ===========================================================================
+
+const UI = {
+  page: "mx-auto w-full max-w-6xl px-4 sm:px-6",
+  button: "inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-on-brand shadow-sm transition hover:bg-brand-strong",
+  buttonSecondary: "inline-flex items-center justify-center gap-2 rounded-xl border border-line-strong bg-surface px-3.5 py-2 text-sm font-medium text-ink transition hover:bg-surface-2",
+  buttonGhost: "inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-ink-2 transition hover:bg-surface-2 hover:text-ink",
+  buttonSmall: "inline-flex items-center gap-1 rounded-lg border border-line bg-surface px-2.5 py-1.5 text-xs font-semibold text-ink transition hover:border-brand hover:text-brand-strong",
+  link: "font-medium text-brand-strong underline-offset-4 hover:underline",
+  panel: "rounded-2xl border border-line bg-surface",
+  eyebrow: "text-xs font-semibold uppercase tracking-[0.12em] text-ink-3",
+  input: "h-10 w-full rounded-xl border border-line-strong bg-surface px-3 text-sm text-ink outline-none transition placeholder:text-ink-3 focus:border-brand focus:ring-4 focus:ring-brand/15",
+};
+
+// ===========================================================================
+// Piezas pequeñas
+// ===========================================================================
+
+const COND_CLASS = {
+  MT: ["bg-cond-mt/15 ring-cond-mt/45", "bg-cond-mt"],
+  NM: ["bg-cond-nm/15 ring-cond-nm/45", "bg-cond-nm"],
+  EX: ["bg-cond-ex/15 ring-cond-ex/50", "bg-cond-ex"],
+  GD: ["bg-cond-gd/20 ring-cond-gd/55", "bg-cond-gd"],
+  LP: ["bg-cond-lp/15 ring-cond-lp/50", "bg-cond-lp"],
+  PL: ["bg-cond-pl/15 ring-cond-pl/45", "bg-cond-pl"],
+  PO: ["bg-cond-po/15 ring-cond-po/45", "bg-cond-po"],
+};
+
+function condBadge(cond) {
+  if (!cond) {
+    return `<span class="inline-flex items-center rounded-md px-1.5 py-0.5 text-[11px] font-medium italic text-ink-3 ring-1 ring-inset ring-line-strong" title="La tienda no indica el estado">Estado ?</span>`;
+  }
+  const [box, dot] = COND_CLASS[cond];
+  return `<span class="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 font-mono text-[11px] font-semibold text-ink ring-1 ring-inset ${box}" title="${CONDITION_LABELS[cond]}"><span class="size-1.5 rounded-full ${dot}"></span>${cond}<span class="sr-only"> (${CONDITION_LABELS[cond]})</span></span>`;
+}
+
+function langChip(lang) {
+  if (!lang) return `<span class="rounded-md px-1.5 py-0.5 text-[11px] italic text-ink-3 ring-1 ring-inset ring-line-strong" title="Idioma desconocido">?</span>`;
+  return `<span class="rounded-md bg-surface px-1.5 py-0.5 font-mono text-[11px] font-semibold uppercase text-ink-2 ring-1 ring-inset ring-line-strong" title="${LANGUAGE_LABELS[lang] || lang}">${lang}<span class="sr-only"> (${LANGUAGE_LABELS[lang] || lang})</span></span>`;
+}
+
+function finishChip(finish) {
+  if (finish === "foil") return `<span class="finish-foil inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[11px] font-semibold">${icon("spark", "size-2.5")}Foil</span>`;
+  if (finish === "etched") return `<span class="finish-etched inline-flex items-center rounded-md px-1.5 py-0.5 text-[11px] font-semibold">Etched</span>`;
+  return "";
+}
+
+const setChip = (code) =>
+  `<span class="inline-flex h-5 items-center rounded-[5px] bg-surface-2 px-1.5 font-mono text-[10.5px] font-semibold uppercase tracking-wide text-ink-2 ring-1 ring-inset ring-line">${code}</span>`;
+
+const bestBadge = () =>
+  `<span class="inline-flex items-center gap-1 rounded-full bg-gold-soft px-2 py-0.5 text-[11px] font-semibold text-gold-ink ring-1 ring-inset ring-gold/60">${icon("spark", "size-2.5")}Mejor precio</span>`;
+
+function freshness(h) {
+  if (isStale(h)) {
+    return `<span class="inline-flex items-center gap-1 font-medium text-warn" title="Datos de hace más de 24 h: puede haber cambiado">${icon("alert", "size-3")}${timeAgo(h)}</span>`;
+  }
+  return `<span>${timeAgo(h)}</span>`;
+}
+
+function priceBlock(o, size = "text-base") {
+  const ref = refOf(o);
+  const d = diffPct(o.price, ref);
+  const diff = d == null
+    ? ""
+    : `<p class="text-xs tabular-nums ${d <= -5 ? "font-medium text-good" : "text-ink-3"}" title="Cardmarket: ${fmtEur(ref)}">${fmtDiff(d)}<span class="sr-only"> respecto a Cardmarket</span></p>`;
+  return `<p class="${size} font-semibold tabular-nums ${o.inStock ? "text-ink" : "text-ink-3"}">${fmtEur(o.price)}</p>${diff}`;
+}
+
+const copyChips = (o) => [condBadge(o.cond), langChip(o.lang), finishChip(o.finish)].join("");
+
+function printingInfo(o) {
+  if (!o.p) {
+    return `<span class="inline-flex items-center gap-1.5 text-sm italic text-ink-3" title="La tienda no indica la edición o no la hemos reconocido">${icon("help", "size-3.5")}Edición sin identificar</span>`;
+  }
+  const probable = o.conf < 1
+    ? ` · <span class="font-sans italic" title="Coincidencia del ${Math.round(o.conf * 100)} %">edición probable</span>`
+    : "";
+  return `<div class="flex min-w-0 items-center gap-2">${setChip(o.p.code)}<div class="min-w-0">
+    <p class="max-w-[15rem] truncate text-sm text-ink-2" title="${o.p.name}">${o.p.name}</p>
+    <p class="font-mono text-[11px] text-ink-3">#${o.p.number}${probable}</p></div></div>`;
+}
+
+const goStore = (name, label = "Ver") =>
+  `<a href="#" data-act="ext" data-v="${esc(name)}" class="${UI.buttonSmall}">${label}${icon("out", "size-3")}<span class="sr-only"> en ${esc(name)} (se abre en una pestaña nueva)</span></a>`;
+
+function storeStatus(s) {
+  if (s.status === "error") return { tone: "bad", label: `Datos de ${timeAgo(s.okH)}`, note: "La última revisión falló" };
+  if (s.status === "partial") return { tone: "warn", label: `Parcial · ${timeAgo(s.runH)}`, note: "Algunas páginas no respondieron" };
+  if (isStale(s.okH)) return { tone: "warn", label: `Datos de ${timeAgo(s.okH)}`, note: "Hace más de un día que no se revisa" };
+  return { tone: "good", label: `Al día · ${timeAgo(s.okH)}`, note: "" };
+}
+const TONE = {
+  good: { dot: "bg-good", text: "text-good", soft: "bg-good-soft" },
+  warn: { dot: "bg-warn", text: "text-warn", soft: "bg-warn-soft" },
+  bad: { dot: "bg-bad", text: "text-bad", soft: "bg-bad-soft" },
+};
+
+const STATUS_CLASS = {
+  ok: "bg-good-soft text-good",
+  partial: "bg-warn-soft text-warn",
+  error: "bg-bad-soft text-bad",
+  skipped: "bg-surface-2 text-ink-3",
+  running: "bg-brand-soft text-brand-strong",
+};
+const statusBadge = (st) =>
+  `<span class="inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-semibold ${STATUS_CLASS[st]}"><span class="size-1.5 rounded-full bg-current ${st === "running" ? "animate-pulse" : ""}"></span>${STATUS_LABELS[st]}</span>`;
+
+function cardImage(p, alt, cls = "", size = "normal") {
+  return `<div class="relative aspect-[488/680] overflow-hidden rounded-card bg-surface-3 ${cls}">
+    <span class="absolute inset-0 grid place-items-center p-3 text-center font-display text-sm text-ink-3">${alt}</span>
+    <img data-card src="${imgUrl(p.id, size)}" alt="${alt}" loading="lazy" class="relative block size-full object-cover">
+  </div>`;
+}
+
+function segmented(name, options, small = false) {
+  return `<div class="inline-flex rounded-xl border border-line bg-surface-2 p-0.5" role="group">${options
+    .map(([value, label, pressed]) => `<button type="button" data-act="${name}" data-v="${value}" aria-pressed="${pressed}"
+      class="rounded-[10px] ${small ? "px-2 py-1 text-xs" : "px-3 py-1.5 text-sm"} font-medium whitespace-nowrap text-ink-2 transition hover:text-ink aria-pressed:bg-surface aria-pressed:text-ink aria-pressed:shadow-sm aria-pressed:ring-1 aria-pressed:ring-line">${label}</button>`)
+    .join("")}</div>`;
+}
+
+const field = (label, control) =>
+  `<div><p class="mb-1.5 text-xs font-medium text-ink-3">${label}</p>${control}</div>`;
+
+function selectBox(act, options, value, label) {
+  return `<div class="relative">
+    <select data-act="${act}" aria-label="${label}" class="h-9 w-full appearance-none rounded-xl border border-line bg-surface pr-9 pl-3 text-sm text-ink outline-none transition hover:border-line-strong focus:border-brand focus:ring-4 focus:ring-brand/15">
+      ${options.map(([v, l]) => `<option value="${v}" ${v === (value || "") ? "selected" : ""}>${l}</option>`).join("")}
+    </select>
+    ${icon("chevron", "pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-ink-3")}
+  </div>`;
+}
+
+function switchControl(act, checked, label) {
+  return `<label class="inline-flex cursor-pointer items-center gap-2.5 text-sm font-medium text-ink select-none">
+    <input type="checkbox" data-act="${act}" class="peer sr-only" ${checked ? "checked" : ""}>
+    <span class="relative h-5 w-9 shrink-0 rounded-full bg-line-strong transition peer-checked:bg-brand peer-focus-visible:ring-4 peer-focus-visible:ring-brand/25 after:absolute after:top-0.5 after:left-0.5 after:size-4 after:rounded-full after:bg-white after:shadow-sm after:transition peer-checked:after:translate-x-4"></span>
+    ${label}
+  </label>`;
+}
+
+// ===========================================================================
+// Cabecera y pie de la web
+// ===========================================================================
+
+function appHeader(active) {
+  const nav = (label, view, extra = "") => {
+    const current = active === view || (view === "resultados" && active === "carta");
+    return `<a href="#" data-act="go" data-v="${view}" ${current ? 'aria-current="page"' : ""}
+      class="${extra} rounded-lg px-3 py-2 text-sm font-medium text-ink-2 transition hover:bg-surface-2 hover:text-ink aria-[current=page]:text-ink aria-[current=page]:bg-surface-2">${label}</a>`;
+  };
+  const search = (id, cls) => `<form data-search class="${cls}" role="search">
+      <label for="${id}" class="sr-only">Buscar carta</label>
+      <div class="flex h-10 items-center gap-2 rounded-xl border border-line bg-surface px-3 transition focus-within:border-brand focus-within:ring-4 focus-within:ring-brand/15">
+        ${icon("search", "size-4 text-ink-3")}
+        <input id="${id}" name="q" data-ac-input autocomplete="off" value="${active === "resultados" ? esc(state.query) : ""}" placeholder="Busca una carta…" class="h-full min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-ink-3">
+        <kbd class="hidden rounded border border-line px-1.5 font-mono text-[10px] text-ink-3 lg:inline">/</kbd>
+      </div>
+      <div data-ac-list class="absolute inset-x-0 top-full z-40 mt-2 hidden"></div>
+    </form>`;
+  const withSearch = active !== "inicio";
+  return `<header class="sticky z-30 border-b border-line bg-canvas/85 backdrop-blur-md" style="top: var(--sticky-top, 0px)">
+    <div class="${UI.page} flex h-16 items-center gap-3 sm:gap-6">
+      <a href="#" data-act="go" data-v="inicio" class="flex shrink-0 items-center gap-2.5" aria-label="search-magic, ir al inicio">${logoMark("size-8")}${wordmark()}</a>
+      ${withSearch ? search("q-header", "relative hidden max-w-md flex-1 md:block") : ""}
+      <nav class="ml-auto flex items-center gap-0.5" aria-label="Principal">
+        ${nav("Cartas", "resultados", "hidden sm:inline-flex")}${nav("Sellado", "sellado")}${nav("Tiendas", "tiendas")}
+      </nav>
+    </div>
+    ${withSearch ? `<div class="${UI.page} pb-3 md:hidden">${search("q-header-m", "relative")}</div>` : ""}
+  </header>`;
+}
+
+function appFooter() {
+  return `<footer class="mt-20 border-t border-line">
+    <div class="${UI.page} flex flex-col gap-6 py-10 sm:flex-row sm:items-start sm:justify-between">
+      <div class="max-w-xl">
+        <div class="flex items-center gap-2">${logoMark("size-6")}${wordmark("text-sm")}</div>
+        <p class="mt-3 text-xs leading-relaxed text-ink-3">Datos e imágenes de cartas: <a href="#" class="underline underline-offset-2 hover:text-ink-2">Scryfall</a>. Precio de referencia: Cardmarket, a través de Scryfall. Los precios y el stock son los que publica cada tienda; confírmalos en su web. search-magic no está afiliado a Wizards of the Coast ni a las tiendas. Magic: The Gathering es una marca de Wizards of the Coast.</p>
+      </div>
+      <nav class="flex gap-5 text-sm text-ink-2" aria-label="Pie">
+        <a href="#" data-act="go" data-v="tiendas" class="hover:text-ink">Tiendas</a>
+        <a href="#" data-act="noop" class="hover:text-ink">Cómo funciona</a>
+        <a href="#" data-act="noop" class="hover:text-ink">Contacto</a>
+      </nav>
+    </div>
+  </footer>`;
+}
+
+// ===========================================================================
+// Pantalla: Inicio
+// ===========================================================================
+
+function screenInicio() {
+  const fresh = Math.min(...STORES.map((s) => s.okH));
+  const fan = (card, p, cls, tag, tagPos) => `<figure class="absolute ${cls} transition duration-300 hover:-translate-y-2">
+      ${cardImage(p, card.es, "shadow-pop")}
+      <figcaption class="absolute -bottom-4 ${tagPos} whitespace-nowrap rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-medium text-ink-2 shadow-card">${tag}</figcaption>
+    </figure>`;
+  const bolt = CARDS.bolt, she = CARDS.sheoldred, rag = CARDS.ragavan;
+  const steps = [
+    ["search", "Busca en español o en inglés", "«Relámpago» o «Lightning Bolt»: encontramos la carta aunque la tienda la escriba de otra forma."],
+    ["scale", "Compara cada copia", "Precio, estado, idioma, acabado y edición, con el precio de Cardmarket como referencia."],
+    ["store", "Ve a la tienda", "Te llevamos a su web para comprarla o reservarla. Nosotros no vendemos nada."],
+  ];
+  return `${appHeader("inicio")}
+  <main>
+    <section class="relative overflow-x-clip">
+      <div class="hero-glow pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="${UI.page} relative grid grid-cols-[minmax(0,1fr)] items-center gap-12 pt-10 pb-16 sm:pt-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:pt-20 lg:pb-24">
+        <div>
+          <p class="inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3 py-1 text-xs font-medium text-ink-2 backdrop-blur">
+            <span class="relative flex size-2"><span class="absolute inline-flex size-full animate-ping rounded-full bg-good opacity-50"></span><span class="relative inline-flex size-2 rounded-full bg-good"></span></span>
+            <span>${STORES.length} tiendas<span class="hidden sm:inline"> de Barcelona y L'Hospitalet</span> · actualizado ${timeAgo(fresh)}</span>
+          </p>
+          <h1 class="mt-6 font-display text-[2.6rem] leading-[1.04] font-semibold tracking-tight text-balance sm:text-6xl lg:text-[4.1rem]">Encuentra tu carta <em class="font-medium text-brand-strong">al mejor precio</em> sin recorrerte todas las tiendas.</h1>
+          <p class="mt-5 max-w-xl text-lg leading-relaxed text-pretty text-ink-2">Busca una carta de Magic y compara precio, estado, idioma y edición en las tiendas de tu zona, de la más barata a la más cara.</p>
+          <form data-search class="relative mt-8 max-w-xl" role="search">
+            <label for="q-home" class="sr-only">Buscar carta</label>
+            <div class="flex h-14 items-center gap-3 rounded-2xl border border-line-strong bg-surface pr-1.5 pl-4 shadow-card transition focus-within:border-brand focus-within:ring-4 focus-within:ring-brand/15">
+              ${icon("search", "size-5 text-ink-3")}
+              <input id="q-home" name="q" data-ac-input autocomplete="off" placeholder="Relámpago, Sol Ring, Sheoldred…" class="h-full min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-ink-3">
+              <button class="${UI.button} h-11 px-5">Buscar</button>
+            </div>
+            <div data-ac-list class="absolute inset-x-0 top-full z-40 mt-2 hidden"></div>
+          </form>
+          <div class="mt-4 flex flex-wrap items-center gap-2 text-sm text-ink-3">
+            <span>Prueba con</span>
+            ${[["Relámpago", "bolt"], ["Sol Ring", "solring"], ["Contrahechizo", "counterspell"], ["Ragavan", "ragavan"]]
+              .map(([l, id]) => `<button type="button" data-act="card" data-v="${id}" class="rounded-full border border-line bg-surface px-3 py-1 font-medium text-ink-2 transition hover:border-brand/50 hover:text-brand-strong">${l}</button>`).join("")}
+          </div>
+        </div>
+        <div class="relative hidden h-[470px] lg:block" aria-hidden="true">
+          ${fan(she, she.printings[0], "top-12 left-[2%] w-[47%] -rotate-9", `${she.es.split(",")[0]} · <b class="font-semibold text-ink tabular-nums">${fmtEur(minPrice(she))}</b>`, "left-2")}
+          ${fan(rag, rag.printings[0], "top-16 right-[0%] w-[47%] rotate-8", `Ragavan · <b class="font-semibold text-ink tabular-nums">${fmtEur(minPrice(rag))}</b>`, "right-2")}
+          ${fan(bolt, bolt.printings[0], "top-0 left-1/2 z-10 w-[51%] -translate-x-1/2", `<span class="text-gold-ink">${icon("spark", "inline size-3 -mt-0.5")}</span> Relámpago desde <b class="font-semibold text-ink tabular-nums">${fmtEur(minPrice(bolt))}</b>`, "left-1/2 -translate-x-1/2")}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-line bg-surface">
+      <ol class="${UI.page} grid gap-8 py-12 md:grid-cols-3 md:gap-10">
+        ${steps.map(([ic, t, d], i) => `<li class="flex gap-4">
+          <span class="grid size-11 shrink-0 place-items-center rounded-2xl bg-brand-soft text-brand-strong">${icon(ic, "size-5")}</span>
+          <div><p class="text-xs font-semibold text-ink-3">Paso ${i + 1}</p><h2 class="mt-0.5 font-display text-lg font-semibold">${t}</h2><p class="mt-1 text-sm leading-relaxed text-ink-2">${d}</p></div>
+        </li>`).join("")}
+      </ol>
+    </section>
+
+    <section class="${UI.page} pt-14">
+      <div class="flex items-end justify-between gap-4">
+        <div><p class="${UI.eyebrow}">Dónde buscamos</p><h2 class="mt-1 font-display text-2xl font-semibold sm:text-3xl">Tiendas que comparamos</h2></div>
+        <a href="#" data-act="go" data-v="tiendas" class="${UI.link} inline-flex shrink-0 items-center gap-1 text-sm">Ver todas ${icon("arrow", "size-4")}</a>
+      </div>
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        ${STORES.map((s) => { const st = storeStatus(s); return `<li class="flex items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-3.5">
+          <span class="grid size-10 shrink-0 place-items-center rounded-xl bg-surface-2 font-display text-base font-semibold text-ink-2">${s.name.replace(/^(El|La) /, "").charAt(0)}</span>
+          <div class="min-w-0 flex-1"><p class="truncate font-medium">${s.name}</p><p class="text-xs text-ink-3">${CITY_LABELS[s.city]}</p></div>
+          <span class="inline-flex items-center gap-1.5 text-xs ${TONE[st.tone].text}"><span class="size-1.5 rounded-full ${TONE[st.tone].dot}"></span>${st.tone === "good" ? timeAgo(s.okH) : st.label}</span>
+        </li>`; }).join("")}
+      </ul>
+    </section>
+  </main>
+  ${appFooter()}`;
+}
+
+// ===========================================================================
+// Pantalla: Resultados
+// ===========================================================================
+
+function screenResultados() {
+  const results = searchCards(state.query);
+  const body = results.length
+    ? `<ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">${results.map(({ card }) => {
+        const min = minPrice(card);
+        const count = inStockOf(card).length;
+        return `<li><a href="#" data-act="card" data-v="${card.id}" class="group flex h-full gap-4 rounded-2xl border border-line bg-surface p-3 pr-4 transition hover:border-line-strong hover:shadow-card">
+          ${cardImage(card.printings[0], card.es, "w-24 shrink-0 shadow-sm sm:w-28")}
+          <div class="flex min-w-0 flex-1 flex-col py-1">
+            <h2 class="font-display text-xl leading-tight font-semibold text-balance transition group-hover:text-brand-strong">${card.es}</h2>
+            <p class="mt-0.5 text-sm text-ink-3">${card.en}</p>
+            <div class="mt-auto pt-4">${min != null
+              ? `<p class="text-xs text-ink-3">Desde</p><p class="text-2xl font-semibold tabular-nums">${fmtEur(min)}</p><p class="text-xs text-ink-2">${plural(count, "oferta", "ofertas")}</p>`
+              : `<p class="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-ink-3">${icon("inbox", "size-3.5")}Sin stock ahora mismo</p>`}
+            </div>
+          </div>
+        </a></li>`;
+      }).join("")}</ul>`
+    : emptyState("search-x", `No encontramos «${esc(state.query)}»`, "Revisa cómo se escribe o prueba con el nombre en inglés. Las cartas de dos caras se encuentran por cualquiera de sus nombres.",
+        `<div class="mt-5 flex flex-wrap justify-center gap-2">${["Relámpago", "Sol Ring", "Contrahechizo"].map((n) => `<button type="button" data-act="query" data-v="${n}" class="${UI.buttonSecondary}">${n}</button>`).join("")}</div>`);
+  return `${appHeader("resultados")}
+  <main class="${UI.page} py-8 sm:py-12">
+    <p class="${UI.eyebrow}">Búsqueda</p>
+    <h1 class="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">${results.length ? `${plural(results.length, "carta", "cartas")} para «${esc(state.query)}»` : "Sin resultados"}</h1>
+    <p class="mt-2 text-sm text-ink-3">Buscamos en los nombres en español y en inglés.</p>
+    ${body}
+  </main>
+  ${appFooter()}`;
+}
+
+function emptyState(ic, title, text, extra = "") {
+  return `<div class="mt-8 rounded-2xl border border-dashed border-line-strong bg-surface px-6 py-14 text-center">
+    <span class="mx-auto grid size-12 place-items-center rounded-2xl bg-surface-2 text-ink-3">${icon(ic, "size-6")}</span>
+    <p class="mt-4 font-display text-xl font-semibold text-balance">${title}</p>
+    <p class="mx-auto mt-1.5 max-w-md text-sm leading-relaxed text-pretty text-ink-2">${text}</p>
+    ${extra}
+  </div>`;
+}
+
+// ===========================================================================
+// Pantalla: Carta
+// ===========================================================================
+
+function applyFilters(list, f) {
+  return list.filter((o) =>
+    (!f.cities.length || f.cities.includes(o.store.city)) &&
+    (!f.inStockOnly || o.inStock) &&
+    (!f.finish || o.finish === f.finish) &&
+    (!f.langs.length || (o.lang && f.langs.includes(o.lang))) &&
+    (!f.minCond || (o.cond && CONDITIONS.indexOf(o.cond) <= CONDITIONS.indexOf(f.minCond))) &&
+    (!f.set || (o.p && o.p.code === f.set)));
+}
+
+function activeFilters(f) {
+  const out = [];
+  f.cities.forEach((c) => out.push([CITY_LABELS[c], "rm-city", c]));
+  if (f.finish) out.push([FINISH_LABELS[f.finish], "rm-finish", ""]);
+  f.langs.forEach((l) => out.push([LANGUAGE_LABELS[l] || l, "rm-lang", l]));
+  if (f.minCond) out.push([`${f.minCond} o mejor`, "rm-cond", ""]);
+  if (f.set) out.push([`Edición ${f.set.toUpperCase()}`, "rm-set", ""]);
+  if (!f.inStockOnly) out.push(["Incluye agotadas", "rm-stock", ""]);
+  return out;
+}
+
+function filtersQuery(f) {
+  const p = new URLSearchParams();
+  if (f.cities.length === 1) p.append("ciudad", f.cities[0]);
+  if (!f.inStockOnly) p.set("stock", "todo");
+  if (f.finish) p.set("acabado", f.finish);
+  f.langs.forEach((l) => p.append("idioma", l));
+  if (f.minCond) p.set("estado", f.minCond);
+  if (f.set) p.set("edicion", f.set);
+  const q = p.toString();
+  return q ? `?${q}` : "";
+}
+
+function filterControls(all, layout) {
+  const f = state.filters;
+  const langs = [...new Set(all.map((o) => o.lang).filter(Boolean))]
+    .sort((a, b) => (["es", "en"].indexOf(a) + 1 || 9) - (["es", "en"].indexOf(b) + 1 || 9) || a.localeCompare(b));
+  const city = field("Ciudad", segmented("city", [["", "Todas", !f.cities.length], ["barcelona", "Barcelona", f.cities.includes("barcelona")], ["hospitalet", "L'Hospitalet", f.cities.includes("hospitalet")]]));
+  const finish = field("Acabado", segmented("finish", [["", "Todos", !f.finish], ["nonfoil", "Normal", f.finish === "nonfoil"], ["foil", "Foil", f.finish === "foil"], ["etched", "Etched", f.finish === "etched"]]));
+  const lang = field("Idioma", `<div class="flex flex-wrap gap-1.5" role="group">${langs.map((l) =>
+    `<button type="button" data-act="lang" data-v="${l}" aria-pressed="${f.langs.includes(l)}" title="${LANGUAGE_LABELS[l] || l}"
+      class="h-9 min-w-10 rounded-xl border border-line bg-surface px-2.5 font-mono text-xs font-semibold uppercase text-ink-2 transition hover:border-line-strong aria-pressed:border-brand aria-pressed:bg-brand-soft aria-pressed:text-brand-strong">${l}</button>`).join("")}</div>`);
+  const cond = field("Estado mínimo", `<div class="${layout === "bar" ? "w-52" : ""}">${selectBox("cond",
+    [["", "Cualquiera"], ...CONDITIONS.map((c, i) => [c, `${CONDITION_LABELS[c]} (${c})${i === 0 ? "" : " o mejor"}`])], f.minCond, "Estado mínimo")}</div>`);
+  const stock = switchControl("stock", f.inStockOnly, "Solo con stock");
+  return { city, finish, lang, cond, stock };
+}
+
+function offerRow(o, best) {
+  return `<tr class="border-t border-line transition ${best ? "bg-gold-soft/50" : "hover:bg-surface-2/60"}">
+    <td class="py-3 pr-3 pl-4 ${best ? "shadow-[inset_3px_0_0_var(--gold)]" : ""}">
+      <div class="flex flex-wrap items-center gap-x-2 gap-y-1"><span class="font-medium ${o.inStock ? "text-ink" : "text-ink-2"}">${o.store.name}</span>${best ? bestBadge() : ""}</div>
+      <div class="mt-0.5 flex items-center gap-1.5 text-xs text-ink-3">${CITY_LABELS[o.store.city]}<span aria-hidden="true">·</span>${freshness(o.store.okH)}</div>
+    </td>
+    <td class="px-3 py-3">${printingInfo(o)}</td>
+    <td class="px-3 py-3"><div class="flex flex-wrap items-center gap-1">${copyChips(o)}</div></td>
+    <td class="px-3 py-3 text-sm whitespace-nowrap ${o.inStock ? "text-ink-2" : "font-medium text-ink-3"}">${stockLabel(o)}</td>
+    <td class="px-3 py-3 text-right whitespace-nowrap">${priceBlock(o)}</td>
+    <td class="py-3 pr-4 pl-3 text-right">${goStore(o.store.name)}</td>
+  </tr>`;
+}
+
+function offerCard(o, best) {
+  return `<li class="relative rounded-2xl border p-4 transition ${best ? "border-gold/70 bg-gold-soft/50" : "border-line bg-surface hover:border-line-strong"} ${o.inStock ? "" : "opacity-75"}">
+    ${best ? `<span class="absolute -top-2.5 left-3">${bestBadge()}</span>` : ""}
+    <div class="flex items-start justify-between gap-3">
+      <div class="min-w-0"><p class="truncate font-medium">${o.store.name}</p><p class="mt-0.5 flex items-center gap-1.5 text-xs text-ink-3">${CITY_LABELS[o.store.city]}<span aria-hidden="true">·</span>${freshness(o.store.okH)}</p></div>
+      <div class="shrink-0 text-right">${priceBlock(o, "text-lg")}</div>
+    </div>
+    <div class="mt-3 flex flex-wrap items-center gap-1">${copyChips(o)}
+      <span class="ml-1 inline-flex items-center gap-1 font-mono text-[11px] text-ink-3">${o.p ? `${o.p.code.toUpperCase()} #${o.p.number}` : "<i class='font-sans'>Edición ?</i>"}</span>
+      <span class="ml-auto text-xs ${o.inStock ? "text-ink-2" : "font-medium text-ink-3"}">${stockLabel(o)}</span>
+    </div>
+    <a href="#" data-act="ext" data-v="${esc(o.store.name)}" class="absolute inset-0 rounded-2xl" aria-label="Ver en ${esc(o.store.name)}: ${fmtEur(o.price)} (se abre en una pestaña nueva)"></a>
+  </li>`;
+}
+
+function screenCarta() {
+  const card = CARDS[state.cardId] || CARDS.bolt;
+  const f = state.filters;
+  const all = offersFor(card);
+  const list = applyFilters(all, f);
+  const inStock = list.filter((o) => o.inStock);
+  const best = inStock[0] || null;
+  const storesCount = new Set(inStock.map((o) => o.store.id)).size;
+  const sets = [...new Map(card.printings.map((p) => [p.code, p])).values()];
+  const shown = f.set ? card.printings.find((p) => p.code === f.set) : card.printings[0];
+  const refPrices = (f.set ? card.printings.filter((p) => p.code === f.set) : card.printings)
+    .map((p) => (f.finish === "foil" ? p.refFoil : p.ref)).filter((v) => v != null);
+  const ref = refPrices.length ? Math.min(...refPrices) : null;
+  const freshest = Math.min(...all.map((o) => o.store.okH));
+  const active = activeFilters(f);
+  const controls = filterControls(all, "bar");
+  const mobileControls = filterControls(all, "stack");
+  const anyInStock = all.some((o) => o.inStock);
+
+  const tile = (label, value, sub, gold = false) => `<div class="rounded-2xl border px-4 py-3 ${gold ? "border-gold/60 bg-gold-soft" : "border-line bg-surface"}">
+      <dt class="text-xs font-medium ${gold ? "text-gold-ink" : "text-ink-3"}">${label}</dt>
+      <dd class="mt-0.5 text-[1.4rem] leading-tight font-semibold tabular-nums">${value}</dd>
+      <dd class="mt-0.5 truncate text-xs text-ink-2">${sub}</dd>
+    </div>`;
+
+  let offersBody;
+  if (!list.length) {
+    offersBody = !anyInStock && f.inStockOnly
+      ? emptyState("inbox", `Ahora mismo ninguna tienda tiene ${card.es}`,
+          `${all.length ? `Hay ${plural(all.length, "oferta agotada", "ofertas agotadas")} por si quieres preguntar en la tienda. ` : ""}${ref != null ? `Referencia en Cardmarket: ${fmtEur(ref)}.` : ""}`,
+          all.length ? `<button type="button" data-act="rm-stock" class="${UI.buttonSecondary} mt-5">Ver agotadas</button>` : "")
+      : emptyState("sliders", "Ninguna oferta con estos filtros",
+          `Hay ${plural(all.filter((o) => o.inStock).length, "oferta", "ofertas")} de ${card.es} si quitas algún filtro.`,
+          `<button type="button" data-act="clear" class="${UI.buttonSecondary} mt-5">${icon("x", "size-4")}Quitar filtros</button>`);
+  } else {
+    offersBody = `
+      <div class="mt-4 hidden overflow-hidden rounded-2xl border border-line bg-surface lg:block">
+        <table class="w-full text-left text-sm">
+          <caption class="sr-only">Ofertas de ${card.es}, de la más barata a la más cara</caption>
+          <thead class="bg-surface-2 text-xs text-ink-3">
+            <tr>
+              <th scope="col" class="py-2.5 pr-3 pl-4 font-medium">Tienda</th>
+              <th scope="col" class="px-3 py-2.5 font-medium">Edición</th>
+              <th scope="col" class="px-3 py-2.5 font-medium">Copia</th>
+              <th scope="col" class="px-3 py-2.5 font-medium">Stock</th>
+              <th scope="col" class="px-3 py-2.5 text-right font-medium">Precio <span class="font-normal">· vs. Cardmarket</span></th>
+              <th scope="col" class="py-2.5 pr-4 pl-3"><span class="sr-only">Enlace a la tienda</span></th>
+            </tr>
+          </thead>
+          <tbody>${list.map((o) => offerRow(o, o === best)).join("")}</tbody>
+        </table>
+      </div>
+      <ul class="mt-5 grid gap-4 sm:grid-cols-2 lg:hidden">${list.map((o) => offerCard(o, o === best)).join("")}</ul>`;
+  }
+
+  return `${appHeader("carta")}
+  <main class="${UI.page} py-6 sm:py-10">
+    <nav aria-label="Migas de pan" class="text-sm text-ink-3"><a href="#" data-act="go" data-v="resultados" class="hover:text-ink-2">Cartas</a> <span aria-hidden="true" class="mx-1">/</span> <span class="text-ink-2">${card.es}</span></nav>
+
+    <div class="mt-4 grid grid-cols-[104px_minmax(0,1fr)] gap-x-4 gap-y-6 sm:grid-cols-[176px_minmax(0,1fr)] sm:gap-x-8 lg:grid-cols-[248px_minmax(0,1fr)] lg:gap-x-12">
+      <div class="sm:row-span-2">${cardImage(shown, `${card.es} (${shown.name})`, "shadow-card")}</div>
+      <div class="min-w-0 self-center sm:self-end">
+        <h1 class="font-display text-[1.9rem] leading-[1.05] font-semibold tracking-tight text-balance sm:text-5xl">${card.es}</h1>
+        <p class="mt-1.5 font-display text-base text-ink-2 italic sm:text-lg">${card.en}</p>
+      </div>
+      <div class="col-span-2 min-w-0 sm:col-span-1 sm:col-start-2">
+        <dl class="grid grid-cols-2 gap-3 xl:grid-cols-4">
+          ${best ? tile("Mejor precio", fmtEur(best.price), `${best.store.name}`, true) : tile("Mejor precio", "—", "Sin stock con estos filtros")}
+          ${tile("Cardmarket", ref != null ? fmtEur(ref) : "—", f.set ? `${f.set.toUpperCase()} · ${f.finish === "foil" ? "foil" : "normal"}` : `la edición más barata${f.finish === "foil" ? ", foil" : ""}`)}
+          ${tile("Ofertas", fmtNum(inStock.length), `en ${plural(storesCount, "tienda", "tiendas")}`)}
+          ${tile("Actualizado", timeAgo(freshest),`<a href="#" data-act="go" data-v="tiendas" class="${UI.link}">Estado de las tiendas</a>`)}
+        </dl>
+        <div class="mt-6">
+          <p class="${UI.eyebrow}">Ediciones</p>
+          <div class="-mx-4 mt-2 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0">
+            ${[["", "Todas", null], ...sets.map((p) => [p.code, p.name, p])].map(([code, name, p]) => {
+              const n = all.filter((o) => o.inStock && (!code || (o.p && o.p.code === code))).length;
+              return `<button type="button" data-act="set" data-v="${code}" aria-pressed="${(f.set || "") === code}" title="${name}"
+                class="inline-flex shrink-0 items-center gap-2 rounded-full border border-line bg-surface py-1.5 pr-3 ${code ? "pl-2" : "pl-3"} text-sm text-ink-2 transition hover:border-line-strong aria-pressed:border-brand aria-pressed:bg-brand-soft aria-pressed:text-brand-strong">
+                ${code ? setChip(code) : ""}<span class="max-w-[14rem] truncate font-medium">${name}</span><span class="rounded-full bg-surface-2 px-1.5 text-[11px] font-semibold tabular-nums text-ink-3">${n}</span>
+              </button>`;
+            }).join("")}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="mt-12" aria-labelledby="ofertas-titulo">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 id="ofertas-titulo" class="font-display text-2xl font-semibold">Ofertas</h2>
+          <p class="mt-0.5 text-sm text-ink-3">${plural(list.length, "oferta", "ofertas")} · de la más barata a la más cara</p>
+        </div>
+        <div class="hidden pb-0.5 lg:block">${controls.stock}</div>
+      </div>
+
+      <form class="mt-4 hidden flex-wrap items-end gap-x-6 gap-y-4 rounded-2xl border border-line bg-surface px-4 py-3.5 lg:flex" aria-label="Filtros">
+        ${controls.city}${controls.finish}${controls.lang}${controls.cond}
+      </form>
+
+      <details data-mobile-filters class="group mt-4 rounded-2xl border border-line bg-surface lg:hidden" ${state.mobileFiltersOpen ? "open" : ""}>
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-medium [&::-webkit-details-marker]:hidden">
+          <span class="inline-flex items-center gap-2">${icon("sliders", "size-4 text-ink-3")}Filtros${active.length ? `<span class="rounded-full bg-brand px-1.5 py-px text-[11px] font-semibold text-on-brand">${active.length}</span>` : ""}</span>
+          ${icon("chevron", "size-4 text-ink-3 transition group-open:rotate-180")}
+        </summary>
+        <div class="space-y-4 border-t border-line px-4 py-4 [&>div]:max-w-full [&_[role=group]]:flex-wrap">
+          ${mobileControls.stock}${mobileControls.city}${mobileControls.finish}${mobileControls.lang}${mobileControls.cond}
+          <p class="text-xs text-ink-3">Sin JavaScript, este bloque es un formulario normal con un botón «Aplicar».</p>
+        </div>
+      </details>
+
+      ${active.length ? `<div class="mt-3 flex flex-wrap items-center gap-2">
+        ${active.map(([label, act, v]) => `<button type="button" data-act="${act}" data-v="${v}" class="inline-flex items-center gap-1 rounded-full bg-brand-soft py-1 pr-2 pl-3 text-xs font-medium text-brand-strong transition hover:bg-brand/20">${label}${icon("x", "size-3")}<span class="sr-only"> (quitar)</span></button>`).join("")}
+        <button type="button" data-act="clear" class="px-1 text-xs font-medium text-ink-3 underline-offset-2 hover:text-ink hover:underline">Quitar filtros</button>
+      </div>` : ""}
+
+      ${offersBody}
+
+      <p class="mt-5 flex items-start gap-2 text-xs leading-relaxed text-ink-3">${icon("info", "size-3.5 mt-px")}<span>El precio y el stock los publica cada tienda: confírmalos en su web antes de ir. La diferencia en % compara con el precio de Cardmarket de la misma edición y acabado.</span></p>
+    </section>
+  </main>
+  ${appFooter()}`;
+}
+
+// ===========================================================================
+// Pantalla: Sellado (propuesta)
+// ===========================================================================
+
+const KIND = {
+  caja: { label: "Caja", cls: "bg-brand-soft text-brand-strong" },
+  bundle: { label: "Bundle", cls: "bg-gold-soft text-gold-ink" },
+  sobre: { label: "Sobre", cls: "bg-surface-2 text-ink-2" },
+  mazo: { label: "Mazo", cls: "bg-good-soft text-good" },
+};
+
+function screenSellado() {
+  const prod = SEALED.products.find((p) => p.id === state.productId) || SEALED.products[0];
+  const offers = sealedOffers(prod).sort((a, b) => a.price - b.price || b.inStock - a.inStock);
+  const best = offers.find((o) => o.inStock);
+  const storesWith = new Set(SEALED.products.flatMap((p) => sealedOffers(p).filter((o) => o.inStock).map((o) => o.store.id))).size;
+  return `${appHeader("sellado")}
+  <main class="${UI.page} py-6 sm:py-10">
+    <nav aria-label="Migas de pan" class="text-sm text-ink-3"><span>Sellado</span> <span aria-hidden="true" class="mx-1">/</span> <span class="text-ink-2">${SEALED.name}</span></nav>
+    <div class="mt-4 flex items-center gap-4">
+      <span class="grid size-16 shrink-0 place-items-center rounded-2xl border border-line bg-surface font-mono text-sm font-semibold tracking-wider text-brand-strong shadow-sm">${SEALED.code}</span>
+      <div>
+        <h1 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl">${SEALED.name}</h1>
+        <p class="mt-1 text-sm text-ink-3">Edición de ${SEALED.released} · ${plural(SEALED.products.length, "producto", "productos")} en ${plural(storesWith, "tienda", "tiendas")}</p>
+      </div>
+    </div>
+
+    <div class="mt-8 grid gap-6 lg:grid-cols-[340px_1fr] lg:items-start">
+      <ul class="grid gap-2 sm:grid-cols-2 lg:grid-cols-1" aria-label="Productos">
+        ${SEALED.products.map((p) => {
+          const os = sealedOffers(p).filter((o) => o.inStock);
+          const min = os.length ? Math.min(...os.map((o) => o.price)) : null;
+          return `<li><button type="button" data-act="product" data-v="${p.id}" aria-pressed="${p.id === prod.id}"
+            class="flex w-full items-center gap-3 rounded-2xl border border-line bg-surface p-3 text-left transition hover:border-line-strong aria-pressed:border-brand aria-pressed:ring-4 aria-pressed:ring-brand/10">
+            <span class="grid size-11 shrink-0 place-items-center rounded-xl ${KIND[p.kind].cls}">${icon("package", "size-5")}</span>
+            <span class="min-w-0 flex-1"><span class="block truncate text-sm font-medium">${p.name}</span><span class="block truncate text-xs text-ink-3">${p.detail}</span></span>
+            <span class="shrink-0 text-right"><span class="block text-sm font-semibold tabular-nums">${min != null ? fmtEur(min) : "—"}</span><span class="block text-[11px] text-ink-3">${plural(new Set(os.map((o) => o.store.id)).size, "tienda", "tiendas")}</span></span>
+          </button></li>`;
+        }).join("")}
+      </ul>
+
+      <section class="${UI.panel} overflow-hidden" aria-labelledby="prod-titulo">
+        <div class="flex flex-wrap items-start justify-between gap-4 border-b border-line p-5">
+          <div class="flex items-center gap-3">
+            <span class="grid size-12 place-items-center rounded-xl ${KIND[prod.kind].cls}">${icon("package", "size-6")}</span>
+            <div><p class="text-xs font-medium text-ink-3">${KIND[prod.kind].label} · ${SEALED.code}</p><h2 id="prod-titulo" class="font-display text-xl font-semibold">${prod.name}</h2><p class="text-sm text-ink-2">${prod.detail}</p></div>
+          </div>
+          ${best ? `<div class="rounded-2xl border border-gold/60 bg-gold-soft px-4 py-2.5 text-right"><p class="text-xs font-medium text-gold-ink">Mejor precio</p><p class="text-xl font-semibold tabular-nums">${fmtEur(best.price)}</p><p class="text-xs text-ink-2">${best.store.name}</p></div>` : ""}
+        </div>
+        <ul class="divide-y divide-line">
+          ${offers.map((o) => `<li class="flex flex-wrap items-center gap-x-4 gap-y-2 px-5 py-3.5 ${o === best ? "bg-gold-soft/40 shadow-[inset_3px_0_0_var(--gold)]" : ""} ${o.inStock ? "" : "opacity-70"}">
+            <div class="min-w-0 flex-1 basis-48"><p class="flex flex-wrap items-center gap-2 font-medium">${o.store.name}${o === best ? bestBadge() : ""}</p><p class="mt-0.5 flex items-center gap-1.5 text-xs text-ink-3">${CITY_LABELS[o.store.city]}<span aria-hidden="true">·</span>${freshness(o.store.okH)}</p></div>
+            <div class="flex items-center gap-2">${langChip(o.lang)}<span class="w-16 text-sm ${o.inStock ? "text-ink-2" : "font-medium text-ink-3"}">${stockLabel(o)}</span></div>
+            <p class="w-24 text-right text-base font-semibold tabular-nums ${o.inStock ? "" : "text-ink-3"}">${fmtEur(o.price)}</p>
+            ${goStore(o.store.name)}
+          </li>`).join("")}
+        </ul>
+        <p class="flex items-start gap-2 border-t border-line bg-surface-2/60 px-5 py-3 text-xs text-ink-3">${icon("info", "size-3.5 mt-px")}No hay precio de referencia de Cardmarket para producto sellado, así que aquí no hay comparación en %.</p>
+      </section>
+    </div>
+  </main>
+  ${appFooter()}`;
+}
+
+// ===========================================================================
+// Pantalla: Tiendas
+// ===========================================================================
+
+function screenTiendas() {
+  const counts = { good: 0, warn: 0, bad: 0 };
+  STORES.forEach((s) => counts[storeStatus(s).tone]++);
+  const group = (city) => {
+    const list = STORES.filter((s) => s.city === city);
+    return `<section class="mt-10" aria-labelledby="city-${city}">
+      <h2 id="city-${city}" class="flex items-center gap-2 font-display text-xl font-semibold">${icon("pin", "size-5 text-ink-3")}${CITY_LABELS[city]}<span class="font-sans text-sm font-normal text-ink-3">${list.length}</span></h2>
+      <ul class="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">${list.map((s) => {
+        const st = storeStatus(s);
+        return `<li class="flex flex-col rounded-2xl border border-line bg-surface p-5">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="font-display text-xl leading-tight font-semibold">${s.name}</h3>
+            <span class="shrink-0 rounded-full bg-surface-2 px-2 py-0.5 text-[11px] font-medium text-ink-3">${PLATFORM_LABELS[s.platform]}</span>
+          </div>
+          <p class="mt-1.5 text-sm leading-snug text-ink-3">${s.address}</p>
+          <dl class="mt-5 grid grid-cols-2 gap-3">
+            <div class="rounded-xl bg-surface-2 px-3 py-2"><dt class="text-[11px] text-ink-3">Anuncios</dt><dd class="text-lg font-semibold tabular-nums">${fmtNum(s.listings)}</dd></div>
+            <div class="rounded-xl bg-surface-2 px-3 py-2"><dt class="text-[11px] text-ink-3">Con stock</dt><dd class="text-lg font-semibold tabular-nums">${fmtNum(s.inStock)}</dd></div>
+          </dl>
+          <div class="mt-5 flex items-end justify-between gap-3 border-t border-line pt-4">
+            <div class="min-w-0">
+              <p class="inline-flex items-center gap-1.5 text-sm font-medium ${TONE[st.tone].text}"><span class="size-2 rounded-full ${TONE[st.tone].dot}"></span>${st.label}</p>
+              ${st.note ? `<p class="mt-0.5 text-xs text-ink-3">${st.note}</p>` : ""}
+            </div>
+            <a href="#" data-act="ext" data-v="${esc(s.name)}" class="${UI.link} inline-flex shrink-0 items-center gap-1 text-sm">Web${icon("out", "size-3.5")}</a>
+          </div>
+        </li>`;
+      }).join("")}</ul>
+    </section>`;
+  };
+  return `${appHeader("tiendas")}
+  <main class="${UI.page} py-8 sm:py-12">
+    <p class="${UI.eyebrow}">De dónde salen los precios</p>
+    <h1 class="mt-1 font-display text-4xl font-semibold tracking-tight">Tiendas</h1>
+    <p class="mt-3 max-w-2xl leading-relaxed text-pretty text-ink-2">Revisamos el catálogo de cada tienda cada 6–12 horas, respetando su robots.txt y sin pasar de una petición por segundo. Si una revisión falla, seguimos enseñando los últimos datos buenos y avisamos de su antigüedad.</p>
+    <div class="mt-6 flex flex-wrap gap-2 text-sm">
+      ${[["good", "al día"], ["warn", "con datos parciales"], ["bad", "con error"]].filter(([t]) => counts[t])
+        .map(([t, l]) => `<span class="inline-flex items-center gap-2 rounded-full ${TONE[t].soft} px-3 py-1 font-medium ${TONE[t].text}"><span class="size-1.5 rounded-full ${TONE[t].dot}"></span>${counts[t]} ${l}</span>`).join("")}
+    </div>
+    ${group("barcelona")}
+    ${group("hospitalet")}
+    <aside class="mt-12 flex flex-col gap-4 rounded-2xl border border-line bg-brand-soft/60 p-6 sm:flex-row sm:items-center sm:justify-between">
+      <div><h2 class="font-display text-lg font-semibold">¿Tienes una tienda?</h2><p class="mt-1 max-w-xl text-sm text-ink-2">Si quieres aparecer, compartir tu stock de Cardmarket o que dejemos de revisar tu web, escríbenos.</p></div>
+      <a href="#" data-act="noop" class="${UI.button} shrink-0">Escríbenos</a>
+    </aside>
+  </main>
+  ${appFooter()}`;
+}
+
+// ===========================================================================
+// Pantalla: Panel interno
+// ===========================================================================
+
+function screenPanel() {
+  const okCount = STORES.filter((s) => s.status === "ok").length;
+  const kpi = (label, value, sub, tone = "") => `<div class="${UI.panel} px-4 py-3.5"><p class="text-xs font-medium text-ink-3">${label}</p><p class="mt-1 text-2xl font-semibold tabular-nums ${tone}">${value}</p><p class="text-xs text-ink-3">${sub}</p></div>`;
+  return `${appHeader("panel")}
+  <main class="${UI.page} py-8 sm:py-12">
+    <div class="flex flex-wrap items-center gap-3">
+      <h1 class="font-display text-3xl font-semibold tracking-tight">Panel interno</h1>
+      <span class="inline-flex items-center gap-1 rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-ink-3">${icon("lock", "size-3")}Privado</span>
+    </div>
+    <p class="mt-2 text-sm text-ink-2">Estado del scraping y anuncios que no hemos sabido emparejar con una carta.</p>
+
+    <div class="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+      ${kpi("Tiendas al día", `${okCount}/${STORES.length}`, "última ejecución OK", "")}
+      ${kpi("Anuncios", fmtNum(STORES.reduce((s, x) => s + x.listings, 0)), `${fmtNum(STORES.reduce((s, x) => s + x.inStock, 0))} con stock`)}
+      ${kpi("Sin emparejar", fmtNum(UNMATCHED.length), "pendientes de revisar", "text-warn")}
+      ${kpi("Última ejecución", timeAgo(Math.min(...STORES.map((s) => s.runH))), "Dados y Dragones")}
+    </div>
+
+    <section class="mt-10" aria-labelledby="runs-titulo">
+      <div class="flex items-end justify-between gap-3">
+        <h2 id="runs-titulo" class="font-display text-xl font-semibold">Última ejecución por tienda</h2>
+        <button type="button" data-act="noop" class="${UI.buttonSecondary}">${icon("refresh", "size-4")}Lanzar ahora</button>
+      </div>
+      <div class="mt-4 overflow-x-auto rounded-2xl border border-line bg-surface">
+        <table class="w-full min-w-[760px] text-left text-sm">
+          <thead class="bg-surface-2 text-xs text-ink-3"><tr>
+            <th scope="col" class="py-2.5 pr-3 pl-4 font-medium">Tienda</th><th scope="col" class="px-3 py-2.5 font-medium">Estado</th>
+            <th scope="col" class="px-3 py-2.5 font-medium">Fin</th><th scope="col" class="px-3 py-2.5 font-medium">Duración</th>
+            <th scope="col" class="px-3 py-2.5 text-right font-medium">Encontrados</th><th scope="col" class="px-3 py-2.5 text-right font-medium">Emparejados</th>
+            <th scope="col" class="py-2.5 pr-4 pl-3 text-right font-medium">Sin emparejar</th>
+          </tr></thead>
+          <tbody>${STORES.map((s) => `<tr class="border-t border-line align-top">
+            <td class="py-3 pr-3 pl-4"><p class="font-medium">${s.name}</p><p class="text-xs text-ink-3">${PLATFORM_LABELS[s.platform]}</p></td>
+            <td class="px-3 py-3">${statusBadge(s.status)}</td>
+            <td class="px-3 py-3 whitespace-nowrap text-ink-2"><p>${DATE_TIME.format(new Date(NOW - s.runH * HOUR))}</p><p class="text-xs text-ink-3">${timeAgo(s.runH)}</p></td>
+            <td class="px-3 py-3 whitespace-nowrap text-ink-2">${fmtDuration(s.dur)}</td>
+            <td class="px-3 py-3 text-right tabular-nums">${fmtNum(s.found)}</td>
+            <td class="px-3 py-3 text-right tabular-nums">${fmtNum(s.matched)}</td>
+            <td class="py-3 pr-4 pl-3 text-right tabular-nums ${s.unmatched ? "font-semibold text-warn" : "text-ink-3"}">${fmtNum(s.unmatched)}</td>
+          </tr>${s.error ? `<tr><td colspan="7" class="px-4 pb-3"><p class="flex items-center gap-2 rounded-lg ${s.status === "error" ? "bg-bad-soft text-bad" : "bg-warn-soft text-warn"} px-3 py-2 font-mono text-xs">${icon("alert", "size-3.5")}${s.error}</p></td></tr>` : ""}`).join("")}</tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-10" aria-labelledby="unmatched-titulo">
+      <h2 id="unmatched-titulo" class="font-display text-xl font-semibold">Sin emparejar <span class="font-sans text-base font-normal text-ink-3">${UNMATCHED.length}</span></h2>
+      <p class="mt-1 text-sm text-ink-3">Anuncios que el emparejador no ha sabido asignar. Al asignarlos se guarda una corrección para la próxima ejecución.</p>
+      <ul class="mt-4 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-surface">
+        ${UNMATCHED.map(([store, title, price, guess, conf]) => `<li class="grid gap-3 px-4 py-3.5 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_auto] md:items-center md:gap-6">
+          <div class="min-w-0"><p class="truncate font-mono text-[13px] text-ink" title="${esc(title)}">${esc(title)}</p><p class="mt-0.5 text-xs text-ink-3">${STORE[store].name} · <span class="tabular-nums">${fmtEur(price)}</span></p></div>
+          <div class="min-w-0">${guess
+            ? `<p class="truncate text-sm"><span class="text-ink-3">¿Es</span> <span class="font-medium">${guess}</span><span class="text-ink-3">?</span></p>
+               <div class="mt-1.5 flex items-center gap-2"><span class="h-1.5 w-24 overflow-hidden rounded-full bg-surface-3"><span class="block h-full rounded-full bg-brand" style="width:${Math.round(conf * 100)}%"></span></span><span class="text-xs tabular-nums text-ink-3">${Math.round(conf * 100)} %</span></div>`
+            : `<p class="text-sm text-ink-3 italic">Sin candidata: probablemente no es una carta</p>`}</div>
+          <div class="flex gap-2">${guess ? `<button type="button" data-act="noop" class="${UI.buttonSmall}">${icon("check", "size-3")}Asignar</button>` : ""}<button type="button" data-act="noop" class="${UI.buttonSmall}">Buscar otra</button><button type="button" data-act="noop" class="${UI.buttonGhost} px-2 py-1.5 text-xs">Descartar</button></div>
+        </li>`).join("")}
+      </ul>
+    </section>
+  </main>`;
+}
+
+// ===========================================================================
+// Sistema de diseño
+// ===========================================================================
+
+const TOKENS = [
+  ["canvas", "bg-canvas", "Fondo de página"],
+  ["surface", "bg-surface", "Paneles, tarjetas, tablas"],
+  ["surface-2", "bg-surface-2", "Cabeceras de tabla, controles, hover"],
+  ["surface-3", "bg-surface-3", "Pulsado, pistas de barras, imagen cargando"],
+  ["line", "border-line", "Bordes y separadores"],
+  ["line-strong", "border-line-strong", "Bordes de campos"],
+  ["ink", "text-ink", "Texto principal"],
+  ["ink-2", "text-ink-2", "Texto secundario"],
+  ["ink-3", "text-ink-3", "Metadatos y ayudas (contraste ≥ 4,5:1)"],
+  ["brand", "bg-brand", "Botón principal, selección, foco"],
+  ["brand-strong", "text-brand-strong", "Enlaces y texto de acento"],
+  ["brand-soft", "bg-brand-soft", "Fondo de lo seleccionado"],
+  ["gold", "border-gold", "Mejor precio (borde, icono)"],
+  ["gold-soft", "bg-gold-soft", "Fondo de mejor precio"],
+  ["good", "text-good", "Más barato que Cardmarket · OK"],
+  ["warn", "text-warn", "Datos viejos · parcial"],
+  ["bad", "text-bad", "Error"],
+];
+
+function sysSection(id, title, intro, body) {
+  return `<section id="sys-${id}" class="scroll-mt-24 border-t border-line py-12 first:border-t-0 first:pt-2">
+    <div class="grid gap-8 lg:grid-cols-[260px_1fr]">
+      <div><h2 class="font-display text-2xl font-semibold">${title}</h2><p class="mt-2 text-sm leading-relaxed text-ink-2">${intro}</p></div>
+      <div class="min-w-0">${body}</div>
+    </div>
+  </section>`;
+}
+
+const specimen = (label, meta, sample) =>
+  `<div class="grid gap-2 border-b border-line py-4 last:border-0 sm:grid-cols-[180px_1fr] sm:items-baseline"><div><p class="text-sm font-medium">${label}</p><p class="font-mono text-[11px] text-ink-3">${meta}</p></div><div class="min-w-0">${sample}</div></div>`;
+
+function screenSistema() {
+  const sample = offersFor(CARDS.bolt);
+  const rowsDemo = [
+    [sample.find((o) => o.store.id === "rincon" && o.p && o.p.code === "fdc"), true, "Mejor precio"],
+    [sample.find((o) => o.store.id === "cofre" && o.finish === "foil"), false, "Normal (foil)"],
+    [sample.find((o) => !o.p), false, "Edición y estado desconocidos"],
+    [sample.find((o) => o.store.id === "bazar" && o.conf < 1), false, "Edición probable"],
+    [sample.find((o) => o.store.id === "dados"), false, "Datos de más de 24 h"],
+    [sample.find((o) => !o.inStock), false, "Agotado (solo con «Incluye agotadas»)"],
+  ];
+  const demoAc = searchCards("an").slice(0, 3);
+
+  const colors = `<div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">${TOKENS.map(([name, cls, use]) => `<div class="flex items-center gap-3 rounded-2xl border border-line bg-surface p-2.5">
+      <span class="size-12 shrink-0 rounded-xl ring-1 ring-inset ring-line" style="background: var(--${name})"></span>
+      <div class="min-w-0"><p class="font-mono text-xs font-semibold">--${name}</p><p class="font-mono text-[11px] text-brand-strong">${cls}</p><p class="truncate text-xs text-ink-3" title="${use}">${use}</p></div>
+    </div>`).join("")}</div>
+    <p class="mt-6 text-sm font-medium">Estado de la carta</p>
+    <p class="mt-1 text-sm text-ink-2">La escala y los colores de Cardmarket, que es lo que conocen los jugadores. El color nunca va solo: siempre lleva el código y el nombre completo en el título y para lectores de pantalla.</p>
+    <div class="mt-3 flex flex-wrap gap-3">${CONDITIONS.map((c) => `<div class="flex items-center gap-2 rounded-xl border border-line bg-surface px-3 py-2">${condBadge(c)}<span class="text-sm text-ink-2">${CONDITION_LABELS[c]}</span></div>`).join("")}
+      <div class="flex items-center gap-2 rounded-xl border border-line bg-surface px-3 py-2">${condBadge(null)}<span class="text-sm text-ink-2">Desconocido</span></div></div>`;
+
+  const type = `<div class="rounded-2xl border border-line bg-surface px-5">
+    ${specimen("Display", "Fraunces 600 · 48–66 px · -0,02em", `<p class="font-display text-5xl leading-none font-semibold tracking-tight">Relámpago</p>`)}
+    ${specimen("Título", "Fraunces 600 · 24–36 px", `<p class="font-display text-3xl font-semibold">Ofertas</p>`)}
+    ${specimen("Nombre de carta", "Fraunces 600 · 20 px", `<p class="font-display text-xl font-semibold">Sheoldred, el Apocalipsis</p>`)}
+    ${specimen("Nombre en inglés", "Fraunces italic 400 · 16–18 px", `<p class="font-display text-lg text-ink-2 italic">Sheoldred, the Apocalypse</p>`)}
+    ${specimen("Texto", "Geist 400 · 16 px · 1,6", `<p class="max-w-prose text-base leading-relaxed text-ink-2">Busca una carta de Magic y compara precio, estado, idioma y edición en las tiendas de tu zona.</p>`)}
+    ${specimen("Interfaz", "Geist 500 · 14 px", `<p class="text-sm font-medium">Solo con stock · Quitar filtros</p>`)}
+    ${specimen("Metadatos", "Geist 400 · 12 px · ink-3", `<p class="text-xs text-ink-3">L'Hospitalet · hace 4 h</p>`)}
+    ${specimen("Códigos", "Geist Mono 600 · 11 px · mayúsculas", `<p class="flex items-center gap-2">${setChip("fdc")}<span class="font-mono text-[11px] text-ink-3">#163 · MH2 · ES</span></p>`)}
+    ${specimen("Precio", "Geist 600 · tabular-nums", `<p class="flex items-baseline gap-4"><span class="text-3xl font-semibold tabular-nums">1,40 €</span><span class="text-xl font-semibold tabular-nums">11,50 €</span><span class="text-base font-semibold tabular-nums">116,46 €</span></p>`)}
+  </div>
+  <p class="mt-3 text-sm text-ink-2">Fraunces da el aire de carta (nombres, títulos); Geist se encarga de todo lo que se lee rápido. Las cifras siempre con <code class="rounded bg-surface-2 px-1 font-mono text-[12px]">tabular-nums</code> para que los precios se alineen.</p>`;
+
+  const shape = `<div class="flex flex-wrap items-end gap-4">${[["rounded-lg", "8 px · chips, botones pequeños"], ["rounded-xl", "12 px · botones, campos"], ["rounded-2xl", "16 px · paneles, tarjetas"], ["rounded-full", "píldoras, insignias"], ["rounded-card", "proporción de carta"]]
+    .map(([c, l]) => `<div class="text-center"><div class="${c} ${c === "rounded-card" ? "aspect-[488/680] w-16" : "h-16 w-24"} border border-line-strong bg-surface-2"></div><p class="mt-2 font-mono text-[11px] font-semibold">${c}</p><p class="text-[11px] text-ink-3">${l}</p></div>`).join("")}</div>
+    <div class="mt-8 flex flex-wrap gap-6">
+      <div class="w-48 rounded-2xl border border-line bg-surface p-4 shadow-card"><p class="font-mono text-[11px] font-semibold">shadow-card</p><p class="text-xs text-ink-3">Tarjetas al pasar el ratón, imágenes</p></div>
+      <div class="w-48 rounded-2xl border border-line bg-surface p-4 shadow-pop"><p class="font-mono text-[11px] font-semibold">shadow-pop</p><p class="text-xs text-ink-3">Desplegables, avisos</p></div>
+    </div>`;
+
+  const controls = `<div class="space-y-8">
+    <div><p class="mb-3 text-sm font-medium">Botones</p><div class="flex flex-wrap items-center gap-3">
+      <button class="${UI.button}">Buscar</button><button class="${UI.buttonSecondary}">${icon("x", "size-4")}Quitar filtros</button>
+      <button class="${UI.buttonGhost}">Descartar</button>${goStore("Rincón del Draft")}<a href="#" data-act="noop" class="${UI.link} text-sm">Enlace de texto</a>
+    </div></div>
+    <div><p class="mb-3 text-sm font-medium">Buscador con autocompletado</p>
+      <div class="max-w-md">
+        <div class="flex h-12 items-center gap-3 rounded-2xl border border-brand bg-surface px-4 ring-4 ring-brand/15">${icon("search", "size-5 text-ink-3")}<span class="text-base">an</span><span class="-ml-2.5 h-5 w-px animate-pulse bg-ink"></span></div>
+        <div class="mt-2">${acListHtml(demoAc, "an", 0)}</div>
+      </div>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2">
+      <div><p class="mb-3 text-sm font-medium">Segmentado</p>${segmented("noop", [["", "Todas", true], ["b", "Barcelona", false], ["h", "L'Hospitalet", false]])}</div>
+      <div><p class="mb-3 text-sm font-medium">Interruptor</p>${switchControl("noop-switch", true, "Solo con stock")}</div>
+      <div><p class="mb-3 text-sm font-medium">Selector</p><div class="w-60">${selectBox("noop-select", [["", "Cualquiera"], ["NM", "Near Mint (NM) o mejor"]], "NM", "Ejemplo")}</div></div>
+      <div><p class="mb-3 text-sm font-medium">Filtro activo</p><div class="flex gap-2"><span class="inline-flex items-center gap-1 rounded-full bg-brand-soft py-1 pr-2 pl-3 text-xs font-medium text-brand-strong">Barcelona${icon("x", "size-3")}</span><span class="inline-flex items-center gap-1 rounded-full bg-brand-soft py-1 pr-2 pl-3 text-xs font-medium text-brand-strong">Foil${icon("x", "size-3")}</span></div></div>
+    </div>
+  </div>`;
+
+  const badges = `<div class="space-y-5">
+    <div class="flex flex-wrap items-center gap-2"><span class="w-28 text-sm text-ink-3">Copia</span>${condBadge("NM")}${langChip("es")}${finishChip("foil")}${finishChip("etched")}${langChip("ja")}</div>
+    <div class="flex flex-wrap items-center gap-2"><span class="w-28 text-sm text-ink-3">Edición</span>${setChip("fdc")}${setChip("sld")}${setChip("psos")}</div>
+    <div class="flex flex-wrap items-center gap-2"><span class="w-28 text-sm text-ink-3">Precio</span>${bestBadge()}<span class="text-xs font-medium text-good">−15 %</span><span class="text-xs text-ink-3">+8 %</span></div>
+    <div class="flex flex-wrap items-center gap-3 text-xs"><span class="w-28 text-sm text-ink-3">Actualizado</span><span class="text-ink-3">${freshness(4)}</span>${freshness(31)}</div>
+    <div class="flex flex-wrap items-center gap-2"><span class="w-28 text-sm text-ink-3">Ejecución</span>${["ok", "partial", "error", "skipped", "running"].map(statusBadge).join("")}</div>
+  </div>
+  <p class="mt-4 text-sm text-ink-2">El % frente a Cardmarket solo se pinta en verde cuando la tienda está al menos un 5 % por debajo. Por encima va en gris: comprar en mano no tiene envío y no queremos castigar a la tienda de barrio.</p>`;
+
+  const rows = `<div class="overflow-x-auto rounded-2xl border border-line bg-surface"><table class="w-full min-w-[820px] text-left text-sm">
+    <thead class="bg-surface-2 text-xs text-ink-3"><tr><th class="py-2.5 pr-3 pl-4 font-medium">Tienda</th><th class="px-3 py-2.5 font-medium">Edición</th><th class="px-3 py-2.5 font-medium">Copia</th><th class="px-3 py-2.5 font-medium">Stock</th><th class="px-3 py-2.5 text-right font-medium">Precio</th><th class="py-2.5 pr-4 pl-3"><span class="sr-only">Enlace</span></th></tr></thead>
+    <tbody>${rowsDemo.filter(([o]) => o).map(([o, best]) => offerRow(o, best)).join("")}</tbody></table></div>
+    <ul class="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-ink-3">${rowsDemo.map(([, , l], i) => `<li>${i + 1}. ${l}</li>`).join("")}</ul>
+    <p class="mt-6 text-sm font-medium">En móvil</p>
+    <ul class="mt-3 grid max-w-3xl gap-4 sm:grid-cols-2">${offerCard(rowsDemo[0][0], true)}${offerCard(rowsDemo[4][0], false)}</ul>`;
+
+  const empties = `<div class="grid gap-4 xl:grid-cols-3 [&>div]:mt-0">
+    ${emptyState("search-x", "No encontramos «relampgo»", "Revisa cómo se escribe o prueba con el nombre en inglés.")}
+    ${emptyState("sliders", "Ninguna oferta con estos filtros", "Hay 9 ofertas de Relámpago si quitas algún filtro.", `<span class="${UI.buttonSecondary} mt-5">Quitar filtros</span>`)}
+    ${emptyState("inbox", "Ahora mismo ninguna tienda la tiene", "Hay 2 ofertas agotadas por si quieres preguntar en la tienda.", `<span class="${UI.buttonSecondary} mt-5">Ver agotadas</span>`)}
+  </div>
+  <p class="mt-6 text-sm font-medium">Cargando</p>
+  <div class="mt-3 max-w-3xl space-y-0 overflow-hidden rounded-2xl border border-line bg-surface">${[0, 1, 2].map((i) => `<div class="flex items-center gap-6 border-t border-line px-4 py-4 first:border-0">
+      <div class="w-40 space-y-2"><div class="h-3 w-32 animate-pulse rounded bg-surface-3"></div><div class="h-2.5 w-20 animate-pulse rounded bg-surface-2"></div></div>
+      <div class="h-3 flex-1 animate-pulse rounded bg-surface-2"></div><div class="flex gap-1"><div class="h-5 w-9 animate-pulse rounded-md bg-surface-2"></div><div class="h-5 w-7 animate-pulse rounded-md bg-surface-2"></div></div>
+      <div class="ml-auto h-4 w-14 animate-pulse rounded bg-surface-3"></div></div>`).join("")}</div>`;
+
+  const integration = `<ol class="space-y-4 text-sm leading-relaxed text-ink-2 [&_code]:rounded [&_code]:bg-surface-2 [&_code]:px-1 [&_code]:font-mono [&_code]:text-[12px] [&_code]:text-ink">
+      <li><b class="text-ink">1. Tokens.</b> Copiar <code>design/theme.css</code> en <code>src/app/globals.css</code>, debajo de <code>@import "tailwindcss";</code>. Define los colores semánticos (<code>bg-surface</code>, <code>text-ink-2</code>, <code>border-line</code>…), las fuentes, las sombras y las utilidades <code>rounded-card</code>, <code>finish-foil</code>, <code>finish-etched</code> y <code>hero-glow</code>. El modo oscuro va solo por <code>prefers-color-scheme</code>.</li>
+      <li><b class="text-ink">2. Fuentes.</b> <code>next/font/google</code>: <code>Geist</code>, <code>Geist_Mono</code> y <code>Fraunces</code> (con cursiva), con las variables <code>--font-geist-sans</code>, <code>--font-geist-mono</code> y <code>--font-fraunces</code> en <code>&lt;html&gt;</code>.</li>
+      <li><b class="text-ink">3. Clases compartidas.</b> Sustituir las constantes de <code>src/components/ui.tsx</code> (<code>buttonClass</code>, <code>panelClass</code>, <code>linkClass</code>…) por las de <code>UI</code> en el script de esta maqueta: dejan de usar <code>violet-*</code> y <code>neutral-*</code> y pasan a los tokens.</li>
+      <li><b class="text-ink">4. Componentes.</b> Las piezas de esta página (<code>condBadge</code>, <code>langChip</code>, <code>finishChip</code>, <code>setChip</code>, <code>bestBadge</code>, <code>freshness</code>, <code>priceBlock</code>, <code>offerRow</code>, <code>offerCard</code>, <code>storeStatus</code>…) están escritas como funciones que devuelven HTML con clases de Tailwind: se pasan a componentes de React casi línea a línea. Las clases de cada estado están en mapas con clases literales (<code>COND_CLASS</code>, <code>STATUS_CLASS</code>) para que Tailwind las encuentre al compilar.</li>
+      <li><b class="text-ink">5. Iconos.</b> Son de Lucide: en la web, <code>lucide-react</code> con los mismos nombres.</li>
+    </ol>`;
+
+  return `<div class="mx-auto max-w-6xl">
+    <nav class="mb-6 flex flex-wrap gap-2 text-sm" aria-label="Secciones del sistema">${[["color", "Color"], ["tipo", "Tipografía"], ["forma", "Forma"], ["controles", "Controles"], ["etiquetas", "Etiquetas"], ["ofertas", "Ofertas"], ["vacios", "Vacíos y carga"], ["integracion", "Integración"]]
+      .map(([id, l]) => `<a href="#sys-${id}" data-act="anchor" data-v="sys-${id}" class="rounded-full border border-line bg-surface px-3 py-1 font-medium text-ink-2 hover:border-line-strong hover:text-ink">${l}</a>`).join("")}</nav>
+    ${sysSection("color", "Color", "Pocos colores y con significado. Violeta de maná para actuar, dorado solo para el mejor precio, y verde, ámbar y rojo solo para estados. Fondo cálido de papel en claro y azul tinta en oscuro.", colors)}
+    ${sysSection("tipo", "Tipografía", "Dos familias y una monoespaciada. Los nombres de carta en serif recuerdan a la propia carta; los datos, en una sans que se lee bien en pequeño.", type)}
+    ${sysSection("forma", "Forma", "Esquinas generosas y sombras suaves. Las imágenes de carta usan su propia proporción y radio.", shape)}
+    ${sysSection("controles", "Controles", "Botones, buscador y filtros. Todos con foco visible (anillo violeta) y objetivos de al menos 36 px.", controls)}
+    ${sysSection("etiquetas", "Etiquetas", "Lo que describe cada copia y cada tienda. Pequeñas, con código corto y el nombre completo en el título.", badges)}
+    ${sysSection("ofertas", "Fila de oferta", "La pieza más importante de la web. El precio manda: a la derecha, grande y alineado. Lo dudoso se enseña como dudoso, nunca se esconde.", rows)}
+    ${sysSection("vacios", "Vacíos y carga", "Cada vacío explica por qué y ofrece la salida más probable.", empties)}
+    ${sysSection("integracion", "Integración", "Cómo pasar esto a la web en Next.js con Tailwind 4.", integration)}
+  </div>`;
+}
+
+// ===========================================================================
+// Autocompletado
+// ===========================================================================
+
+function highlight(name, q) {
+  const i = norm(name).indexOf(norm(q));
+  if (i < 0 || !q) return esc(name);
+  return `${esc(name.slice(0, i))}<mark class="bg-transparent font-semibold text-ink">${esc(name.slice(i, i + q.length))}</mark>${esc(name.slice(i + q.length))}`;
+}
+
+function acListHtml(items, q, activeIndex) {
+  if (!items.length) {
+    return `<div class="rounded-2xl border border-line bg-surface px-4 py-3 text-sm text-ink-3 shadow-pop">Sin coincidencias para «${esc(q)}»</div>`;
+  }
+  return `<ul role="listbox" class="overflow-hidden rounded-2xl border border-line bg-surface py-1.5 shadow-pop">${items.map((it, i) => `<li role="option" aria-selected="${i === activeIndex}">
+    <button type="button" data-act="card" data-v="${it.card.id}" class="flex w-full items-center gap-3 px-4 py-2 text-left transition hover:bg-surface-2 ${i === activeIndex ? "bg-surface-2" : ""}">
+      ${icon("search", "size-4 text-ink-3")}
+      <span class="min-w-0 flex-1"><span class="block truncate text-sm text-ink-2">${highlight(it.name, q)}</span>${it.lang === "es" ? `<span class="block truncate text-xs text-ink-3">${it.card.en}</span>` : ""}</span>
+      <span class="rounded-md px-1.5 py-0.5 font-mono text-[10px] font-semibold uppercase text-ink-3 ring-1 ring-inset ring-line">${it.lang}</span>
+    </button></li>`).join("")}
+    <li class="border-t border-line px-4 pt-2 pb-1 text-[11px] text-ink-3">↑↓ para moverte · Intro para abrir</li></ul>`;
+}
+
+const ac = { input: null, items: [], index: 0 };
+
+function updateAutocomplete(input) {
+  const box = input.form.querySelector("[data-ac-list]");
+  const q = input.value.trim();
+  ac.input = input;
+  ac.items = searchCards(q).slice(0, 6);
+  ac.index = 0;
+  if (q.length < 2) { box.classList.add("hidden"); box.innerHTML = ""; return; }
+  box.innerHTML = acListHtml(ac.items, q, ac.index);
+  box.classList.remove("hidden");
+}
+
+// ===========================================================================
+// Maqueta: barra, marco de navegador, móvil y notas
+// ===========================================================================
+
+const NOTES = {
+  inicio: [
+    ["Buscador", "Un solo campo, en español o inglés. Autocompletado con <code>autocomplete(q, 8)</code> a partir de 2 letras: resalta lo que coincide y, si el nombre es español, pone debajo el inglés. <b>Escribe en el buscador</b> para verlo."],
+    ["Primera visita", "El titular dice qué hace la web y para qué zona. Las píldoras de «Prueba con» son búsquedas de un clic para quien llega sin una carta en mente."],
+    ["Confianza", "La línea de arriba sale de <code>listStores()</code>: número de tiendas y el <code>lastScrapedAt</code> más reciente. El punto verde late solo si alguna tienda tiene datos de menos de 24 h."],
+    ["Abanico de cartas", "Solo desde <code>lg</code>. Imágenes de Scryfall con su etiqueta de precio. En móvil se oculta para que el buscador quede arriba del todo."],
+    ["Tiendas", "La lista corta de tiendas con su estado hace de prueba social y lleva a /tiendas."],
+  ],
+  resultados: [
+    ["Tarjeta de resultado", "<code>CardSummary</code>: imagen, <code>nameEs</code> como título y <code>nameEn</code> debajo, «Desde» <code>minPriceCents</code> y <code>offerCount</code>."],
+    ["Sin stock", "<code>minPriceCents = null</code> → «Sin stock ahora mismo», sin precio. La tarjeta sigue llevando a la carta (precio de referencia y agotadas)."],
+    ["Un solo resultado", "Propuesta: si <code>searchCards</code> devuelve una sola carta con coincidencia exacta, ir directamente a su página."],
+    ["Sin resultados", "Estado vacío con sugerencias (Sistema → Vacíos y carga)."],
+  ],
+  carta: [
+    ["Orden y mejor precio", "Tal como llega de <code>getOffers</code>: de más barata a más cara. La primera con stock lleva «Mejor precio» (fondo y borde dorados). Es la única cosa dorada de la página."],
+    ["Precio frente a Cardmarket", "<code>priceDiffPercent(price, referencePriceCents)</code>. En verde solo si es ≤ −5 %; el resto, en gris. Sin referencia (etched, sin edición) no se pinta nada."],
+    ["Filtros", "Los de <code>filters.ts</code>, en la URL. En escritorio, barra siempre visible; en móvil, dentro de un <code>&lt;details&gt;</code>. Los filtros activos se repiten como píldoras para quitarlos de uno en uno. Las píldoras de «Ediciones» ponen <code>?edicion=</code> y cambian la imagen."],
+    ["Copia", "Estado (escala y colores de Cardmarket), idioma (código) y acabado. «Normal» no se marca: solo Foil y Etched llevan etiqueta."],
+    ["Lo dudoso se ve", "Edición sin identificar (<code>printing = null</code>), estado desconocido (<code>condition = null</code>) y emparejamiento con confianza &lt; 1 («edición probable») se enseñan tal cual, nunca se esconden."],
+    ["Datos viejos", "Si la tienda tiene datos de más de 24 h (<code>isStale</code>), la hora sale en ámbar con un aviso. Mira «Dados y Dragones»."],
+    ["Responsive", "Tabla desde <code>lg</code> (1024 px). Por debajo, tarjetas (2 columnas entre <code>sm</code> y <code>lg</code>) en las que toda la tarjeta es el enlace."],
+    ["Pruébalo", "Los filtros y las ediciones funcionan. Con «Etched» no queda nada y aparece el vacío. «El Anillo Único» enseña el caso sin stock."],
+  ],
+  sellado: [
+    ["Estado", "Propuesta: el catálogo de sellado (MTGJSON) lo está montando la parte de base de datos. Los tipos de producto y los nombres pueden cambiar."],
+    ["Sin imágenes", "MTGJSON no trae imágenes de producto: cada tipo lleva un icono sobre un fondo de su color (caja, bundle, sobre, mazo)."],
+    ["Idioma", "En sellado el idioma importa mucho (caja en español o en inglés), por eso va siempre visible."],
+    ["Sin referencia", "No hay precio de Cardmarket para sellado en Scryfall: no hay comparación en %, solo el mejor precio."],
+  ],
+  tiendas: [
+    ["Estado de cada tienda", "<code>Store.lastStatus</code> + <code>lastScrapedAt</code>: «Al día» (ok y &lt; 24 h), «Parcial», o «Datos de hace X» si la última correcta tiene más de 24 h o la última falló."],
+    ["Sin detalles técnicos", "El mensaje de error concreto solo se ve en el panel interno; aquí, una frase normal."],
+    ["Recuentos", "<code>StoreDetail.listingCount</code> e <code>inStockCount</code>. Números con <code>Intl.NumberFormat('es-ES')</code> (sin punto en las cifras de 4 dígitos, como manda la RAE)."],
+    ["Transparencia", "Cómo y cada cuánto se revisa cada tienda, y una salida para las tiendas que quieran aparecer, compartir su stock de Cardmarket o salir."],
+  ],
+  panel: [
+    ["Ejecuciones", "<code>listLatestRuns()</code>: insignia de estado (<code>STATUS_LABELS</code>), fin con <code>formatDateTime</code>, duración con <code>formatDuration</code>, recuentos y el error en una segunda línea."],
+    ["Sin emparejar", "<code>listUnmatched()</code>: título tal cual lo escribe la tienda (monoespaciada), la mejor candidata con su barra de confianza, o «sin candidata»."],
+    ["Acciones", "Propuesta: «Asignar», «Buscar otra» y «Descartar» guardarían una corrección que <code>getOverride</code> leería en la siguiente ejecución. «Lanzar ahora» también es propuesta."],
+    ["Acceso", "Página privada; no sale en la navegación pública."],
+  ],
+};
+
+function docBar() {
+  const v = state.view;
+  return `<div class="sticky top-0 z-50 border-b border-line bg-surface/90 backdrop-blur-md">
+    <div class="mx-auto flex h-14 max-w-[1440px] items-center gap-3 px-4 sm:px-6">
+      <div class="flex shrink-0 items-center gap-2">${logoMark("size-7")}<span class="hidden text-xs font-medium text-ink-3 md:inline">Diseño visual</span></div>
+      <nav class="-my-2 flex min-w-0 flex-1 gap-0.5 overflow-x-auto py-2 [scrollbar-width:none]" aria-label="Pantallas">
+        ${VIEWS.map((x) => `<a href="#${x.id}" data-act="tab" data-v="${x.id}" ${x.id === v ? 'aria-current="page"' : ""}
+          class="rounded-lg px-3 py-1.5 text-sm font-medium whitespace-nowrap text-ink-2 transition hover:bg-surface-2 hover:text-ink aria-[current=page]:bg-brand-soft aria-[current=page]:text-brand-strong">${x.label}</a>`).join("")}
+      </nav>
+      ${v !== "sistema" ? segmented("device", [["desktop", `${icon("monitor", "size-4")}<span class="sr-only">Escritorio</span>`, state.device === "desktop"], ["mobile", `${icon("phone", "size-4")}<span class="sr-only">Móvil</span>`, state.device === "mobile"]], true) : ""}
+      ${segmented("theme", [["system", "Auto", state.theme === "system"], ["light", icon("sun", "size-4") + '<span class="sr-only">Claro</span>', state.theme === "light"], ["dark", icon("moon", "size-4") + '<span class="sr-only">Oscuro</span>', state.theme === "dark"]], true)}
+    </div>
+  </div>`;
+}
+
+function routeOf(view) {
+  if (view === "resultados") return `/buscar?q=${encodeURIComponent(state.query)}`;
+  if (view === "carta") return `/carta/${(CARDS[state.cardId] || CARDS.bolt).slug}${filtersQuery(state.filters)}`;
+  if (view === "sellado") return "/sellado/blb";
+  if (view === "inicio") return "/";
+  return "/" + view;
+}
+
+function notesHtml(view, cols) {
+  return `<section aria-label="Notas para la integración">
+    <h2 class="${UI.eyebrow}">Notas para la integración</h2>
+    <dl class="mt-4 grid gap-x-10 gap-y-6 ${cols} [&_code]:rounded [&_code]:bg-surface-2 [&_code]:px-1 [&_code]:font-mono [&_code]:text-[0.82em] [&_code]:text-ink">
+      ${(NOTES[view] || []).map(([t, b]) => `<div class="border-l-2 border-brand/40 pl-4"><dt class="text-sm font-semibold">${t}</dt><dd class="mt-1 text-sm leading-relaxed text-ink-2">${b}</dd></div>`).join("")}
+    </dl>
+  </section>`;
+}
+
+function renderScreen(view) {
+  return ({ inicio: screenInicio, resultados: screenResultados, carta: screenCarta, sellado: screenSellado, tiendas: screenTiendas, panel: screenPanel })[view]();
+}
+
+function renderDoc() {
+  const v = VIEWS.find((x) => x.id === state.view);
+  const theme = document.documentElement.dataset.theme;
+  let stage;
+  if (v.id === "sistema") {
+    stage = screenSistema();
+  } else if (state.device === "mobile") {
+    const src = `${location.href.split(/[?#]/)[0]}?embed=1&view=${v.id}&theme=${theme}`;
+    stage = `<div class="flex flex-col items-center gap-12 lg:flex-row lg:items-start lg:justify-center lg:gap-16">
+      <div class="shrink-0 rounded-[48px] bg-[oklch(0.2_0.012_285)] p-3 shadow-pop ring-1 ring-black/10">
+        <div class="relative overflow-hidden rounded-[38px]">
+          <iframe title="${v.title} en móvil" src="${src}" class="block h-[800px] w-[390px] bg-canvas"></iframe>
+        </div>
+      </div>
+      <div class="max-w-md lg:pt-4">
+        <p class="mb-6 rounded-xl bg-surface-2 px-4 py-3 text-sm text-ink-2">Vista a 390 × 800 px (iPhone 15). Se puede usar: los enlaces y filtros funcionan dentro del teléfono.</p>
+        ${notesHtml(v.id, "")}
+      </div>
+    </div>`;
+  } else {
+    stage = `<div class="overflow-clip rounded-2xl border border-line-strong bg-canvas shadow-pop">
+        <div class="flex items-center gap-3 border-b border-line bg-surface-2 px-4 py-2.5">
+          <div class="flex gap-1.5" aria-hidden="true"><span class="size-3 rounded-full bg-[#ff5f57]"></span><span class="size-3 rounded-full bg-[#febc2e]"></span><span class="size-3 rounded-full bg-[#28c840]"></span></div>
+          <p class="mx-auto flex min-w-0 max-w-2xl flex-1 items-center gap-2 rounded-lg bg-surface px-3 py-1 font-mono text-xs text-ink-3 ring-1 ring-line">${icon("lock", "size-3")}<span class="truncate"><span class="text-ink-2">search-magic</span>${esc(routeOf(v.id))}</span></p>
+          <span class="w-12"></span>
+        </div>
+        <div style="--sticky-top: 56px">${renderScreen(v.id)}</div>
+      </div>
+      <div class="mt-12">${notesHtml(v.id, "md:grid-cols-2 xl:grid-cols-3")}</div>`;
+  }
+  return `${docBar()}
+  <main class="mx-auto max-w-[1440px] px-4 pt-8 pb-28 sm:px-6">
+    <header class="mb-8 flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.12em] text-brand-strong">${v.id === "sistema" ? "Sistema" : "Pantalla"}</p>
+        <h1 class="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">${v.title}</h1>
+        <p class="mt-2 max-w-3xl text-ink-2">${v.desc}</p>
+      </div>
+      ${v.id !== "sistema" ? `<p class="font-mono text-xs text-ink-3">${esc(routeOf(v.id))}</p>` : ""}
+    </header>
+    ${stage}
+  </main>`;
+}
+
+// ===========================================================================
+// Render y eventos
+// ===========================================================================
+
+const root = document.getElementById("root");
+// Dentro del teléfono la barra de desplazamiento no ocupa sitio, como en un móvil de verdad
+if (EMBED) document.documentElement.style.scrollbarWidth = "none";
+
+function render() {
+  const focused = document.activeElement && document.activeElement.dataset ? document.activeElement.dataset : null;
+  const fAct = focused && focused.act, fV = focused && focused.v;
+  root.innerHTML = EMBED ? renderScreen(state.view) : renderDoc();
+  if (fAct) {
+    const el = root.querySelector(`[data-act="${fAct}"]${fV != null ? `[data-v="${CSS.escape(fV)}"]` : ""}`);
+    if (el) el.focus({ preventScroll: true });
+  }
+}
+
+function savePrefs() {
+  try {
+    localStorage.setItem("sm-design-prefs", JSON.stringify({ device: state.device }));
+    localStorage.setItem("sm-design-theme", state.theme);
+  } catch (e) {}
+}
+
+function applyTheme() {
+  const dark = state.theme === "dark" || (state.theme === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
+  document.documentElement.dataset.theme = dark ? "dark" : "light";
+}
+
+function go(view, top = true) {
+  state.view = view;
+  if (!EMBED) history.replaceState(null, "", "#" + view);
+  render();
+  if (top) window.scrollTo({ top: 0 });
+}
+
+let toastTimer;
+function toast(msg) {
+  let t = document.getElementById("toast");
+  if (!t) {
+    t = document.createElement("div");
+    t.id = "toast";
+    t.setAttribute("role", "status");
+    t.className = "pointer-events-none fixed bottom-6 left-1/2 z-[60] max-w-[90vw] -translate-x-1/2 rounded-xl bg-ink px-4 py-2.5 text-sm font-medium text-canvas shadow-pop transition-opacity duration-300";
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = "1";
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => (t.style.opacity = "0"), 2400);
+}
+
+root.addEventListener("click", (e) => {
+  const el = e.target.closest("[data-act]");
+  if (!el || el.tagName === "SELECT" || el.tagName === "INPUT") return;
+  const act = el.dataset.act, v = el.dataset.v ?? "";
+  const f = state.filters;
+  if (act !== "anchor") e.preventDefault();
+  switch (act) {
+    case "tab": state.view = v; history.replaceState(null, "", "#" + v); render(); window.scrollTo({ top: 0 }); break;
+    case "device": state.device = v; savePrefs(); render(); break;
+    case "theme": state.theme = v; savePrefs(); applyTheme(); render(); break;
+    case "go": go(v); break;
+    case "card": state.cardId = v; state.filters = DEFAULT_FILTERS(); go("carta"); break;
+    case "query": state.query = v; go("resultados"); break;
+    case "product": state.productId = v; render(); break;
+    case "ext": toast(`En la web real se abre la ficha de ${v} en una pestaña nueva.`); break;
+    case "noop": toast("Solo maqueta: este botón no hace nada todavía."); break;
+    case "anchor": break;
+    case "city": {
+      if (!v) f.cities = [];
+      else f.cities = f.cities.includes(v) ? f.cities.filter((c) => c !== v) : [...f.cities, v];
+      if (f.cities.length === 2) f.cities = [];
+      render(); break;
+    }
+    case "finish": f.finish = v || null; render(); break;
+    case "lang": f.langs = f.langs.includes(v) ? f.langs.filter((l) => l !== v) : [...f.langs, v]; render(); break;
+    case "set": f.set = v || null; render(); break;
+    case "rm-city": f.cities = f.cities.filter((c) => c !== v); render(); break;
+    case "rm-finish": f.finish = null; render(); break;
+    case "rm-lang": f.langs = f.langs.filter((l) => l !== v); render(); break;
+    case "rm-cond": f.minCond = null; render(); break;
+    case "rm-set": f.set = null; render(); break;
+    case "rm-stock": f.inStockOnly = !f.inStockOnly; render(); break;
+    case "clear": state.filters = DEFAULT_FILTERS(); render(); break;
+  }
+});
+
+root.addEventListener("change", (e) => {
+  const act = e.target.dataset && e.target.dataset.act;
+  if (act === "cond") { state.filters.minCond = e.target.value || null; render(); }
+  if (act === "stock") { state.filters.inStockOnly = e.target.checked; render(); }
+});
+
+root.addEventListener("toggle", (e) => {
+  if (e.target.matches && e.target.matches("[data-mobile-filters]")) state.mobileFiltersOpen = e.target.open;
+}, true);
+
+root.addEventListener("input", (e) => {
+  if (e.target.matches("[data-ac-input]")) updateAutocomplete(e.target);
+});
+
+root.addEventListener("keydown", (e) => {
+  if (!e.target.matches("[data-ac-input]") || !ac.items.length) return;
+  const box = e.target.form.querySelector("[data-ac-list]");
+  if (box.classList.contains("hidden")) return;
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    ac.index = (ac.index + (e.key === "ArrowDown" ? 1 : -1) + ac.items.length) % ac.items.length;
+    box.innerHTML = acListHtml(ac.items, e.target.value.trim(), ac.index);
+  } else if (e.key === "Enter") {
+    e.preventDefault();
+    state.cardId = ac.items[ac.index].card.id;
+    state.filters = DEFAULT_FILTERS();
+    go("carta");
+  } else if (e.key === "Escape") {
+    box.classList.add("hidden");
+  }
+});
+
+root.addEventListener("submit", (e) => {
+  if (!e.target.matches("[data-search]")) return;
+  e.preventDefault();
+  const q = e.target.querySelector("input").value.trim();
+  if (!q) return;
+  state.query = q;
+  go("resultados");
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("[data-search]")) root.querySelectorAll("[data-ac-list]").forEach((b) => b.classList.add("hidden"));
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "/" || e.target.matches("input, textarea, select")) return;
+  const input = root.querySelector("#q-header, #q-home");
+  if (input && input.offsetParent) { e.preventDefault(); input.focus(); }
+});
+
+// Imagen de Scryfall que no carga (sin conexión): queda el nombre de la carta debajo
+document.addEventListener("error", (e) => {
+  if (e.target instanceof HTMLImageElement && e.target.hasAttribute("data-card")) e.target.style.visibility = "hidden";
+}, true);
+
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+  if (state.theme === "system") { applyTheme(); render(); }
+});
+
+window.addEventListener("hashchange", () => {
+  const v = location.hash.slice(1);
+  if (!EMBED && VIEWS.some((x) => x.id === v) && v !== state.view) { state.view = v; render(); }
+});
+
+render();
+</script>
+</body>
+</html>
