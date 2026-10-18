@@ -124,6 +124,22 @@ async function tracked<T extends { rows: number }>(db: Db, entry: BulkEntry, run
   }
 }
 
+/**
+ * Símbolo de cada edición (no viene en el bulk data): una sola petición al listado de sets.
+ * Si falla, la importación sigue y se conservan los símbolos que ya hubiera.
+ */
+async function fetchSetIcons(): Promise<Map<string, string>> {
+  try {
+    const res = await fetch('https://api.scryfall.com/sets', { headers: scryfallHeaders('application/json') });
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    const body = (await res.json()) as { data: { code: string; icon_svg_uri?: string }[] };
+    return new Map(body.data.filter((s) => s.icon_svg_uri).map((s) => [s.code, s.icon_svg_uri!]));
+  } catch (err) {
+    log(`  /sets falló (${(err as Error).message}): se mantienen los símbolos de edición que ya hubiera`);
+    return new Map();
+  }
+}
+
 async function importDefaultCards(db: Db, file: string): Promise<{ rows: number; newSets: number }> {
   const acc = new DefaultCardsAccumulator();
   let read = 0;
@@ -136,12 +152,21 @@ async function importDefaultCards(db: Db, file: string): Promise<{ rows: number;
   const known = new Set((await db.select({ code: sets.code }).from(sets)).map((r) => r.code));
   const newSets = [...acc.sets.keys()].filter((code) => !known.has(code)).length;
 
-  await inBatches('sets', [...acc.sets.values()], (batch) =>
+  const icons = await fetchSetIcons();
+  const setRows = [...acc.sets.values()].map((s) => ({ ...s, iconSvgUri: icons.get(s.code) ?? null }));
+  await inBatches('sets', setRows, (batch) =>
     db
       .insert(sets)
       .values(batch)
-      .onConflictDoUpdate({ target: sets.code, set: excluded(sets, ['name', 'nameNorm', 'setType', 'releasedAt']) }),
+      .onConflictDoUpdate({
+        target: sets.code,
+        set: {
+          ...excluded(sets, ['name', 'nameNorm', 'setType', 'releasedAt']),
+          iconSvgUri: sql`coalesce(excluded.icon_svg_uri, ${sets.iconSvgUri})`,
+        },
+      }),
   );
+  log(`  símbolos de edición: ${setRows.filter((s) => s.iconSvgUri).length}`);
   await inBatches('cartas', acc.cardRows(), (batch) =>
     db
       .insert(cards)

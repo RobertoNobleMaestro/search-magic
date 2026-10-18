@@ -43,6 +43,13 @@
       "when": 1792334213101,
       "tag": "0005_printing_frame_listing_number",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1792343548893,
+      "tag": "0006_set_icons_listing_images",
+      "breakpoints": true
     }
   ]
 }

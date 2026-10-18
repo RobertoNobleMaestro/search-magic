@@ -14,6 +14,16 @@ import { excluded, inBatches } from '../sql';
 /** Unas 28 columnas por fila: 500 filas quedan lejos del límite de 65.535 parámetros. */
 const LISTING_BATCH = 500;
 
+/** Solo se guardan fotos servidas por https: la web es https y no debe cargar contenido mixto. */
+function httpsUrl(url: string | undefined): string | null {
+  if (!url) return null;
+  try {
+    return new URL(url).protocol === 'https:' ? url : null;
+  } catch {
+    return null;
+  }
+}
+
 function parseRunId(runId: string): number {
   const id = Number(runId);
   if (!Number.isSafeInteger(id) || id <= 0) throw new Error(`runId no válido: "${runId}"`);
@@ -142,6 +152,7 @@ export async function saveListings(db: Db, runId: string, items: MatchedListing[
       setHint: item.setHint ?? null,
       cardmarketId: item.cardmarketId ?? null,
       collectorNumber: item.collectorNumber ?? null,
+      imageUrl: httpsUrl(item.imageUrl),
       matchStatus: isIgnored ? ('ignored' as const) : match ? ('matched' as const) : ('unmatched' as const),
       matchMethod: match?.method ?? null,
       matchConfidence: match?.confidence ?? null,
@@ -175,6 +186,7 @@ export async function saveListings(db: Db, runId: string, items: MatchedListing[
           'setHint',
           'cardmarketId',
           'collectorNumber',
+          'imageUrl',
           'matchStatus',
           'matchMethod',
           'matchConfidence',

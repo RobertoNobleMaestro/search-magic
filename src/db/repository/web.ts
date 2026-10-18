@@ -188,6 +188,7 @@ type PrintingColumns = {
   oracle_id: string;
   set_code: string;
   set_name: string;
+  set_icon_url: string | null;
   collector_number: string;
   finishes: string[];
   image_uri: string | null;
@@ -195,9 +196,10 @@ type PrintingColumns = {
   price_eur_foil_cents: number | null;
 };
 
+/** Necesita `p` (printings) y `st` (sets) en el FROM. */
 const printingSelect = sql`
-  p.scryfall_id, p.oracle_id, p.set_code, st.name as set_name, p.collector_number,
-  p.finishes::text[] as finishes, p.image_uri, p.price_eur_cents, p.price_eur_foil_cents`;
+  p.scryfall_id, p.oracle_id, p.set_code, st.name as set_name, st.icon_svg_uri as set_icon_url,
+  p.collector_number, p.finishes::text[] as finishes, p.image_uri, p.price_eur_cents, p.price_eur_foil_cents`;
 
 function toPrinting(r: PrintingColumns): Printing {
   return {
@@ -205,6 +207,7 @@ function toPrinting(r: PrintingColumns): Printing {
     oracleId: r.oracle_id,
     setCode: r.set_code,
     setName: r.set_name,
+    setIconUrl: r.set_icon_url,
     collectorNumber: r.collector_number,
     finishes: r.finishes as Finish[],
     imageUrl: r.image_uri,
@@ -284,11 +287,29 @@ type SealedColumns = {
   released_at: string | null;
   min_price: number | null;
   offer_count: number;
+  image_url: string | null;
+  set_icon_url: string | null;
 };
 
+/** Necesita `sp` (sealed_products), `o` (stockStats), `sti` y `img` (sealedExtras) en el FROM. */
 const sealedSummarySelect = sql`
   sp.id, sp.name, sp.set_code, sp.set_name, sp.category, sp.subtype, sp.released_at::text as released_at,
-  o.min_price, o.offer_count`;
+  o.min_price, o.offer_count, img.image_url, sti.icon_svg_uri as set_icon_url`;
+
+/**
+ * Símbolo de la edición y foto de la mejor oferta: primero tiendas locales, luego con stock,
+ * luego la vista más recientemente. MTGJSON no trae imágenes; las fotos salen de las tiendas.
+ */
+const sealedExtras = sql`
+  left join sets sti on sti.code = sp.set_code
+  left join lateral (
+    select l.image_url
+    from listings l join stores s on s.id = l.store_id
+    where l.sealed_product_id = sp.id and l.match_status = 'matched' and l.image_url is not null
+      and s.enabled and ${sanePrice}
+    order by s.is_local desc, l.in_stock desc, l.last_seen_at desc
+    limit 1
+  ) img on true`;
 
 function toSealedSummary(r: SealedColumns): SealedSummary {
   return {
@@ -299,7 +320,8 @@ function toSealedSummary(r: SealedColumns): SealedSummary {
     category: r.category,
     subtype: r.subtype,
     releaseDate: r.released_at,
-    imageUrl: null,
+    imageUrl: r.image_url,
+    setIconUrl: r.set_icon_url,
     minPriceCents: r.min_price,
     offerCount: r.offer_count,
   };
@@ -347,6 +369,7 @@ export async function searchSealed(db: Db, q: string, limit = 24): Promise<Seale
     select ${sealedSummarySelect}
     from hits sp
     cross join lateral (${stockStats(sql`l.sealed_product_id = sp.id`)}) o
+    ${sealedExtras}
     order by sp.rank,
       ${wantedCategory}
       case when sp.rank = 2 then sp.sim end desc nulls last,
@@ -364,6 +387,7 @@ export async function getSealedProduct(db: Db, sealedProductId: string): Promise
     select ${sealedSummarySelect}
     from sealed_products sp
     cross join lateral (${stockStats(sql`l.sealed_product_id = sp.id`)}) o
+    ${sealedExtras}
     where sp.id = ${sealedProductId}`);
   return rows.rows[0] ? toSealedSummary(rows.rows[0]) : null;
 }

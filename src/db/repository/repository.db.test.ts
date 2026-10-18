@@ -9,7 +9,7 @@ import type { MatchedListing, Repository, StoreInfo } from '../../lib/data/types
 import { normalizeName } from '../../lib/normalize';
 import { createDb, type Db } from '../client';
 import { directDatabaseUrl, loadLocalEnv } from '../env';
-import { matchOverrides, scrapeRuns } from '../schema';
+import { listings, matchOverrides, scrapeRuns } from '../schema';
 import { createDbRepository } from './index';
 
 // normalizeTitle es del emparejador; aquí basta con normalizar el título entero.
@@ -202,6 +202,7 @@ describe.runIf(enabled)('DbRepository (integración)', () => {
           priceCents: 13995,
           language: 'es',
           kind: 'sealed',
+          imageUrl: 'https://local.example/img/caja-fdn.jpg',
           match: { kind: 'sealed', sealedProductId: box.sealedProductId, confidence: 0.9, method: 'trigram' },
         }),
         listing('fundas', { rawTitle: 'Fundas Dragon Shield Matte (100)', kind: 'sealed', match: null }),
@@ -248,7 +249,12 @@ describe.runIf(enabled)('DbRepository (integración)', () => {
       const [summary] = await repo.searchSealed('foundations play booster box', 1);
       expect(summary).toMatchObject({ sealedProductId: box.sealedProductId, setName: 'Foundations', category: 'booster_box' });
       expect(summary!.offerCount).toBeGreaterThanOrEqual(1);
-      expect((await repo.getSealedProduct(box.sealedProductId))?.minPriceCents).toBeLessThanOrEqual(13995);
+      const product = await repo.getSealedProduct(box.sealedProductId);
+      expect(product?.minPriceCents).toBeLessThanOrEqual(13995);
+      // Foto de la oferta de la tienda local y símbolo de la edición de Scryfall.
+      expect(product?.imageUrl).toBe('https://local.example/img/caja-fdn.jpg');
+      expect(product?.setIconUrl).toMatch(/^https:\/\/svgs\.scryfall\.io\/sets\/fdn\.svg/);
+      expect(summary!.imageUrl).toBe('https://local.example/img/caja-fdn.jpg');
 
       const unmatched = (await repo.listUnmatched({ limit: 500 })).items.find((u) => u.storeId === LOCAL);
       expect(unmatched).toMatchObject({ rawTitle: 'Fundas Dragon Shield Matte (100)', kind: 'sealed', source: 'web', bestGuess: null });
@@ -309,6 +315,30 @@ describe.runIf(enabled)('DbRepository (integración)', () => {
       await repo.saveListings(run, [listing('nm-es', { condition: 'NM' })]);
       await repo.finishRun(run, { status: 'partial', stats: { found: 1, matched: 1, unmatched: 0 } });
       expect((await repo.getOffers(BOLT, { inStockOnly: true })).filter((o) => o.store.id === LOCAL)).toHaveLength(before);
+    });
+
+    it('solo guarda fotos https', async () => {
+      const run = await repo.startRun(ONLINE);
+      await repo.saveListings(run, [
+        listing('foto-http', { storeId: ONLINE, imageUrl: 'http://online.example/a.jpg', url: 'https://online.example/foto-http' }),
+        listing('foto-mala', { storeId: ONLINE, imageUrl: 'no es una url', url: 'https://online.example/foto-mala' }),
+        listing('foto-ok', { storeId: ONLINE, imageUrl: 'https://cdn.shopify.com/a.jpg', url: 'https://online.example/foto-ok' }),
+      ]);
+      await repo.finishRun(run, { status: 'partial', stats: { found: 3, matched: 3, unmatched: 0 } });
+      const rows = await tx
+        .select({ externalId: listings.externalId, imageUrl: listings.imageUrl })
+        .from(listings)
+        .where(inArray(listings.externalId, ['foto-http', 'foto-mala', 'foto-ok']));
+      expect(Object.fromEntries(rows.map((r) => [r.externalId, r.imageUrl]))).toEqual({
+        'foto-http': null,
+        'foto-mala': null,
+        'foto-ok': 'https://cdn.shopify.com/a.jpg',
+      });
+    });
+
+    it('da el símbolo de la edición en las impresiones', async () => {
+      const m10 = (await repo.getCard(BOLT))!.printings.find((p) => p.setCode === 'm10');
+      expect(m10?.setIconUrl).toMatch(/^https:\/\/svgs\.scryfall\.io\/sets\/m10\.svg/);
     });
 
     it('no muestra precios de relleno aunque se cuelen', async () => {

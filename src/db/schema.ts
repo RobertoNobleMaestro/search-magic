@@ -45,6 +45,7 @@ export const sets = pgTable(
     nameNorm: text('name_norm').notNull(),
     setType: text('set_type').notNull(),
     releasedAt: date('released_at'),
+    iconSvgUri: text('icon_svg_uri'), // símbolo de la edición (Scryfall /sets)
   },
   (t) => [index('sets_name_norm_idx').on(t.nameNorm)],
 );
@@ -234,6 +235,7 @@ export const listings = pgTable(
     setHint: text('set_hint'),
     cardmarketId: integer('cardmarket_id'), // idProduct del stock de Cardmarket: emparejamiento exacto
     collectorNumber: text('collector_number'), // cuando la tienda lo da en un campo estructurado
+    imageUrl: text('image_url'), // foto del producto en la web de la tienda (https)
     // Emparejamiento con Scryfall
     matchStatus: matchStatus('match_status').notNull().default('unmatched'),
     matchMethod: matchMethod('match_method'),
