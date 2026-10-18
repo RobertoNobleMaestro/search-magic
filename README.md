@@ -1,5 +1,45 @@
 # search-magic
 
+Buscador y comparador de precios de Magic: The Gathering centrado en las tiendas físicas de Barcelona
+y L'Hospitalet de Llobregat, y ampliado a las tiendas online de toda España. Escribes el nombre de una
+carta (en inglés o en español) o de un producto sellado y ves qué tiendas lo tienen, a qué precio, en
+qué estado e idioma y con enlace a la tienda, del más barato al más caro.
+
+De dónde salen los datos:
+
+| Qué | Fuente |
+| --- | --- |
+| Catálogo de cartas, imágenes y precio de referencia | [Scryfall](https://scryfall.com) (el precio es el de Cardmarket) |
+| Catálogo de producto sellado | [MTGJSON](https://mtgjson.com) |
+| Sellado de las tiendas físicas | Su web, rastreada respetando robots.txt y a una página por segundo |
+| Cartas sueltas de las tiendas físicas | El stock que cada tienda exporta desde Cardmarket y nos comparte (CSV) |
+| Cartas sueltas y sellado de las tiendas online | Su web |
+
+Las tiendas físicas de la zona no publican sus cartas sueltas en su web: las venden por Cardmarket o
+en el mostrador (ver [docs/tiendas.md](docs/tiendas.md)).
+
+## Primeros pasos
+
+```bash
+npm install
+cp .env.example .env.local      # y rellena lo que necesites (ver la tabla)
+npm run dev                     # http://localhost:3000
+```
+
+Sin base de datos, la web funciona con datos de ejemplo (`DATA_SOURCE=mock`): cartas y productos reales,
+pero pocos, y tiendas inventadas. Para el catálogo completo y las ofertas reales, monta la base de datos
+(sección siguiente) y pon `DATA_SOURCE=db`.
+
+| Variable | Para qué |
+| --- | --- |
+| `DATA_SOURCE` | `mock` (datos de ejemplo, por defecto) o `db` |
+| `DATABASE_URL`, `DATABASE_URL_UNPOOLED` | Conexión a PostgreSQL (ver [Base de datos](#base-de-datos)) |
+| `SEARCH_MAGIC_CONTACT` | Contacto (correo o URL) que va en el User-Agent hacia Scryfall y las tiendas. Sin él, el worker no rastrea ninguna web |
+| `ADMIN_PASSWORD` | Protege `/admin` con HTTP Basic (usuario cualquiera). Si está vacía, el panel queda abierto: solo para local |
+
+Comandos: `npm run dev`, `npm run build`, `npm start`, `npm test` (tests unitarios),
+`npm run typecheck` y `npm run worker` (ver [Worker](#worker)).
+
 ## Base de datos
 
 PostgreSQL con Drizzle ORM y `pg_trgm` para la búsqueda aproximada. En producción está en
@@ -89,3 +129,87 @@ antes de llevarlas a producción.
 - `npm test`: tests unitarios, sin BD.
 - `npm run test:db`: integración del repositorio contra la BD de `.env.local`, con el catálogo ya
   importado. Corre dentro de una transacción que se deshace al final.
+
+## Web
+
+Next.js 16 (App Router) y Tailwind 4. Las páginas solo consultan la base de datos, nunca las tiendas en directo.
+
+| Ruta | Qué enseña |
+| --- | --- |
+| `/` | Buscador con autocompletado (desde 3 letras; nombres en inglés y en español) |
+| `/buscar?q=` | Resultados: cartas sueltas y producto sellado |
+| `/carta/[id]` | Ofertas de una carta, de la más barata a la más cara, con la diferencia frente a Cardmarket. Filtros: solo tiendas físicas, ciudad, stock, acabado, idioma, estado mínimo y edición |
+| `/sellado`, `/sellado/[id]` | Producto sellado y sus ofertas, con los filtros que le aplican |
+| `/tiendas`, `/tiendas/[id]` | Tiendas físicas y online, qué venden y cuándo se revisaron por última vez |
+| `/admin` | Panel interno: última ejecución de cada tienda y fuente, y listados sin emparejar |
+
+El acceso a datos está en `src/lib/data/`: `types.ts` es el contrato, `mock.ts` los datos de ejemplo y
+`repository.ts` la implementación sobre PostgreSQL. El emparejamiento de títulos está en
+`src/lib/matching/`. El diseño visual sale de la maqueta de [design/](design/README.md).
+
+## Worker
+
+`src/worker/` recorre las tiendas de `src/worker/stores.config.ts`, empareja cada listado con el catálogo
+y lo guarda en la base de datos.
+
+```bash
+npm run worker -- --dry-run                       # valida la configuración y enseña el plan (no sale a internet)
+npm run worker -- --store el-nucli --dry-run      # rastrea una tienda sin escribir (50 listados como mucho)
+npm run worker -- --store el-nucli                # rastrea una tienda y la guarda
+npm run worker                                    # todas las tiendas activadas, menos las lentas
+npm run worker -- --slow                          # solo las lentas (slow: true)
+npm run worker -- --store magic-barcelona --file stock.csv   # importa un CSV de Cardmarket
+```
+
+Más opciones: `--source web|cardmarket_csv`, `--all` (con `--dry-run`, rastrear de verdad todas),
+`--limit <n>` y `--max-minutes <n>`. Para escribir en la base de datos hace falta `DATA_SOURCE=db`, y
+`SEARCH_MAGIC_CONTACT` es obligatorio para cualquier petición a una tienda.
+
+Fuentes de cada tienda:
+
+- **Web**: adaptadores para Shopify (`/products.json`), WooCommerce (Store API) y HTML con selectores
+  (PrestaShop y webs a medida), más uno propio para Rebellion.
+- **Stock de Cardmarket**: el CSV que exporta la tienda, en `data/cardmarket/<id>.csv` (fuera de git) o en
+  un enlace que publique (`cardmarketCsv.url`). Se empareja de forma exacta por el id de producto de
+  Cardmarket. Nunca se hace ninguna petición a cardmarket.com.
+
+Rastreo responsable: respeta robots.txt (también `Crawl-delay`), pide como mucho una página por segundo a
+cada dominio, se identifica con el User-Agent `search-magic/0.1 (+<SEARCH_MAGIC_CONTACT>)`, reintenta con
+esperas crecientes y no guarda el rastreo en disco. Cada ejecución termina en `ok`, `partial` (fallaron
+páginas, se paró en `--limit` o se interrumpió), `error` o `skipped` (robots.txt no lo permite, o el CSV
+no ha cambiado). Solo una ejecución `ok` marca como agotado lo que ya no aparece.
+
+En producción lo lanza `.github/workflows/scrape.yml`: cada 8 horas las tiendas normales, y los lunes las
+lentas (El Rincón de Magic, con Crawl-delay de 10 s). Necesita los secretos `DATABASE_URL` y
+`SEARCH_MAGIC_CONTACT` en el repositorio de GitHub.
+
+### Añadir una tienda
+
+1. Lee su robots.txt y sus condiciones de uso. Si no permiten el rastreo, no la actives. Mejor aún:
+   pide permiso a la tienda y apúntalo en `notes`.
+2. Añádela a `src/worker/stores.config.ts` copiando una de la misma plataforma: `id` (un slug estable),
+   nombre, ciudad, provincia, `local` (tienda física en Barcelona o L'Hospitalet), dirección, web,
+   plataforma y, si vende en Cardmarket, `cardmarketUser`.
+3. Pruébala sin escribir en la base de datos: `npm run worker -- --store <id> --dry-run --limit 50`.
+4. Si el precio, el stock, el estado, el idioma y los enlaces salen bien, pon `enabled: true`.
+
+### Stock de Cardmarket de una tienda
+
+Las tiendas de la zona venden sus cartas sueltas por Cardmarket. Si una tienda acepta compartir su stock:
+
+1. La tienda exporta su stock desde Cardmarket (un CSV) y nos lo manda, o lo publica en un enlace fijo.
+2. Guárdalo como `data/cardmarket/<id>.csv`, o pon el enlace en `cardmarketCsv.url` de su entrada.
+3. Impórtalo con `npm run worker -- --store <id> --source cardmarket_csv` (o `--file <ruta>` para un
+   fichero suelto).
+
+## Datos y avisos
+
+- Datos e imágenes de cartas: [Scryfall](https://scryfall.com). Precio de referencia: Cardmarket, a
+  través de Scryfall. Producto sellado: [MTGJSON](https://mtgjson.com) (licencia MIT).
+- Las tiendas activadas y desactivadas (con el motivo: robots.txt, permiso pendiente, sin web…) están en
+  `src/worker/stores.config.ts`. La investigación de tiendas, en [docs/tiendas.md](docs/tiendas.md) y
+  [docs/tiendas-online.json](docs/tiendas-online.json).
+- search-magic es contenido de fans no oficial, permitido por la
+  [Política de contenido de fans](https://company.wizards.com/en/legal/fancontentpolicy) de Wizards of
+  the Coast. No está aprobado ni respaldado por Wizards. Algunas partes de los materiales utilizados son
+  propiedad de Wizards of the Coast. ©Wizards of the Coast LLC.
