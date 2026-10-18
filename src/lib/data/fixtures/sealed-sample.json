@@ -1,0 +1,2547 @@
+{
+  "source": "MTGJSON SetList (https://mtgjson.com, licencia MIT) — muestra para datos de ejemplo y tests",
+  "generatedAt": "2026-10-18T13:59:28.262Z",
+  "sets": [
+    {
+      "code": "blb",
+      "name": "Bloomburrow",
+      "nameEs": null,
+      "releaseDate": "2024-08-02",
+      "cardmarketName": "Bloomburrow"
+    },
+    {
+      "code": "dmu",
+      "name": "Dominaria United",
+      "nameEs": "Dominaria Unida",
+      "releaseDate": "2022-09-09",
+      "cardmarketName": "Dominaria United"
+    },
+    {
+      "code": "dsk",
+      "name": "Duskmourn: House of Horror",
+      "nameEs": null,
+      "releaseDate": "2024-09-27",
+      "cardmarketName": "Duskmourn: House of Horror"
+    },
+    {
+      "code": "fdn",
+      "name": "Foundations",
+      "nameEs": null,
+      "releaseDate": "2024-11-15",
+      "cardmarketName": "Magic: The Gathering Foundations"
+    },
+    {
+      "code": "fra",
+      "name": "Reality Fracture",
+      "nameEs": null,
+      "releaseDate": "2026-10-02",
+      "cardmarketName": null
+    },
+    {
+      "code": "hob",
+      "name": "The Hobbit",
+      "nameEs": null,
+      "releaseDate": "2026-08-14",
+      "cardmarketName": null
+    },
+    {
+      "code": "ltr",
+      "name": "The Lord of the Rings: Tales of Middle-earth",
+      "nameEs": "El Señor de los Anillos: relatos de la Tierra Media",
+      "releaseDate": "2023-06-23",
+      "cardmarketName": "The Lord of the Rings: Tales of Middle-earth"
+    },
+    {
+      "code": "mh3",
+      "name": "Modern Horizons 3",
+      "nameEs": null,
+      "releaseDate": "2024-06-14",
+      "cardmarketName": "Modern Horizons 3"
+    },
+    {
+      "code": "mkm",
+      "name": "Murders at Karlov Manor",
+      "nameEs": null,
+      "releaseDate": "2024-02-09",
+      "cardmarketName": "Murders at Karlov Manor"
+    },
+    {
+      "code": "neo",
+      "name": "Kamigawa: Neon Dynasty",
+      "nameEs": "Kamigawa: Dinastía de neón",
+      "releaseDate": "2022-02-18",
+      "cardmarketName": "Kamigawa: Neon Dynasty"
+    },
+    {
+      "code": "one",
+      "name": "Phyrexia: All Will Be One",
+      "nameEs": "Pirexia: Todos serán uno",
+      "releaseDate": "2023-02-10",
+      "cardmarketName": "Phyrexia: All Will Be One"
+    },
+    {
+      "code": "otj",
+      "name": "Outlaws of Thunder Junction",
+      "nameEs": null,
+      "releaseDate": "2024-04-19",
+      "cardmarketName": "Outlaws of Thunder Junction"
+    },
+    {
+      "code": "trk",
+      "name": "Star Trek",
+      "nameEs": null,
+      "releaseDate": "2026-11-13",
+      "cardmarketName": null
+    }
+  ],
+  "products": [
+    {
+      "sealedProductId": "ec99d990-704c-5ad3-ae7f-f1dbc5fd5ceb",
+      "setCode": "blb",
+      "name": "Bloomburrow Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": 774128
+    },
+    {
+      "sealedProductId": "4ac9006c-cd21-563c-9e3b-8fb6905434dd",
+      "setCode": "blb",
+      "name": "Bloomburrow Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "b8ec222a-a106-5013-9ea3-5bc88198824f",
+      "setCode": "blb",
+      "name": "Bloomburrow Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": 774110
+    },
+    {
+      "sealedProductId": "d75946e1-157b-5300-958e-736dcfd08075",
+      "setCode": "blb",
+      "name": "Bloomburrow Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "f411dc8e-a880-567b-84c6-a7c16757597d",
+      "setCode": "blb",
+      "name": "Bloomburrow Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": 774108
+    },
+    {
+      "sealedProductId": "f71cc023-917a-5853-8363-9a040ad5e22a",
+      "setCode": "blb",
+      "name": "Bloomburrow Collector Booster Sample Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": 778454
+    },
+    {
+      "sealedProductId": "5917a494-612c-5294-abe0-801603fd1706",
+      "setCode": "blb",
+      "name": "Bloomburrow Foil Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": 778455
+    },
+    {
+      "sealedProductId": "a2e537af-1b94-57a8-8ff3-222fbfa2a5e8",
+      "setCode": "blb",
+      "name": "Bloomburrow MTGO Redemption",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "d575bd23-ebd6-586e-af7b-04924db4f1c3",
+      "setCode": "blb",
+      "name": "Bloomburrow Play Booster Box",
+      "category": "booster_box",
+      "subtype": "play",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": 774109
+    },
+    {
+      "sealedProductId": "5921fbf2-986c-5f96-9ee2-5d8fa6527cc7",
+      "setCode": "blb",
+      "name": "Bloomburrow Play Booster Box Case",
+      "category": "booster_case",
+      "subtype": "play",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "1370435e-4972-553f-9dac-dc72408625ea",
+      "setCode": "blb",
+      "name": "Bloomburrow Play Booster Pack",
+      "category": "booster_pack",
+      "subtype": "play",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": 774107
+    },
+    {
+      "sealedProductId": "2a23b030-a71e-5102-86f7-063a507fcbc9",
+      "setCode": "blb",
+      "name": "Bloomburrow Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": 774133
+    },
+    {
+      "sealedProductId": "88f922b5-5039-5f30-8cad-6d07aa5a752f",
+      "setCode": "blb",
+      "name": "Bloomburrow Prerelease Pack Case",
+      "category": "limited_aid_case",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "8824f7a6-9ac1-5416-9b70-1cf28cd00b85",
+      "setCode": "blb",
+      "name": "Bloomburrow Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": 778456
+    },
+    {
+      "sealedProductId": "a64d30bc-4483-59d2-9144-1219d5886fd3",
+      "setCode": "blb",
+      "name": "Bloomburrow Starter Kit",
+      "category": "multiple_decks",
+      "subtype": "two_player_starter",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": 774132
+    },
+    {
+      "sealedProductId": "4e61923f-6dc4-5105-979e-8bbcaad82262",
+      "setCode": "blb",
+      "name": "Bloomburrow Starter Kit Case",
+      "category": "deck_box",
+      "subtype": "two_player_starter",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "ed686ac8-f381-5b34-9e58-db558bb57ef7",
+      "setCode": "blb",
+      "name": "Bloomburrow Tin Mouse",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "fe16600c-ad35-57c3-a56b-a9f321746b98",
+      "setCode": "blb",
+      "name": "Bloomburrow Tin Otter",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "68c1eda6-e01b-594e-856b-1717fcd171cc",
+      "setCode": "blb",
+      "name": "Bloomburrow Tin Skunk",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "1c6be48e-51ef-5604-bb56-3475fc49c820",
+      "setCode": "blb",
+      "name": "Bloomburrow Tins Set of 3",
+      "category": "subset",
+      "subtype": "other",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "42a50f33-afad-519c-b8f1-ff978e8597a3",
+      "setCode": "blb",
+      "name": "Bloomburrow Value Booster",
+      "category": "booster_pack",
+      "subtype": "other",
+      "releaseDate": "2024-08-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "94cea37a-60d8-582e-94b7-375362650017",
+      "setCode": "dmu",
+      "name": "Dominaria United Box Topper Pack",
+      "category": "booster_pack",
+      "subtype": "topper",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 679619
+    },
+    {
+      "sealedProductId": "2893f4f4-daec-5b4d-b5ce-a4e9444cae84",
+      "setCode": "dmu",
+      "name": "Dominaria United Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 669037
+    },
+    {
+      "sealedProductId": "d530d363-267b-5826-aeeb-b3f56a1e38bb",
+      "setCode": "dmu",
+      "name": "Dominaria United Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "95db2c1f-83aa-582a-ac1c-c4d8ca00a1ed",
+      "setCode": "dmu",
+      "name": "Dominaria United Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 657414
+    },
+    {
+      "sealedProductId": "0efbdb68-44fe-558e-acd5-256ae62e8d5a",
+      "setCode": "dmu",
+      "name": "Dominaria United Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "d1dd4fe5-896a-5347-835e-a62367233c66",
+      "setCode": "dmu",
+      "name": "Dominaria United Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 657405
+    },
+    {
+      "sealedProductId": "51b64c33-b7f3-5f2b-8683-26f3a441a596",
+      "setCode": "dmu",
+      "name": "Dominaria United Collector Booster Sample Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 678642
+    },
+    {
+      "sealedProductId": "8233563f-860b-5505-b727-918ca14b1e79",
+      "setCode": "dmu",
+      "name": "Dominaria United Draft Booster Box",
+      "category": "booster_box",
+      "subtype": "draft",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 657417
+    },
+    {
+      "sealedProductId": "235ba920-bef0-58c4-9a43-a8206598ddc0",
+      "setCode": "dmu",
+      "name": "Dominaria United Draft Booster Box Case",
+      "category": "booster_case",
+      "subtype": "draft",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "d01631ef-a954-5feb-b8cc-fdba0d46a80a",
+      "setCode": "dmu",
+      "name": "Dominaria United Draft Booster Pack",
+      "category": "booster_pack",
+      "subtype": "draft",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 657394
+    },
+    {
+      "sealedProductId": "8f0fc7c4-d799-5e29-a407-203f20838fe5",
+      "setCode": "dmu",
+      "name": "Dominaria United Foil Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 669190
+    },
+    {
+      "sealedProductId": "166f3c51-edab-5025-8226-deae3403d65e",
+      "setCode": "dmu",
+      "name": "Dominaria United Jumpstart Booster Box",
+      "category": "booster_box",
+      "subtype": "jumpstart",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 657426
+    },
+    {
+      "sealedProductId": "c305a7ca-6e87-5eaf-a056-05473b86cf71",
+      "setCode": "dmu",
+      "name": "Dominaria United Jumpstart Booster Box Case",
+      "category": "booster_case",
+      "subtype": "jumpstart",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "4584305b-2b1a-5ffd-a4b6-16a65d0985f7",
+      "setCode": "dmu",
+      "name": "Dominaria United Jumpstart Booster Pack",
+      "category": "booster_pack",
+      "subtype": "jumpstart",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 657409
+    },
+    {
+      "sealedProductId": "c72eddf5-abee-5f6b-8f66-5a77b3405058",
+      "setCode": "dmu",
+      "name": "Dominaria United MTGO Redemption",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "6deb4614-230d-58cb-ab6b-9444b96b4e90",
+      "setCode": "dmu",
+      "name": "Dominaria United MTGO Redemption Foil",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "cd2e6c5a-207f-54bd-b7ae-443987b30211",
+      "setCode": "dmu",
+      "name": "Dominaria United Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 669038
+    },
+    {
+      "sealedProductId": "04442f80-f789-584e-ba97-5ff7c86922a8",
+      "setCode": "dmu",
+      "name": "Dominaria United Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 669189
+    },
+    {
+      "sealedProductId": "d6ff5fde-2f90-5534-bd13-991dde372dd8",
+      "setCode": "dmu",
+      "name": "Dominaria United Set Booster Box",
+      "category": "booster_box",
+      "subtype": "set",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 657415
+    },
+    {
+      "sealedProductId": "d49a9810-9167-575b-8da1-dc803edb6ef0",
+      "setCode": "dmu",
+      "name": "Dominaria United Set Booster Box Case",
+      "category": "booster_case",
+      "subtype": "set",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "f5f30fc8-0b27-5c44-b9b1-43250ae3ebf1",
+      "setCode": "dmu",
+      "name": "Dominaria United Set Booster Pack",
+      "category": "booster_pack",
+      "subtype": "set",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 657397
+    },
+    {
+      "sealedProductId": "ea6fefd5-a66a-5e3a-9cd0-1066e6910bb3",
+      "setCode": "dmu",
+      "name": "Dominaria United Welcome Booster",
+      "category": "booster_pack",
+      "subtype": "welcome",
+      "releaseDate": "2022-09-09",
+      "cardmarketId": 691262
+    },
+    {
+      "sealedProductId": "989edd8e-fba0-5102-9dad-178755d59c74",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": 776445
+    },
+    {
+      "sealedProductId": "5aa882f3-3704-5289-9fc5-45f152c8cb15",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "1d087a75-ba5d-55a0-a968-1f7375717b8f",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": 776442
+    },
+    {
+      "sealedProductId": "6568b67f-8c4e-5cd2-a1a7-57ffa14f8485",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "463782d5-9d15-559c-a37c-9e919d72ebe1",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": 776440
+    },
+    {
+      "sealedProductId": "6bbb1f46-7361-5b34-9b0f-6dfa733a97bc",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Collector Booster Sample Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": 776441
+    },
+    {
+      "sealedProductId": "cecb910f-980c-5b67-94d9-173dc0f94cfa",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Foil Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": 786031
+    },
+    {
+      "sealedProductId": "7d5dd4cf-c35c-5492-b75e-616995bc5927",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror MTGO Redemption",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "2ff3f72e-205a-5323-9d7e-e2dd856f3bb2",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Nightmare Bundle",
+      "category": "bundle",
+      "subtype": "premium",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": 776446
+    },
+    {
+      "sealedProductId": "bc7f8595-19a4-5d92-96e3-206c9f1b3e97",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Nightmare Bundle Booster",
+      "category": "booster_pack",
+      "subtype": "premium",
+      "releaseDate": "2024-09-24",
+      "cardmarketId": 790111
+    },
+    {
+      "sealedProductId": "6be2e49a-440b-5b19-a4e8-29fae6d4b491",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Nightmare Bundle Case",
+      "category": "bundle_case",
+      "subtype": "premium",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "f358221d-98a5-5ab8-b2c7-a169c362a2b9",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Play Booster Box",
+      "category": "booster_box",
+      "subtype": "play",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": 776443
+    },
+    {
+      "sealedProductId": "edde415d-40cb-599d-9427-add0e16a275f",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Play Booster Box Case",
+      "category": "booster_case",
+      "subtype": "play",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "b87fe3be-3527-5767-a373-f3dc1cfe35b2",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Play Booster Pack",
+      "category": "booster_pack",
+      "subtype": "play",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": 776439
+    },
+    {
+      "sealedProductId": "2606fe32-1d56-572c-a317-e73798c6458d",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": 776444
+    },
+    {
+      "sealedProductId": "27621212-fc5a-55d7-b52c-810639672f81",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Prerelease Pack Case",
+      "category": "limited_aid_case",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "014fef63-09c6-5a51-ab1f-bdacb93db20a",
+      "setCode": "dsk",
+      "name": "Duskmourn House of Horror Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-09-27",
+      "cardmarketId": 786032
+    },
+    {
+      "sealedProductId": "4cdc1291-8708-5f6e-993e-9f758ad72c4e",
+      "setCode": "dsk",
+      "name": "Welcome Deck 2024 Black Deck",
+      "category": "deck",
+      "subtype": "welcome",
+      "releaseDate": "2024-10-22",
+      "cardmarketId": 794100
+    },
+    {
+      "sealedProductId": "fcfbf0bc-efd6-5512-a375-76bc04cd6482",
+      "setCode": "dsk",
+      "name": "Welcome Deck 2024 Blue Deck",
+      "category": "deck",
+      "subtype": "welcome",
+      "releaseDate": "2024-10-22",
+      "cardmarketId": 794099
+    },
+    {
+      "sealedProductId": "0fc3afb1-d2b8-5288-8213-048a7a7e7b03",
+      "setCode": "dsk",
+      "name": "Welcome Deck 2024 Green Deck",
+      "category": "deck",
+      "subtype": "welcome",
+      "releaseDate": "2024-10-22",
+      "cardmarketId": 794098
+    },
+    {
+      "sealedProductId": "ca9c9e37-4f02-541b-b873-4769140fb63c",
+      "setCode": "dsk",
+      "name": "Welcome Deck 2024 Red Deck",
+      "category": "deck",
+      "subtype": "welcome",
+      "releaseDate": "2024-10-22",
+      "cardmarketId": 794101
+    },
+    {
+      "sealedProductId": "78210409-dcab-5dac-a2ca-6cda793b6e51",
+      "setCode": "dsk",
+      "name": "Welcome Deck 2024 White Deck",
+      "category": "deck",
+      "subtype": "welcome",
+      "releaseDate": "2024-10-22",
+      "cardmarketId": 794097
+    },
+    {
+      "sealedProductId": "1bcf53a4-42e8-53e8-bf09-d99029c29bb3",
+      "setCode": "fdn",
+      "name": "Foundations Beginner Box",
+      "category": "box_set",
+      "subtype": "starter_deck",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": 781945
+    },
+    {
+      "sealedProductId": "c99e8088-0409-5850-bc85-8560d84b2843",
+      "setCode": "fdn",
+      "name": "Foundations Beginner Box Case",
+      "category": "box_set",
+      "subtype": "starter_deck",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "3c98d1d5-738b-5b9a-8f09-0d78e9085786",
+      "setCode": "fdn",
+      "name": "Foundations Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": 781943
+    },
+    {
+      "sealedProductId": "b9dd83d8-9226-5bc0-8be1-fd8510eae960",
+      "setCode": "fdn",
+      "name": "Foundations Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "8ebff39c-e06c-5b9e-8bd3-c092e219573c",
+      "setCode": "fdn",
+      "name": "Foundations Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": 781941
+    },
+    {
+      "sealedProductId": "4670fdd0-dfce-5b03-9b96-9c004ce4f483",
+      "setCode": "fdn",
+      "name": "Foundations Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "f2f04985-525d-532b-8efc-a166d13050ed",
+      "setCode": "fdn",
+      "name": "Foundations Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": 781937
+    },
+    {
+      "sealedProductId": "1c043fb6-9a92-5031-9316-4f5bc86667bd",
+      "setCode": "fdn",
+      "name": "Foundations Play Booster Box",
+      "category": "booster_box",
+      "subtype": "play",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": 781940
+    },
+    {
+      "sealedProductId": "2da4b06c-8722-5d32-b066-9d96576f0b80",
+      "setCode": "fdn",
+      "name": "Foundations Play Booster Box Case",
+      "category": "booster_case",
+      "subtype": "play",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "0989bd17-4aad-56af-aca7-dee635bb50ed",
+      "setCode": "fdn",
+      "name": "Foundations Play Booster Pack",
+      "category": "booster_pack",
+      "subtype": "play",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": 781936
+    },
+    {
+      "sealedProductId": "980bf221-5cf3-5362-8bae-3efd5c587b1b",
+      "setCode": "fdn",
+      "name": "Foundations Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": 781944
+    },
+    {
+      "sealedProductId": "01d16175-eefa-5cd2-b068-ba53c68ddfb8",
+      "setCode": "fdn",
+      "name": "Foundations Starter Collection",
+      "category": "box_set",
+      "subtype": "starter_deck",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": 781946
+    },
+    {
+      "sealedProductId": "42a2e232-0304-5bc4-b0e0-e1a540cab7e9",
+      "setCode": "fdn",
+      "name": "Foundations Starter Collection Case",
+      "category": "box_set",
+      "subtype": "starter_deck",
+      "releaseDate": "2024-11-15",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "31fc54bc-5442-5840-bc28-6bbaa112fc19",
+      "setCode": "fra",
+      "name": "Reality Fracture Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": 885564
+    },
+    {
+      "sealedProductId": "fd334e3d-b6fb-5608-bc20-2914b73c633e",
+      "setCode": "fra",
+      "name": "Reality Fracture Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "3d76ef6d-1959-5995-b7d5-2c1abc7ac17a",
+      "setCode": "fra",
+      "name": "Reality Fracture Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": 885563
+    },
+    {
+      "sealedProductId": "902b75b6-1ce5-5b4e-9927-789ed3c75dbd",
+      "setCode": "fra",
+      "name": "Reality Fracture Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "48356071-10d6-5277-8260-b0ab5bd7b82b",
+      "setCode": "fra",
+      "name": "Reality Fracture Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": 885561
+    },
+    {
+      "sealedProductId": "c946cea2-23c9-5651-a959-0044e8e60ac3",
+      "setCode": "fra",
+      "name": "Reality Fracture Draft Night",
+      "category": "limited_aid_tool",
+      "subtype": "draft",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": 885565
+    },
+    {
+      "sealedProductId": "7fac13d8-46f2-5bc1-90b5-a0541f6cdffb",
+      "setCode": "fra",
+      "name": "Reality Fracture Draft Night Case",
+      "category": "limited_aid_case",
+      "subtype": "draft",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "a0f14b56-b976-5de3-bc32-21420064a7c6",
+      "setCode": "fra",
+      "name": "Reality Fracture Foil Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": 909282
+    },
+    {
+      "sealedProductId": "81688d4b-8287-5f28-8437-1f52cfe7deef",
+      "setCode": "fra",
+      "name": "Reality Fracture MTGO Redemption Reality Fracture Redemption",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2026-10-21",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "fbb14d9d-d8f1-593f-8a7c-dd4a50e437c3",
+      "setCode": "fra",
+      "name": "Reality Fracture Play Booster Box",
+      "category": "booster_box",
+      "subtype": "play",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": 885562
+    },
+    {
+      "sealedProductId": "bb875e88-7ce6-5d55-949f-c0b56ba9273b",
+      "setCode": "fra",
+      "name": "Reality Fracture Play Booster Box Case",
+      "category": "booster_case",
+      "subtype": "play",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "cabaaba2-2804-5b40-859e-4023009955fa",
+      "setCode": "fra",
+      "name": "Reality Fracture Play Booster Pack",
+      "category": "booster_pack",
+      "subtype": "play",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": 885560
+    },
+    {
+      "sealedProductId": "fb046a6d-ccbe-57a5-9b03-63e3aa0949ad",
+      "setCode": "fra",
+      "name": "Reality Fracture Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2026-09-25",
+      "cardmarketId": 885567
+    },
+    {
+      "sealedProductId": "d5e607af-99da-5e23-b427-7b1404bde574",
+      "setCode": "fra",
+      "name": "Reality Fracture Prerelease Pack Case",
+      "category": "limited_aid_case",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2026-09-25",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "251b38b4-c3e1-5c68-84f7-a78132245ed3",
+      "setCode": "fra",
+      "name": "Reality Fracture Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2026-10-02",
+      "cardmarketId": 909281
+    },
+    {
+      "sealedProductId": "b27bf3d2-c157-52b9-b545-89f6e2401d1e",
+      "setCode": "fra",
+      "name": "Reality Fracture Secret Lair Bundle",
+      "category": "bundle",
+      "subtype": "gift_bundle",
+      "releaseDate": "2026-10-23",
+      "cardmarketId": 885566
+    },
+    {
+      "sealedProductId": "ca8904df-6b8f-56e1-81c1-8371e72ba9a2",
+      "setCode": "fra",
+      "name": "Reality Fracture Secret Lair Bundle Case",
+      "category": "bundle_case",
+      "subtype": "gift_bundle",
+      "releaseDate": "2026-10-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "d5501096-0c3f-53e7-8976-9d83d0b01949",
+      "setCode": "hob",
+      "name": "The Hobbit Battle of the Five Armies Co-op Kit",
+      "category": "kit",
+      "subtype": "default",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "c992a149-dd46-575f-abb7-2312495757e1",
+      "setCode": "hob",
+      "name": "The Hobbit Box Topper Pack",
+      "category": "booster_pack",
+      "subtype": "topper",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": 885578
+    },
+    {
+      "sealedProductId": "ac894328-92e0-52fc-b0e1-c2362c666b3e",
+      "setCode": "hob",
+      "name": "The Hobbit Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": 885553
+    },
+    {
+      "sealedProductId": "69e472dc-b0cf-5f9d-be5d-63eae86f3d40",
+      "setCode": "hob",
+      "name": "The Hobbit Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "9f730c77-137a-5c4d-905d-8e9ab96a1739",
+      "setCode": "hob",
+      "name": "The Hobbit Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": 885552
+    },
+    {
+      "sealedProductId": "c252d520-3061-526e-bee6-26f65db802c9",
+      "setCode": "hob",
+      "name": "The Hobbit Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "f7135d48-ff10-5819-afbc-8945592a8a45",
+      "setCode": "hob",
+      "name": "The Hobbit Collector Booster Box Master Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "8fb173c2-250c-5919-8431-cc24685d10d3",
+      "setCode": "hob",
+      "name": "The Hobbit Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": 885550
+    },
+    {
+      "sealedProductId": "2e548fa4-96d9-51d8-b001-b1639450dabe",
+      "setCode": "hob",
+      "name": "The Hobbit Draft Night",
+      "category": "limited_aid_tool",
+      "subtype": "draft_set",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": 885555
+    },
+    {
+      "sealedProductId": "7f0464af-f8c6-5350-9a31-f1658bb68802",
+      "setCode": "hob",
+      "name": "The Hobbit Draft Night Case",
+      "category": "limited_aid_case",
+      "subtype": "draft_set",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "26bd45e8-3996-5051-a92f-d2c84a763c32",
+      "setCode": "hob",
+      "name": "The Hobbit Gift Bundle",
+      "category": "bundle",
+      "subtype": "gift_bundle",
+      "releaseDate": "2026-09-04",
+      "cardmarketId": 885554
+    },
+    {
+      "sealedProductId": "6705bce9-9ad3-5038-a823-22cd618ab5f1",
+      "setCode": "hob",
+      "name": "The Hobbit Gift Bundle Case",
+      "category": "bundle_case",
+      "subtype": "gift_bundle",
+      "releaseDate": "2026-09-04",
+      "cardmarketId": 885554
+    },
+    {
+      "sealedProductId": "28d49eb7-16ae-5ed9-8f37-efff67fd54c1",
+      "setCode": "hob",
+      "name": "The Hobbit Play Booster Box",
+      "category": "booster_box",
+      "subtype": "play",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": 885551
+    },
+    {
+      "sealedProductId": "b57609aa-65ff-5699-aecd-ecb54e81b3eb",
+      "setCode": "hob",
+      "name": "The Hobbit Play Booster Box Case",
+      "category": "booster_case",
+      "subtype": "play",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "cc3d4b38-33da-5bf3-84f7-70df313f9997",
+      "setCode": "hob",
+      "name": "The Hobbit Play Booster Pack",
+      "category": "booster_pack",
+      "subtype": "play",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": 885549
+    },
+    {
+      "sealedProductId": "aad7ab92-a2cc-572d-9e43-31ae0ef10cef",
+      "setCode": "hob",
+      "name": "The Hobbit Prerelease Cards Booster",
+      "category": "booster_pack",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2026-08-07",
+      "cardmarketId": 903183
+    },
+    {
+      "sealedProductId": "cf5585ca-7a1e-5d47-97b7-a017f0db2bfb",
+      "setCode": "hob",
+      "name": "The Hobbit Prerelease Case",
+      "category": "limited_aid_case",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2026-08-07",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "feeebce1-365f-5297-b6d5-179fd80e3286",
+      "setCode": "hob",
+      "name": "The Hobbit Prerelease Kit",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": 885556
+    },
+    {
+      "sealedProductId": "80074b6f-8c3a-545d-b720-790a1f69aa07",
+      "setCode": "hob",
+      "name": "The Hobbit Scene Box Case",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": 885559
+    },
+    {
+      "sealedProductId": "37505164-dd72-5df9-bee2-ce640b077694",
+      "setCode": "hob",
+      "name": "The Hobbit Scene Box Crack the Plates",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": 885557
+    },
+    {
+      "sealedProductId": "8a6030c7-5e91-5316-ba3a-726418feb61a",
+      "setCode": "hob",
+      "name": "The Hobbit Scene Box Set of 2",
+      "category": "subset",
+      "subtype": "other",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "4a51d316-794d-5bfd-b16c-3d7c4ac80ed1",
+      "setCode": "hob",
+      "name": "The Hobbit Scene Box Treasures of Smaug",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": 885558
+    },
+    {
+      "sealedProductId": "fbc5d6da-ab56-5020-a407-736676da7dec",
+      "setCode": "hob",
+      "name": "The Hobbit Welcome Deck Black",
+      "category": "deck",
+      "subtype": "welcome",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "dc395966-bf95-526a-a2d8-6e100f5d03f1",
+      "setCode": "hob",
+      "name": "The Hobbit Welcome Deck Blue",
+      "category": "deck",
+      "subtype": "welcome",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "77427230-e5db-5bd9-af2c-fbfbd96e5b8c",
+      "setCode": "hob",
+      "name": "The Hobbit Welcome Deck Green",
+      "category": "deck",
+      "subtype": "welcome",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "bee7379f-5ed2-57b0-8542-82291c23b975",
+      "setCode": "hob",
+      "name": "The Hobbit Welcome Deck Red",
+      "category": "deck",
+      "subtype": "welcome",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "71b00cda-b178-556b-9271-cb25f8c9b37c",
+      "setCode": "hob",
+      "name": "The Hobbit Welcome Deck White",
+      "category": "deck",
+      "subtype": "welcome",
+      "releaseDate": "2026-08-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "28d35e77-97ba-58cc-a976-d129cd35dd88",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth 3 Booster Draft Pack",
+      "category": "limited_aid_tool",
+      "subtype": "draft_set",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "a0dbf051-a051-5ac5-bf77-5da57d7aa923",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Box Topper Pack",
+      "category": "booster_pack",
+      "subtype": "topper",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 720928
+    },
+    {
+      "sealedProductId": "4f5d1280-be1a-563c-8ab1-da948229a207",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 698908
+    },
+    {
+      "sealedProductId": "2c731daf-779e-5a3d-b73d-d48cd97f1cb4",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "f72749ee-a878-591f-97db-74eb7ba31bc5",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2023-02-22",
+      "cardmarketId": 698912
+    },
+    {
+      "sealedProductId": "ffb40d41-557f-590c-9759-61d3b112422f",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "266de9f8-de20-5d45-a4be-842de7a5a82d",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 698903
+    },
+    {
+      "sealedProductId": "396a45ae-490d-5dc7-ae59-d3e764d2556a",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Collector Booster Sample Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 719541
+    },
+    {
+      "sealedProductId": "40d0c9ea-15ef-5d2b-998f-23b106ede3bb",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Draft Booster Box",
+      "category": "booster_box",
+      "subtype": "draft",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 698913
+    },
+    {
+      "sealedProductId": "d24d6e43-4197-5021-bbc1-e42727361923",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Draft Booster Box Case",
+      "category": "booster_case",
+      "subtype": "draft",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "ef7a3983-cd6e-5ff3-b85c-bc67ae1edf5c",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Draft Booster Pack",
+      "category": "booster_pack",
+      "subtype": "draft",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 698905
+    },
+    {
+      "sealedProductId": "74a7e7c7-b7fa-55e9-9d80-e66529845b1a",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Gift Bundle",
+      "category": "bundle",
+      "subtype": "gift_bundle",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 698909
+    },
+    {
+      "sealedProductId": "3fe93d25-f8c5-5ebb-98d9-c809108a3189",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Gift Bundle Case",
+      "category": "bundle_case",
+      "subtype": "gift_bundle",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "7cab2e42-8015-5588-86e2-cefe9934bd35",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Jumpstart Booster Box",
+      "category": "booster_box",
+      "subtype": "jumpstart",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 698911
+    },
+    {
+      "sealedProductId": "de1e90d0-1d31-5057-a7ce-1a1664f45cfc",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Jumpstart Booster Box Case",
+      "category": "booster_case",
+      "subtype": "jumpstart",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "f63def18-5714-59e7-a761-4f5b65f035fa",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Jumpstart Booster Pack",
+      "category": "booster_pack",
+      "subtype": "jumpstart",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 698904
+    },
+    {
+      "sealedProductId": "1b1f7d4b-0711-54e3-94bf-c7bd85fb9e45",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Jumpstart Booster Pack 2 Pack",
+      "category": "limited_aid_tool",
+      "subtype": "draft_set",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "7c2451ec-fd24-554a-b472-2ef768872f67",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Jumpstart Vol 2 Booster Box",
+      "category": "booster_box",
+      "subtype": "jumpstart",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 732334
+    },
+    {
+      "sealedProductId": "ac4120a3-29e3-5365-a4fe-0b7ec06456a2",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Jumpstart Vol 2 Booster Box Case",
+      "category": "booster_case",
+      "subtype": "jumpstart",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "3e7d92ad-a920-5860-a95d-ae306b06b5de",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Jumpstart Vol 2 Booster Pack",
+      "category": "booster_pack",
+      "subtype": "jumpstart",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 732331
+    },
+    {
+      "sealedProductId": "8b6a4f8e-bd03-56af-9ee0-1f2d4884d509",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 698914
+    },
+    {
+      "sealedProductId": "384a31a8-ef16-5bbb-b598-948bb88e618d",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Retail Tin Galadriel of Lothlorien",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "52b8ce2b-4ed2-5266-a191-2ac183714ada",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Retail Tin Gandalf Friend of the Shire",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "16010c3f-e227-532d-8fda-2cdc8bf9a69a",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Retail Tin The One Ring",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "dfaaeb8d-5167-5790-9a37-7fafbed7ef44",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Retail Tins Set of 3",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "b74bae7c-9e11-5e64-b48b-e7d4e1c02a37",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Scene Box Aragorn at Helms Deep",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 732328
+    },
+    {
+      "sealedProductId": "4bad3ed7-be2e-535a-9786-4e85be857948",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Scene Box Flight of the Witch King",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 732327
+    },
+    {
+      "sealedProductId": "2512f4be-9382-5109-b581-62c3a53ba0d2",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Scene Box Gandalf in the Pelennor Fields",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 732330
+    },
+    {
+      "sealedProductId": "205f8f27-3a61-5999-abbf-17ba5e8022ff",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Scene Box The Might of Galadriel",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 732329
+    },
+    {
+      "sealedProductId": "ac5f1065-e2b5-5579-94b1-63931b296314",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Scene Boxes Set of 4",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 733595
+    },
+    {
+      "sealedProductId": "4a908972-22ab-5291-872d-aa2e3f04cc10",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Set Booster Box",
+      "category": "booster_box",
+      "subtype": "set",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 698910
+    },
+    {
+      "sealedProductId": "12a95a46-1b6f-5d86-b76e-d5c6d08261a1",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Set Booster Box Case",
+      "category": "booster_case",
+      "subtype": "set",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "331d181e-ccef-5814-bf27-347a9c57a92e",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Set Booster Pack",
+      "category": "booster_pack",
+      "subtype": "set",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 698906
+    },
+    {
+      "sealedProductId": "157f7350-3368-5c13-974e-d838f7c30078",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Special Edition Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 732335
+    },
+    {
+      "sealedProductId": "389c5fc1-cefb-5cfd-b333-53a456b8a1ac",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Special Edition Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "5e0b4a30-76aa-500b-872b-5ab87dd6f399",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Special Edition Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 732333
+    },
+    {
+      "sealedProductId": "0865e393-debf-569e-b02a-f5901bfa4f3c",
+      "setCode": "ltr",
+      "name": "The Lord of the Rings Tales of Middle earth Starter Kit",
+      "category": "multiple_decks",
+      "subtype": "two_player_starter",
+      "releaseDate": "2023-06-23",
+      "cardmarketId": 698915
+    },
+    {
+      "sealedProductId": "7eb4065b-2d14-576c-a01c-a602b1361741",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": 758484
+    },
+    {
+      "sealedProductId": "36b7ea98-2890-5218-9203-d1f30379f5d3",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "d1583128-d9ba-5c9d-a395-05ba383d9d70",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": 758483
+    },
+    {
+      "sealedProductId": "b1d668ee-3e56-5a77-8e1a-122bb737cb84",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "1af73395-a2f4-5cd6-b941-afa07b4821a2",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": 758481
+    },
+    {
+      "sealedProductId": "ee104fa8-f73f-55be-b0cc-0eacd4f1dd1f",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Collector Booster Sample Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": 773848
+    },
+    {
+      "sealedProductId": "a0b41c8b-3e46-511e-803a-078bc2996c33",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Gift Bundle",
+      "category": "bundle",
+      "subtype": "gift_bundle",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": 758485
+    },
+    {
+      "sealedProductId": "676b1512-a65a-58c3-8412-27aa6c053758",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Gift Bundle Case",
+      "category": "bundle_case",
+      "subtype": "gift_bundle",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "1e128aef-4a55-59ce-a99c-a36ec1c08de5",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Play Booster Box",
+      "category": "booster_box",
+      "subtype": "play",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": 758482
+    },
+    {
+      "sealedProductId": "82f149e3-03b0-54cd-bc5f-6dda9ed00477",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Play Booster Box Case",
+      "category": "booster_case",
+      "subtype": "play",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "e8ab70bf-ab6c-51b0-9f3d-690c882d500f",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Play Booster Pack",
+      "category": "booster_pack",
+      "subtype": "play",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": 758480
+    },
+    {
+      "sealedProductId": "94448110-0697-57bc-bd4f-f64fffe1e3b7",
+      "setCode": "mh3",
+      "name": "Modern Horizons 3 Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2024-06-14",
+      "cardmarketId": 758486
+    },
+    {
+      "sealedProductId": "85b30c3e-1378-5143-8fc3-ad4d55faa19e",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": 748054
+    },
+    {
+      "sealedProductId": "15544ca5-b99f-5d37-9ff9-a34cb65d0946",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "6d633f6b-c283-5603-bb71-7bbde5d6407f",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": 748052
+    },
+    {
+      "sealedProductId": "41761082-0305-5daf-a1a5-90eb27bd2701",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "bbbdf7c5-7f6c-535e-ad8a-ed292e4cbfe2",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": 748050
+    },
+    {
+      "sealedProductId": "cde16baf-f7f8-5155-b65a-983483c41832",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Collector Booster Sample Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": 748051
+    },
+    {
+      "sealedProductId": "dc5db50e-463b-5a6d-af55-9135a8b5566c",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Foil Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": 754954
+    },
+    {
+      "sealedProductId": "5810b245-457a-578b-8162-372915d9c339",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor MTGO Redemption",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "fe605e28-69ab-546c-b0d9-ec65d756bb5e",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor MTGO Redemption Foil",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "5e5fe69e-56ee-55cc-a2b2-19f903a72aa6",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Play Booster Box",
+      "category": "booster_box",
+      "subtype": "play",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": 748053
+    },
+    {
+      "sealedProductId": "a87bfc00-197f-5474-b55a-e8342aaac80a",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Play Booster Box Case",
+      "category": "booster_case",
+      "subtype": "play",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "c9b74555-134e-5865-b8f7-0d0cd26c8f58",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Play Booster Pack",
+      "category": "booster_pack",
+      "subtype": "play",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": 748049
+    },
+    {
+      "sealedProductId": "60f39425-9415-5a4f-b331-dd7a18c5eedb",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2024-02-27",
+      "cardmarketId": 748128
+    },
+    {
+      "sealedProductId": "34a5baf2-958f-53cf-86e6-3bff04e11338",
+      "setCode": "mkm",
+      "name": "Murders at Karlov Manor Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-02-09",
+      "cardmarketId": 754953
+    },
+    {
+      "sealedProductId": "75d8cd8a-763c-5753-83ad-61ac2fecaaf8",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty 3 Booster Draft Pack",
+      "category": "limited_aid_tool",
+      "subtype": "draft_set",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "53c23cb9-f55f-5483-a0a0-6a3a3d09918e",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587699
+    },
+    {
+      "sealedProductId": "1ba0c306-4d47-55aa-8ae3-4937208fd77f",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "e01c4f02-b5ca-5be1-9fd8-d16067c8c9e5",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587696
+    },
+    {
+      "sealedProductId": "199d1d04-2609-54c7-a282-00c51c4e517f",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "1a8ee330-7570-5181-a459-410edef3d731",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587688
+    },
+    {
+      "sealedProductId": "09ba140c-c8ba-5c7f-b49a-1445ffc520a3",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Draft Booster Box",
+      "category": "booster_box",
+      "subtype": "draft",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587698
+    },
+    {
+      "sealedProductId": "7de024ec-02d0-508b-963c-6d2bdbb58467",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Draft Booster Box Case",
+      "category": "booster_case",
+      "subtype": "draft",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "051c730b-a3b5-552a-acbb-8fa391a6e959",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Draft Booster Pack",
+      "category": "booster_pack",
+      "subtype": "draft",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587686
+    },
+    {
+      "sealedProductId": "5971e000-524d-5517-bb11-332103d4da6b",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Foil Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 609509
+    },
+    {
+      "sealedProductId": "2fd065bf-485a-513b-8f53-9d0db6118cd2",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty MTGO Redemption",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "49fae8a2-c805-5e03-845d-f10f2bcf53d0",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty MTGO Redemption Foil",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "79d1678f-c2c9-5db1-ae8d-0e142c795822",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 609500
+    },
+    {
+      "sealedProductId": "167fdefc-aba7-5e51-b168-e53eb288029b",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 609508
+    },
+    {
+      "sealedProductId": "01b0bc94-1071-5a3f-9f9c-cac873e96969",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Set Booster Box",
+      "category": "booster_box",
+      "subtype": "set",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587697
+    },
+    {
+      "sealedProductId": "28c0e712-7dc2-545e-97ca-694a6e03dc6e",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Set Booster Box Case",
+      "category": "booster_case",
+      "subtype": "set",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "793cffee-a608-56fe-a2dc-feccb9af38c5",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Set Booster Pack",
+      "category": "booster_pack",
+      "subtype": "set",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587687
+    },
+    {
+      "sealedProductId": "8b7ee174-5528-599e-a1d8-2526f70b5caf",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Theme Booster Black",
+      "category": "booster_pack",
+      "subtype": "theme",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587691
+    },
+    {
+      "sealedProductId": "72f2748e-43fa-5c39-b7c5-b2de389d8bf7",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Theme Booster Blue",
+      "category": "booster_pack",
+      "subtype": "theme",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587692
+    },
+    {
+      "sealedProductId": "93b0c80a-3832-59e3-9df5-07d2c5543f20",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Theme Booster Box",
+      "category": "booster_box",
+      "subtype": "theme",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587695
+    },
+    {
+      "sealedProductId": "af854088-9478-5ca5-af65-37054e8e726e",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Theme Booster Box Case",
+      "category": "booster_case",
+      "subtype": "theme",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "78627b78-2ffb-5113-bdba-e77428a1f1ac",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Theme Booster Green",
+      "category": "booster_pack",
+      "subtype": "theme",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587690
+    },
+    {
+      "sealedProductId": "30b18d2b-36a8-5d51-b21c-998814c0e147",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Theme Booster Ninjas",
+      "category": "booster_pack",
+      "subtype": "theme",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587694
+    },
+    {
+      "sealedProductId": "170ca1f4-ee3a-51eb-99e6-9d5a57b97a1a",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Theme Booster Red",
+      "category": "booster_pack",
+      "subtype": "theme",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587693
+    },
+    {
+      "sealedProductId": "76fb8a86-0573-502c-b2c3-53e8b1970beb",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Theme Booster Set of 6",
+      "category": "subset",
+      "subtype": "theme",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "1ce12cb9-bb86-5265-9a8f-1da72845c71c",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Theme Booster White",
+      "category": "booster_pack",
+      "subtype": "theme",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 587689
+    },
+    {
+      "sealedProductId": "32d5159d-525c-54eb-92da-684d3a9fe7e9",
+      "setCode": "neo",
+      "name": "Kamigawa Neon Dynasty Welcome Booster",
+      "category": "booster_pack",
+      "subtype": "welcome",
+      "releaseDate": "2022-02-18",
+      "cardmarketId": 609499
+    },
+    {
+      "sealedProductId": "3f6005aa-7643-5790-83e1-f50c49c7b725",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 683497
+    },
+    {
+      "sealedProductId": "5280c1f5-8d88-56fa-9531-bc27517fa5ec",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "ac7cdb55-660b-5084-b818-3c0671adc172",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 683494
+    },
+    {
+      "sealedProductId": "74c47908-b2e4-50a9-93fe-a50f4a43a6e4",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "adc337bb-f85e-51c8-be52-b1d69d19893a",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 683492
+    },
+    {
+      "sealedProductId": "410737eb-4927-5365-9484-5b713c3a3e9b",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Collector Booster Pack Minimal Packaging",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "08d3c034-8487-5174-bdb2-e993014bbf43",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Collector Booster Sample Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 696244
+    },
+    {
+      "sealedProductId": "9825ca23-52e7-5928-832d-642368ac833c",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Compleat Bundle",
+      "category": "bundle",
+      "subtype": "premium",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 687469
+    },
+    {
+      "sealedProductId": "06b640f6-7bcc-52ee-bd98-bce4c89ef4a4",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Compleat Bundle Case",
+      "category": "bundle_case",
+      "subtype": "premium",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "7b34fbcb-95ac-573a-8924-774b4879bd68",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Compleat Edition Booster Pack",
+      "category": "booster_pack",
+      "subtype": "premium",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 687468
+    },
+    {
+      "sealedProductId": "68109344-4980-5a71-b760-8e7011808d80",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Draft Booster Box",
+      "category": "booster_box",
+      "subtype": "draft",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 683495
+    },
+    {
+      "sealedProductId": "d50da0e9-49e6-5577-a7fb-5c0d6835f80d",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Draft Booster Box Case",
+      "category": "booster_case",
+      "subtype": "draft",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "79329b4c-afa2-5a5c-a81c-f361f93fa67d",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Draft Booster Pack",
+      "category": "booster_pack",
+      "subtype": "draft",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 683489
+    },
+    {
+      "sealedProductId": "0e187c2b-92e4-54f4-a00b-d0ec7b15fbaa",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Foil Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 696246
+    },
+    {
+      "sealedProductId": "7ccb08e1-92d6-54a5-9d64-b245c148a4a4",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Jumpstart Booster Box",
+      "category": "booster_box",
+      "subtype": "jumpstart",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 683493
+    },
+    {
+      "sealedProductId": "a3db7f4b-9cdc-5417-89e9-d7755f7085cd",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Jumpstart Booster Box Case",
+      "category": "booster_case",
+      "subtype": "jumpstart",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "b9be2d80-4b30-5970-8953-252549751ddb",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Jumpstart Booster Pack",
+      "category": "booster_pack",
+      "subtype": "jumpstart",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 683491
+    },
+    {
+      "sealedProductId": "241a1885-03da-5abb-b28d-030aa8290c99",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One MTGO Redemption",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "635966a7-c0a9-5e5c-8421-b56b7676a48c",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One MTGO Redemption Foil",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "8b2c8f4e-a0d1-5066-986b-e10b0ff2a2bc",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 683486
+    },
+    {
+      "sealedProductId": "252eaee4-39db-5732-a968-386edde47cbb",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 696245
+    },
+    {
+      "sealedProductId": "c1be5c3c-3f0c-5b25-9aec-0823dd1d9c0d",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Set Booster Box",
+      "category": "booster_box",
+      "subtype": "set",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 683496
+    },
+    {
+      "sealedProductId": "991bebdc-7a4e-5095-95ae-80778b6c9c22",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Set Booster Box Case",
+      "category": "booster_case",
+      "subtype": "set",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "0db8ec71-b700-5355-913d-285f11687911",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Set Booster Pack",
+      "category": "booster_pack",
+      "subtype": "set",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 683490
+    },
+    {
+      "sealedProductId": "cdfb3ca5-b886-5985-92db-af707e083323",
+      "setCode": "one",
+      "name": "Phyrexia All Will Be One Welcome Booster",
+      "category": "booster_pack",
+      "subtype": "welcome",
+      "releaseDate": "2023-02-10",
+      "cardmarketId": 710616
+    },
+    {
+      "sealedProductId": "dc7bb271-735d-5f5d-9b51-13c644819bb3",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": 758323
+    },
+    {
+      "sealedProductId": "230724ed-2bb7-5915-8acf-52f210226e43",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "2965559b-fc0b-5c06-b156-47bcf61be207",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": 758326
+    },
+    {
+      "sealedProductId": "708b2f1d-80ea-5b45-a31f-8863acb4704e",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "6b307a92-0a52-5ecc-aaeb-1fa4180ec7ad",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": 758313
+    },
+    {
+      "sealedProductId": "f2a6a0f8-cf1f-544a-a991-ca5bf8452575",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Collector Booster Sample Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": 764492
+    },
+    {
+      "sealedProductId": "f2f2bcad-dc0d-5ac3-9a45-08d7fbfdd60a",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Foil Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": 764494
+    },
+    {
+      "sealedProductId": "30dc2201-4edd-5ef6-a1ad-e05740d25f1c",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction MTGO Redemption",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "416d0271-af56-5586-ae21-688f2cb3d9d4",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction MTGO Redemption Foil",
+      "category": "box_set",
+      "subtype": "mtgo_redemption",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "7a09908f-ec2c-5463-8d39-8e2641d74db9",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Play Booster Box",
+      "category": "booster_box",
+      "subtype": "play",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": 758329
+    },
+    {
+      "sealedProductId": "7b3a9bd3-0c91-56e8-bf91-4ef029035a68",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Play Booster Box Case",
+      "category": "booster_case",
+      "subtype": "play",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "7c02f937-ddc8-57af-9cf7-a09f7c0be1c3",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Play Booster Pack",
+      "category": "booster_pack",
+      "subtype": "play",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": 758311
+    },
+    {
+      "sealedProductId": "7e1ce491-fe15-5773-a792-169fb1c9ee5d",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": 758321
+    },
+    {
+      "sealedProductId": "3137cb56-5b18-522e-a61b-6d95bdb7d95a",
+      "setCode": "otj",
+      "name": "Outlaws of Thunder Junction Promo Pack",
+      "category": "booster_pack",
+      "subtype": "promotional",
+      "releaseDate": "2024-04-19",
+      "cardmarketId": 764493
+    },
+    {
+      "sealedProductId": "e9b18485-c096-50eb-a992-1f0f68ad8372",
+      "setCode": "trk",
+      "name": "Star Trek Beam Me Up Bundle",
+      "category": "bundle",
+      "subtype": "gift_bundle",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 897533
+    },
+    {
+      "sealedProductId": "d799de04-6896-5900-ac69-c6485a2b8a32",
+      "setCode": "trk",
+      "name": "Star Trek Beam Me Up Bundle Case",
+      "category": "bundle_case",
+      "subtype": "gift_bundle",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "6f093c9c-3151-5fd0-bb4f-e5c85eed1dbd",
+      "setCode": "trk",
+      "name": "Star Trek Beginner Box",
+      "category": "box_set",
+      "subtype": "starter_deck",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 897525
+    },
+    {
+      "sealedProductId": "fb2b8e8b-9508-57d0-91ec-cf0bb4d36fef",
+      "setCode": "trk",
+      "name": "Star Trek Beginner Box Case",
+      "category": "box_set",
+      "subtype": "starter_deck",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "3cc9cdad-3a63-55ce-b538-613f6e79904d",
+      "setCode": "trk",
+      "name": "Star Trek Bundle",
+      "category": "bundle",
+      "subtype": "default",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 897528
+    },
+    {
+      "sealedProductId": "e4408c5d-28cb-5879-a8ce-33038d25589e",
+      "setCode": "trk",
+      "name": "Star Trek Bundle Case",
+      "category": "bundle_case",
+      "subtype": "default",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "ef0e07aa-63e6-5bef-8d8b-1dc09d4f1d45",
+      "setCode": "trk",
+      "name": "Star Trek Collector Booster Box",
+      "category": "booster_box",
+      "subtype": "collector",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 897523
+    },
+    {
+      "sealedProductId": "f4d52064-c800-59ce-b923-358dfe723400",
+      "setCode": "trk",
+      "name": "Star Trek Collector Booster Box Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "e9e6b299-5b1b-52d4-a272-04153af12e74",
+      "setCode": "trk",
+      "name": "Star Trek Collector Booster Box Master Case",
+      "category": "booster_case",
+      "subtype": "collector",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "9fd0d30b-0873-541c-ba17-f17776c69b1c",
+      "setCode": "trk",
+      "name": "Star Trek Collector Booster Pack",
+      "category": "booster_pack",
+      "subtype": "collector",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 897522
+    },
+    {
+      "sealedProductId": "d8622aa3-45d1-5a3c-a48f-2d7118a3e641",
+      "setCode": "trk",
+      "name": "Star Trek Draft Night",
+      "category": "limited_aid_tool",
+      "subtype": "draft",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 897536
+    },
+    {
+      "sealedProductId": "970993b4-c03d-5933-a4a7-c69485333c47",
+      "setCode": "trk",
+      "name": "Star Trek Draft Night Case",
+      "category": "limited_aid_case",
+      "subtype": "draft",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "9d80fc25-556f-5917-a76b-074e390931fb",
+      "setCode": "trk",
+      "name": "Star Trek Play Booster Box",
+      "category": "booster_box",
+      "subtype": "play",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 897524
+    },
+    {
+      "sealedProductId": "c2028b14-254c-5e12-ab80-b0b22edeb67e",
+      "setCode": "trk",
+      "name": "Star Trek Play Booster Box Case",
+      "category": "booster_case",
+      "subtype": "play",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "d85cc053-8071-5404-aecf-97a06ee34259",
+      "setCode": "trk",
+      "name": "Star Trek Play Booster Pack",
+      "category": "booster_pack",
+      "subtype": "play",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 897521
+    },
+    {
+      "sealedProductId": "3ffa27c1-ed18-599c-af6a-fb9ff3371dbe",
+      "setCode": "trk",
+      "name": "Star Trek Prerelease Pack",
+      "category": "limited_aid_tool",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 897520
+    },
+    {
+      "sealedProductId": "7f430d34-5e25-5776-8ebb-241dac4d1427",
+      "setCode": "trk",
+      "name": "Star Trek Prerelease Pack Case",
+      "category": "limited_aid_case",
+      "subtype": "prerelease_kit",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": null
+    },
+    {
+      "sealedProductId": "9bedbe63-bf8a-5f25-a640-aad340ab802b",
+      "setCode": "trk",
+      "name": "Star Trek Scene Box Case",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 903175
+    },
+    {
+      "sealedProductId": "61ab7599-e21d-5a00-b3f4-6d9c38dc605a",
+      "setCode": "trk",
+      "name": "Star Trek Scene Box Divergent Timelines",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 897535
+    },
+    {
+      "sealedProductId": "46c1a098-5b96-5bfe-804a-753ceb9903f0",
+      "setCode": "trk",
+      "name": "Star Trek Scene Box Enterprise-Q",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": 897534
+    },
+    {
+      "sealedProductId": "0c1d4b08-c4cd-52ed-8371-4676c17ac75e",
+      "setCode": "trk",
+      "name": "Star Trek Scene Box Set of 2",
+      "category": "box_set",
+      "subtype": "other",
+      "releaseDate": "2026-11-13",
+      "cardmarketId": null
+    }
+  ]
+}

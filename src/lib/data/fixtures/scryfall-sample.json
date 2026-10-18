@@ -1,6 +1,6 @@
 {
   "source": "Scryfall API (https://scryfall.com) — muestra para datos de ejemplo y tests",
-  "generatedAt": "2026-10-18T13:09:44.454Z",
+  "generatedAt": "2026-10-18T13:59:46.064Z",
   "sets": [
     {
       "code": "sds",
@@ -264,6 +264,7 @@
       "printings": [
         {
           "scryfallId": "0852f9f3-d7ef-4d31-93e3-93bc7c5a4ec9",
+          "cardmarketId": 910585,
           "setCode": "fdc",
           "setName": "Foundations Commander",
           "collectorNumber": "163",
@@ -282,6 +283,7 @@
         },
         {
           "scryfallId": "a050f085-dc6a-4715-8cd3-33daf3e27bfc",
+          "cardmarketId": 905721,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2579",
@@ -305,6 +307,7 @@
         },
         {
           "scryfallId": "7673784e-db4b-43a1-8d55-1bb9fc1e284f",
+          "cardmarketId": 892161,
           "setCode": "msc",
           "setName": "Marvel Super Heroes Commander",
           "collectorNumber": "806",
@@ -326,6 +329,7 @@
         },
         {
           "scryfallId": "699c0207-901e-4fe9-b22d-1f6cb994a1f2",
+          "cardmarketId": 883322,
           "setCode": "psos",
           "setName": "Secrets of Strixhaven Promos",
           "collectorNumber": "113p",
@@ -348,6 +352,7 @@
         },
         {
           "scryfallId": "f11b8d24-375d-40dc-8497-c1ee779e156a",
+          "cardmarketId": 882105,
           "setCode": "sos",
           "setName": "Secrets of Strixhaven",
           "collectorNumber": "332",
@@ -369,6 +374,7 @@
         },
         {
           "scryfallId": "f58dba4f-1abb-47a3-a684-29c32bab95c0",
+          "cardmarketId": 882058,
           "setCode": "sos",
           "setName": "Secrets of Strixhaven",
           "collectorNumber": "113",
@@ -388,6 +394,7 @@
         },
         {
           "scryfallId": "bde26955-6de3-4212-9e1a-5e11f73ebf44",
+          "cardmarketId": 883465,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "IFIYW-7",
@@ -409,6 +416,7 @@
         },
         {
           "scryfallId": "dc12105d-7536-429b-9510-4f56bfc0c497",
+          "cardmarketId": 883464,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "IFIYW-2",
@@ -440,6 +448,7 @@
       "printings": [
         {
           "scryfallId": "83390164-f00b-4be1-9cec-5de088c9debc",
+          "cardmarketId": 910434,
           "setCode": "fdc",
           "setName": "Foundations Commander",
           "collectorNumber": "61",
@@ -458,6 +467,7 @@
         },
         {
           "scryfallId": "77d16cf5-d85a-44cf-aaac-c4134837cbe4",
+          "cardmarketId": 902361,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "7123",
@@ -481,6 +491,7 @@
         },
         {
           "scryfallId": "e28be8b0-b4ae-4f05-8481-a666496c595f",
+          "cardmarketId": 902363,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "7120",
@@ -504,6 +515,7 @@
         },
         {
           "scryfallId": "d6a1907c-59c4-4c72-b0f0-9e2402c05719",
+          "cardmarketId": 902362,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "7117",
@@ -527,6 +539,7 @@
         },
         {
           "scryfallId": "379f4020-a58c-484d-9b44-72b200884079",
+          "cardmarketId": 890842,
           "setCode": "mar",
           "setName": "Marvel Universe",
           "collectorNumber": "52",
@@ -551,6 +564,7 @@
         },
         {
           "scryfallId": "6522cc61-397d-4754-9a7f-9f9d50f85922",
+          "cardmarketId": 889182,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2664",
@@ -572,6 +586,7 @@
         },
         {
           "scryfallId": "9cb2478c-1672-44eb-a9a1-a103fcdf3701",
+          "cardmarketId": 883444,
           "setCode": "pf26",
           "setName": "MagicFest 2026",
           "collectorNumber": "5",
@@ -590,6 +605,7 @@
         },
         {
           "scryfallId": "87284999-8b35-4142-a711-0c9e1bdc8e1a",
+          "cardmarketId": 872146,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2497",
@@ -621,6 +637,7 @@
       "printings": [
         {
           "scryfallId": "5368ce20-0970-4630-8c46-439db2231a39",
+          "cardmarketId": 910658,
           "setCode": "fdc",
           "setName": "Foundations Commander",
           "collectorNumber": "213",
@@ -639,6 +656,7 @@
         },
         {
           "scryfallId": "ee1a40dc-30dc-4dda-9001-aa7fb0b43bb3",
+          "cardmarketId": 899708,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "7167",
@@ -661,6 +679,7 @@
         },
         {
           "scryfallId": "cb49d52e-85ce-4f79-bfc3-0e312e6e161f",
+          "cardmarketId": 895928,
           "setCode": "pf26",
           "setName": "MagicFest 2026",
           "collectorNumber": "8",
@@ -679,6 +698,7 @@
         },
         {
           "scryfallId": "de7e17bc-9d4e-40c8-b8eb-a28882143d67",
+          "cardmarketId": 859754,
           "setCode": "slc",
           "setName": "Secret Lair Countdown",
           "collectorNumber": "39",
@@ -701,6 +721,7 @@
         },
         {
           "scryfallId": "eea9251b-ca83-420f-ac5f-4fc3ea8dc190",
+          "cardmarketId": 859708,
           "setCode": "slc",
           "setName": "Secret Lair Countdown",
           "collectorNumber": "12",
@@ -722,6 +743,7 @@
         },
         {
           "scryfallId": "0312d980-b1d0-41ec-8f5b-d21fbb742b9b",
+          "cardmarketId": 810728,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "1553",
@@ -741,6 +763,7 @@
         },
         {
           "scryfallId": "d1114b99-62fb-478a-a648-16b8c0b4c032",
+          "cardmarketId": 812889,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "800",
@@ -762,6 +785,7 @@
         },
         {
           "scryfallId": "d9c02310-6a14-45c2-ae8c-b0fff7245673",
+          "cardmarketId": 795633,
           "setCode": "j25",
           "setName": "Foundations Jumpstart",
           "collectorNumber": "149",
@@ -790,6 +814,7 @@
       "printings": [
         {
           "scryfallId": "8ee443cc-e17a-493b-9c93-1f9e141a30e4",
+          "cardmarketId": 909814,
           "setCode": "frc",
           "setName": "Reality Fracture Commander",
           "collectorNumber": "21",
@@ -808,6 +833,7 @@
         },
         {
           "scryfallId": "4f152dd9-2b35-45b2-90fe-8c71d0634226",
+          "cardmarketId": 910771,
           "setCode": "fdc",
           "setName": "Foundations Commander",
           "collectorNumber": "286",
@@ -826,6 +852,7 @@
         },
         {
           "scryfallId": "bf6b187e-5ad0-4731-9c39-638451ac1e30",
+          "cardmarketId": 914214,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2132",
@@ -844,6 +871,7 @@
         },
         {
           "scryfallId": "8670dac4-d369-4907-ae3a-d58ff204f1a6",
+          "cardmarketId": 909771,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2783",
@@ -867,6 +895,7 @@
         },
         {
           "scryfallId": "24afe08b-6b88-42b3-a996-33f138431a87",
+          "cardmarketId": 902535,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2560",
@@ -890,6 +919,7 @@
         },
         {
           "scryfallId": "3d5c99e9-7c3e-4149-82a6-3c7d5d302488",
+          "cardmarketId": 899755,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2807",
@@ -911,6 +941,7 @@
         },
         {
           "scryfallId": "cadcddad-2f37-4a5c-81e4-242a20573952",
+          "cardmarketId": 898301,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2683",
@@ -932,6 +963,7 @@
         },
         {
           "scryfallId": "a739dd30-1fce-49db-99fb-15e346f4f2db",
+          "cardmarketId": 892723,
           "setCode": "msc",
           "setName": "Marvel Super Heroes Commander",
           "collectorNumber": "214",
@@ -964,6 +996,7 @@
       "printings": [
         {
           "scryfallId": "227f249f-a1da-4db0-a1a5-34378375fa8e",
+          "cardmarketId": 898296,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2678",
@@ -985,6 +1018,7 @@
         },
         {
           "scryfallId": "11e12a84-e7be-4afc-a230-c2e644743fa8",
+          "cardmarketId": 891230,
           "setCode": "msc",
           "setName": "Marvel Super Heroes Commander",
           "collectorNumber": "793",
@@ -1006,6 +1040,7 @@
         },
         {
           "scryfallId": "7ecf65b4-11f7-4a18-833e-0f017ea98f94",
+          "cardmarketId": 889183,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2665",
@@ -1027,6 +1062,7 @@
         },
         {
           "scryfallId": "ef9d3e48-85c2-4347-810f-a6a0725b288d",
+          "cardmarketId": 873477,
           "setCode": "tmc",
           "setName": "Teenage Mutant Ninja Turtles Eternal",
           "collectorNumber": "131",
@@ -1049,6 +1085,7 @@
         },
         {
           "scryfallId": "387b1238-7158-4d67-b98b-a3e224a9ed2b",
+          "cardmarketId": 850379,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2020",
@@ -1072,6 +1109,7 @@
         },
         {
           "scryfallId": "eed6c473-bf79-46d0-adf1-a357ca98a9d6",
+          "cardmarketId": 850378,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2001",
@@ -1095,6 +1133,7 @@
         },
         {
           "scryfallId": "f9183acb-edb7-4a59-9890-ae0455d8e024",
+          "cardmarketId": 530787,
           "setCode": "pmei",
           "setName": "Media and Collaboration Promos",
           "collectorNumber": "2025-8",
@@ -1115,6 +1154,7 @@
         },
         {
           "scryfallId": "7cc0cfe1-7f13-4b1b-9a37-33ef457d3c62",
+          "cardmarketId": 826624,
           "setCode": "fca",
           "setName": "Final Fantasy: Through the Ages",
           "collectorNumber": "8",
@@ -1151,6 +1191,7 @@
       "printings": [
         {
           "scryfallId": "b8c5e74c-96e7-4a1f-93b7-14d776fe4b2d",
+          "cardmarketId": 904192,
           "setCode": "fdn",
           "setName": "Foundations",
           "collectorNumber": "740",
@@ -1171,6 +1212,7 @@
         },
         {
           "scryfallId": "da497cf0-942e-48a5-943e-16183a4567fd",
+          "cardmarketId": 826302,
           "setCode": "plst",
           "setName": "The List",
           "collectorNumber": "DMR-271",
@@ -1189,6 +1231,7 @@
         },
         {
           "scryfallId": "533368eb-9005-45a7-94c1-ef4fa7d5debc",
+          "cardmarketId": 796321,
           "setCode": "j25",
           "setName": "Foundations Jumpstart",
           "collectorNumber": "251",
@@ -1207,6 +1250,7 @@
         },
         {
           "scryfallId": "3cee9303-9d65-45a2-93d4-ef4aba59141b",
+          "cardmarketId": 795121,
           "setCode": "fdn",
           "setName": "Foundations",
           "collectorNumber": "147",
@@ -1226,6 +1270,7 @@
         },
         {
           "scryfallId": "cad4c850-097e-4909-87ec-a33ef8f2ba34",
+          "cardmarketId": 746099,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "1161",
@@ -1245,6 +1290,7 @@
         },
         {
           "scryfallId": "8ea9612c-db1a-4858-816a-0f88d3080b4c",
+          "cardmarketId": 752565,
           "setCode": "pw24",
           "setName": "Wizards Play Network 2024",
           "collectorNumber": "1",
@@ -1267,6 +1313,7 @@
         },
         {
           "scryfallId": "6996abea-6914-4c0c-863e-43f6d8a8daef",
+          "cardmarketId": 678512,
           "setCode": "p30h",
           "setName": "30th Anniversary History Promos",
           "collectorNumber": "1★",
@@ -1285,6 +1332,7 @@
         },
         {
           "scryfallId": "fc22536c-09b4-4dc3-9371-842d91c5251e",
+          "cardmarketId": 678511,
           "setCode": "p30h",
           "setName": "30th Anniversary History Promos",
           "collectorNumber": "1",
@@ -1313,6 +1361,7 @@
       "printings": [
         {
           "scryfallId": "fd1f95bf-48ea-455a-8a6c-0249b11c8900",
+          "cardmarketId": 891570,
           "setCode": "msh",
           "setName": "Marvel Super Heroes",
           "collectorNumber": "167",
@@ -1334,6 +1383,7 @@
         },
         {
           "scryfallId": "62652aa9-57e7-42a7-8f2f-62e9a6aefb16",
+          "cardmarketId": 880712,
           "setCode": "soa",
           "setName": "Secrets of Strixhaven Mystical Archive",
           "collectorNumber": "52",
@@ -1356,6 +1406,7 @@
         },
         {
           "scryfallId": "fb7d7036-fffe-4b55-a8ba-494f4513ba1c",
+          "cardmarketId": 796821,
           "setCode": "j25",
           "setName": "Foundations Jumpstart",
           "collectorNumber": "662",
@@ -1374,6 +1425,7 @@
         },
         {
           "scryfallId": "bd0bf74e-14c1-4428-88d8-2181a080b5d0",
+          "cardmarketId": 795131,
           "setCode": "fdn",
           "setName": "Foundations",
           "collectorNumber": "223",
@@ -1396,6 +1448,7 @@
         },
         {
           "scryfallId": "e70722d6-b4d5-45c2-9488-9a5eb0bdb9bd",
+          "cardmarketId": 778555,
           "setCode": "blb",
           "setName": "Bloomburrow",
           "collectorNumber": "393",
@@ -1416,6 +1469,7 @@
         },
         {
           "scryfallId": "65a168b8-285b-4725-a982-671557d4f0bc",
+          "cardmarketId": 727634,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "717",
@@ -1439,6 +1493,7 @@
         },
         {
           "scryfallId": "aeece336-e5e8-4455-a297-c3739198d011",
+          "cardmarketId": 682022,
           "setCode": "bro",
           "setName": "The Brothers' War",
           "collectorNumber": "183",
@@ -1458,6 +1513,7 @@
         },
         {
           "scryfallId": "f349c459-6d80-4919-bb49-f1613f9b8d1f",
+          "cardmarketId": 421801,
           "setCode": "plst",
           "setName": "The List",
           "collectorNumber": "BBD-200",
@@ -1486,6 +1542,7 @@
       "printings": [
         {
           "scryfallId": "f7e12477-d59f-442b-a678-1be746d0b7be",
+          "cardmarketId": 909830,
           "setCode": "frc",
           "setName": "Reality Fracture Commander",
           "collectorNumber": "37",
@@ -1504,6 +1561,7 @@
         },
         {
           "scryfallId": "36959f2b-75b5-4d68-b193-ada980822fd9",
+          "cardmarketId": 910426,
           "setCode": "fdc",
           "setName": "Foundations Commander",
           "collectorNumber": "53",
@@ -1522,6 +1580,7 @@
         },
         {
           "scryfallId": "84a4a532-538e-428c-bd62-d0b997895c31",
+          "cardmarketId": 914207,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2125",
@@ -1540,6 +1599,7 @@
         },
         {
           "scryfallId": "bb37a8f3-c730-4cf1-84b3-9f7efc28dd7f",
+          "cardmarketId": 899752,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2804",
@@ -1561,6 +1621,7 @@
         },
         {
           "scryfallId": "b4e9c870-23c0-413a-ae39-265f09da16d1",
+          "cardmarketId": 891660,
           "setCode": "msc",
           "setName": "Marvel Super Heroes Commander",
           "collectorNumber": "143",
@@ -1583,6 +1644,7 @@
         },
         {
           "scryfallId": "5a8b56db-47cb-4c62-9b54-2a48576947d1",
+          "cardmarketId": 889181,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2663",
@@ -1604,6 +1666,7 @@
         },
         {
           "scryfallId": "589a4f39-fdd7-43f1-9521-608ec27bd926",
+          "cardmarketId": 883294,
           "setCode": "psos",
           "setName": "Secrets of Strixhaven Promos",
           "collectorNumber": "13p",
@@ -1626,6 +1689,7 @@
         },
         {
           "scryfallId": "bfd607c0-7ed7-4a4e-abdd-508080f40ef2",
+          "cardmarketId": 882880,
           "setCode": "sos",
           "setName": "Secrets of Strixhaven",
           "collectorNumber": "309",
@@ -1657,6 +1721,7 @@
       "printings": [
         {
           "scryfallId": "1d1aebf2-dd21-48b4-868f-f8fb164dcaae",
+          "cardmarketId": 759018,
           "setCode": "otp",
           "setName": "Breaking News",
           "collectorNumber": "70",
@@ -1680,6 +1745,7 @@
         },
         {
           "scryfallId": "5e85d5db-ced3-406d-90d2-e506a9332468",
+          "cardmarketId": 759017,
           "setCode": "otp",
           "setName": "Breaking News",
           "collectorNumber": "20",
@@ -1703,6 +1769,7 @@
         },
         {
           "scryfallId": "1ecc64b6-6f2c-4b20-aa80-54cc47382606",
+          "cardmarketId": 680707,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "1117",
@@ -1724,6 +1791,7 @@
         },
         {
           "scryfallId": "e6e76c6b-9d60-4bc8-b88d-6c9c7fade9a6",
+          "cardmarketId": 543726,
           "setCode": "tsr",
           "setName": "Time Spiral Remastered",
           "collectorNumber": "334",
@@ -1743,6 +1811,7 @@
         },
         {
           "scryfallId": "95702503-8f2d-46c8-abdb-6edd6c431d19",
+          "cardmarketId": 486049,
           "setCode": "2xm",
           "setName": "Double Masters",
           "collectorNumber": "344",
@@ -1767,6 +1836,7 @@
         },
         {
           "scryfallId": "b281a308-ab6b-47b6-bec7-632c9aaecede",
+          "cardmarketId": 486044,
           "setCode": "2xm",
           "setName": "Double Masters",
           "collectorNumber": "109",
@@ -1786,6 +1856,7 @@
         },
         {
           "scryfallId": "310a1c46-8331-4a09-9fcb-d942f8102364",
+          "cardmarketId": 301467,
           "setCode": "ima",
           "setName": "Iconic Masters",
           "collectorNumber": "110",
@@ -1805,6 +1876,7 @@
         },
         {
           "scryfallId": "ea5ec419-8392-4f1b-9557-5404ba632bf1",
+          "cardmarketId": 298587,
           "setCode": "mp2",
           "setName": "Amonkhet Invocations",
           "collectorNumber": "45",
@@ -1833,6 +1905,7 @@
       "printings": [
         {
           "scryfallId": "6672f025-525d-41ca-bd81-d4029e04f5f2",
+          "cardmarketId": 910616,
           "setCode": "fdc",
           "setName": "Foundations Commander",
           "collectorNumber": "191",
@@ -1851,6 +1924,7 @@
         },
         {
           "scryfallId": "8b1af0df-e1fa-46f0-9da9-c1ac3a7d0245",
+          "cardmarketId": 893296,
           "setCode": "msc",
           "setName": "Marvel Super Heroes Commander",
           "collectorNumber": "377",
@@ -1873,6 +1947,7 @@
         },
         {
           "scryfallId": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+          "cardmarketId": 892700,
           "setCode": "msc",
           "setName": "Marvel Super Heroes Commander",
           "collectorNumber": "170",
@@ -1895,6 +1970,7 @@
         },
         {
           "scryfallId": "9f8b95bd-c709-4259-b3fe-92119b92acae",
+          "cardmarketId": 861507,
           "setCode": "fic",
           "setName": "Final Fantasy Commander",
           "collectorNumber": "483",
@@ -1919,6 +1995,7 @@
         },
         {
           "scryfallId": "4c72e177-d95d-41df-91b3-4e489175b6aa",
+          "cardmarketId": 778677,
           "setCode": "blc",
           "setName": "Bloomburrow Commander",
           "collectorNumber": "81",
@@ -1943,6 +2020,7 @@
         },
         {
           "scryfallId": "dae8751c-4c72-4034-a192-a1e166f20246",
+          "cardmarketId": 781313,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "1675",
@@ -1966,6 +2044,7 @@
         },
         {
           "scryfallId": "9ca8c7a0-d7c5-414f-8ca9-80e3daf49a5e",
+          "cardmarketId": 748808,
           "setCode": "rvr",
           "setName": "Ravnica Remastered",
           "collectorNumber": "432",
@@ -1989,6 +2068,7 @@
         },
         {
           "scryfallId": "d816162c-bb87-4d45-ae14-1433b19f50c5",
+          "cardmarketId": 750317,
           "setCode": "rvr",
           "setName": "Ravnica Remastered",
           "collectorNumber": "344z",
@@ -2021,6 +2101,7 @@
       "printings": [
         {
           "scryfallId": "ec7d6864-7b6b-4f74-8474-9b9ec96b1d33",
+          "cardmarketId": 909832,
           "setCode": "frc",
           "setName": "Reality Fracture Commander",
           "collectorNumber": "39",
@@ -2039,6 +2120,7 @@
         },
         {
           "scryfallId": "7bf58206-b7b6-45e7-b99a-9de1c58c5c96",
+          "cardmarketId": 883304,
           "setCode": "psos",
           "setName": "Secrets of Strixhaven Promos",
           "collectorNumber": "52p",
@@ -2061,6 +2143,7 @@
         },
         {
           "scryfallId": "c8f1baae-dd81-4e10-841e-15531ea1ffaa",
+          "cardmarketId": 882103,
           "setCode": "sos",
           "setName": "Secrets of Strixhaven",
           "collectorNumber": "317",
@@ -2082,6 +2165,7 @@
         },
         {
           "scryfallId": "617208ff-dd9b-44fd-a740-d3188081e5cc",
+          "cardmarketId": 882050,
           "setCode": "sos",
           "setName": "Secrets of Strixhaven",
           "collectorNumber": "52",
@@ -2101,6 +2185,7 @@
         },
         {
           "scryfallId": "8bb0a0cf-5b04-4d68-bf7a-7131ae50d06b",
+          "cardmarketId": 873434,
           "setCode": "pza",
           "setName": "Teenage Mutant Ninja Turtles Source Material",
           "collectorNumber": "4",
@@ -2125,6 +2210,7 @@
         },
         {
           "scryfallId": "6b8f867d-eff5-493f-a881-bcbc4ae06b33",
+          "cardmarketId": 872140,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2491",
@@ -2146,6 +2232,7 @@
         },
         {
           "scryfallId": "caf333b7-3e70-4745-9304-99b21244196c",
+          "cardmarketId": 877789,
           "setCode": "sld",
           "setName": "Secret Lair Drop",
           "collectorNumber": "2148",
@@ -2164,6 +2251,7 @@
         },
         {
           "scryfallId": "b5545882-6963-4729-b2c6-fb4bdc75ffcc",
+          "cardmarketId": 857917,
           "setCode": "tle",
           "setName": "Avatar: The Last Airbender Eternal",
           "collectorNumber": "155",
@@ -2195,6 +2283,7 @@
       "printings": [
         {
           "scryfallId": "5ee7c1b3-36c3-4f81-a45d-f34331db5b18",
+          "cardmarketId": 690277,
           "setCode": "dmu",
           "setName": "Dominaria United",
           "collectorNumber": "436",
@@ -2221,6 +2310,7 @@
         },
         {
           "scryfallId": "8df6603a-38c1-4d18-8b84-6211e9a7cc09",
+          "cardmarketId": 689737,
           "setCode": "dmu",
           "setName": "Dominaria United",
           "collectorNumber": "435",
@@ -2247,6 +2337,7 @@
         },
         {
           "scryfallId": "f389b4ae-c109-4989-b7a6-92f07ed88183",
+          "cardmarketId": 673438,
           "setCode": "pdmu",
           "setName": "Dominaria United Promos",
           "collectorNumber": "107s",
@@ -2270,6 +2361,7 @@
         },
         {
           "scryfallId": "11a1cfc1-0bfc-40e8-b57f-f267bf9b6542",
+          "cardmarketId": 673804,
           "setCode": "pdmu",
           "setName": "Dominaria United Promos",
           "collectorNumber": "107p",
@@ -2294,6 +2386,7 @@
         },
         {
           "scryfallId": "a9494e5f-bfd2-45b0-b324-fd1407d9b644",
+          "cardmarketId": 671994,
           "setCode": "dmu",
           "setName": "Dominaria United",
           "collectorNumber": "331",
@@ -2319,6 +2412,7 @@
         },
         {
           "scryfallId": "fc5be7df-16e0-494c-b960-19fd64d57b35",
+          "cardmarketId": 671538,
           "setCode": "dmu",
           "setName": "Dominaria United",
           "collectorNumber": "290",
@@ -2344,6 +2438,7 @@
         },
         {
           "scryfallId": "d67be074-cdd4-41d9-ac89-0a0456c4e4b2",
+          "cardmarketId": 671359,
           "setCode": "dmu",
           "setName": "Dominaria United",
           "collectorNumber": "107",
@@ -2365,6 +2460,7 @@
         },
         {
           "scryfallId": "c68629ff-72b3-40a2-b578-cddb6ddb4ccf",
+          "cardmarketId": null,
           "setCode": "sds",
           "setName": "Stardates",
           "collectorNumber": "11",
@@ -2399,6 +2495,7 @@
       "printings": [
         {
           "scryfallId": "c2fed990-78fd-4688-8cac-9f57774297f6",
+          "cardmarketId": 898858,
           "setCode": "hoc",
           "setName": "The Hobbit Eternal",
           "collectorNumber": "84",
@@ -2423,6 +2520,7 @@
         },
         {
           "scryfallId": "bdd2c783-1483-490a-ae93-c4664a0a9564",
+          "cardmarketId": 898846,
           "setCode": "hoc",
           "setName": "The Hobbit Eternal",
           "collectorNumber": "44",
@@ -2447,6 +2545,7 @@
         },
         {
           "scryfallId": "6e817a37-235f-46fd-b857-9003b2264d10",
+          "cardmarketId": 738037,
           "setCode": "ltr",
           "setName": "The Lord of the Rings: Tales of Middle-earth",
           "collectorNumber": "791",
@@ -2472,6 +2571,7 @@
         },
         {
           "scryfallId": "4e6fee52-33a8-4085-b632-bf95dfd2b16d",
+          "cardmarketId": 743318,
           "setCode": "ltr",
           "setName": "The Lord of the Rings: Tales of Middle-earth",
           "collectorNumber": "748z",
@@ -2498,6 +2598,7 @@
         },
         {
           "scryfallId": "10a4e202-b564-4ac8-8bdf-a2a563662563",
+          "cardmarketId": 735377,
           "setCode": "ltr",
           "setName": "The Lord of the Rings: Tales of Middle-earth",
           "collectorNumber": "748",
@@ -2523,6 +2624,7 @@
         },
         {
           "scryfallId": "3b3f2e18-0cc3-42bf-af33-60b95c5e2e40",
+          "cardmarketId": 738253,
           "setCode": "ltr",
           "setName": "The Lord of the Rings: Tales of Middle-earth",
           "collectorNumber": "697",
@@ -2550,6 +2652,7 @@
         },
         {
           "scryfallId": "a163a525-1091-42cf-ad94-1c60c1b2c738",
+          "cardmarketId": 718473,
           "setCode": "pltr",
           "setName": "Tales of Middle-earth Promos",
           "collectorNumber": "246s",
@@ -2574,6 +2677,7 @@
         },
         {
           "scryfallId": "126ea71a-9a64-4d1e-a8ca-1efce3b8346f",
+          "cardmarketId": 716083,
           "setCode": "ltr",
           "setName": "The Lord of the Rings: Tales of Middle-earth",
           "collectorNumber": "451",
@@ -2610,6 +2714,7 @@
       "printings": [
         {
           "scryfallId": "a71d1ec3-2d7a-4749-8936-8bf7a8b83d84",
+          "cardmarketId": 824978,
           "setCode": "fca",
           "setName": "Final Fantasy: Through the Ages",
           "collectorNumber": "43",
@@ -2637,6 +2742,7 @@
         },
         {
           "scryfallId": "8d27e717-8bda-44dc-90b9-a6f7029c7b93",
+          "cardmarketId": 771287,
           "setCode": "h2r",
           "setName": "Modern Horizons 2 Timeshifts",
           "collectorNumber": "11",
@@ -2658,6 +2764,7 @@
         },
         {
           "scryfallId": "fae3bf4a-a732-48aa-a1a4-7e5fd007774c",
+          "cardmarketId": 704224,
           "setCode": "mul",
           "setName": "Multiverse Legends",
           "collectorNumber": "151z",
@@ -2682,6 +2789,7 @@
         },
         {
           "scryfallId": "3a29b9b5-8c15-4058-a7d2-db7297635364",
+          "cardmarketId": 704223,
           "setCode": "mul",
           "setName": "Multiverse Legends",
           "collectorNumber": "151",
@@ -2705,6 +2813,7 @@
         },
         {
           "scryfallId": "fc898fec-4cc6-4587-b556-c5a8d38ccbd0",
+          "cardmarketId": 704166,
           "setCode": "mul",
           "setName": "Multiverse Legends",
           "collectorNumber": "21",
@@ -2727,6 +2836,7 @@
         },
         {
           "scryfallId": "10cde602-f47c-4dac-bf1b-e300c82e5fd5",
+          "cardmarketId": 692159,
           "setCode": "slp",
           "setName": "Secret Lair Promo",
           "collectorNumber": "2",
@@ -2748,6 +2858,7 @@
         },
         {
           "scryfallId": "b3e685f9-cc0f-4dc6-98dc-4727944de445",
+          "cardmarketId": 566638,
           "setCode": "mh2",
           "setName": "Modern Horizons 2",
           "collectorNumber": "315",
@@ -2772,6 +2883,7 @@
         },
         {
           "scryfallId": "a9738cda-adb1-47fb-9f4c-ecd930228c4d",
+          "cardmarketId": 566480,
           "setCode": "mh2",
           "setName": "Modern Horizons 2",
           "collectorNumber": "138",
@@ -2803,6 +2915,7 @@
       "printings": [
         {
           "scryfallId": "3d4b9d4e-ab16-4d81-ac15-e84b351ef2dd",
+          "cardmarketId": 840655,
           "setCode": "sch",
           "setName": "Store Championships",
           "collectorNumber": "44",
@@ -2827,6 +2940,7 @@
         },
         {
           "scryfallId": "eca77d44-2e1c-4b97-a4c4-e7ac3b576440",
+          "cardmarketId": 609596,
           "setCode": "pneo",
           "setName": "Kamigawa: Neon Dynasty Promos",
           "collectorNumber": "141s",
@@ -2851,6 +2965,7 @@
         },
         {
           "scryfallId": "6dee0388-a78d-4b3c-a0c5-25655e14115e",
+          "cardmarketId": 607391,
           "setCode": "neo",
           "setName": "Kamigawa: Neon Dynasty",
           "collectorNumber": "465",
@@ -2876,6 +2991,7 @@
         },
         {
           "scryfallId": "0b696cd1-0d72-4df5-bacc-dc77e62f9a13",
+          "cardmarketId": 607390,
           "setCode": "neo",
           "setName": "Kamigawa: Neon Dynasty",
           "collectorNumber": "357",
@@ -2901,6 +3017,7 @@
         },
         {
           "scryfallId": "24c0d87b-0049-4beb-b9cb-6f813b7aa7dc",
+          "cardmarketId": 607389,
           "setCode": "neo",
           "setName": "Kamigawa: Neon Dynasty",
           "collectorNumber": "141",
@@ -2933,6 +3050,7 @@
       "printings": [
         {
           "scryfallId": "18303862-4726-4136-814f-157aa7006579",
+          "cardmarketId": 688401,
           "setCode": "dmr",
           "setName": "Dominaria Remastered",
           "collectorNumber": "215",
@@ -2952,6 +3070,7 @@
         },
         {
           "scryfallId": "0e09b054-4d33-4a12-bf2a-9b0009f33044",
+          "cardmarketId": 566657,
           "setCode": "mh2",
           "setName": "Modern Horizons 2",
           "collectorNumber": "290",
@@ -2972,6 +3091,7 @@
         },
         {
           "scryfallId": "610135d6-d32f-4ee9-b053-dc32da14c333",
+          "cardmarketId": 423406,
           "setCode": "plst",
           "setName": "The List",
           "collectorNumber": "UMA-225",
@@ -2990,6 +3110,7 @@
         },
         {
           "scryfallId": "3f822331-315e-4297-bb69-f1069032c6c5",
+          "cardmarketId": 366804,
           "setCode": "uma",
           "setName": "Ultimate Masters",
           "collectorNumber": "225",
@@ -3009,6 +3130,7 @@
         },
         {
           "scryfallId": "ab8292ae-9a52-43e7-92f7-0f45f4bb71ec",
+          "cardmarketId": 258125,
           "setCode": "ddj",
           "setName": "Duel Decks: Izzet vs. Golgari",
           "collectorNumber": "32",
@@ -3027,6 +3149,7 @@
         },
         {
           "scryfallId": "230e65b2-a908-4418-8ef9-ecc475ff0b27",
+          "cardmarketId": 247227,
           "setCode": "cmd",
           "setName": "Commander 2011",
           "collectorNumber": "198",
@@ -3045,6 +3168,7 @@
         },
         {
           "scryfallId": "04cb4e4e-8275-4132-8f1a-84b486725400",
+          "cardmarketId": 15855,
           "setCode": "f06",
           "setName": "Friday Night Magic 2006",
           "collectorNumber": "12a",
@@ -3066,6 +3190,7 @@
         },
         {
           "scryfallId": "f98f4538-5b5b-475d-b98f-49d01dae6f04",
+          "cardmarketId": 3240,
           "setCode": "apc",
           "setName": "Apocalypse",
           "collectorNumber": "128",
