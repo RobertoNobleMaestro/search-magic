@@ -720,7 +720,8 @@ function offerStore(storeId: string): OfferStore {
 }
 
 function summarizeCard(card: CatalogCard): CardSummary {
-  const inStock = LISTINGS.filter((l) => l.oracleId === card.oracleId && l.inStock);
+  const own = LISTINGS.filter((l) => l.oracleId === card.oracleId);
+  const inStock = own.filter((l) => l.inStock);
   return {
     oracleId: card.oracleId,
     nameEn: card.nameEn,
@@ -728,11 +729,13 @@ function summarizeCard(card: CatalogCard): CardSummary {
     imageUrl: card.printings.find((p) => p.imageUrl)?.imageUrl ?? null,
     minPriceCents: inStock.length ? Math.min(...inStock.map((l) => l.priceCents)) : null,
     offerCount: inStock.length,
+    soldOutCount: own.length - inStock.length,
   };
 }
 
 function summarizeSealed(p: CatalogSealed): SealedSummary {
-  const inStock = SEALED_LISTINGS.filter((l) => l.sealedProductId === p.sealedProductId && l.inStock);
+  const own = SEALED_LISTINGS.filter((l) => l.sealedProductId === p.sealedProductId);
+  const inStock = own.filter((l) => l.inStock);
   return {
     sealedProductId: p.sealedProductId,
     name: p.name,
@@ -746,6 +749,7 @@ function summarizeSealed(p: CatalogSealed): SealedSummary {
     setIconUrl: setIconUrl(p.setCode),
     minPriceCents: inStock.length ? Math.min(...inStock.map((l) => l.priceCents)) : null,
     offerCount: inStock.length,
+    soldOutCount: own.length - inStock.length,
   };
 }
 

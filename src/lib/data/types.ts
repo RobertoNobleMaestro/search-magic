@@ -88,6 +88,8 @@ export interface CardSummary {
   minPriceCents: number | null;
   /** número de ofertas con stock */
   offerCount: number;
+  /** ofertas de tiendas activas sin stock: distingue "agotada" de "ninguna tienda la tiene" */
+  soldOutCount: number;
 }
 
 export interface Printing {
@@ -153,6 +155,8 @@ export interface SealedSummary {
   setIconUrl: string | null;
   minPriceCents: number | null;
   offerCount: number;
+  /** ofertas de tiendas activas sin stock */
+  soldOutCount: number;
 }
 
 // ---------------------------------------------------------------------------
