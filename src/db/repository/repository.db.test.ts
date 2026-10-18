@@ -389,6 +389,15 @@ describe.runIf(enabled)('DbRepository (integración)', () => {
       await expect(repo.saveListings(run, [listing('x', { storeId: ONLINE })])).rejects.toThrow(/es de "test-local-store"/);
     });
 
+    it('la búsqueda pone primero lo que tienen las tiendas', async () => {
+      // Sin ofertas, "bolt" daría antes los nombres que empiezan por "bolt" (Bolt Bend…).
+      expect((await repo.searchCards('bolt', 5))[0]?.oracleId).toBe(BOLT);
+      expect((await repo.autocomplete('bolt', 5))[0]?.oracleId).toBe(BOLT);
+      // El nombre exacto sigue mandando aunque no lo tenga nadie.
+      const [exact] = await repo.searchCards('bolt bend', 1);
+      expect(exact?.nameEn).toBe('Bolt Bend');
+    });
+
     it('la búsqueda de cartas suma las ofertas de todas las fuentes', async () => {
       const [summary] = await repo.searchCards('lightning bolt', 1);
       expect(summary).toMatchObject({ oracleId: BOLT, nameEs: 'Relámpago' });

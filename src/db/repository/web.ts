@@ -116,7 +116,14 @@ function nameRanking(column: SQL, qn: string) {
 
 // ───────── Cartas: búsqueda ─────────
 
-/** Dentro de cada grupo de nameRanking, las cartas más reimpresas primero. */
+/**
+ * Orden: el nombre exacto primero; después, los nombres que contienen lo buscado (grupos 1-2
+ * de nameRanking) y, al final, los parecidos por trigramas (grupo 3). Dentro de cada bloque,
+ * primero lo que alguna tienda tiene en stock: el catálogo son ~35.000 cartas y casi ninguna
+ * está en una tienda, así que "bolt" no debe dar antes "Bolt Bend", que nadie vende, que
+ * "Twin Bolt", que sí. Un parecido con stock ("Bold Biochemist") nunca pasa por delante de un
+ * nombre que sí contiene lo buscado. A igualdad, por grupo y por número de reimpresiones.
+ */
 async function rankedCandidates(db: Db, q: string, limit: number): Promise<CardSuggestion[]> {
   const qn = normalizeName(q);
   if (qn.length < 2) return [];
@@ -134,7 +141,11 @@ async function rankedCandidates(db: Db, q: string, limit: number): Promise<CardS
     )
     select b.oracle_id, c.name as name_en, b.name as matched_name, b.lang
     from best b join cards c on c.oracle_id = b.oracle_id
-    order by b.rank,
+    cross join lateral (${stockStats(sql`l.oracle_id = b.oracle_id`)}) o
+    order by (b.rank = 0) desc,
+      (b.rank = 3) asc,
+      (o.offer_count > 0) desc,
+      b.rank,
       case when b.rank = 3 then b.sim end desc nulls last,
       (select count(*) from printings p where p.oracle_id = b.oracle_id) desc,
       c.name
