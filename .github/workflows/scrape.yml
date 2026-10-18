@@ -1,0 +1,109 @@
+# Worker de src/worker contra la BD de producción: la web de las tiendas y su stock de Cardmarket.
+# Secretos del repositorio:
+#   DATABASE_URL           conexión pooled (host con -pooler) a la rama production de Neon
+#   SEARCH_MAGIC_CONTACT   contacto que va en el User-Agent para que las tiendas puedan escribirnos
+#                          (obligatorio: sin él el worker no rastrea ninguna web)
+# Los CSV de Cardmarket en data/cardmarket/ no se suben a git: aquí solo se importan los que una tienda
+# publica en un enlace (cardmarketCsv.url). Los ficheros locales se importan a mano con
+#   npm run worker -- --store <id> --file <csv>
+#
+# Dos jobs:
+#   scrape       cada 8 horas, todas las tiendas activadas menos las lentas (60 min)
+#   scrape-slow  semanal, las tiendas con slow: true en stores.config.ts (El Rincón de Magic: ~1.000
+#                páginas con Crawl-delay 10, unas 3 h)
+# Cada uno pasa --max-minutes por debajo de su timeout: el worker cierra como parcial la ejecución en
+# curso antes de que GitHub mate el proceso (si no, se quedaría "running" en la BD).
+name: Worker de tiendas
+
+on:
+  schedule:
+    # Cada 8 horas, en el minuto 17 para no coincidir con la cola de las horas en punto.
+    - cron: "17 */8 * * *"
+    # Las lentas, los lunes a las 02:41 (UTC), lejos de las ejecuciones de cada 8 horas.
+    - cron: "41 2 * * 1"
+  workflow_dispatch:
+    inputs:
+      store:
+        description: "Solo esta tienda (id de stores.config.ts); vacío = todas las activadas"
+        type: string
+        required: false
+      source:
+        description: "Solo esta fuente; vacío = todas"
+        type: choice
+        options: ["", web, cardmarket_csv]
+        default: ""
+      slow:
+        description: "En el job largo (tiendas lentas, 5 h); márcalo también para una tienda lenta con store"
+        type: boolean
+        default: false
+      dry_run:
+        description: "Ejecución en seco: rastrea y empareja (50 listados por web), pero no escribe en la BD"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  scrape:
+    if: github.event.schedule == '17 */8 * * *' || (github.event_name == 'workflow_dispatch' && !inputs.slow)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    # Nunca dos a la vez contra las mismas tiendas; la que llega espera, no cancela a la otra.
+    concurrency:
+      group: scrape
+      cancel-in-progress: false
+    env:
+      DATA_SOURCE: db
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      SEARCH_MAGIC_CONTACT: ${{ secrets.SEARCH_MAGIC_CONTACT }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Ejecutar el worker
+        # Los inputs van por variables de entorno, no interpolados en el script.
+        env:
+          STORE: ${{ inputs.store }}
+          SOURCE: ${{ inputs.source }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          args=(--max-minutes 50)
+          if [ -n "$STORE" ]; then args+=(--store "$STORE"); fi
+          if [ -n "$SOURCE" ]; then args+=(--source "$SOURCE"); fi
+          if [ "$DRY_RUN" = "true" ]; then args+=(--dry-run --all); fi
+          npm run worker -- "${args[@]}"
+
+  scrape-slow:
+    if: github.event.schedule == '41 2 * * 1' || (github.event_name == 'workflow_dispatch' && inputs.slow)
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    # Grupo propio: son otras tiendas, así que no bloquea durante horas las ejecuciones de cada 8 horas.
+    concurrency:
+      group: scrape-slow
+      cancel-in-progress: false
+    env:
+      DATA_SOURCE: db
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      SEARCH_MAGIC_CONTACT: ${{ secrets.SEARCH_MAGIC_CONTACT }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Ejecutar el worker (tiendas lentas)
+        env:
+          STORE: ${{ inputs.store }}
+          SOURCE: ${{ inputs.source }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          args=(--max-minutes 280)
+          if [ -n "$STORE" ]; then args+=(--store "$STORE"); else args+=(--slow); fi
+          if [ -n "$SOURCE" ]; then args+=(--source "$SOURCE"); fi
+          if [ "$DRY_RUN" = "true" ]; then args+=(--dry-run --all); fi
+          npm run worker -- "${args[@]}"
