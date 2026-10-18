@@ -1,1 +1,185 @@
 @import "tailwindcss";
+
+/*
+ * Tokens de diseño (copiados de design/theme.css). Las fuentes las carga src/app/layout.tsx
+ * con next/font: --font-geist-sans, --font-geist-mono y --font-fraunces en <html>.
+ * El modo oscuro sigue a prefers-color-scheme.
+ */
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* Superficies y texto */
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+
+  /* Acento (acciones, selección, enlaces) */
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-on-brand: var(--on-brand);
+
+  /* Mejor precio: lo único dorado de la página */
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-ink: var(--gold-ink);
+
+  /* Estados */
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+
+  /* Estado de la carta, escala y colores de Cardmarket (de mejor a peor) */
+  --color-cond-mt: var(--cond-mt);
+  --color-cond-nm: var(--cond-nm);
+  --color-cond-ex: var(--cond-ex);
+  --color-cond-gd: var(--cond-gd);
+  --color-cond-lp: var(--cond-lp);
+  --color-cond-pl: var(--cond-pl);
+  --color-cond-po: var(--cond-po);
+
+  --shadow-card: 0 1px 2px var(--shadow-a), 0 12px 32px -16px var(--shadow-b);
+  --shadow-pop: 0 2px 6px var(--shadow-a), 0 24px 48px -20px var(--shadow-b);
+}
+
+:root {
+  --canvas: oklch(0.984 0.005 85);
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.964 0.007 85);
+  --surface-3: oklch(0.935 0.009 85);
+  --line: oklch(0.912 0.009 85);
+  --line-strong: oklch(0.84 0.012 85);
+  --ink: oklch(0.22 0.022 285);
+  --ink-2: oklch(0.42 0.02 285);
+  --ink-3: oklch(0.53 0.016 285);
+  --brand: oklch(0.5 0.2 285);
+  --brand-strong: oklch(0.44 0.19 285);
+  --brand-soft: oklch(0.95 0.03 285);
+  --on-brand: oklch(0.99 0.005 285);
+  --gold: oklch(0.78 0.14 78);
+  --gold-soft: oklch(0.965 0.04 88);
+  --gold-ink: oklch(0.47 0.1 65);
+  --good: oklch(0.5 0.13 155);
+  --good-soft: oklch(0.95 0.04 155);
+  --warn: oklch(0.52 0.12 60);
+  --warn-soft: oklch(0.96 0.05 85);
+  --bad: oklch(0.52 0.19 27);
+  --bad-soft: oklch(0.955 0.03 25);
+  --cond-mt: oklch(0.62 0.12 235);
+  --cond-nm: oklch(0.63 0.15 150);
+  --cond-ex: oklch(0.72 0.16 125);
+  --cond-gd: oklch(0.8 0.15 95);
+  --cond-lp: oklch(0.73 0.16 65);
+  --cond-pl: oklch(0.65 0.18 42);
+  --cond-po: oklch(0.57 0.2 25);
+  --shadow-a: oklch(0.25 0.03 285 / 0.06);
+  --shadow-b: oklch(0.25 0.05 285 / 0.18);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: oklch(0.16 0.014 285);
+    --surface: oklch(0.198 0.016 285);
+    --surface-2: oklch(0.232 0.018 285);
+    --surface-3: oklch(0.27 0.02 285);
+    --line: oklch(0.285 0.018 285);
+    --line-strong: oklch(0.37 0.02 285);
+    --ink: oklch(0.95 0.008 85);
+    --ink-2: oklch(0.79 0.012 285);
+    --ink-3: oklch(0.65 0.014 285);
+    --brand: oklch(0.72 0.15 285);
+    --brand-strong: oklch(0.8 0.12 285);
+    --brand-soft: oklch(0.3 0.07 285);
+    --on-brand: oklch(0.17 0.03 285);
+    --gold: oklch(0.8 0.13 80);
+    --gold-soft: oklch(0.29 0.045 75);
+    --gold-ink: oklch(0.87 0.11 85);
+    --good: oklch(0.76 0.14 155);
+    --good-soft: oklch(0.29 0.05 155);
+    --warn: oklch(0.82 0.12 75);
+    --warn-soft: oklch(0.3 0.05 70);
+    --bad: oklch(0.73 0.15 25);
+    --bad-soft: oklch(0.3 0.06 25);
+    --shadow-a: oklch(0 0 0 / 0.3);
+    --shadow-b: oklch(0 0 0 / 0.55);
+  }
+}
+
+/* Esquinas de carta de Magic (63 × 88 mm, radio ~3 mm) */
+@utility rounded-card {
+  border-radius: 4.75% / 3.4%;
+}
+
+/* Etiqueta de acabado: tornasol para foil, metal para etched. Igual en claro y oscuro. */
+@utility finish-foil {
+  background-image: linear-gradient(
+    115deg,
+    oklch(0.9 0.08 340),
+    oklch(0.92 0.07 250) 35%,
+    oklch(0.93 0.09 160) 65%,
+    oklch(0.93 0.1 85)
+  );
+  color: oklch(0.25 0.03 285);
+}
+
+@utility finish-etched {
+  background-image: linear-gradient(115deg, oklch(0.84 0.014 250), oklch(0.97 0.004 250) 45%, oklch(0.8 0.016 250));
+  color: oklch(0.25 0.02 285);
+}
+
+/* Resplandor de la portada */
+@utility hero-glow {
+  background:
+    radial-gradient(55% 60% at 78% 28%, color-mix(in oklab, var(--brand) 16%, transparent), transparent 70%),
+    radial-gradient(35% 40% at 92% 88%, color-mix(in oklab, var(--gold) 18%, transparent), transparent 70%),
+    radial-gradient(40% 50% at 5% 0%, color-mix(in oklab, var(--brand) 7%, transparent), transparent 70%);
+}
+
+@layer base {
+  html {
+    color-scheme: light dark;
+  }
+
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--brand) 28%, transparent);
+  }
+}
+
+/*
+ * Filtros de las páginas de carta y sellado: <details> plegable en pantallas estrechas y
+ * siempre desplegado en escritorio. Donde no se puede dar estilo a ::details-content se queda plegable.
+ */
+@supports selector(::details-content) {
+  @media (width >= 64rem) {
+    .filters-panel > summary {
+      display: none;
+    }
+    .filters-panel::details-content {
+      content-visibility: visible;
+    }
+  }
+}
