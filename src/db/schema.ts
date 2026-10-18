@@ -24,13 +24,15 @@ const timestamptz = (name: string) => timestamp(name, { withTimezone: true });
 
 // ───────── Enums ─────────
 
-export const city = pgEnum('city', ['barcelona', 'hospitalet']);
 export const storePlatform = pgEnum('store_platform', ['shopify', 'woocommerce', 'prestashop', 'html']);
+/** De dónde sale un listado: la web de la tienda o el stock que exporta de Cardmarket. */
+export const listingSource = pgEnum('listing_source', ['web', 'cardmarket_csv']);
+export const listingKind = pgEnum('listing_kind', ['single', 'sealed']);
 // Escala de Cardmarket de peor a mejor: el orden del enum permite filtrar con condition >= 'EX'.
 export const cardCondition = pgEnum('card_condition', ['PO', 'PL', 'LP', 'GD', 'EX', 'NM', 'MT']);
 export const finish = pgEnum('finish', ['nonfoil', 'foil', 'etched']);
 export const matchStatus = pgEnum('match_status', ['matched', 'unmatched', 'ignored']);
-export const matchMethod = pgEnum('match_method', ['override', 'exact_en', 'exact_es', 'trigram']);
+export const matchMethod = pgEnum('match_method', ['override', 'exact_en', 'exact_es', 'trigram', 'cardmarket_id']);
 export const runStatus = pgEnum('run_status', ['running', 'ok', 'partial', 'error', 'skipped']);
 
 // ───────── Catálogo (Scryfall) ─────────
@@ -53,6 +55,8 @@ export const setAliases = pgTable('set_aliases', {
   setCode: text('set_code')
     .notNull()
     .references(() => sets.code, { onDelete: 'cascade' }),
+  // 'mtgjson' (nombre en español y nombre de Cardmarket, se regeneran) o 'manual' (no se tocan)
+  source: text('source').notNull().default('manual'),
 });
 
 /** La carta "conceptual" (oracle): todas sus ediciones comparten oracle_id. */
@@ -101,11 +105,14 @@ export const printings = pgTable(
     rarity: text('rarity').notNull(),
     finishes: finish('finishes').array().notNull(),
     borderColor: text('border_color'),
+    frame: text('frame'), // '1993', '1997', '2003', '2015', 'future'
     frameEffects: text('frame_effects').array().notNull().default(sql`'{}'::text[]`),
     promoTypes: text('promo_types').array().notNull().default(sql`'{}'::text[]`),
     fullArt: boolean('full_art').notNull().default(false),
     promo: boolean('promo').notNull().default(false),
     imageUri: text('image_uri'),
+    // Id de producto de Cardmarket (idProduct): empareja exacto un stock exportado de Cardmarket.
+    cardmarketId: integer('cardmarket_id'),
     // Precio de Cardmarket que publica Scryfall (prices.eur / prices.eur_foil).
     priceEurCents: integer('price_eur_cents'),
     priceEurFoilCents: integer('price_eur_foil_cents'),
@@ -115,6 +122,30 @@ export const printings = pgTable(
   (t) => [
     index('printings_oracle_id_idx').on(t.oracleId),
     index('printings_set_number_idx').on(t.setCode, t.collectorNumber),
+    index('printings_cardmarket_id_idx').on(t.cardmarketId),
+  ],
+);
+
+/** Producto sellado (sobres, cajas, bundles, mazos…) según MTGJSON. */
+export const sealedProducts = pgTable(
+  'sealed_products',
+  {
+    id: uuid('id').primaryKey(), // uuid de MTGJSON
+    setCode: text('set_code').notNull(), // código de Scryfall (minúsculas); puede no estar en `sets`
+    setName: text('set_name').notNull(),
+    name: text('name').notNull(), // 'Foundations Play Booster Box'
+    nameNorm: text('name_norm').notNull(),
+    category: text('category'), // booster_box, booster_pack, bundle, deck…
+    subtype: text('subtype'), // play, collector, draft, commander…
+    cardCount: integer('card_count'),
+    releasedAt: date('released_at'),
+    cardmarketId: integer('cardmarket_id'),
+    updatedAt: timestamptz('updated_at').notNull().defaultNow(),
+  },
+  (t) => [
+    index('sealed_products_set_category_idx').on(t.setCode, t.category, t.subtype),
+    index('sealed_products_cardmarket_id_idx').on(t.cardmarketId),
+    index('sealed_products_name_norm_trgm_idx').using('gin', t.nameNorm.op('gin_trgm_ops')),
   ],
 );
 
@@ -123,7 +154,7 @@ export const scryfallImports = pgTable(
   'scryfall_imports',
   {
     id: serial('id').primaryKey(),
-    bulkType: text('bulk_type').notNull(), // 'default_cards' | 'all_cards'
+    bulkType: text('bulk_type').notNull(), // 'default_cards' | 'all_cards' | 'mtgjson_setlist'
     scryfallUpdatedAt: timestamptz('scryfall_updated_at').notNull(),
     startedAt: timestamptz('started_at').notNull().defaultNow(),
     finishedAt: timestamptz('finished_at'),
@@ -140,12 +171,16 @@ export const scryfallImports = pgTable(
 export const stores = pgTable('stores', {
   id: text('id').primaryKey(), // slug
   name: text('name').notNull(),
-  city: city('city').notNull(),
-  address: text('address').notNull(),
+  city: text('city').notNull(), // nombre para mostrar: 'Barcelona', "L'Hospitalet de Llobregat", 'Madrid'…
+  province: text('province'),
+  // Tienda física en Barcelona o L'Hospitalet; el resto son tiendas online de otras zonas.
+  isLocal: boolean('is_local').notNull().default(true),
+  address: text('address'), // null en tiendas solo online
   lat: doublePrecision('lat'),
   lng: doublePrecision('lng'),
-  websiteUrl: text('website_url').notNull(),
-  platform: storePlatform('platform').notNull(),
+  websiteUrl: text('website_url'), // null si la tienda solo nos manda su stock de Cardmarket
+  platform: storePlatform('platform'), // null = sin web rastreable
+  cardmarketUser: text('cardmarket_user'), // perfil de vendedor: enlaces a las ofertas del CSV
   enabled: boolean('enabled').notNull().default(true),
   scrapingAllowed: boolean('scraping_allowed'), // null = robots.txt/términos sin revisar
   robotsCheckedAt: timestamptz('robots_checked_at'),
@@ -160,6 +195,7 @@ export const scrapeRuns = pgTable(
     storeId: text('store_id')
       .notNull()
       .references(() => stores.id, { onDelete: 'cascade' }),
+    source: listingSource('source').notNull().default('web'),
     startedAt: timestamptz('started_at').notNull().defaultNow(),
     finishedAt: timestamptz('finished_at'),
     status: runStatus('status').notNull().default('running'),
@@ -181,7 +217,9 @@ export const listings = pgTable(
     storeId: text('store_id')
       .notNull()
       .references(() => stores.id, { onDelete: 'cascade' }),
-    externalId: text('external_id').notNull(), // id de variante Shopify/Woo o hash de la URL
+    source: listingSource('source').notNull().default('web'),
+    kind: listingKind('kind').notNull().default('single'),
+    externalId: text('external_id').notNull(), // id de variante Shopify/Woo, idArticle de Cardmarket o hash de la URL
     rawTitle: text('raw_title').notNull(),
     titleNorm: text('title_norm').notNull(),
     url: text('url').notNull(),
@@ -194,12 +232,15 @@ export const listings = pgTable(
     language: text('language'), // códigos de Scryfall: 'es', 'en', 'ja'…
     finish: finish('finish').notNull().default('nonfoil'),
     setHint: text('set_hint'),
+    cardmarketId: integer('cardmarket_id'), // idProduct del stock de Cardmarket: emparejamiento exacto
+    collectorNumber: text('collector_number'), // cuando la tienda lo da en un campo estructurado
     // Emparejamiento con Scryfall
     matchStatus: matchStatus('match_status').notNull().default('unmatched'),
     matchMethod: matchMethod('match_method'),
     matchConfidence: real('match_confidence'),
     oracleId: uuid('oracle_id').references(() => cards.oracleId, { onDelete: 'set null' }),
     scryfallId: uuid('scryfall_id').references(() => printings.scryfallId, { onDelete: 'set null' }), // null = edición sin identificar
+    sealedProductId: uuid('sealed_product_id').references(() => sealedProducts.id, { onDelete: 'set null' }),
     candidates: jsonb('candidates').$type<MatchCandidate[]>(), // sugerencias para el panel
     // Ciclo de vida
     firstSeenAt: timestamptz('first_seen_at').notNull().defaultNow(),
@@ -207,12 +248,18 @@ export const listings = pgTable(
     lastRunId: integer('last_run_id').references(() => scrapeRuns.id, { onDelete: 'set null' }),
   },
   (t) => [
-    uniqueIndex('listings_store_external_idx').on(t.storeId, t.externalId),
+    uniqueIndex('listings_store_source_external_idx').on(t.storeId, t.source, t.externalId),
     index('listings_oracle_matched_idx').on(t.oracleId).where(sql`match_status = 'matched'`),
+    index('listings_sealed_matched_idx').on(t.sealedProductId).where(sql`match_status = 'matched'`),
     index('listings_store_status_idx').on(t.storeId, t.matchStatus),
     check('listings_price_nonnegative', sql`price_cents >= 0`),
     check('listings_confidence_range', sql`match_confidence is null or match_confidence between 0 and 1`),
-    check('listings_matched_has_card', sql`match_status <> 'matched' or oracle_id is not null`),
+    check(
+      'listings_matched_has_target',
+      sql`match_status <> 'matched'
+        or (kind = 'single' and oracle_id is not null)
+        or (kind = 'sealed' and sealed_product_id is not null)`,
+    ),
   ],
 );
 
@@ -226,13 +273,14 @@ export const matchOverrides = pgTable(
     titleNorm: text('title_norm').notNull(),
     oracleId: uuid('oracle_id').references(() => cards.oracleId, { onDelete: 'cascade' }),
     scryfallId: uuid('scryfall_id').references(() => printings.scryfallId, { onDelete: 'set null' }),
-    ignore: boolean('ignore').notNull().default(false), // no es una carta suelta: sobres, fundas…
+    sealedProductId: uuid('sealed_product_id').references(() => sealedProducts.id, { onDelete: 'cascade' }),
+    ignore: boolean('ignore').notNull().default(false), // no es ni carta ni sellado de Magic: fundas, otros juegos…
     note: text('note'),
     createdAt: timestamptz('created_at').notNull().defaultNow(),
   },
   (t) => [
     primaryKey({ columns: [t.storeId, t.titleNorm] }),
-    check('match_overrides_has_target', sql`ignore or oracle_id is not null`),
+    check('match_overrides_has_target', sql`ignore or oracle_id is not null or sealed_product_id is not null`),
   ],
 );
 
@@ -242,6 +290,8 @@ export const unmatchedListings = pgView('unmatched_listings').as((qb) =>
     .select({
       id: listings.id,
       storeId: listings.storeId,
+      source: listings.source,
+      kind: listings.kind,
       rawTitle: listings.rawTitle,
       titleNorm: listings.titleNorm,
       url: listings.url,

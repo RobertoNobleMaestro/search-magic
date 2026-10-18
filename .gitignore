@@ -17,6 +17,8 @@ next-env.d.ts
 # Crawlee / datos descargados
 storage/
 data/bulk/
+# stock de Cardmarket que nos mandan las tiendas: datos de terceros
+data/cardmarket/
 
 # Claude Code (ajustes personales)
 .claude/settings.local.json

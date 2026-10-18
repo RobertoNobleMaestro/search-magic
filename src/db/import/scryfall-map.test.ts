@@ -112,11 +112,17 @@ describe('DefaultCardsAccumulator', () => {
   });
   it('guarda precios, acabados y la fecha más antigua de cada set', () => {
     const acc = new DefaultCardsAccumulator();
-    acc.add(card({ released_at: '2009-07-20' }));
+    acc.add(card({ released_at: '2009-07-20', cardmarket_id: 21071 }));
     acc.add(card({ released_at: '2009-07-17', collector_number: '146★', finishes: ['foil', 'glossy'] }));
     expect(acc.sets.get('m10')!.releasedAt).toBe('2009-07-17');
-    expect(acc.printings[0]).toMatchObject({ priceEurCents: 195, priceEurFoilCents: 1250, finishes: ['nonfoil', 'foil'] });
+    expect(acc.printings[0]).toMatchObject({
+      priceEurCents: 195,
+      priceEurFoilCents: 1250,
+      finishes: ['nonfoil', 'foil'],
+      cardmarketId: 21071,
+    });
     expect(acc.printings[1]!.finishes).toEqual(['foil']);
+    expect(acc.printings[1]!.cardmarketId).toBeNull();
   });
 });
 

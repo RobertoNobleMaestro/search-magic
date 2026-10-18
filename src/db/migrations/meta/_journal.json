@@ -8,6 +8,41 @@
       "when": 1792328957981,
       "tag": "0000_initial_schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792331549712,
+      "tag": "0001_printings_cardmarket_id",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792331850868,
+      "tag": "0002_sealed_sources_online_stores",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792331857727,
+      "tag": "0003_drop_city_enum",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792331955569,
+      "tag": "0004_store_csv_fields",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1792334213101,
+      "tag": "0005_printing_frame_listing_number",
+      "breakpoints": true
     }
   ]
 }

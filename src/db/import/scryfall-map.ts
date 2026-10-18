@@ -33,6 +33,7 @@ export type ScryfallCard = {
   digital?: boolean;
   finishes?: string[];
   border_color?: string;
+  frame?: string;
   frame_effects?: string[];
   promo_types?: string[];
   full_art?: boolean;
@@ -41,6 +42,7 @@ export type ScryfallCard = {
   mana_cost?: string;
   image_uris?: { normal?: string };
   card_faces?: ScryfallFace[];
+  cardmarket_id?: number | null;
   prices?: { eur?: string | null; eur_foil?: string | null };
 };
 
@@ -140,11 +142,13 @@ export function toPrintingRow(card: ScryfallCard, oracleId: string): PrintingRow
     rarity: card.rarity,
     finishes: (card.finishes ?? []).filter((f): f is Finish => KNOWN_FINISHES.has(f)),
     borderColor: card.border_color ?? null,
+    frame: card.frame ?? null,
     frameEffects: card.frame_effects ?? [],
     promoTypes: card.promo_types ?? [],
     fullArt: card.full_art ?? false,
     promo: card.promo ?? false,
     imageUri: imageOf(card),
+    cardmarketId: card.cardmarket_id ?? null,
     priceEurCents: eurToCents(card.prices?.eur),
     priceEurFoilCents: eurToCents(card.prices?.eur_foil),
     releasedAt: card.released_at ?? null,
