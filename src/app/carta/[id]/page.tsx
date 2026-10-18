@@ -20,7 +20,7 @@ import type { SearchParams } from "@/components/search-params";
 import { EmptyState, cx, eyebrowClass, linkClass, pageClass, secondaryButtonClass } from "@/components/ui";
 import { UpdatedAgo } from "@/components/updated-ago";
 import { getRepository, type Offer, type Printing } from "@/lib/data";
-import { WEB_REFRESH_HOURS, formatEuros, languageLabel, plural } from "@/lib/format";
+import { WEB_REFRESH_HOURS, availabilityLabel, formatEuros, languageLabel, plural } from "@/lib/format";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -118,7 +118,9 @@ export default async function CardPage({ params, searchParams }: Props) {
               </Tile>
             ) : (
               <Tile label="Mejor precio" value="—">
-                {countActiveFilters(filters) > 0 ? "Sin stock con estos filtros" : "Sin stock ahora mismo"}
+                {countActiveFilters(filters) > 0
+                  ? "Sin stock con estos filtros"
+                  : availabilityLabel(0, card.soldOutCount, "f")}
               </Tile>
             )}
             <Tile label="Cardmarket" value={reference ? formatEuros(reference.cents) : "—"}>

@@ -26,7 +26,9 @@ export function SealedProductGrid({ products, showSet = false }: { products: Sea
             </span>
             <span className="shrink-0 text-right">
               <span className="block text-sm font-semibold tabular-nums">{p.minPriceCents != null ? formatEuros(p.minPriceCents) : "—"}</span>
-              <span className="block text-[11px] text-ink-3">{plural(p.offerCount, "oferta", "ofertas")}</span>
+              <span className="block text-[11px] text-ink-3">
+                {p.offerCount > 0 ? plural(p.offerCount, "oferta", "ofertas") : p.soldOutCount > 0 ? "agotado" : "en ninguna tienda"}
+              </span>
             </span>
           </Link>
         </li>

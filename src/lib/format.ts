@@ -107,6 +107,16 @@ export function plural(count: number, one: string, many: string): string {
   return `${count} ${count === 1 ? one : many}`;
 }
 
+/**
+ * Por qué una carta o un producto no tiene precio: "Agotada ahora mismo" si alguna tienda lo tiene sin
+ * stock, "Ninguna tienda la tiene" si no está en ninguna. null si hay ofertas con stock.
+ */
+export function availabilityLabel(offerCount: number, soldOutCount: number, gender: "f" | "m" = "f"): string | null {
+  if (offerCount > 0) return null;
+  if (soldOutCount > 0) return gender === "f" ? "Agotada ahora mismo" : "Agotado ahora mismo";
+  return gender === "f" ? "Ninguna tienda la tiene" : "Ninguna tienda lo tiene";
+}
+
 /** "Agotado", "En stock" (cantidad desconocida), "1 ud.", "3 uds." */
 export function stockLabel(inStock: boolean, quantity: number | null): string {
   if (!inStock) return "Agotado";

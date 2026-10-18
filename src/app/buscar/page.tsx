@@ -1,4 +1,4 @@
-import { Inbox, Package, SearchX } from "lucide-react";
+import { ChevronDown, Inbox, Package, SearchX } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -10,7 +10,7 @@ import { SealedImage } from "@/components/sealed-image";
 import { firstParam, type SearchParams } from "@/components/search-params";
 import { EmptyState, eyebrowClass, pageClass, titleClass } from "@/components/ui";
 import { getRepository, type CardSummary, type SealedSummary } from "@/lib/data";
-import { formatEuros, plural, sealedTypeLabel } from "@/lib/format";
+import { availabilityLabel, formatEuros, plural, sealedTypeLabel } from "@/lib/format";
 
 type Props = { searchParams: Promise<SearchParams> };
 
@@ -24,6 +24,19 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     title: q ? `Resultados para «${q}»` : "Buscar",
     robots: { index: false, follow: true },
   };
+}
+
+/**
+ * Lo que alguna tienda tiene (con stock primero, luego agotado) y lo que no tiene ninguna, que va al
+ * final y plegado: el catálogo es enorme y casi ninguna carta está en una tienda.
+ * sort es estable, así que dentro de cada grupo se mantiene el orden de relevancia del repositorio.
+ */
+function splitByStores<T extends { offerCount: number; soldOutCount: number }>(items: T[]) {
+  const inStores = items
+    .filter((i) => i.offerCount > 0 || i.soldOutCount > 0)
+    .sort((a, b) => Number(b.offerCount > 0) - Number(a.offerCount > 0));
+  const nowhere = items.filter((i) => i.offerCount === 0 && i.soldOutCount === 0);
+  return { total: items.length, inStores, nowhere };
 }
 
 export default async function SearchPage({ searchParams }: Props) {
@@ -41,16 +54,14 @@ export default async function SearchPage({ searchParams }: Props) {
   }
 
   const repo = await getRepository();
-  const [cards, found] = await Promise.all([repo.searchCards(q), repo.searchSealed(q)]);
-  // el producto que alguna tienda tiene en stock, primero (sort es estable: se mantiene el orden del repositorio)
-  const sealed = [...found].sort((a, b) => Number(b.offerCount > 0) - Number(a.offerCount > 0));
+  const [foundCards, foundSealed] = await Promise.all([repo.searchCards(q), repo.searchSealed(q)]);
   // un único resultado en total: directamente a su página
-  const [onlyCard] = cards;
-  const [onlySealed] = sealed;
-  if (cards.length === 1 && sealed.length === 0 && onlyCard) redirect(`/carta/${onlyCard.oracleId}`);
-  if (sealed.length === 1 && cards.length === 0 && onlySealed) redirect(`/sellado/${onlySealed.sealedProductId}`);
+  const [onlyCard] = foundCards;
+  const [onlySealed] = foundSealed;
+  if (foundCards.length === 1 && foundSealed.length === 0 && onlyCard) redirect(`/carta/${onlyCard.oracleId}`);
+  if (foundSealed.length === 1 && foundCards.length === 0 && onlySealed) redirect(`/sellado/${onlySealed.sealedProductId}`);
 
-  if (cards.length === 0 && sealed.length === 0) {
+  if (foundCards.length === 0 && foundSealed.length === 0) {
     return (
       <div className={`${pageClass} max-w-3xl`}>
         <p className={eyebrowClass}>Búsqueda</p>
@@ -64,39 +75,85 @@ export default async function SearchPage({ searchParams }: Props) {
     );
   }
 
-  // la sección con más resultados va primero si la otra está vacía
-  const sealedFirst = cards.length === 0;
+  const cards = splitByStores(foundCards);
+  const sealed = splitByStores(foundSealed);
+  // va primero la sección que alguna tienda tiene; si ninguna, la que tiene resultados
+  const sealedFirst =
+    cards.inStores.length === 0 && (sealed.inStores.length > 0 || (cards.total === 0 && sealed.total > 0));
+
   const cardSection = (
-    <Section key="cartas" id="cartas" title="Cartas sueltas" count={plural(cards.length, "carta", "cartas")}>
-      {cards.length > 0 ? (
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((card) => (
-            <li key={card.oracleId}>
-              <CardResult card={card} />
-            </li>
-          ))}
-        </ul>
-      ) : (
+    <Section key="cartas" id="cartas" title="Cartas sueltas" count={inStoresCount(cards.total, cards.inStores.length, "carta", "cartas")}>
+      {cards.total === 0 ? (
         <EmptyState icon={<SearchX />} title="Ninguna carta se llama así">
           Buscamos en los nombres de las cartas en español y en inglés.
         </EmptyState>
+      ) : (
+        <>
+          {cards.inStores.length > 0 && (
+            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {cards.inStores.map((card) => (
+                <li key={card.oracleId}>
+                  <CardResult card={card} />
+                </li>
+              ))}
+            </ul>
+          )}
+          {cards.nowhere.length > 0 && (
+            <NotInStores
+              summary={`${plural(cards.nowhere.length, "carta", "cartas")} que ${cards.inStores.length > 0 ? "tampoco tiene" : "no tiene"} ninguna tienda`}
+              open={cards.inStores.length === 0}
+            >
+              <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {cards.nowhere.map((card) => (
+                  <li key={card.oracleId}>
+                    <CardResult card={card} />
+                  </li>
+                ))}
+              </ul>
+            </NotInStores>
+          )}
+        </>
       )}
     </Section>
   );
+
   const sealedSection = (
-    <Section key="sellado" id="sellado" title="Producto sellado" count={plural(sealed.length, "producto", "productos")}>
-      {sealed.length > 0 ? (
-        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {sealed.map((product) => (
-            <li key={product.sealedProductId}>
-              <SealedResult product={product} />
-            </li>
-          ))}
-        </ul>
-      ) : (
+    <Section
+      key="sellado"
+      id="sellado"
+      title="Producto sellado"
+      count={inStoresCount(sealed.total, sealed.inStores.length, "producto", "productos")}
+    >
+      {sealed.total === 0 ? (
         <EmptyState icon={<Package />} title="Ningún producto sellado coincide">
           Para cajas, bundles, sobres o mazos, busca por el nombre de la edición: «Bloomburrow», «Duskmourn»…
         </EmptyState>
+      ) : (
+        <>
+          {sealed.inStores.length > 0 && (
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {sealed.inStores.map((product) => (
+                <li key={product.sealedProductId}>
+                  <SealedResult product={product} />
+                </li>
+              ))}
+            </ul>
+          )}
+          {sealed.nowhere.length > 0 && (
+            <NotInStores
+              summary={`${plural(sealed.nowhere.length, "producto", "productos")} que ${sealed.inStores.length > 0 ? "tampoco tiene" : "no tiene"} ninguna tienda`}
+              open={sealed.inStores.length === 0}
+            >
+              <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {sealed.nowhere.map((product) => (
+                  <li key={product.sealedProductId}>
+                    <SealedResult product={product} />
+                  </li>
+                ))}
+              </ul>
+            </NotInStores>
+          )}
+        </>
       )}
     </Section>
   );
@@ -106,23 +163,41 @@ export default async function SearchPage({ searchParams }: Props) {
       <p className={eyebrowClass}>Búsqueda</p>
       <h1 className={`mt-1 ${titleClass}`}>Resultados para «{q}»</h1>
       <p className="mt-2 text-sm text-ink-3">
-        {plural(cards.length, "carta suelta", "cartas sueltas")} y {plural(sealed.length, "producto sellado", "productos sellados")}.
-        Buscamos en los nombres en español y en inglés.
+        {plural(cards.total, "carta suelta", "cartas sueltas")} y {plural(sealed.total, "producto sellado", "productos sellados")}.
+        Buscamos en los nombres en español y en inglés; primero lo que tiene alguna tienda.
       </p>
       {sealedFirst ? [sealedSection, cardSection] : [cardSection, sealedSection]}
     </div>
   );
 }
 
+/** "12 cartas · 3 en alguna tienda" */
+function inStoresCount(total: number, inStores: number, one: string, many: string): string {
+  return `${plural(total, one, many)} · ${inStores} en alguna tienda`;
+}
+
 function Section({ id, title, count, children }: { id: string; title: string; count: string; children: ReactNode }) {
   return (
     <section aria-labelledby={`resultados-${id}`} className="mt-10">
-      <h2 id={`resultados-${id}`} className="flex items-baseline gap-3 font-display text-2xl font-semibold">
+      <h2 id={`resultados-${id}`} className="flex flex-wrap items-baseline gap-x-3 font-display text-2xl font-semibold">
         {title}
         <span className="font-sans text-sm font-normal text-ink-3">{count}</span>
       </h2>
       <div className="mt-4">{children}</div>
     </section>
+  );
+}
+
+/** Resultados que no tiene ninguna tienda: plegados, salvo que no haya nada más que enseñar */
+function NotInStores({ summary, open, children }: { summary: string; open: boolean; children: ReactNode }) {
+  return (
+    <details open={open} className="group mt-6 rounded-2xl border border-line bg-surface-2/50">
+      <summary className="flex cursor-pointer list-none items-center gap-2 px-4 py-3 text-sm font-medium text-ink-2 hover:text-ink [&::-webkit-details-marker]:hidden">
+        <ChevronDown aria-hidden="true" className="size-4 transition group-open:rotate-180" />
+        {summary}
+      </summary>
+      <div className="px-3 pb-3 sm:px-4 sm:pb-4">{children}</div>
+    </details>
   );
 }
 
@@ -147,7 +222,7 @@ function CardResult({ card }: { card: CardSummary }) {
           </p>
         )}
         <div className="mt-auto pt-4">
-          <PriceSummary minPriceCents={card.minPriceCents} offerCount={card.offerCount} />
+          <PriceSummary item={card} gender="f" />
         </div>
       </div>
     </Link>
@@ -179,19 +254,23 @@ function SealedResult({ product }: { product: SealedSummary }) {
           <span className="truncate">{product.setName}</span>
         </p>
         <div className="mt-auto pt-3">
-          <PriceSummary minPriceCents={product.minPriceCents} offerCount={product.offerCount} compact />
+          <PriceSummary item={product} gender="m" compact />
         </div>
       </div>
     </Link>
   );
 }
 
-function PriceSummary({ minPriceCents, offerCount, compact = false }: { minPriceCents: number | null; offerCount: number; compact?: boolean }) {
+type PriceInfo = { minPriceCents: number | null; offerCount: number; soldOutCount: number };
+
+function PriceSummary({ item, gender, compact = false }: { item: PriceInfo; gender: "f" | "m"; compact?: boolean }) {
+  const { minPriceCents, offerCount, soldOutCount } = item;
   if (minPriceCents == null) {
+    // sin precio = ninguna oferta con stock: o está agotado, o no lo tiene nadie
     return (
       <p className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-ink-3">
         <Inbox aria-hidden="true" className="size-3.5" />
-        Sin stock ahora mismo
+        {availabilityLabel(0, soldOutCount, gender)}
       </p>
     );
   }

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  availabilityLabel,
   cardmarketProfileUrl,
   conditionLabel,
   finishLabel,
@@ -149,6 +150,14 @@ describe("textos", () => {
     expect(stockLabel(true, null)).toBe("En stock");
     expect(stockLabel(true, 1)).toBe("1 ud.");
     expect(stockLabel(true, 4)).toBe("4 uds.");
+  });
+
+  it("availabilityLabel distingue agotada de que no la tenga nadie", () => {
+    expect(availabilityLabel(2, 1)).toBeNull();
+    expect(availabilityLabel(0, 3)).toBe("Agotada ahora mismo");
+    expect(availabilityLabel(0, 0)).toBe("Ninguna tienda la tiene");
+    expect(availabilityLabel(0, 1, "m")).toBe("Agotado ahora mismo");
+    expect(availabilityLabel(0, 0, "m")).toBe("Ninguna tienda lo tiene");
   });
 });
 
