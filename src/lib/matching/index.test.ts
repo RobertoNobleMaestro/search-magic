@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import fixture from "@/lib/data/fixtures/scryfall-sample.json";
 import { createMockRepository } from "@/lib/data/mock";
-import type { AnyMatchResult, CatalogLookup, MatchMethod, MatchResult, NormalizedListing } from "@/lib/data/types";
+import type { AnyMatchResult, CatalogLookup, MatchMethod, MatchResult, NormalizedListing, PrintingCandidate } from "@/lib/data/types";
 import {
   AMBIGUOUS_NAME_CONFIDENCE,
   EXACT_EN_CONFIDENCE,
@@ -464,6 +464,22 @@ describe("matchListing: tipo que indica el adaptador", () => {
     expect(result).toMatchObject({ kind: "sealed", sealedProductId: "ed686ac8-f381-5b34-9e58-db558bb57ef7" });
   });
 
+  it("kind single: cartas con palabras de producto en el título (colecciones solo de sueltas)", async () => {
+    const titles: Array<[string, string]> = [
+      ["Thoughtseize (Promo Pack)", "Thoughtseize"],
+      ["Sheoldred, the Apocalypse - Box Topper", "Sheoldred, the Apocalypse"],
+      ["Lightning Bolt - Bundle Promo", "Lightning Bolt"],
+      ["Serra Angel - Welcome Deck 2017", "Serra Angel"],
+      ["Sol Ring - Commander Deck", "Sol Ring"],
+    ];
+    for (const [title, name] of titles) {
+      expect(await matchListing(listing(title), base), title).toBeNull();
+      const enriched = enrichListing(listing(title, { kind: "single" }));
+      expect(enriched.kind).toBe("single");
+      expect(single(await matchListing(enriched, base)), title).toMatchObject({ oracleId: oracleOf(name) });
+    }
+  });
+
   it("los accesorios no se emparejan aunque el adaptador diga otra cosa", async () => {
     expect(await matchListing(listing("Fundas Dragon Shield Matte (100)", { kind: "sealed" }), base)).toBeNull();
     expect(await matchListing(listing("Lote 4x Lightning Bolt", { kind: "single" }), base)).toBeNull();
@@ -492,6 +508,14 @@ describe("matchListing: nombre exacto de varias cartas", () => {
     expect(await matchListing(listing("Relámpago (FDC)"), catalog)).toBeNull();
   });
 
+  it("en un título bilingüe, el lado ambiguo no tumba al que identifica la carta", async () => {
+    for (const title of ["Relámpago / Lightning Bolt", "Lightning Bolt / Relámpago"]) {
+      expect(single(await matchListing(listing(title), catalog))).toMatchObject({ oracleId: oracleOf("Lightning Bolt"), method: "exact_en" });
+    }
+    // ...siempre que la carta del otro lado esté entre las candidatas del ambiguo
+    expect(await matchListing(listing("Relámpago / Serra Angel"), catalog)).toBeNull();
+  });
+
   it("si la edición deja una sola, la acepta con menos confianza", async () => {
     const result = await matchListing(listing("Relámpago (SOS)"), catalog);
     expect(result).toMatchObject({
@@ -500,6 +524,42 @@ describe("matchListing: nombre exacto de varias cartas", () => {
       method: "exact_es",
     });
     expect(result?.confidence).toBeCloseTo(AMBIGUOUS_NAME_CONFIDENCE - GUESS, 5);
+  });
+});
+
+describe("matchListing: edición de respaldo (lo de antes de los dos puntos)", () => {
+  // Como en la BD: el nombre de Cardmarket de Commander 2011 es "Commander"; aquí apunta a fdc
+  const base = createMockRepository();
+  const eocSolRing: PrintingCandidate = {
+    scryfallId: "sol-ring-eoc-57",
+    collectorNumber: "57",
+    finishes: ["nonfoil", "foil"],
+    borderColor: "black",
+    frameEffects: [],
+    promoTypes: [],
+    fullArt: false,
+    promo: false,
+  };
+  const catalog = (knowsEoc: boolean): CatalogLookup => ({
+    ...base,
+    resolveSet: async (hint) => {
+      const key = hint.trim().toLowerCase();
+      if (key === "commander") return "fdc";
+      if (key === "eoc") return knowsEoc ? "eoc" : null;
+      return base.resolveSet(hint);
+    },
+    findPrintings: async (oracleId, setCode) =>
+      setCode === "eoc" ? (oracleId === oracleOf("Sol Ring") ? [eocSolRing] : []) : base.findPrintings(oracleId, setCode),
+  });
+  const title = "Sol Ring - Commander: Edge of Eternities (Uncommon) [EOC-57]";
+
+  it("el código entre corchetes manda sobre la forma de respaldo", async () => {
+    expect(single(await matchListing(listing(title), catalog(true)))).toMatchObject({ scryfallId: "sol-ring-eoc-57" });
+  });
+
+  it("con la edición de respaldo, un número que no está en ella no elige impresión", async () => {
+    const result = single(await matchListing(listing(title), catalog(false)));
+    expect(result).toMatchObject({ oracleId: oracleOf("Sol Ring"), scryfallId: null });
   });
 });
 

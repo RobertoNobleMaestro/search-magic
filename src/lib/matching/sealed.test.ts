@@ -152,6 +152,23 @@ const CASES: Array<[string, Expected | null]> = [
   ["One Piece Booster Box OP-09", null],
   ["Entrada para el torneo de presentación de Bloomburrow", null],
   ["2x Sobre de juego Bloomburrow", null],
+  // Varios productos juntos con "+": ninguno de ellos (ni su precio el de uno solo)
+  ["Caja de sobres de juego Bloomburrow + Sobre de coleccionista", null],
+  ["Bloomburrow Play Booster Box + Bundle", null],
+  ["Pack Bloomburrow: Bundle + Play Booster Box", null],
+  ["Bundle + Caja de sobres de juego Bloomburrow", null],
+  // Varias unidades: lotes, no el producto suelto
+  ["3 sobres de juego Bloomburrow", null],
+  ["Pack 3 Play Boosters Bloomburrow", null],
+  ["Pack de 3 sobres Bloomburrow", null],
+  ["2 Bloomburrow Play Booster Box", null],
+  ["Bloomburrow Collector Booster Box (2 cajas)", null],
+  ["Bloomburrow Play Booster Box (6 cajas)", null],
+  // ...pero la cantidad que trae un producto no lo es, ni el número de una edición
+  ["Bundle Bloomburrow (9 sobres de juego)", ["Bloomburrow Bundle", "exact_es", EXACT]],
+  ["Caja de 36 sobres de juego Bloomburrow", ["Bloomburrow Play Booster Box", "exact_es", EXACT]],
+  // "caja de 6 displays" es una caja de cajas
+  ["Bloomburrow Play Booster Box - Caja de 6 displays", ["Bloomburrow Play Booster Box Case", "trigram", TRIGRAM]],
 ];
 
 describe("matchListing: producto sellado", () => {
@@ -194,6 +211,20 @@ describe("matchListing: producto sellado", () => {
       const result = await matchListing(listing(title), catalog);
       expect(result).not.toBeNull();
       expect(cases.map((c) => c.sealedProductId)).not.toContain(result?.kind === "sealed" ? result.sealedProductId : "");
+    }
+  });
+
+  it("títulos reales de El Nucli: marcas ™/® y aclaraciones en negativo", async () => {
+    const cases: Array<[string, string]> = [
+      ["The Hobbit™ | Pack de presentación (no incluye entrada a torneo)", "The Hobbit Prerelease Kit"],
+      ["Reality Fracture | Pack de presentación (no incluye entrada a torneo)", "Reality Fracture Prerelease Pack"],
+      ["The Hobbit™ | Caja de Sobres de Juego", "The Hobbit Play Booster Box"],
+      ["Magic: The Gathering® | Star Trek™ | Draft Night", "Star Trek Draft Night"],
+    ];
+    for (const [title, product] of cases) {
+      const result = await matchListing(listing(title), catalog);
+      expect(result).toMatchObject({ kind: "sealed", sealedProductId: productId(product) });
+      expect(result?.confidence).toBeCloseTo(EXACT, 5);
     }
   });
 
@@ -273,6 +304,11 @@ describe("classifyTitle", () => {
     ["Lightning Bolt (x4)", null],
     ["Pokémon Booster Box", null],
     ["Inscripción torneo Commander", null],
+    ["Inscripción al torneo Modern del sábado", null],
+    // la aclaración en negativo no es una inscripción
+    ["The Hobbit™ | Pack de presentación (no incluye entrada a torneo)", "sealed"],
+    // carta de Zendikar Rising, no una inscripción
+    ["Inscripción de abundancia (ZNR)", "single"],
   ];
 
   it.each(cases)("%s → %s", (title, kind) => {

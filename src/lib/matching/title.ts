@@ -513,27 +513,54 @@ const SET_LABEL = /^\s*(?:set|edici[oó]n|expansi[oó]n|colecci[oó]n)\s*:\s*/i;
  * la edición principal). Lo de después no: "Commander: Modern Horizons 3" no es Modern Horizons 3.
  */
 export function setHintForms(hint: string): string[] {
+  const { forms, fallbacks } = hintForms(hint);
+  return [...forms, ...fallbacks];
+}
+
+/** Formas de una pista: las que dicen la edición y, aparte, las de respaldo (lo de antes de los dos puntos) */
+function hintForms(hint: string): { forms: string[]; fallbacks: string[] } {
   const text = stripInvisible(hint).replace(SET_LABEL, "").trim();
   const parts = splitSegments(text).map((s) => s.text);
   const beforeColon = parts.map((p) => p.split(":")[0]!.trim()).filter((p, i) => p && p !== parts[i]);
-  return [hint, text, ...parts, ...beforeColon];
+  return { forms: [hint, text, ...parts], fallbacks: beforeColon };
 }
 
-/** Primera edición que se reconoce entre las pistas, probando cada una entera y por partes */
-export async function resolveSetCode(
+export interface ResolvedSet {
+  code: string;
+  /**
+   * Salió de una forma de respaldo (lo de antes de los dos puntos): puede ser otra edición, así que
+   * un número de coleccionista que no esté en ella descarta la impresión en lugar de adivinarla.
+   */
+  fallback: boolean;
+}
+
+/**
+ * Primera edición que se reconoce entre las pistas, probando cada una entera y por partes. Las formas
+ * de respaldo van después de todas las demás: en "Commander: Edge of Eternities [EOC-57]", "EOC"
+ * manda sobre "Commander" (que sería Commander 2011).
+ */
+export async function resolveSetHints(
   hints: Array<string | undefined>,
   catalog: Pick<CatalogLookup, "resolveSet">,
-): Promise<string | null> {
+): Promise<ResolvedSet | null> {
+  const all = hints.filter((hint): hint is string => Boolean(hint)).map(hintForms);
   const tried = new Set<string>();
-  for (const hint of hints) {
-    if (!hint) continue;
-    for (const form of setHintForms(hint)) {
+  for (const fallback of [false, true]) {
+    for (const form of all.flatMap((h) => (fallback ? h.fallbacks : h.forms))) {
       const key = normalizeName(form);
       if (!key || tried.has(key)) continue;
       tried.add(key);
       const code = await catalog.resolveSet(form);
-      if (code) return code;
+      if (code) return { code, fallback };
     }
   }
   return null;
+}
+
+/** Código de la primera edición que se reconoce entre las pistas (ver resolveSetHints) */
+export async function resolveSetCode(
+  hints: Array<string | undefined>,
+  catalog: Pick<CatalogLookup, "resolveSet">,
+): Promise<string | null> {
+  return (await resolveSetHints(hints, catalog))?.code ?? null;
 }

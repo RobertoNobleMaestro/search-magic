@@ -8,6 +8,8 @@ export interface PrintingHints {
   /** false si el acabado es el "nonfoil" por defecto: ni la tienda ni el título lo dicen */
   finishKnown: boolean;
   tags: PrintingTag[];
+  /** la edición no es segura (forma de respaldo): un número que no esté en ella descarta la impresión */
+  strictNumber?: boolean;
 }
 
 export interface PrintingChoice {
@@ -42,7 +44,10 @@ export function choosePrinting(candidates: PrintingCandidate[], hints: PrintingH
       const pick = byNumber[0]!;
       return { scryfallId: pick.scryfallId, guessed: hints.finishKnown && !pick.finishes.includes(hints.finish) };
     }
-    guessed = true; // número que no está en esta edición: se sigue con el resto de pistas
+    // Número que no está en esta edición: se sigue con el resto de pistas, salvo que la edición
+    // misma sea dudosa (entonces lo más probable es que sea otra)
+    if (hints.strictNumber) return null;
+    guessed = true;
   }
 
   let pool = candidates.filter((c) => c.finishes.includes(hints.finish));

@@ -301,7 +301,18 @@ const TYPE_WORDS = new Set([
   "tin",
 ]);
 /** Unidades tras un número que es la cantidad del producto: "caja de 36 sobres" */
-const COUNT_UNITS = new Set(["sobres", "sobre", "boosters", "booster", "packs", "unidades", "uds", "cartas", "cards"]);
+const COUNT_UNITS = new Set(["sobres", "sobre", "boosters", "booster", "packs", "pack", "unidades", "uds", "cartas", "cards"]);
+/** Sobres: varios en un título de sobre suelto son un lote ("3 sobres de juego Bloomburrow") */
+const PACK_UNITS = new Set(["sobres", "sobre", "boosters", "booster", "packs", "pack"]);
+/** Cajas: varias son un lote ("(2 cajas)") o, con "caja de", una caja de cajas ("caja de 6 displays") */
+const BOX_UNITS = new Set(["cajas", "caja", "displays", "display", "boxes", "box"]);
+/** Palabras que puede haber entre la cifra y la unidad: "3 play boosters", "6 sobres de juego" */
+const COUNT_LOOKAHEAD = 3;
+/**
+ * Unidades en plural: las únicas que cuentan varias cosas. "Modern Horizons 3 Collector Booster" o
+ * "Modern Horizons 3 Box" llevan el número de la edición, no una cantidad.
+ */
+const PLURAL_UNITS = new Set(["sobres", "boosters", "packs", "cajas", "displays", "boxes", "unidades", "uds", "cartas", "cards"]);
 
 /** Nombre inglés de cada tipo de producto, para el trigram */
 const TYPE_NAMES: Record<string, string> = {
@@ -394,7 +405,11 @@ const OTHER_PHRASES = [
   "riftbound",
   // servicios
   "torneo",
-  "inscripcion",
+  // "Inscripción de abundancia" es una carta: solo las inscripciones a algo
+  "inscripcion al",
+  "inscripcion a",
+  "inscripcion para",
+  "inscripcion evento",
   "entrada al",
   "entrada para",
   "tarjeta regalo",
@@ -402,6 +417,13 @@ const OTHER_PHRASES = [
   "cheque regalo",
   "gastos de envio",
 ];
+
+/** Una aclaración en negativo ("(no incluye entrada a torneo)") no dice qué es el producto */
+const NEGATED_CLAUSE = /\(\s*no incluye[^)]*\)?|\bno incluye\b.*$/gi;
+
+function withoutNegatedClause(text: string): string {
+  return text.replace(NEGATED_CLAUSE, " ");
+}
 
 /** Rareza entre paréntesis o corchetes: solo la llevan las cartas sueltas */
 const RARITY = /[([]\s*(?:common|uncommon|rare|mythic(?: rare)?|special|com[uú]n|infrecuente|rara|m[ií]tica|rara m[ií]tica)\s*[)\]]/i;
@@ -424,7 +446,7 @@ function isLot(norm: string): boolean {
  * edición tenga palabras de producto ("Shivan Dragon - Welcome Deck 2017 (Rare) [12]").
  */
 export function classifyTitle(rawTitle: string): ListingKind | null {
-  const text = stripInvisible(rawTitle);
+  const text = withoutNegatedClause(stripInvisible(rawTitle));
   const norm = normalizeName(text);
   const padded = ` ${norm} `;
   if (isLot(norm) || OTHER_PHRASES.some((p) => padded.includes(` ${p} `))) return null;
@@ -456,33 +478,49 @@ export interface SealedTitle {
   isCase: boolean;
   mtgo: boolean;
   secretLair: boolean;
+  /**
+   * El título junta varios productos con "+" ("Caja de sobres de juego + Sobre de coleccionista",
+   * "Bundle + Play Booster Box"): no es ningún producto del catálogo ni su precio el de uno solo.
+   */
+  multi: boolean;
+  /** Varias unidades: "3 sobres de juego", "(2 cajas)", "2 Bloomburrow Play Booster Box" */
+  lot: boolean;
 }
 
 interface Tok {
   norm: string;
   upper: boolean;
   seg: number;
+  /** trozo del título entre "+" */
+  part: number;
   used: boolean;
   locked: boolean;
 }
 
-/** Paréntesis, corchetes, "|", viñetas, "+" y guiones con espacios */
-const SEGMENT_SPLIT = /[()[\]{}|·•+]|\s[-‐‑–—]+\s|\s[-‐‑–—]+$|^[-‐‑–—]+\s/;
+/** Paréntesis, corchetes, "|", viñetas y guiones con espacios (antes, "+" separa los trozos) */
+const SEGMENT_SPLIT = /[()[\]{}|·•]|\s[-‐‑–—]+\s|\s[-‐‑–—]+$|^[-‐‑–—]+\s/;
 
 function tokenize(rawTitle: string): Tok[] {
   const out: Tok[] = [];
+  let seg = 0;
   stripInvisible(rawTitle)
-    .split(SEGMENT_SPLIT)
-    .forEach((segment, seg) => {
-      for (const word of segment.split(/\s+/)) {
-        const upper = word === word.toUpperCase() && word !== word.toLowerCase();
-        for (const norm of normalizeName(word).split(" ")) {
-          if (norm) out.push({ norm, upper, seg, used: false, locked: false });
+    .split("+")
+    .forEach((piece, part) => {
+      for (const segment of piece.split(SEGMENT_SPLIT)) {
+        for (const word of segment.split(/\s+/)) {
+          const upper = word === word.toUpperCase() && word !== word.toLowerCase();
+          for (const norm of normalizeName(word).split(" ")) {
+            if (norm) out.push({ norm, upper, seg, part, used: false, locked: false });
+          }
         }
+        seg++;
       }
     });
   return out;
 }
+
+/** Cifra que no es una cantidad sino un año ("2017 Welcome Deck") */
+const isYear = (n: number) => n >= 1993 && n <= 2100;
 
 function ruleMatches(tokens: Tok[], i: number, rule: CompiledRule): boolean {
   const { words, effect } = rule;
@@ -502,7 +540,7 @@ function ruleMatches(tokens: Tok[], i: number, rule: CompiledRule): boolean {
 }
 
 export function parseSealedTitle(rawTitle: string): SealedTitle {
-  const tokens = tokenize(rawTitle);
+  const tokens = tokenize(withoutNegatedClause(rawTitle));
   const keywords: string[] = [];
   let marker = false;
   let spanish = false;
@@ -515,6 +553,9 @@ export function parseSealedTitle(rawTitle: string): SealedTitle {
   let isCase = false;
   let mtgo = false;
   let secretLair = false;
+  let lot = false;
+  /** trozos (entre "+") que nombran un producto */
+  const productParts = new Set<number>();
 
   for (const rule of COMPILED) {
     for (let i = 0; i < tokens.length; i++) {
@@ -524,6 +565,7 @@ export function parseSealedTitle(rawTitle: string): SealedTitle {
         if (e.lock) tokens[i + k]!.locked = true;
         else tokens[i + k]!.used = true;
       }
+      if (e.category || e.box || e.pack || e.booster) productParts.add(tokens[i]!.part);
       marker ||= !!e.marker;
       spanish ||= !!e.es;
       box ||= !!e.box;
@@ -542,18 +584,32 @@ export function parseSealedTitle(rawTitle: string): SealedTitle {
   }
 
   // Abreviaturas de idioma y cantidades ("caja de 36 sobres")
+  let packCount = 0;
   tokens.forEach((t, i) => {
     if (t.used || t.locked) return;
     const sameSeg = (j: number) => tokens[j]?.seg === t.seg;
     const abbreviation = LANGUAGE_ABBREVIATIONS.get(t.norm);
     const alone = !sameSeg(i - 1) && !sameSeg(i + 1);
+    const unit = /^x?\d+$/.test(t.norm) ? countUnit(tokens, i) : undefined;
+    const count = Number(t.norm.replace("x", ""));
     if (abbreviation && (alone || (t.upper && !sameSeg(i + 1)))) {
       t.used = true;
       language ??= abbreviation;
-    } else if (/^x?\d+$/.test(t.norm) && sameSeg(i + 1) && COUNT_UNITS.has(tokens[i + 1]!.norm)) {
+    } else if (unit) {
       t.used = true;
+      if (count <= 1 || !PLURAL_UNITS.has(unit)) {
+        // "36 booster": cantidad del producto, sin más
+      } else if (BOX_UNITS.has(unit)) {
+        // "caja de 6 displays" es una caja de cajas; "(2 cajas)", dos cajas
+        if (tokens[i - 1]?.norm === "de" && tokens[i - 2]?.norm === "caja" && sameSeg(i - 2)) isCase = true;
+        else lot = true;
+      } else if (PACK_UNITS.has(unit)) {
+        packCount = Math.max(packCount, count);
+      }
     } else if (/^x\d+$/.test(t.norm)) {
       t.used = true; // "Caja x36"
+    } else if (i === 0 && /^\d+$/.test(t.norm) && count > 1 && !isYear(count)) {
+      lot = true; // "2 Bloomburrow Play Booster Box"
     }
   });
 
@@ -576,6 +632,8 @@ export function parseSealedTitle(rawTitle: string): SealedTitle {
 
   const resolved = category ?? (box ? "booster_box" : pack || booster ? "booster_pack" : null);
   const resolvedSubtypes = category ? (subtypes ?? null) : resolved && booster ? [booster] : null;
+  // Varios sobres en un título de sobre suelto son un lote (en una caja o un bundle, lo que traen)
+  if (resolved === "booster_pack" && packCount > 1) lot = true;
   return {
     marker,
     category: resolved && isCase ? (CASE_CATEGORY[resolved] ?? resolved) : resolved,
@@ -587,7 +645,22 @@ export function parseSealedTitle(rawTitle: string): SealedTitle {
     isCase,
     mtgo,
     secretLair,
+    multi: productParts.size > 1,
+    lot,
   };
+}
+
+/**
+ * Unidad de la cifra en `i`: la palabra siguiente si es una unidad ("36 sobres", "36 booster") o, un
+ * poco más allá, una unidad en plural ("3 play boosters", "2 collector booster boxes").
+ */
+function countUnit(tokens: Tok[], i: number): string | undefined {
+  for (let k = i + 1; k <= i + COUNT_LOOKAHEAD && tokens[k]?.seg === tokens[i]!.seg; k++) {
+    const norm = tokens[k]!.norm;
+    if (/^x?\d+$/.test(norm)) return undefined;
+    if (PLURAL_UNITS.has(norm) || (k === i + 1 && COUNT_UNITS.has(norm))) return norm;
+  }
+  return undefined;
 }
 
 // ---------------------------------------------------------------------------
@@ -661,6 +734,8 @@ export async function matchSealed(
   catalog: CatalogLookup,
 ): Promise<SealedMatchResult | null> {
   const title = parseSealedTitle(rawTitle);
+  // Packs de varios productos y lotes: su precio no es el de un producto del catálogo
+  if (title.multi || title.lot) return null;
   const set = await findSet(title, setHint, catalog);
   if (set && title.category) {
     const picked = await pickInSet(title, set, catalog);

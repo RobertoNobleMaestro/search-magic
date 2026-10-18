@@ -2,7 +2,7 @@ import type { AnyMatchResult, CatalogLookup, ListingKind, MatchMethod, MatchResu
 import { normalizeName } from "@/lib/normalize";
 import { choosePrinting, type PrintingChoice, type PrintingHints } from "./printing";
 import { classifyTitle, matchSealed, parseSealedTitle } from "./sealed";
-import { parseTitle, resolveSetCode, type ParsedTitle } from "./title";
+import { parseTitle, resolveSetHints, type ParsedTitle, type ResolvedSet } from "./title";
 
 export { choosePrinting, type PrintingChoice, type PrintingHints } from "./printing";
 export {
@@ -90,7 +90,8 @@ export async function matchListing(listing: NormalizedListing, catalog: CatalogL
  */
 export function enrichListing(listing: NormalizedListing): NormalizedListing {
   const parsed = parseTitle(listing.rawTitle);
-  const kind = classifyTitle(listing.rawTitle);
+  // El tipo del adaptador manda: "Sheoldred (Promo Pack)" en una colección de sueltas es una carta
+  const kind = listing.kind ?? classifyTitle(listing.rawTitle);
   const out: NormalizedListing = { ...listing };
   if (kind === "sealed") {
     // En el sellado la edición la busca el emparejador: los segmentos del título no son ediciones
@@ -162,11 +163,11 @@ async function matchSingle(
   override: MatchResult | null,
   catalog: CatalogLookup,
 ): Promise<MatchResult | null> {
-  const setCode = await resolveSetCode([listing.setHint, ...parsed.setHints], catalog);
-  const card: CardMatch | null = override ?? (await identifyCard(parsed, setCode, catalog));
+  const set = await resolveSetHints([listing.setHint, ...parsed.setHints], catalog);
+  const card: CardMatch | null = override ?? (await identifyCard(parsed, set?.code ?? null, catalog));
   if (!card) return null;
 
-  const printing = setCode ? await findPrinting(card.oracleId, setCode, listing, parsed, catalog) : null;
+  const printing = set ? await findPrinting(card.oracleId, set, listing, parsed, catalog) : null;
   // Una corrección sin impresión fija la carta; la impresión se busca como en los demás casos
   if (override) return { ...override, scryfallId: printing?.scryfallId ?? null };
 
@@ -204,7 +205,12 @@ function nameGroups(name: string): string[][] {
   return [...new Set([full, front])].filter(Boolean).map((n) => [n]);
 }
 
-async function exactMatch(name: string, setCode: string | null, catalog: CatalogLookup): Promise<CardMatch | null | "ambiguous"> {
+/** Varias cartas con ese nombre exacto que la edición no deja en una */
+interface Ambiguous {
+  ambiguous: string[];
+}
+
+async function exactMatch(name: string, setCode: string | null, catalog: CatalogLookup): Promise<CardMatch | Ambiguous | null> {
   for (const lang of ["en", "es"] as const) {
     const ids = [...new Set((await catalog.findByExactName(name, lang)).map((hit) => hit.oracleId))];
     if (ids.length === 0) continue;
@@ -215,7 +221,7 @@ async function exactMatch(name: string, setCode: string | null, catalog: Catalog
     // Mismo nombre exacto para varias cartas (pasa con algunas traducciones): solo se acepta si
     // la edición del título deja una. Si no, mejor sin emparejar que con la carta equivocada.
     const oracleId = await onlyOneInSet(ids, setCode, catalog);
-    return oracleId ? { oracleId, confidence: AMBIGUOUS_NAME_CONFIDENCE, method } : "ambiguous";
+    return oracleId ? { oracleId, confidence: AMBIGUOUS_NAME_CONFIDENCE, method } : { ambiguous: ids };
   }
   return null;
 }
@@ -225,10 +231,17 @@ async function identifyCard(parsed: ParsedTitle, setCode: string | null, catalog
 
   for (const sides of groups) {
     const matches: CardMatch[] = [];
+    const ambiguous: string[][] = [];
     for (const side of sides) {
       const match = await exactMatch(side, setCode, catalog);
-      if (match === "ambiguous") return null;
-      if (match) matches.push(match);
+      if (match && "ambiguous" in match) ambiguous.push(match.ambiguous);
+      else if (match) matches.push(match);
+    }
+    // Un lado ambiguo ("Relámpago" de dos cartas) no tumba el título si el otro lado dice cuál es y
+    // está entre sus candidatas; un nombre ambiguo sin más, sí: mejor sin emparejar que equivocarse.
+    if (ambiguous.length > 0) {
+      if (matches.length === 0) return null;
+      if (!ambiguous.every((ids) => matches.every((m) => ids.includes(m.oracleId)))) return null;
     }
     if (matches.length === 0) continue;
     // Los dos lados de un título bilingüe tienen que ser la misma carta
@@ -276,11 +289,12 @@ function bestTrigram(rows: Array<{ oracleId: string; similarity: number }>): Car
 
 async function findPrinting(
   oracleId: string,
-  setCode: string,
+  set: ResolvedSet,
   listing: NormalizedListing,
   parsed: ParsedTitle,
   catalog: CatalogLookup,
 ): Promise<PrintingChoice | null> {
+  const setCode = set.code;
   const known = listing.finish ?? parsed.finish;
   const hints: PrintingHints = {
     // El número de un campo estructurado manda sobre el del título
@@ -288,6 +302,7 @@ async function findPrinting(
     finish: known ?? "nonfoil",
     finishKnown: known != null,
     tags: parsed.tags,
+    strictNumber: set.fallback,
   };
   const choice = choosePrinting(await catalog.findPrintings(oracleId, setCode), hints);
   if (choice || !(hints.tags.includes("promo") || hints.tags.includes("prerelease"))) return choice;
