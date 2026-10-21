@@ -12,7 +12,7 @@
  *   npm run worker -- --limit 50                # como mucho 50 listados por ejecución
  *   npm run worker -- --max-minutes 50          # a los 50 min cierra lo que esté en curso como parcial
  *
- * Sin SEARCH_MAGIC_CONTACT no se rastrea ninguna web (va en el User-Agent).
+ * El User-Agent lleva SEARCH_MAGIC_CONTACT o, si no está, la página del repositorio.
  * Termina con código 1 si los argumentos o la configuración no son válidos, si falta el contacto o si
  * fallan todas las ejecuciones.
  */

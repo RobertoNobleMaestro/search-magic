@@ -33,7 +33,7 @@ import type { StoreConfig } from "./types";
  *
  * El worker pide como mucho una página por segundo, respeta robots.txt (también Crawl-delay, y
  * crawlDelaySeconds si la tienda pide ir más despacio) y se identifica con el User-Agent
- * "search-magic/0.1 (+$SEARCH_MAGIC_CONTACT)".
+ * "search-magic/0.1 (+contacto)": SEARCH_MAGIC_CONTACT o, si no está, la página del repositorio.
  */
 
 /** Selectores de las fichas de un listado de WooCommerce (el precio rebajado gana al original) */

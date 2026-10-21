@@ -5,6 +5,7 @@ import { connection } from "next/server";
 import type { ReactNode } from "react";
 import { OFFERING_LABELS, TONE_CLASS, compareStores, storeHealth, storeOfferings, type HealthTone } from "@/components/stores";
 import { ExternalLink, cx, eyebrowClass, linkClass, pageClass } from "@/components/ui";
+import { projectContact } from "@/lib/contact";
 import { getRepository, type ScrapeRun, type Store } from "@/lib/data";
 import { WEB_REFRESH_HOURS, platformLabel, plural } from "@/lib/format";
 
@@ -75,12 +76,12 @@ export default async function StoresPage() {
         ))}
       </Group>
 
-      <StoreOwnerNote contact={contactHref(process.env.SEARCH_MAGIC_CONTACT)} />
+      <StoreOwnerNote contact={contactHref(projectContact())} />
     </div>
   );
 }
 
-/** El mismo contacto que va en el User-Agent del worker (SEARCH_MAGIC_CONTACT): correo o URL */
+/** El mismo contacto que va en el User-Agent del worker (projectContact): correo o URL */
 function contactHref(contact: string | undefined): { href: string; text: string } | null {
   const value = contact?.trim();
   if (!value) return null;

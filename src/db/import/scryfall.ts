@@ -18,6 +18,7 @@ import { pipeline } from 'node:stream/promises';
 import type { ReadableStream as NodeReadableStream } from 'node:stream/web';
 import { parseArgs } from 'node:util';
 import { and, desc, eq, sql } from 'drizzle-orm';
+import { projectContact } from '../../lib/contact';
 import { createDb, type Db } from '../client';
 import { directDatabaseUrl, loadLocalEnv } from '../env';
 import { cardNames, cards, printings, scryfallImports, sets } from '../schema';
@@ -44,9 +45,8 @@ type BulkEntry = {
 const log = (msg: string) => console.log(`[scryfall] ${msg}`);
 
 function scryfallHeaders(accept: string): Record<string, string> {
-  const contact = process.env.SEARCH_MAGIC_CONTACT;
   return {
-    'User-Agent': contact ? `search-magic/0.1 (${contact})` : 'search-magic/0.1',
+    'User-Agent': `search-magic/0.1 (${projectContact()})`,
     Accept: accept,
   };
 }

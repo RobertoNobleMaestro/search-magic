@@ -1,8 +1,8 @@
 # Worker de src/worker contra la BD de producción: la web de las tiendas y su stock de Cardmarket.
 # Secretos del repositorio:
-#   DATABASE_URL           conexión pooled (host con -pooler) a la rama production de Neon
+#   DATABASE_URL           conexión pooled (host con -pooler) a la rama production de Neon (obligatorio)
 #   SEARCH_MAGIC_CONTACT   contacto que va en el User-Agent para que las tiendas puedan escribirnos
-#                          (obligatorio: sin él el worker no rastrea ninguna web)
+#                          (opcional: si no está, la página del repositorio)
 # Los CSV de Cardmarket en data/cardmarket/ no se suben a git: aquí solo se importan los que una tienda
 # publica en un enlace (cardmarketCsv.url). Los ficheros locales se importan a mano con
 #   npm run worker -- --store <id> --file <csv>

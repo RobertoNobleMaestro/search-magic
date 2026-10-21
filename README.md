@@ -34,7 +34,7 @@ pero pocos, y tiendas inventadas. Para el catálogo completo y las ofertas reale
 | --- | --- |
 | `DATA_SOURCE` | `mock` (datos de ejemplo, por defecto) o `db` |
 | `DATABASE_URL`, `DATABASE_URL_UNPOOLED` | Conexión a PostgreSQL (ver [Base de datos](#base-de-datos)) |
-| `SEARCH_MAGIC_CONTACT` | Contacto (correo o URL) que va en el User-Agent hacia Scryfall y las tiendas. Sin él, el worker no rastrea ninguna web |
+| `SEARCH_MAGIC_CONTACT` | Opcional. Contacto (correo o URL) que va en el User-Agent hacia Scryfall, MTGJSON y las tiendas, y en la página de tiendas. Si no está, se usa la página del repositorio de GitHub |
 | `ADMIN_PASSWORD` | Protege `/admin` con HTTP Basic (usuario cualquiera). Si está vacía, el panel queda abierto: solo para local |
 
 Comandos: `npm run dev`, `npm run build`, `npm start`, `npm test` (tests unitarios),
@@ -80,7 +80,8 @@ Solo se importa lo que haya cambiado desde la última vez. `all_cards` pesa unos
 salta si se importó hace menos de 7 días y no han salido ediciones nuevas. Opciones: `-- --force` y
 `-- --only=default|es`. El workflow `.github/workflows/scryfall-import.yml` lo ejecuta cada día contra producción.
 
-Pon `SEARCH_MAGIC_CONTACT` en `.env.local`: va en el User-Agent, como pide Scryfall.
+El User-Agent lleva un contacto, como pide Scryfall: `SEARCH_MAGIC_CONTACT` si lo pones en `.env.local` o,
+si no, la página del repositorio.
 
 ### Producto sellado (MTGJSON)
 
@@ -162,8 +163,7 @@ npm run worker -- --store magic-barcelona --file stock.csv   # importa un CSV de
 ```
 
 Más opciones: `--source web|cardmarket_csv`, `--all` (con `--dry-run`, rastrear de verdad todas),
-`--limit <n>` y `--max-minutes <n>`. Para escribir en la base de datos hace falta `DATA_SOURCE=db`, y
-`SEARCH_MAGIC_CONTACT` es obligatorio para cualquier petición a una tienda.
+`--limit <n>` y `--max-minutes <n>`. Para escribir en la base de datos hace falta `DATA_SOURCE=db`.
 
 Fuentes de cada tienda:
 
@@ -174,14 +174,15 @@ Fuentes de cada tienda:
   Cardmarket. Nunca se hace ninguna petición a cardmarket.com.
 
 Rastreo responsable: respeta robots.txt (también `Crawl-delay`), pide como mucho una página por segundo a
-cada dominio, se identifica con el User-Agent `search-magic/0.1 (+<SEARCH_MAGIC_CONTACT>)`, reintenta con
+cada dominio, se identifica con el User-Agent `search-magic/0.1 (+<contacto>)` (el de `SEARCH_MAGIC_CONTACT`
+o, si no está, la página del repositorio), reintenta con
 esperas crecientes y no guarda el rastreo en disco. Cada ejecución termina en `ok`, `partial` (fallaron
 páginas, se paró en `--limit` o se interrumpió), `error` o `skipped` (robots.txt no lo permite, o el CSV
 no ha cambiado). Solo una ejecución `ok` marca como agotado lo que ya no aparece.
 
 En producción lo lanza `.github/workflows/scrape.yml`: cada 8 horas las tiendas normales, y los lunes las
-lentas (El Rincón de Magic, con Crawl-delay de 10 s). Necesita los secretos `DATABASE_URL` y
-`SEARCH_MAGIC_CONTACT` en el repositorio de GitHub.
+lentas (El Rincón de Magic, con Crawl-delay de 10 s). Necesita el secreto `DATABASE_URL` (la conexión
+pooled de producción) en el repositorio de GitHub; `SEARCH_MAGIC_CONTACT` es opcional.
 
 ### Añadir una tienda
 

@@ -7,6 +7,7 @@ import { resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { log as crawleeLog, LogLevel } from "crawlee";
 import { loadLocalEnv } from "@/db/env";
+import { DEFAULT_CONTACT } from "@/lib/contact";
 import { getRepository } from "@/lib/data";
 import { LISTING_SOURCES, type ListingSource, type MatchedListing, type StoreInfo } from "@/lib/data/types";
 import { parseStoreConfigs } from "./config";
@@ -164,15 +165,10 @@ ${USAGE}`);
     return 0;
   }
 
-  // Nadie sale a la web de una tienda (o al enlace de su CSV) sin un contacto en el User-Agent
+  // El User-Agent siempre lleva un contacto: SEARCH_MAGIC_CONTACT o, si no está, la página del repositorio
   const contactsStores = jobs.some((j) => j.source === "web" || (!file && j.store.cardmarketCsv?.url));
   if (contactsStores && !process.env.SEARCH_MAGIC_CONTACT?.trim()) {
-    console.error(
-      "Falta SEARCH_MAGIC_CONTACT (un correo o una URL de contacto): va en el User-Agent para que las tiendas puedan " +
-        "escribirnos, y sin él no se rastrea ninguna web. Ponlo en .env.local o en los secretos del repositorio. " +
-        "(Importar un CSV local con --file no lo necesita.)",
-    );
-    return 1;
+    say(`Sin SEARCH_MAGIC_CONTACT: el User-Agent lleva como contacto ${DEFAULT_CONTACT}`);
   }
   const repo = await getRepository();
   // Siempre todas las activadas, también con --store o --source: las que no se pasan, la BD las desactiva.

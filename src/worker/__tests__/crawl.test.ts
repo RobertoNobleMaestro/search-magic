@@ -9,9 +9,9 @@ describe("userAgent", () => {
     expect(userAgent("hola@search-magic.example")).toBe("search-magic/0.1 (+hola@search-magic.example)");
   });
 
-  it("sin contacto lo dice", () => {
-    expect(userAgent("")).toBe("search-magic/0.1 (+contact-not-set)");
-    expect(userAgent("  ")).toBe("search-magic/0.1 (+contact-not-set)");
+  it("sin contacto usa la página del repositorio", () => {
+    expect(userAgent("")).toBe("search-magic/0.1 (+https://github.com/RobertoNobleMaestro/search-magic)");
+    expect(userAgent("  ")).toBe("search-magic/0.1 (+https://github.com/RobertoNobleMaestro/search-magic)");
   });
 });
 

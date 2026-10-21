@@ -8,6 +8,7 @@
 import { gunzipSync } from 'node:zlib';
 import { parseArgs } from 'node:util';
 import { and, desc, eq, sql } from 'drizzle-orm';
+import { projectContact } from '../../lib/contact';
 import { createDb } from '../client';
 import { directDatabaseUrl, loadLocalEnv } from '../env';
 import { scryfallImports, sealedProducts, setAliases, sets } from '../schema';
@@ -20,8 +21,7 @@ const BULK_TYPE = 'mtgjson_setlist';
 const log = (msg: string) => console.log(`[mtgjson] ${msg}`);
 
 function headers(): Record<string, string> {
-  const contact = process.env.SEARCH_MAGIC_CONTACT;
-  return { 'User-Agent': contact ? `search-magic/0.1 (${contact})` : 'search-magic/0.1' };
+  return { 'User-Agent': `search-magic/0.1 (${projectContact()})` };
 }
 
 async function fetchJson<T>(path: string): Promise<T> {

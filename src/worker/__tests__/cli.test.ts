@@ -131,17 +131,15 @@ describe("main", () => {
     expect(output.join("\n")).toContain("tienda-a [web], tienda-c [web]");
   });
 
-  it("sin SEARCH_MAGIC_CONTACT no rastrea ninguna web, pero sí importa un CSV local", async () => {
+  it("sin SEARCH_MAGIC_CONTACT rastrea igual, con la página del repositorio como contacto", async () => {
     vi.stubEnv("SEARCH_MAGIC_CONTACT", "");
-    expect(await main([])).toBe(1);
-    expect(await main(["--store", "tienda-a", "--dry-run"])).toBe(1);
-    expect(output.join("\n")).toContain("Falta SEARCH_MAGIC_CONTACT");
-    expect(state.scraped).toEqual([]);
-    expect(state.upserted).toEqual([]);
+    expect(await main([])).toBe(0);
+    expect(output.join("\n")).toContain("Sin SEARCH_MAGIC_CONTACT: el User-Agent lleva como contacto https://github.com/");
+    expect(state.scraped.map((s) => s.id)).toEqual(["tienda-a", "tienda-c"]);
 
     state.stores.push(config("tienda-csv", true, { website: null, platform: null, cardmarketUser: "TiendaCsv" }));
     expect(await main(["--store", "tienda-csv", "--file", CSV_FIXTURE])).toBe(0);
-    expect(state.scraped).toMatchObject([{ id: "tienda-csv", source: "cardmarket_csv" }]);
+    expect(state.scraped).toMatchObject([{ id: "tienda-a" }, { id: "tienda-c" }, { id: "tienda-csv", source: "cardmarket_csv" }]);
   });
 
   it("las tiendas lentas solo van con --slow (o con --store), pero siempre se sincronizan", async () => {

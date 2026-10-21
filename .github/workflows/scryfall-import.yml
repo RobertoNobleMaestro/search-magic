@@ -1,7 +1,7 @@
 # Actualiza el catálogo y los precios de referencia desde el bulk data de Scryfall.
 # Secretos del repositorio:
-#   DATABASE_URL_UNPOOLED  conexión directa (sin -pooler) a la rama production de Neon
-#   SEARCH_MAGIC_CONTACT   contacto para el User-Agent
+#   DATABASE_URL_UNPOOLED  conexión directa (sin -pooler) a la rama production de Neon (obligatorio)
+#   SEARCH_MAGIC_CONTACT   contacto para el User-Agent (opcional: si no está, la página del repositorio)
 name: Importar Scryfall
 
 on:

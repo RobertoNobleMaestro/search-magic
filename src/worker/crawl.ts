@@ -1,5 +1,6 @@
 import type { IncomingHttpHeaders } from "node:http";
 import { Configuration, HttpCrawler, MemoryStorage, NonRetryableError, type HttpCrawlerOptions, type RobotsTxtFile } from "crawlee";
+import { projectContact } from "@/lib/contact";
 import type { NormalizedListing } from "@/lib/data/types";
 import { normalizeEncoding } from "./encoding";
 import { ROBOTS_AGENT } from "./robots";
@@ -47,9 +48,9 @@ export function politeDelay(
   return { ok: true, delaySecs: Math.max(baseSecs, robotsDelaySecs ?? 0, storeDelaySecs ?? 0) };
 }
 
-/** "search-magic/0.1 (+contacto)"; el contacto sale de SEARCH_MAGIC_CONTACT */
+/** "search-magic/0.1 (+contacto)"; el contacto es SEARCH_MAGIC_CONTACT o, si no está, la página del repositorio */
 export function userAgent(contact = process.env.SEARCH_MAGIC_CONTACT): string {
-  return `search-magic/0.1 (+${contact?.trim() || "contact-not-set"})`;
+  return `search-magic/0.1 (+${projectContact(contact)})`;
 }
 
 export const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
