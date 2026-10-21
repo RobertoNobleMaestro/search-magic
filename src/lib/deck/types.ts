@@ -31,6 +31,8 @@ export interface DeckCard {
   priceEurCents: number | null;
   legalCommander: boolean;
   isToken: boolean;
+  /** puesto de popularidad en mazos de Commander (EDHREC, vía Scryfall): 1 = la más jugada */
+  edhrecRank?: number | null;
 }
 
 export interface DeckEntry {

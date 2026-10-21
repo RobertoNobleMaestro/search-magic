@@ -79,6 +79,18 @@ describe("evaluateCard", () => {
     expect(evaluateCard(card("Command Tower"), IDENTITY).landColors).toEqual(IDENTITY);
   });
 
+  it("suma o resta según lo jugada que es en Commander (EDHREC)", () => {
+    const base = card("Bloom Tender");
+    const popular = evaluateCard({ ...base, edhrecRank: 120 }, IDENTITY);
+    const rare = evaluateCard({ ...base, edhrecRank: 25000 }, IDENTITY);
+    const unknown = evaluateCard({ ...base, edhrecRank: null }, IDENTITY);
+    expect(popular.score - unknown.score).toBe(10);
+    expect(rare.score - unknown.score).toBe(-3);
+    expect(popular.parts.map((p) => p.reason)).toContain("de las más jugadas en Commander (puesto 120 en EDHREC)");
+    // las básicas no: su puesto no dice nada del mazo
+    expect(evaluateCard({ ...card("Plains"), edhrecRank: 1 }, IDENTITY).score).toBe(evaluateCard(card("Plains"), IDENTITY).score);
+  });
+
   it("topReasons da los motivos de más peso", () => {
     const top = topReasons(evaluateCard(card("Ultimate Nullification"), IDENTITY), 2, "cons");
     expect(top).toEqual(["barrido que también rompe tu mesa", "obliga a sacrificar una criatura legendaria"]);

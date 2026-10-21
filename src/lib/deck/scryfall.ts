@@ -50,6 +50,7 @@ interface ScryfallCard {
   card_faces?: ScryfallFace[];
   prices?: { eur?: string | null; eur_foil?: string | null };
   legalities?: Record<string, string>;
+  edhrec_rank?: number;
 }
 
 const cache = new Map<string, { card: DeckCard; at: number }>();
@@ -114,6 +115,7 @@ export function toDeckCard(c: ScryfallCard): DeckCard {
     priceEurCents: cents(c.prices?.eur) ?? cents(c.prices?.eur_foil),
     legalCommander: c.legalities?.commander === "legal",
     isToken: c.layout === "token" || c.layout === "double_faced_token" || /\bToken\b/.test(c.type_line),
+    edhrecRank: c.edhrec_rank ?? null,
   };
 }
 

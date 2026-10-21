@@ -246,6 +246,15 @@ export function evaluateCard(card: DeckCard, identity: Color[]): CardEvaluation 
     }
   }
 
+  // Popularidad real en Commander (EDHREC, vía Scryfall): corrige lo que las reglas no ven
+  const rank = card.edhrecRank;
+  if (rank != null && !isBasicLand) {
+    if (rank <= 300) add(10, `de las más jugadas en Commander (puesto ${rank} en EDHREC)`);
+    else if (rank <= 1500) add(6, `muy jugada en Commander (puesto ${rank} en EDHREC)`);
+    else if (rank <= 5000) add(3, `bastante jugada en Commander (puesto ${rank} en EDHREC)`);
+    else if (rank > 20000) add(-3, `poco jugada en Commander (puesto ${rank} en EDHREC)`);
+  }
+
   const score = BASE_SCORE + parts.reduce((sum, p) => sum + p.points, 0);
   return { roles, role, score, parts, landColors: colors, isBasicLand };
 }
