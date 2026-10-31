@@ -37,7 +37,9 @@ interface ScryfallCard {
   printed_name?: string;
   lang: string;
   set: string;
+  set_name?: string;
   collector_number: string;
+  rarity?: string;
   layout: string;
   type_line: string;
   mana_cost?: string;
@@ -53,7 +55,8 @@ interface ScryfallCard {
   edhrec_rank?: number;
 }
 
-const cache = new Map<string, { card: DeckCard; at: number }>();
+/** spanish: ya se ha buscado su impresión en español (las colecciones en inglés no la piden) */
+const cache = new Map<string, { card: DeckCard; at: number; spanish: boolean }>();
 let lastRequest = 0;
 
 async function scryfall(path: string, init?: RequestInit): Promise<Response> {
@@ -116,6 +119,10 @@ export function toDeckCard(c: ScryfallCard): DeckCard {
     legalCommander: c.legalities?.commander === "legal",
     isToken: c.layout === "token" || c.layout === "double_faced_token" || /\bToken\b/.test(c.type_line),
     edhrecRank: c.edhrec_rank ?? null,
+    rarity: c.rarity,
+    setName: c.set_name,
+    priceEurFoilCents: cents(c.prices?.eur_foil),
+    imageUrlBack: c.image_uris ? null : (c.card_faces?.[1]?.image_uris?.normal ?? null),
   };
 }
 
@@ -174,12 +181,24 @@ async function addSpanish(cards: DeckCard[]): Promise<void> {
 
 /**
  * Cartas de Scryfall para los identificadores pedidos, cada una con su clave (identifierKey).
- * Devuelve también las claves que no se han encontrado.
+ * Devuelve también las claves que no se han encontrado. Con spanish = false no se busca el
+ * nombre ni la imagen en español.
  */
-export async function fetchDeckCards(identifiers: CardIdentifier[]): Promise<{ cards: Array<{ key: string; card: DeckCard }>; notFound: string[] }> {
+export async function fetchDeckCards(
+  identifiers: CardIdentifier[],
+  { spanish = true }: { spanish?: boolean } = {},
+): Promise<{ cards: Array<{ key: string; card: DeckCard }>; notFound: string[] }> {
   const cards = await fetchCollection(identifiers);
-  await addSpanish(cards.filter((c) => !cache.has(c.scryfallId)));
-  for (const card of cards) if (!cache.has(card.scryfallId)) cache.set(card.scryfallId, { card, at: Date.now() });
+  const cached = (card: DeckCard) => {
+    const hit = cache.get(card.scryfallId);
+    return hit?.card === card ? hit : undefined;
+  };
+  if (spanish) await addSpanish(cards.filter((c) => !cached(c)?.spanish));
+  for (const card of cards) {
+    const hit = cached(card);
+    if (hit) hit.spanish ||= spanish;
+    else cache.set(card.scryfallId, { card, at: Date.now(), spanish });
+  }
 
   const byKey = new Map<string, DeckCard>();
   for (const card of cards) for (const key of keysOf(card)) if (!byKey.has(key)) byKey.set(key, card);

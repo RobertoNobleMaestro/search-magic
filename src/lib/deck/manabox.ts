@@ -56,6 +56,8 @@ export function parseManaBoxCsv(text: string): { rows: ImportRow[]; errors: stri
   const iSet = col("set code");
   const iNum = col("collector number");
   const iLang = col("language");
+  const iFoil = col("foil");
+  const iPrice = col("purchase price");
 
   const rows: ImportRow[] = [];
   const errors: string[] = [];
@@ -68,6 +70,8 @@ export function parseManaBoxCsv(text: string): { rows: ImportRow[]; errors: stri
       return;
     }
     const id = iId >= 0 ? f[iId] : undefined;
+    const finish = iFoil >= 0 ? f[iFoil]?.toLowerCase() : undefined;
+    const price = iPrice >= 0 ? Number.parseFloat(f[iPrice] ?? "") : Number.NaN;
     rows.push({
       name,
       quantity,
@@ -75,6 +79,8 @@ export function parseManaBoxCsv(text: string): { rows: ImportRow[]; errors: stri
       ...(iSet >= 0 && f[iSet] ? { setCode: f[iSet]!.toLowerCase() } : {}),
       ...(iNum >= 0 && f[iNum] ? { collectorNumber: f[iNum] } : {}),
       ...(iLang >= 0 && f[iLang] ? { language: f[iLang] } : {}),
+      ...(finish === "foil" || finish === "etched" ? { finish } : {}),
+      ...(Number.isFinite(price) && price > 0 ? { purchaseCents: Math.round(price * 100) } : {}),
     });
   });
   return { rows, errors };

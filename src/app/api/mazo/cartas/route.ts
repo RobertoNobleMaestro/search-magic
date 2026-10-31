@@ -28,12 +28,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "JSON no válido" }, { status: 400 });
   }
   const identifiers = (body as { identifiers?: unknown })?.identifiers;
+  // Las colecciones en inglés no necesitan el nombre ni la imagen en español
+  const spanish = (body as { spanish?: unknown })?.spanish !== false;
   if (!Array.isArray(identifiers) || identifiers.length === 0 || identifiers.length > MAX_IDENTIFIERS || !identifiers.every(isIdentifier)) {
     return NextResponse.json({ error: `Hacen falta entre 1 y ${MAX_IDENTIFIERS} cartas` }, { status: 400 });
   }
 
   try {
-    const first = await fetchDeckCards(identifiers);
+    const first = await fetchDeckCards(identifiers, { spanish });
     // Nombres no encontrados: puede que estén en español; nuestro catálogo da el nombre en inglés
     const retry: Array<{ original: string; english: CardIdentifier }> = [];
     const missingNames = identifiers.filter((id): id is { name: string } => "name" in id && first.notFound.includes(identifierKey(id)));
@@ -45,7 +47,7 @@ export async function POST(request: Request) {
       }
     }
     if (retry.length === 0) return NextResponse.json(first);
-    const second = await fetchDeckCards(retry.map((r) => r.english));
+    const second = await fetchDeckCards(retry.map((r) => r.english), { spanish });
     const recovered = new Map(second.cards.map((c) => [c.key, c.card]));
     const cards = [...first.cards];
     const notFound = first.notFound.filter((key) => {

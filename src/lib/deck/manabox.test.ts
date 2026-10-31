@@ -20,6 +20,7 @@ describe("parseManaBoxCsv", () => {
       setCode: "msc",
       collectorNumber: "248",
       language: "en",
+      purchaseCents: 50,
     });
     // la cantidad manda: una línea pueden ser varias cartas
     expect(rows[1]).toMatchObject({ name: "Forest", quantity: 5, language: "es" });

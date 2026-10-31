@@ -33,6 +33,14 @@ export interface DeckCard {
   isToken: boolean;
   /** puesto de popularidad en mazos de Commander (EDHREC, vía Scryfall): 1 = la más jugada */
   edhrecRank?: number | null;
+  /** common, uncommon, rare, mythic, special… (los mazos guardados antes no lo tienen) */
+  rarity?: string;
+  /** nombre de la edición en inglés */
+  setName?: string;
+  /** precio de la versión foil en céntimos, si Scryfall lo tiene */
+  priceEurFoilCents?: number | null;
+  /** imagen de la cara de atrás, en cartas de dos caras */
+  imageUrlBack?: string | null;
 }
 
 export interface DeckEntry {
@@ -81,6 +89,10 @@ export interface ImportRow {
   setCode?: string;
   collectorNumber?: string;
   language?: string;
+  /** acabado del CSV de ManaBox cuando no es el normal: "foil" o "etched" */
+  finish?: "foil" | "etched";
+  /** precio por carta que apuntó ManaBox al añadirla, en céntimos */
+  purchaseCents?: number;
 }
 
 /** Cómo pedir una carta a Scryfall (/cards/collection) */
