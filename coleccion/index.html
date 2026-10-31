@@ -74,9 +74,6 @@
   .bar .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding-top: 10px; padding-bottom: 10px; }
   .search { flex: 1 1 200px; max-width: 280px; height: 34px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); outline: none; }
   .search:focus { border-color: var(--brand); box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 18%, transparent); }
-  .seg { display: inline-flex; padding: 2px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); }
-  .seg button { border: 0; background: none; padding: 4px 10px; border-radius: 8px; color: var(--ink-3); font-weight: 500; cursor: pointer; }
-  .seg button[aria-pressed="true"] { background: var(--surface-3); color: var(--ink); }
   .ctl { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-3); font-size: 13px; }
   .ctl select { height: 30px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); padding: 0 6px; }
   .ctl input[type=range] { width: 90px; accent-color: var(--brand); }
@@ -88,25 +85,22 @@
   .notice { margin: 12px 0 0; padding: 8px 12px; border-radius: 10px; background: var(--warn-soft); color: var(--warn); }
   .empty { padding: 48px 0; text-align: center; color: var(--ink-3); }
 
-  /* Tablero: los grupos se colocan en filas; cada grupo tiene uno o varios montones */
+  /* Todas las cartas en una sola cuadrícula; cada grupo empieza con una carta separadora */
   main { padding: 16px 0 40px; }
-  .board { --w: 124px; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 18px 22px; }
-  .group h2 { display: flex; align-items: center; gap: 6px; margin: 0 0 6px; font: 600 15px/1.2 var(--font-display); white-space: nowrap; }
-  .group h2 small { font: 400 12px var(--font-sans); color: var(--ink-3); }
-  .sym { width: 15px; height: 15px; display: inline-block; vertical-align: -2px; }
-  .gold-dot { width: 13px; height: 13px; border-radius: 50%; background: linear-gradient(135deg, oklch(0.85 0.12 90), oklch(0.7 0.13 70)); box-shadow: inset 0 0 0 1px oklch(0 0 0 / .2); }
-  .piles { display: flex; gap: 8px; align-items: flex-start; }
-  .pile { width: var(--w); margin: 0; padding: 0; list-style: none; }
-  .pile li { position: relative; }
-  /* Las cartas se solapan y dejan ver solo la franja del nombre (~16 % del ancho) */
-  .pile li + li { margin-top: -123.5%; }
-  .pile li:hover, .pile li:focus-within { z-index: 10; }
-  .pile li:hover .art, .pile li:focus-within .art { transform: translateY(-3px); box-shadow: 0 2px 6px var(--shadow-a), 0 18px 36px -14px var(--shadow-b); }
+  .board { --w: 132px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(var(--w), calc((100vw - 52px) / 3)), 1fr)); gap: 12px 10px; margin: 0; padding: 0; list-style: none; }
+  .card:hover .art, .card:focus-visible .art { transform: translateY(-3px); box-shadow: 0 2px 6px var(--shadow-a), 0 18px 36px -14px var(--shadow-b); }
+  .divider .dv { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; aspect-ratio: 488 / 680; padding: 10px; border-radius: 4.75% / 3.4%; text-align: center;
+    border: 1.5px solid color-mix(in oklab, var(--tint, var(--line-strong)) 50%, var(--line)); background: color-mix(in oklab, var(--tint, var(--surface-3)) 16%, var(--surface)); }
+  .divider h2 { margin: 0; font: 600 18px/1.15 var(--font-display); }
+  .divider small { color: var(--ink-3); font-size: 12px; }
+  .divider .sym { width: 36px; height: 36px; }
+  .gold-dot { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, oklch(0.85 0.12 90), oklch(0.7 0.13 70)); box-shadow: inset 0 0 0 1px oklch(0 0 0 / .2); }
 
-  /* Vista de cuadrícula */
-  .board.grid-view { display: block; }
-  .board.grid-view .group { margin-bottom: 18px; }
-  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--w), 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+  /* Vista ampliada al pasar el ratón */
+  #peek { position: fixed; z-index: 50; width: 300px; pointer-events: none; border-radius: 4.75% / 3.4%; overflow: hidden; box-shadow: 0 2px 6px var(--shadow-a), 0 24px 48px -16px var(--shadow-b); }
+  #peek[hidden] { display: none; }
+  #peek img { display: block; width: 100%; aspect-ratio: 488 / 680; }
 
   /* Carta */
   .card { display: block; width: 100%; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; border-radius: 4.75% / 3.4%; }
@@ -121,8 +115,6 @@
   .badges .qty { background: oklch(0.2 0.02 285 / .88); color: white; }
   .badges .fo { background: linear-gradient(115deg, oklch(0.9 0.08 340), oklch(0.92 0.07 250) 35%, oklch(0.93 0.09 160) 65%, oklch(0.93 0.1 85)); color: oklch(0.25 0.03 285); }
   .art .ph { overflow: hidden; }
-  /* En los montones, mientras carga la imagen, el nombre va arriba (es lo que se ve) */
-  .pile .ph { place-items: start; padding: 4% 7%; text-align: left; white-space: nowrap; text-overflow: ellipsis; font-size: 11px; }
   .cap { display: flex; justify-content: space-between; gap: 6px; margin-top: 3px; padding: 0 2px; font-size: 12px; }
   .cap .nm { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--ink-2); }
   .cap .pr { flex: none; font-weight: 600; font-variant-numeric: tabular-nums; }
@@ -160,10 +152,6 @@
 <div class="bar">
   <div class="wrap">
     <input class="search" id="q" type="search" placeholder="Buscar carta o tipo…" aria-label="Buscar carta">
-    <div class="seg" role="group" aria-label="Vista" data-setting="view">
-      <button type="button" data-value="piles">Montones</button>
-      <button type="button" data-value="grid">Cuadrícula</button>
-    </div>
     <label class="ctl">Agrupar
       <select id="group">
         <option value="color">por color</option>
@@ -181,7 +169,7 @@
         <option value="number">número</option>
       </select>
     </label>
-    <label class="ctl">Tamaño <input id="size" type="range" min="80" max="220" step="4"></label>
+    <label class="ctl">Tamaño <input id="size" type="range" min="90" max="240" step="4"></label>
     <label class="ctl" title="Cada impresión distinta de una carta (p. ej. una versión sin borde) en su propio hueco"><input id="split" type="checkbox"> Separar versiones</label>
     <label class="btn push" for="file">Cargar otro CSV</label>
     <input id="file" type="file" accept=".csv,text/csv" hidden>
@@ -193,6 +181,7 @@
 </main>
 
 <dialog id="dialog" aria-labelledby="dlg-title"></dialog>
+<div id="peek" hidden></div>
 
 <!-- Datos: el CSV de ManaBox tal cual y las cartas de Scryfall que usa (para abrir la página sin esperar) -->
 <script type="text/plain" id="csv-data" data-name="Reality Fracture">Name,Set code,Set name,Collector number,Foil,Rarity,Quantity,ManaBox ID,Scryfall ID,Purchase price,Misprint,Altered,Signed,Condition,Language,Proxy,Purchase price currency,Added
@@ -534,16 +523,17 @@ const SORTS = {
 };
 
 // ---------- Ajustes (se recuerdan en este navegador si se puede) ----------
-const DEFAULTS = { view: "piles", group: "color", sort: "cmc", size: 124, split: false };
+const DEFAULTS = { group: "color", sort: "cmc", size: 132, split: false };
+const STORE = "sm-coleccion-v2";
 let settings = { ...DEFAULTS };
-try { Object.assign(settings, JSON.parse(localStorage.getItem("sm-coleccion") || "{}")); } catch {}
-const saveSettings = () => { try { localStorage.setItem("sm-coleccion", JSON.stringify(settings)); } catch {} };
+try { Object.assign(settings, JSON.parse(localStorage.getItem(STORE) || "{}")); } catch {}
+const saveSettings = () => { try { localStorage.setItem(STORE, JSON.stringify(settings)); } catch {} };
 
 // ---------- Pintar ----------
 const board = document.getElementById("board");
-const PILE_MAX = 12;
+const TINT = { W: "oklch(0.85 0.09 95)", U: "oklch(0.62 0.14 245)", B: "oklch(0.4 0.03 300)", R: "oklch(0.62 0.18 30)", G: "oklch(0.62 0.14 150)", M: "oklch(0.78 0.13 80)", C: "oklch(0.72 0.02 250)", L: "oklch(0.6 0.07 60)" };
 
-function tile(e, withCaption) {
+function tile(e, withCaption = true) {
   const allFoil = e.foil === e.qty;
   const badges = (e.qty > 1 ? `<b class="qty">×${e.qty}</b>` : "") + (e.foil && !allFoil ? `<b class="fo" title="${e.foil} foil">${e.foil}✦</b>` : "") + (allFoil ? `<b class="fo" title="Foil">✦</b>` : "");
   const label = `${e.card.name}${e.qty > 1 ? ` (${e.qty} copias${e.foil ? `, ${e.foil} foil` : ""})` : e.foil ? " (foil)" : ""}${e.versions > 1 ? ` · ${e.versions} versiones` : ""}`;
@@ -553,10 +543,13 @@ function tile(e, withCaption) {
   </button></li>`;
 }
 
-function groupHeading(def, key, label, list) {
+/** Carta separadora con la que empieza cada grupo (ocupa un hueco, no una fila) */
+function divider(key, label, list) {
   const count = list.reduce((s, e) => s + e.qty, 0);
-  const icon = settings.group === "color" ? (SYMBOL[key] ? `<img class="sym" src="https://svgs.scryfall.io/card-symbols/${SYMBOL[key]}.svg" alt="">` : key === "M" ? `<span class="gold-dot" aria-hidden="true"></span>` : "") : "";
-  return `<h2>${icon}${esc(label)} <small>${count}</small></h2>`;
+  const byColor = settings.group === "color";
+  const icon = byColor ? (SYMBOL[key] ? `<img class="sym" src="https://svgs.scryfall.io/card-symbols/${SYMBOL[key]}.svg" alt="">` : key === "M" ? `<span class="gold-dot" aria-hidden="true"></span>` : "") : "";
+  const tint = byColor && TINT[key] ? ` style="--tint: ${TINT[key]}"` : "";
+  return `<li class="divider"><div class="dv"${tint}>${icon}<h2>${esc(label)}</h2><small>${count === 1 ? "1 carta" : `${count} cartas`}</small></div></li>`;
 }
 
 function render() {
@@ -568,24 +561,14 @@ function render() {
   for (const e of shown) buckets.get(def.of(e.card))?.push(e);
 
   board.style.setProperty("--w", `${settings.size}px`);
-  board.classList.toggle("grid-view", settings.view === "grid");
-  const html = [];
+  const cells = [];
   for (const [key, label] of def.order) {
     const list = buckets.get(key).sort(SORTS[settings.sort] ?? SORTS.cmc);
     if (!list.length) continue;
-    let body;
-    if (settings.view === "grid") {
-      body = `<ul class="tiles">${list.map((e) => tile(e, true)).join("")}</ul>`;
-    } else {
-      // Montones de como mucho PILE_MAX cartas, repartidas a partes iguales
-      const piles = Math.ceil(list.length / PILE_MAX);
-      const per = Math.ceil(list.length / piles);
-      const chunks = Array.from({ length: piles }, (_, i) => list.slice(i * per, (i + 1) * per));
-      body = `<div class="piles">${chunks.map((c) => `<ol class="pile">${c.map((e) => tile(e, false)).join("")}</ol>`).join("")}</div>`;
-    }
-    html.push(`<section class="group" aria-label="${esc(label)}">${groupHeading(def, key, label, list)}${body}</section>`);
+    if (settings.group !== "none") cells.push(divider(key, label, list));
+    cells.push(...list.map((e) => tile(e)));
   }
-  board.innerHTML = html.join("") || `<p class="empty">${q ? "Ninguna carta coincide con la búsqueda." : "No hay cartas."}</p>`;
+  board.innerHTML = cells.length ? `<ul class="tiles">${cells.join("")}</ul>` : `<p class="empty">${q ? "Ninguna carta coincide con la búsqueda." : "No hay cartas."}</p>`;
   board._entries = new Map(all.map((e) => [e.key, e]));
   renderStats(all);
 }
@@ -656,9 +639,30 @@ board.addEventListener("click", (ev) => {
   if (e) openCard(e);
 });
 
+// ---------- Vista ampliada al pasar el ratón (solo con ratón y pantalla ancha) ----------
+const peek = document.getElementById("peek");
+const PEEK_W = 300, PEEK_H = Math.round(300 * 680 / 488), GAP = 14;
+const hidePeek = () => { peek.hidden = true; };
+if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  board.addEventListener("mouseover", (ev) => {
+    const btn = ev.target.closest(".card");
+    const e = btn && board._entries?.get(btn.dataset.key);
+    if (!e?.card.img || innerWidth < 720) return hidePeek();
+    const r = btn.querySelector(".art").getBoundingClientRect();
+    if (peek.dataset.key !== e.key) { peek.innerHTML = `<img src="${esc(e.card.img)}" alt="">`; peek.dataset.key = e.key; }
+    // A la derecha de la carta si cabe; si no, a la izquierda
+    const x = r.right + GAP + PEEK_W <= innerWidth - 8 ? r.right + GAP : r.left - GAP - PEEK_W;
+    const y = Math.min(Math.max(8, r.top + r.height / 2 - PEEK_H / 2), innerHeight - PEEK_H - 8);
+    peek.style.left = `${x}px`;
+    peek.style.top = `${y}px`;
+    peek.hidden = false;
+  });
+  board.addEventListener("mouseleave", hidePeek);
+  addEventListener("scroll", hidePeek, { passive: true });
+}
+
 // ---------- Controles ----------
 function syncControls() {
-  document.querySelectorAll('[data-setting="view"] button').forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.value === settings.view)));
   document.getElementById("group").value = settings.group;
   document.getElementById("sort").value = settings.sort;
   document.getElementById("size").value = settings.size;
@@ -666,7 +670,6 @@ function syncControls() {
 }
 function set(patch) { Object.assign(settings, patch); saveSettings(); syncControls(); render(); }
 
-document.querySelectorAll('[data-setting="view"] button').forEach((b) => b.addEventListener("click", () => set({ view: b.dataset.value })));
 document.getElementById("group").addEventListener("change", (ev) => set({ group: ev.target.value }));
 document.getElementById("sort").addEventListener("change", (ev) => set({ sort: ev.target.value }));
 document.getElementById("size").addEventListener("input", (ev) => set({ size: Number(ev.target.value) }));
