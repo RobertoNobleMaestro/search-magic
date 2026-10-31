@@ -8,6 +8,7 @@ const LINKS = [
   { href: "/sellado", label: "Sellado", section: ["/sellado"] },
   { href: "/tiendas", label: "Tiendas", section: ["/tiendas"] },
   { href: "/mazo", label: "Mazo", section: ["/mazo"] },
+  { href: "/coleccion", label: "Colección", section: ["/coleccion"] },
 ];
 
 function inSection(pathname: string, prefixes: string[]): boolean {
