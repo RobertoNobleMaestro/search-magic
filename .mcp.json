@@ -3,6 +3,17 @@
     "Neon": {
       "type": "http",
       "url": "https://mcp.neon.tech/mcp"
+    },
+    "meshy-mcp-server": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@meshy-ai/meshy-mcp-server"
+      ],
+      "env": {
+        "MESHY_API_KEY": "msy_YOUR_API_KEY"
+      }
     }
   }
 }
